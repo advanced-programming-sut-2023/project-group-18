@@ -1,6 +1,14 @@
 package com.example.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.google.gson.Gson;
 
 public class User {
     private static final ArrayList<User> USERS;
@@ -15,7 +23,7 @@ public class User {
     private int highscore;
 
     static {
-        USERS = new ArrayList<>();
+        USERS = new ArrayList<>(initializeUsers());
         PASSWORD_RECOVERY_QUESTIONS = new ArrayList<>();
         PASSWORD_RECOVERY_QUESTIONS.add("What is my father's name?");
         PASSWORD_RECOVERY_QUESTIONS.add("What was my first pet's name?");
@@ -32,6 +40,43 @@ public class User {
         this.recoveryAnswer = recoveryAnswer;
         this.highscore = 0;
         USERS.add(this);
+    }
+
+    private static List<User> initializeUsers() {
+        Gson gson = new Gson();
+        File main = new File("src", "main");
+        File resources = new File(main, "resources");
+        File json = new File(resources, "json");
+        File users = new File(json, "Users.json");
+        try {
+            users.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Scanner scanner = new Scanner(users);
+            String information = scanner.nextLine();
+            scanner.close();
+            return List.of(gson.fromJson(information, User[].class));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void writeUsersInFile() {
+        Gson gson = new Gson();
+        File main = new File("src", "main");
+        File resources = new File(main, "resources");
+        File json = new File(resources, "json");
+        File users = new File(json, "Users.json");
+        try {
+            FileWriter fileWriter = new FileWriter(users);
+            fileWriter.write(gson.toJson(USERS));
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static ArrayList<User> getUsers() {
