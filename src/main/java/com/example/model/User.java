@@ -53,14 +53,14 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
-            Scanner scanner = new Scanner(users);
-            String information = scanner.nextLine();
-            scanner.close();
-            return List.of(gson.fromJson(information, User[].class));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Scanner scanner = new Scanner(users);
+//            String information = scanner.nextLine();
+//            scanner.close();
+//            return List.of(gson.fromJson(information, User[].class));
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
         return null;
     }
 
