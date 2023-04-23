@@ -1,5 +1,9 @@
 package com.example.model;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class User implements PasswordRecoveryQuestions {
     private String username;
     private String password;
@@ -12,12 +16,12 @@ public class User implements PasswordRecoveryQuestions {
 
     protected User(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         this.username = username;
-        this.password = password;
+        setPassword(password);
         this.nickname = nickname;
         this.email = email;
         this.slogan = slogan;
         this.recoveryQuestionNumber = recoveryQuestionNumber;
-        this.recoveryAnswer = recoveryAnswer;
+        this.recoveryAnswer = SHA256Cryptographic(recoveryAnswer);
         this.highscore = 0;
     }
 
@@ -50,8 +54,7 @@ public class User implements PasswordRecoveryQuestions {
     }
 
     public void setPassword(String password) {
-        // TODO: sha-256
-        this.password = password;
+        this.password = SHA256Cryptographic(password);
     }
 
     public void setNickname(String nickname) {
@@ -72,18 +75,24 @@ public class User implements PasswordRecoveryQuestions {
 
 
     public boolean isPasswordCorrect(String password) {
-        // TODO: sha-256
-        return this.password.equals(password);
+        return this.password.equals(SHA256Cryptographic(password));
     }
 
     public boolean isRecoveryAnswerCorrect(String recoveryAnswer) {
-        // TODO: sha-256
-        return this.recoveryAnswer.equals(recoveryAnswer);
+        return this.recoveryAnswer.equals(SHA256Cryptographic(recoveryAnswer));
     }
 
 
     private String SHA256Cryptographic(String input) {
-        // TODO: sha-256
+        MessageDigest digest;
+        final String algorithmName = "SHA-256";
+        try {
+            digest = MessageDigest.getInstance(algorithmName);
+            byte[] encodedhash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+            return new String(encodedhash, StandardCharsets.UTF_8);
+        } catch (NoSuchAlgorithmException e) {
+            System.err.println("There is no algorithm with name: " + algorithmName);
+        }
         return null;
     }
 
