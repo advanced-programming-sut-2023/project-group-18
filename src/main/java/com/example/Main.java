@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.controller.Methods.SignupMenuMethods;
 import com.example.view.SignupMenu;
 
 import java.util.ArrayList;

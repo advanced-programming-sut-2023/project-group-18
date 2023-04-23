@@ -38,6 +38,7 @@ public class SignupMenu {
     }
 
     private void register(Matcher matcher, Scanner scanner) {
+        boolean randomPassFlag = false;
         ArrayList<String> fields = GlobalMethods.commandSplit(matcher.group("fields"));
         SignupMenuMethods signupMenuMethods = SignupMenuMethods.getInstance();
         fields = signupMenuMethods.sortFields(fields);
@@ -60,6 +61,12 @@ public class SignupMenu {
         String password = fields.get(1);
         String email = fields.get(2);
         String slogan = fields.get(4) == null ? "" : fields.get(4);
+        if (password.equals("random")) {
+            randomPassFlag = true;
+            password = signupMenuMethods.generateRandomPassword();
+            if (!signupMenuMethods.checkRandomPassword(password, scanner))
+                return;
+        }
         if (!signupMenuMethods.usernameValidation(username)) {
             System.out.println("your username should consist of letters, digits and underline");
             return;
@@ -70,10 +77,12 @@ public class SignupMenu {
             System.out.println("your email format is invalid");
             return;
         }
-        System.out.println("Please re-enter your password here:");
-        if (!scanner.nextLine().equals(password)) {
-            System.out.println("your re-entered password was incorrect!");
-            return;
+        if (!randomPassFlag) {
+            System.out.println("Please re-enter your password here:");
+            if (!scanner.nextLine().equals(password)) {
+                System.out.println("your re-entered password was incorrect!");
+                return;
+            }
         }
         String recoveryQuestion = signupMenuMethods.getRecoveryQuestion(scanner);      /*this is number and the question together*/
         int recoveryQuestionNumber = Integer.parseInt(recoveryQuestion.substring(0, 1));
