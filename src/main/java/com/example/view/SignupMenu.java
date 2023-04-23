@@ -58,12 +58,10 @@ public class SignupMenu {
             return;
         } else if (!signupMenuMethods.emailValidation(email)) {
             System.out.println("your email format is invalid");
-            System.out.println(email);
             return;
         }
         System.out.println("Please re-enter your password here:");
-        String reenteredPass = scanner.nextLine();
-        if (!reenteredPass.equals(password)) {
+        if (!scanner.nextLine().equals(password)) {
             System.out.println("your re-entered password ");
         }
         System.out.println("register successful");
