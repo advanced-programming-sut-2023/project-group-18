@@ -39,7 +39,6 @@ public class User {
         this.recoveryQuestionNumber = recoveryQuestionNumber;
         this.recoveryAnswer = recoveryAnswer;
         this.highscore = 0;
-        USERS.add(this);
     }
 
     private static List<User> initializeUsers() {
@@ -53,14 +52,14 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        try {
-//            Scanner scanner = new Scanner(users);
-//            String information = scanner.nextLine();
-//            scanner.close();
-//            return List.of(gson.fromJson(information, User[].class));
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Scanner scanner = new Scanner(users);
+            String information = scanner.nextLine();
+            scanner.close();
+            return List.of(gson.fromJson(information, User[].class));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
