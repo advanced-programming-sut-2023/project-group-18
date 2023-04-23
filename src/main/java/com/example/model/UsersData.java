@@ -48,6 +48,12 @@ public class UsersData {
         return null;
     }
 
+    public boolean doesEmailExist(String email) {
+        for (User user : users)
+            if (user.getEmail().equalsIgnoreCase(email)) return true;
+        return false;
+    }
+
 
     private List<User> initializeUsers() {
         Gson gson = new Gson();
