@@ -39,7 +39,6 @@ public class User {
         this.recoveryQuestionNumber = recoveryQuestionNumber;
         this.recoveryAnswer = recoveryAnswer;
         this.highscore = 0;
-        USERS.add(this);
     }
 
     private static List<User> initializeUsers() {
