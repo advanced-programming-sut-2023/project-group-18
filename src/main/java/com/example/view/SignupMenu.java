@@ -3,6 +3,7 @@ package com.example.view;
 import com.example.controller.Commands.SignupMenuCommands;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.SignupMenuMethods;
+import com.example.model.User;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -43,13 +44,22 @@ public class SignupMenu {
         if (fields == null) {
             System.out.println("you inserted an invalid field!");
             return;
-        } else if (signupMenuMethods.checkEmptyFields(fields) != null) {
-            System.out.println("you left " + signupMenuMethods.checkEmptyFields(fields) + " field empty!");
+        } else if (signupMenuMethods.checkEmptyFields(fields) != -1) {
+            String error = "";
+            switch (signupMenuMethods.checkEmptyFields(fields)) {
+                case 0 -> error = "username";
+                case 1 -> error = "password";
+                case 2 -> error = "email";
+                case 3 -> error = "nickname";
+                case 4 -> error = "slogan";
+            }
+            System.out.println("you left " + error + " field empty!");
             return;
         }
         String username = fields.get(0);
         String password = fields.get(1);
         String email = fields.get(2);
+        String slogan = fields.get(4) == null ? "" : fields.get(4);
         if (!signupMenuMethods.usernameValidation(username)) {
             System.out.println("your username should consist of letters, digits and underline");
             return;
@@ -62,8 +72,17 @@ public class SignupMenu {
         }
         System.out.println("Please re-enter your password here:");
         if (!scanner.nextLine().equals(password)) {
-            System.out.println("your re-entered password ");
+            System.out.println("your re-entered password was incorrect!");
+            return;
         }
+        String recoveryQuestion = signupMenuMethods.getRecoveryQuestion(scanner);      /*this is number and the question together*/
+        int recoveryQuestionNumber = Integer.parseInt(recoveryQuestion.substring(0, 1));
+        if (recoveryQuestionNumber > 3 || recoveryQuestionNumber < 1) {
+            System.out.println("the question number is not valid. please register again!");
+            return;
+        }
+        recoveryQuestion = recoveryQuestion.substring(2);
         System.out.println("register successful");
+        User.getUsers().add(new User(username, password, fields.get(3), email, slogan, recoveryQuestionNumber, recoveryQuestion));
     }
 }
