@@ -93,7 +93,7 @@ public class CapthaCode implements ConsoleColors {
 
     private static String makeNoise(String input) {
         char[] string = input.toCharArray();
-        int numberOfNoises = RANDOM.nextInt(6);
+        int numberOfNoises = RANDOM.nextInt(4);
         while (numberOfNoises-- > 0) {
             int index = RANDOM.nextInt(input.length());
             string[index] = getARandomNoiseChar();

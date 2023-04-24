@@ -10,10 +10,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // SignupMenu signupMenu = SignupMenu.getInstance();
-        // signupMenu.run(scanner);
-        // UsersData.getUsersData().writeUsersInFile();
-        System.out.println(CapthaCode.generateCapthaCode());
-        System.out.println(CapthaCode.isCodeCorrect(scanner.nextLine()));
+         SignupMenu signupMenu = SignupMenu.getInstance();
+         signupMenu.run(scanner);
+         UsersData.getUsersData().writeUsersInFile();
     }
 }
