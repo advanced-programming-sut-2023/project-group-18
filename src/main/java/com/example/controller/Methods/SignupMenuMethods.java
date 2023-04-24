@@ -1,6 +1,7 @@
 package com.example.controller.Methods;
 
 import com.example.controller.Commands.SignupMenuCommands;
+import com.example.model.UsersData;
 import com.google.gson.internal.bind.util.ISO8601Utils;
 
 import java.util.ArrayList;
@@ -9,14 +10,16 @@ import java.util.regex.Matcher;
 
 public class SignupMenuMethods {
     private static SignupMenuMethods instance;
+    private final UsersData usersData;
+
     private SignupMenuMethods() {
+        usersData = UsersData.getUsersData();
     }
+
     public static SignupMenuMethods getInstance() {
-        if (instance == null) {
-            instance = new SignupMenuMethods();
-        }
-        return instance;
+        return instance == null ? instance = new SignupMenuMethods() : instance;
     }
+
     public ArrayList<String> sortFields(ArrayList<String> fields) {
         ArrayList<String> output = new ArrayList<>();
         output.add("a");
@@ -128,6 +131,10 @@ public class SignupMenuMethods {
         return sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(0) + " " + confirm;
     }
 
+    public void register(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
+        usersData.addUser(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer);
+    }
+
     private ArrayList<String> sortSecurityQuestionFields(ArrayList<String> fields) {
         ArrayList<String> output = new ArrayList<>(3);
         for (String field : fields) {
@@ -149,4 +156,5 @@ public class SignupMenuMethods {
         }
         return output;
     }
+
 }

@@ -11,8 +11,10 @@ import java.util.regex.Matcher;
 
 public class SignupMenu {
     private static SignupMenu instance;
+    private final SignupMenuMethods signupMenuMethods;
 
     private SignupMenu() {
+        signupMenuMethods = SignupMenuMethods.getInstance();
     }
 
     public static SignupMenu getInstance() {
@@ -39,7 +41,6 @@ public class SignupMenu {
 
     private void register(Matcher matcher, Scanner scanner) {
         ArrayList<String> fields = GlobalMethods.commandSplit(matcher.group("fields"));
-        SignupMenuMethods signupMenuMethods = SignupMenuMethods.getInstance();
         fields = signupMenuMethods.sortFields(fields);
         if (fields == null) {
             System.out.println("you inserted an invalid field!");
@@ -83,6 +84,7 @@ public class SignupMenu {
         }
         recoveryQuestion = recoveryQuestion.substring(2);
         System.out.println("register successful");
-        User.getUsers().add(new User(username, password, fields.get(3), email, slogan, recoveryQuestionNumber, recoveryQuestion));
+        signupMenuMethods.register(username, password, fields.get(3), email, slogan, recoveryQuestionNumber, recoveryQuestion);
     }
+
 }
