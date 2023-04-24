@@ -1,10 +1,14 @@
 package com.example;
 
-import com.example.controller.SignupController;
+import com.example.view.SignupMenu;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        SignupController signupController = SignupController.getSignupController();
-        signupController.run();
+        Scanner scanner = new Scanner(System.in);
+        SignupMenu signupMenu = SignupMenu.getInstance();
+        signupMenu.run(scanner);
     }
 }
