@@ -29,9 +29,9 @@ public class GameMap implements NeedsId, WriteInFile {
         goToNextId();
         int length = MapSizes.getMapSize(size);
         map = new Tile[length][length];
-        for (int i = 0; i < map.length; i++)
-            for (int j = 0; j < map.length; j++)
-                map[i][j] = new Tile();
+        for (int yCordinate = 0; yCordinate < map.length; yCordinate++)
+            for (int xCordinate = 0; xCordinate < map.length; xCordinate++)
+                map[yCordinate][xCordinate] = new Tile(xCordinate, yCordinate);
     }
 
 
