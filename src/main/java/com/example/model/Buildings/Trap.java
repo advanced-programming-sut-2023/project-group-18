@@ -12,4 +12,7 @@ public class Trap extends Building{
     }
 
 
+    public void doDamage(){
+        //Todo
+    }
 }
