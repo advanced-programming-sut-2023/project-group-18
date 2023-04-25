@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 public class UsersData {
     private static UsersData usersData;
     private final ArrayList<User> users;
+    private User stayLoggedInUser;
 
     private UsersData() {
         users = new ArrayList<>(initializeUsers());
@@ -22,6 +23,18 @@ public class UsersData {
         return usersData == null ? usersData = new UsersData() : usersData;
     }
 
+    public User getStayLoggedInUser() {
+        return stayLoggedInUser;
+    }
+
+    public void setStayLoggedInUser(User stayLoggedInUser) {
+        this.stayLoggedInUser = stayLoggedInUser;
+    }
+
+
+    public void writeStayLoggedInUserIdInFile() {
+        // TODO: write
+    }
 
     public void writeUsersInFile() {
         Gson gson = new Gson();
