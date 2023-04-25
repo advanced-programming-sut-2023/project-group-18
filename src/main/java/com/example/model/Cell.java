@@ -2,13 +2,13 @@ package com.example.model;
 
 import com.example.model.People.Object;
 
-public class Tile {
+public class Cell {
     private Object object;
     private Texture texture;
     private final int xCordinate;
     private final int yCordinate;
 
-    protected Tile(int xCordinate, int yCordinate) {
+    protected Cell(int xCordinate, int yCordinate) {
         this.xCordinate = xCordinate;
         this.yCordinate = yCordinate;
     }

@@ -2,6 +2,9 @@ package com.example.model.Buildings;
 
 import java.util.HashMap;
 
+import com.example.model.Cell;
+import com.example.model.Governance;
+
 public class Building {
     private final String buildingType;
     protected final int workersNumber;
