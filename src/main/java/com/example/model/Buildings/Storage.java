@@ -1,20 +1,25 @@
 package com.example.model.Buildings;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.example.model.Governance;
+import com.example.model.Resources.Resource;
+import com.example.model.Resources.ResourceType;
 import com.example.model.Cell;
 
 public class Storage extends Building{
-    private final String type;
+    private final ResourceType type;
     private final int capacity;
-    private final HashMap<String,Integer> products;
+    private final ArrayList<Resource> products;
     private int currentCapacity;
 
-    public Storage(String buildingType, Governance governance, Cell cell) {
+    public Storage(String buildingType, Governance governance, Cell cell, ResourceType type, int capacity) {
         super(buildingType, governance, cell);
-        products = new HashMap<>();
+        products = new ArrayList<>();
+        this.type = type;
+        this.capacity = capacity;
     }
 
     public String getType() {

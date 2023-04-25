@@ -1,7 +1,10 @@
 package com.example.model.People;
+
+import com.example.model.Cell;
+import com.example.model.Governance;
 import com.example.model.Buildings.Building;
 
-public class Person {
+public class Person extends Object {
     private Cell personCell;
     private boolean isFree;
     private final Governance governance;

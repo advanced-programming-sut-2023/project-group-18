@@ -5,18 +5,21 @@ import java.util.ArrayList;
 import com.example.model.Buildings.Building;
 import com.example.model.People.Person;
 import com.example.model.People.Soldier;
+import com.example.model.Resources.Resource;
 
 public class Governance {
     private final User owner;
     private final ArrayList<Building> buildings;
     private final ArrayList<Soldier> soldiers;
     private final ArrayList<Person> persons;
+    private final ArrayList<Resource> resources;
 
     public Governance(User owner) {
         this.owner = owner;
         buildings = new ArrayList<>();
         soldiers = new ArrayList<>();
         persons = new ArrayList<>();
+        resources = new ArrayList<>();
     }
 
     public User getOwner() {
@@ -35,5 +38,10 @@ public class Governance {
         return persons;
     }
 
+    public ArrayList<Resource> getResources() {
+        return resources;
+    }
+
+    // TODO: handle buy sell
 
 }
