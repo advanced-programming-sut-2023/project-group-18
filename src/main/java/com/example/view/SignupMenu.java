@@ -44,9 +44,9 @@ public class SignupMenu {
         if (fields == null) {
             System.out.println("you inserted an invalid field!");
             return;
-        } else if (signupMenuMethods.checkEmptyFields(fields) != -1) {
+        } else if (GlobalMethods.checkEmptyFields(fields) != -1) {
             String error = "";
-            switch (signupMenuMethods.checkEmptyFields(fields)) {
+            switch (GlobalMethods.checkEmptyFields(fields)) {
                 case 0 -> error = "username";
                 case 1 -> error = "password";
                 case 2 -> error = "email";

@@ -62,14 +62,6 @@ public class SignupMenuMethods {
         return output;
     }
 
-    public int checkEmptyFields(ArrayList<String> fields) {            /*these fields are sorted*/
-        for (int i = 0; i < fields.size(); i++) {
-            if (fields.get(i).equals("")) {
-                return i;
-            }
-        }
-        return -1;
-    }
 
     public boolean usernameValidation(String username) {
         return username.matches("\\w+");
@@ -112,7 +104,7 @@ public class SignupMenuMethods {
 //                System.out.println(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(0));
                 System.out.println("you should enter a number in -q field. please answer again");
                 recoveryQuestion = scanner.nextLine();
-            } else if ((error = checkEmptyFields(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))))) != -1) {
+            } else if ((error = GlobalMethods.checkEmptyFields(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))))) != -1) {
                 if (error == 1)
                     System.out.println("you left answer field empty. please answer again.");
                 if (error == 2)

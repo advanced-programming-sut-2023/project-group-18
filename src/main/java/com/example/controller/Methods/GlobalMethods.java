@@ -30,4 +30,13 @@ public class GlobalMethods {
     public static void invalidCommand() {
         System.out.println("invalid command!");
     }
+
+    public static int checkEmptyFields(ArrayList<String> fields) {            /*these fields are sorted*/
+        for (int i = 0; i < fields.size(); i++) {
+            if (fields.get(i).equals("")) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
