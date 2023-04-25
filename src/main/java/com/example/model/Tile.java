@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.example.model.People.Object;
+
 public class Tile {
     private Object object;
     private Texture texture;
