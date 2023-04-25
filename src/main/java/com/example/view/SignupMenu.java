@@ -3,7 +3,6 @@ package com.example.view;
 import com.example.controller.Commands.SignupMenuCommands;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.SignupMenuMethods;
-import com.example.model.User;
 
 import java.util.ArrayList;
 import java.util.Scanner;
