@@ -12,6 +12,4 @@ public class LoginMenuMethods {
     }
     public ArrayList<String> sortLoginFields(ArrayList<String> fields) {
     }
-
-    public
 }
