@@ -11,14 +11,14 @@ import com.google.gson.JsonSyntaxException;
 
 public class GameMap implements NeedsId, WriteInFile {
     private final int id;
-    private final Tile[][] map;
+    private final Cell[][] map;
 
     public GameMap(int id) throws Exception {
         Gson gson = new Gson();
         this.id = id;
         File mapFile = getGameMapFileById(id);
         try (Scanner scanner = new Scanner(mapFile)) {
-            map = gson.fromJson(scanner.nextLine(), Tile[][].class);
+            map = gson.fromJson(scanner.nextLine(), Cell[][].class);
         } catch (JsonSyntaxException | FileNotFoundException e) {
             throw e;
         }
@@ -28,14 +28,14 @@ public class GameMap implements NeedsId, WriteInFile {
         id = getNextId();
         goToNextId();
         int length = MapSizes.getMapSize(size);
-        map = new Tile[length][length];
-        for (int i = 0; i < map.length; i++)
-            for (int j = 0; j < map.length; j++)
-                map[i][j] = new Tile();
+        map = new Cell[length][length];
+        for (int yCordinate = 0; yCordinate < map.length; yCordinate++)
+            for (int xCordinate = 0; xCordinate < map.length; xCordinate++)
+                map[yCordinate][xCordinate] = new Cell(xCordinate, yCordinate);
     }
 
 
-    public Tile getTileByLocation(int xCordinate, int yCordinate) {
+    public Cell getTileByLocation(int xCordinate, int yCordinate) {
         return map[yCordinate][xCordinate];
     }
 
