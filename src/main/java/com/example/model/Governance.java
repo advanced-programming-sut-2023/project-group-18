@@ -3,9 +3,9 @@ package com.example.model;
 import java.util.ArrayList;
 
 import com.example.model.Buildings.Building;
+import com.example.model.Comodities.Resource;
 import com.example.model.People.Person;
 import com.example.model.People.Soldier;
-import com.example.model.Resources.Resource;
 
 public class Governance {
     private final User owner;

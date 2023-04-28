@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.example.model.Governance;
-import com.example.model.Resources.Resource;
-import com.example.model.Resources.ResourceType;
+import com.example.model.Comodities.Resource;
+import com.example.model.Comodities.ResourceType;
 import com.example.model.Cell;
 
 public class Storage extends Building{
