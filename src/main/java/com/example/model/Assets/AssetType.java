@@ -1,4 +1,4 @@
-package com.example.model.Comodities;
+package com.example.model.Assets;
 
 public enum AssetType {
     FOOD,

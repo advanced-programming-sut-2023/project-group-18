@@ -1,4 +1,4 @@
-package com.example.model.Comodities;
+package com.example.model.Assets;
 
 import java.util.HashMap;
 

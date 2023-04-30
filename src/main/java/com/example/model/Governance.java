@@ -3,10 +3,10 @@ package com.example.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.example.model.Assets.Asset;
+import com.example.model.Assets.AssetType;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.Storage;
-import com.example.model.Comodities.Asset;
-import com.example.model.Comodities.AssetType;
 import com.example.model.People.Person;
 import com.example.model.People.Soldier;
 

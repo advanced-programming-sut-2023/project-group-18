@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import com.example.model.Cell;
 import com.example.model.Governance;
-import com.example.model.Comodities.Asset;
+import com.example.model.Assets.Asset;
 
 public class Building {
     private final String buildingType;
