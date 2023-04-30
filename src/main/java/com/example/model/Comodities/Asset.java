@@ -40,6 +40,10 @@ public enum Asset {
         return name;
     }
 
+    public AssetType getAssetType() {
+        return assetType;
+    }
+
     public int getPrice() {
         return price;
     }

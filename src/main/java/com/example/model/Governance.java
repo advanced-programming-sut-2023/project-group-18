@@ -1,9 +1,11 @@
 package com.example.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.example.model.Buildings.Building;
-import com.example.model.Comodities.Resource;
+import com.example.model.Comodities.Asset;
+import com.example.model.Comodities.AssetType;
 import com.example.model.People.Person;
 import com.example.model.People.Soldier;
 
@@ -12,36 +14,27 @@ public class Governance {
     private final ArrayList<Building> buildings;
     private final ArrayList<Soldier> soldiers;
     private final ArrayList<Person> persons;
-    private final ArrayList<Resource> resources;
+    private final HashMap<AssetType, HashMap<Asset, Integer>> assets;
+    private int gold;
 
     public Governance(User owner) {
         this.owner = owner;
         buildings = new ArrayList<>();
         soldiers = new ArrayList<>();
         persons = new ArrayList<>();
-        resources = new ArrayList<>();
+        assets = Asset.getAllAssets();
     }
 
     public User getOwner() {
         return owner;
     }
 
-    public ArrayList<Building> getBuildings() {
-        return buildings;
+    // TODO: getters & setters
+
+    private void addToSpeceficAsset(Asset asset, int count) {
+        int governanceCount = assets.get(asset.getAssetType()).get(asset);
+        assets.get(asset.getAssetType()).put(asset, governanceCount + count);
     }
 
-    public ArrayList<Soldier> getSoldiers() {
-        return soldiers;
-    }
-
-    public ArrayList<Person> getPersons() {
-        return persons;
-    }
-
-    public ArrayList<Resource> getResources() {
-        return resources;
-    }
-
-    // TODO: handle buy sell
 
 }
