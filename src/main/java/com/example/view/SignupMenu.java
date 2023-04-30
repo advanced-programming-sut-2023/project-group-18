@@ -59,7 +59,14 @@ public class SignupMenu {
         String username = fields.get(0);
         String password = fields.get(1);
         String email = fields.get(2);
-        String slogan = fields.get(4) == null ? "" : fields.get(4);
+        String slogan = fields.get(4).equals("a") ? "" : fields.get(4);
+        if (signupMenuMethods.doesUsernameExist(username)) {
+            System.out.println("this username already exists!");
+            return;
+        } else if (signupMenuMethods.doesEmailExist(email)) {
+            System.out.println("this email already exists!");
+            return;
+        }
         if (!signupMenuMethods.usernameValidation(username)) {
             System.out.println("your username should consist of letters, digits and underline");
             return;
@@ -76,6 +83,9 @@ public class SignupMenu {
             return;
         }
         String recoveryQuestion = signupMenuMethods.getRecoveryQuestion(scanner);      /*this is number and the question together*/
+        while (!signupMenuMethods.captchaCheck(scanner)) {
+            System.out.println("you didn't answer captcha correctly! try again.");
+        }
         int recoveryQuestionNumber = Integer.parseInt(recoveryQuestion.substring(0, 1));
         if (recoveryQuestionNumber > 3 || recoveryQuestionNumber < 1) {
             System.out.println("the question number is not valid. please register again!");
@@ -85,5 +95,4 @@ public class SignupMenu {
         System.out.println("register successful");
         signupMenuMethods.register(username, password, fields.get(3), email, slogan, recoveryQuestionNumber, recoveryQuestion);
     }
-
 }

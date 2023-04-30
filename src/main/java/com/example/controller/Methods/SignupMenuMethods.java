@@ -1,6 +1,7 @@
 package com.example.controller.Methods;
 
 import com.example.controller.Commands.SignupMenuCommands;
+import com.example.model.CapthaCode;
 import com.example.model.UsersData;
 import com.google.gson.internal.bind.util.ISO8601Utils;
 
@@ -29,6 +30,9 @@ public class SignupMenuMethods {
         output.add("d");
         output.add("e");
         for (String field : fields) {
+            if (field.trim().length() < 4) {
+                return null;
+            }
             String quoteSubstring = field.trim().substring(4, field.trim().length() - 1);
             boolean isQuoted = field.trim().charAt(3) == '\"' && field.trim().endsWith("\"");
             if (field.startsWith("-u")) {
@@ -179,4 +183,17 @@ public class SignupMenuMethods {
         return true;
     }
 
+    public boolean doesUsernameExist(String username) {
+        return usersData.getUserByUsername(username) != null;
+    }
+
+    public boolean doesEmailExist(String email) {
+        return usersData.doesEmailExist(email);
+    }
+
+    public boolean captchaCheck(Scanner scanner) {
+        System.out.println(CapthaCode.generateCapthaCode());
+        String answer = scanner.nextLine();
+        return CapthaCode.isCodeCorrect(answer);
+    }
 }
