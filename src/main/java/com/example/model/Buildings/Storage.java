@@ -1,28 +1,26 @@
 package com.example.model.Buildings;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import com.example.model.Governance;
-import com.example.model.Comodities.Resource;
-import com.example.model.Comodities.ResourceType;
+import com.example.model.Comodities.Asset;
+import com.example.model.Comodities.AssetType;
 import com.example.model.Cell;
 
 public class Storage extends Building{
-    private final ResourceType type;
+    private final AssetType type;
     private final int capacity;
-    private final ArrayList<Resource> products;
+    private final HashMap<Asset, Integer> products;
     private int currentCapacity;
 
-    public Storage(String buildingType, Governance governance, Cell cell, ResourceType type, int capacity) {
+    public Storage(String buildingType, Governance governance, Cell cell, AssetType type, int capacity) {
         super(buildingType, governance, cell);
-        products = new ArrayList<>();
+        products = Asset.getAllAssets(type);
         this.type = type;
         this.capacity = capacity;
     }
 
-    public String getType() {
+    public AssetType getType() {
         return type;
     }
 
@@ -34,23 +32,32 @@ public class Storage extends Building{
         return currentCapacity;
     }
 
+    public int remainingCapacity() {
+        return capacity - currentCapacity;
+    }
+
+    public int getAssetCount(Asset asset) {
+        return products.get(asset);
+    }
+
     public boolean isPossibleAddProduct(int count) {
-        return count + currentCapacity <= this.remainingCapacity();
+        return count <= remainingCapacity();
     }
 
-    public boolean isPossibleRemoveProduct(String name, int count) {
-        return true;
+    public boolean isPossibleRemoveProduct(Asset asset, int count) {
+        return products.get(asset) >= count;
     }
 
-    public void addProduct(String name, int count){
+    public boolean isAssetCompatible(Asset asset) {
+        return asset.getAssetType().equals(type);
+    }
+
+    public void addProduct(Asset asset, int count) {
+        if (currentCapacity + count > capacity)
+            count -= capacity - currentCapacity;
         currentCapacity += count;
-        if (products.containsKey(name)) products.put(name, products.get(name) + count);
-        else products.put(name,count);
-    }
-
-    public void removeProduct(String name, int count){
-        currentCapacity -= count;
-        products.put(name, products.get(name) - count);
+        products.put(asset, products.get(asset) + count);
+        governance.addSpecificAsset(asset, count);
     }
 
 }

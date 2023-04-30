@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.example.model.Buildings.Building;
+import com.example.model.Buildings.Storage;
 import com.example.model.Comodities.Asset;
 import com.example.model.Comodities.AssetType;
 import com.example.model.People.Person;
@@ -31,10 +32,48 @@ public class Governance {
 
     // TODO: getters & setters
 
-    private void addToSpeceficAsset(Asset asset, int count) {
+
+    public void addSpecificAsset(Asset asset, int count) {
         int governanceCount = assets.get(asset.getAssetType()).get(asset);
         assets.get(asset.getAssetType()).put(asset, governanceCount + count);
     }
 
+    public boolean canRemoveAssetFromStorage(Asset asset, int count) {
+        int canRemove = 0;
+        for (Building building : buildings) {
+            if (!(building instanceof Storage)) continue;
+            Storage storage = (Storage) building;
+            if (!storage.isAssetCompatible(asset)) continue;
+            if (storage.isPossibleRemoveProduct(asset, count)) return true;
+            canRemove += storage.getAssetCount(asset);
+            if (canRemove >= count) return true;
+        }
+        return false;
+    }
+
+    private void addAssetToStorage(Asset asset, int count) {
+        for (Building building : buildings) {
+            if (!(building instanceof Storage)) continue;
+            Storage storage = (Storage) building;
+            if (!storage.isAssetCompatible(asset)) continue;
+            int canAdd = count > storage.remainingCapacity() ? storage.remainingCapacity() : count;
+            storage.addProduct(asset, canAdd);
+            count -= canAdd;
+            if (count == 0) return;
+        }
+        return;
+    }
+
+    private void removeAssetFromStorage(Asset asset, int count) {
+        for (Building building : buildings) {
+            if (!(building instanceof Storage)) continue;
+            Storage storage = (Storage) building;
+            if (!storage.isAssetCompatible(asset)) continue;
+            int canRemove = count > storage.getAssetCount(asset) ? storage.getAssetCount(asset) : count;
+            storage.addProduct(asset, -canRemove);
+            count -= canRemove;
+            if (count == 0) return;
+        }
+    }
 
 }

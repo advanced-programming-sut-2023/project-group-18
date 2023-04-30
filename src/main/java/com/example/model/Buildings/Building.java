@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import com.example.model.Cell;
 import com.example.model.Governance;
+import com.example.model.Comodities.Asset;
 
 public class Building {
     private final String buildingType;
@@ -11,7 +12,8 @@ public class Building {
     protected final Governance governance;
     protected int hitpoint;
     protected final String groundType;
-    protected final HashMap<String, Integer> costHashmap;
+    protected final Asset resourceType;
+    protected final int resourceCost;
     protected final Cell cell;
 
     public Building(String buildingType, Governance governance, Cell cell) {

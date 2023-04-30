@@ -62,5 +62,12 @@ public enum Asset {
             assets.get(asset.assetType).put(asset, 0);
         return assets;
     }
+   
+    public static HashMap<Asset, Integer> getAllAssets(AssetType assetType) {
+        final HashMap<Asset, Integer> assets = new HashMap<>();
+        for (Asset asset : Asset.values())
+            if (asset.assetType.equals(assetType)) assets.put(asset, 0);
+        return assets;
+    }
     
 }
