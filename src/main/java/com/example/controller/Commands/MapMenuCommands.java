@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum MapMenuCommands {
+    ;
     private String regex;
     MapMenuCommands(String regex) {
         this.regex = regex;

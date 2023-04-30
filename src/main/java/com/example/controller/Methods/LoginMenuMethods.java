@@ -11,5 +11,6 @@ public class LoginMenuMethods {
         return loginMenuMethods == null ? loginMenuMethods = new LoginMenuMethods() : loginMenuMethods;
     }
     public ArrayList<String> sortLoginFields(ArrayList<String> fields) {
+        return null;
     }
 }
