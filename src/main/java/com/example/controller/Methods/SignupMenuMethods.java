@@ -5,6 +5,7 @@ import com.example.model.UsersData;
 import com.google.gson.internal.bind.util.ISO8601Utils;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -117,8 +118,7 @@ public class SignupMenuMethods {
             if (!confirm.equals(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(1))) {
                 System.out.println("your confirmed security question is not correct. please submit again:");
                 confirm = scanner.nextLine();
-            }
-            else break;
+            } else break;
         }
         return sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(0) + " " + confirm;
     }
@@ -147,6 +147,36 @@ public class SignupMenuMethods {
             } else return null;
         }
         return output;
+    }
+
+    public String generateRandomPassword() {
+        Random random = new Random();
+        int length = random.nextInt(6, 9);
+        String uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+        String digits = "123456789";
+        String characters = "!@#$%^&*";
+        String all = uppercaseLetters + lowercaseLetters + digits + characters;
+        StringBuilder password = new StringBuilder();
+        password.append(uppercaseLetters.charAt(random.nextInt(uppercaseLetters.length())));
+        password.append(lowercaseLetters.charAt(random.nextInt(lowercaseLetters.length())));
+        password.append(digits.charAt(random.nextInt(digits.length())));
+        password.append(characters.charAt(random.nextInt(characters.length())));
+        for (int i = 4; i < length; i++) {
+            password.append(all.charAt(random.nextInt(all.length())));
+        }
+        return password.toString();
+    }
+
+    public boolean checkRandomPassword(String password, Scanner scanner) {
+        System.out.println("Your random password is: " + password + "\nPlease re-enter your password here:");
+        String confirmPass = scanner.nextLine();
+        while (!password.equals(confirmPass)) {
+            if (confirmPass.equals("back")) return false;
+            System.out.println("your entered password is incorrect. please try again");
+            confirmPass = scanner.nextLine();
+        }
+        return true;
     }
 
 }

@@ -32,33 +32,33 @@ public class LoginMenu {
     }
 
     private void login(Matcher matcher, Scanner scanner) {
-        ArrayList<String> fields = GlobalMethods.commandSplit(matcher.group("fields"));
-        fields = loginMenuMethods.sortLoginFields(fields);
-        if (fields == null) {
-//            Todo sout error
-        }
-        else if (GlobalMethods.checkEmptyFields(fields) != -1) {
-        }
-        String username = fields.get(0);
-        String password = fields.get(1);
-        if (!loginMenuMethods.usernameExist(username)) {
-
-        }
-        if (!loginMenuMethods.checkPassword(username, password)) {
-
-        }
-        if (matcher.group("stayLoggedIn") != null) {
-            loginMenuMethods.stayLoggedIn(username);
-        }
+//        ArrayList<String> fields = GlobalMethods.commandSplit(matcher.group("fields"));
+//        fields = loginMenuMethods.sortLoginFields(fields);
+//        if (fields == null) {
+////            Todo sout error
+//        }
+//        else if (GlobalMethods.checkEmptyFields(fields) != -1) {
+//        }
+//        String username = fields.get(0);
+//        String password = fields.get(1);
+//        if (!loginMenuMethods.usernameExist(username)) {
+//
+//        }
+//        if (!loginMenuMethods.checkPassword(username, password)) {
+//
+//        }
+//        if (matcher.group("stayLoggedIn") != null) {
+//            loginMenuMethods.stayLoggedIn(username);
+//        }
     }
 
     private void resetPassword(Matcher matcher, Scanner scanner) {
-        // sout security question
-        String answer = scanner.nextLine();
-        if (!loginMenuMethods.checkSecurityQuestion(answer)) {
-        }
-        // getting new password
-        String newPassword = scanner.nextLine();
-        loginMenuMethods.setNewPassword(newPassword);
+//        // sout security question
+//        String answer = scanner.nextLine();
+//        if (!loginMenuMethods.checkSecurityQuestion(answer)) {
+//        }
+//        // getting new password
+//        String newPassword = scanner.nextLine();
+//        loginMenuMethods.setNewPassword(newPassword);
     }
 }
