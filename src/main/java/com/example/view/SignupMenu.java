@@ -11,9 +11,11 @@ import java.util.regex.Matcher;
 public class SignupMenu {
     private static SignupMenu instance;
     private final SignupMenuMethods signupMenuMethods;
+    private final GlobalMethods globalMethods;
 
     private SignupMenu() {
         signupMenuMethods = SignupMenuMethods.getInstance();
+        globalMethods = GlobalMethods.getInstance();
     }
 
     public static SignupMenu getInstance() {
@@ -31,6 +33,10 @@ public class SignupMenu {
             if ((matcher = SignupMenuCommands.getMatcher(input, SignupMenuCommands.CREATE_USER)).find()) {
                 register(matcher, scanner);
             } else if (SignupMenuCommands.getMatcher(input, SignupMenuCommands.EXIT).find()) {
+                break;
+            } else if (SignupMenuCommands.getMatcher(input, SignupMenuCommands.LOGIN_MENU).find()) {
+                LoginMenu loginMenu = LoginMenu.getInstance();
+                loginMenu.run(scanner);
                 break;
             } else {
                 GlobalMethods.invalidCommand();
@@ -60,10 +66,10 @@ public class SignupMenu {
         String password = fields.get(1);
         String email = fields.get(2);
         String slogan = fields.get(4).equals("a") ? "" : fields.get(4);
-        if (signupMenuMethods.doesUsernameExist(username)) {
+        if (globalMethods.doesUsernameExist(username)) {
             System.out.println("this username already exists!");
             return;
-        } else if (signupMenuMethods.doesEmailExist(email)) {
+        } else if (globalMethods.doesEmailExist(email)) {
             System.out.println("this email already exists!");
             return;
         }

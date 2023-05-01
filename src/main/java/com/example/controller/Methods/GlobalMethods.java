@@ -1,8 +1,18 @@
 package com.example.controller.Methods;
 
+import com.example.model.UsersData;
+
 import java.util.ArrayList;
 
 public class GlobalMethods {
+    private static GlobalMethods globalMethods;
+    private final UsersData usersData;
+    private GlobalMethods() {
+        usersData = UsersData.getUsersData();
+    }
+    public static GlobalMethods getInstance() {
+        return globalMethods == null ? globalMethods = new GlobalMethods() : globalMethods;
+    }
     public static ArrayList<String> commandSplit(String command) {
         int counter = 0;
         boolean passedFirstDash = false;
@@ -38,5 +48,17 @@ public class GlobalMethods {
             }
         }
         return -1;
+    }
+
+    public boolean doesUsernameExist(String username) {
+        return usersData.getUserByUsername(username) != null;
+    }
+
+    public boolean doesEmailExist(String email) {
+        return usersData.doesEmailExist(email);
+    }
+
+    public boolean checkPassword(String username, String password) {
+        return true;
     }
 }

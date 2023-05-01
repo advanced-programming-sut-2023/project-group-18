@@ -106,7 +106,6 @@ public class SignupMenuMethods {
                 System.out.println("you entered an invalid field. please answer again.");
                 recoveryQuestion = scanner.nextLine();
             } else if (!sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(0).matches("\\d")) {
-//                System.out.println(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(0));
                 System.out.println("you should enter a number in -q field. please answer again");
                 recoveryQuestion = scanner.nextLine();
             } else if ((error = GlobalMethods.checkEmptyFields(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))))) != -1) {

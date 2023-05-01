@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public enum SignupMenuCommands {
     CREATE_USER("^user create (?<fields>(-[a-zA-Z] .+){4,5})$"),
     SECURITY_QUESTION("^question pick (?<fields>(-[a-zA-Z] .+){3})$"),
-    LOGOUT("user logout"),
+    LOGIN_MENU("^login menu$"),
     EXIT("exit");
 
     private final String regex;
