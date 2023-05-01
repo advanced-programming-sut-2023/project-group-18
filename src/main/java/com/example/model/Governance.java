@@ -16,7 +16,9 @@ public class Governance {
     private final ArrayList<Soldier> soldiers;
     private final ArrayList<Person> persons;
     private final HashMap<AssetType, HashMap<Asset, Integer>> assets;
+    private final PopularityFactors popularity;
     private int gold;
+    private int nonMilitaryCharacters;
 
     public Governance(User owner) {
         this.owner = owner;
@@ -24,6 +26,9 @@ public class Governance {
         soldiers = new ArrayList<>();
         persons = new ArrayList<>();
         assets = Asset.getAllAssets();
+        popularity = new PopularityFactors(this);
+        gold = 100;
+        nonMilitaryCharacters = 0;
     }
 
     public User getOwner() {
@@ -75,5 +80,6 @@ public class Governance {
             if (count == 0) return;
         }
     }
+
 
 }
