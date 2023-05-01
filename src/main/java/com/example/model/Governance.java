@@ -8,14 +8,14 @@ import com.example.model.Assets.AssetType;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Buildings.Storage;
-import com.example.model.People.Person;
 import com.example.model.People.Soldier;
+import com.example.model.People.SoldierType;
 
 public class Governance {
     private final User owner;
     private final ArrayList<Building> buildings;
     private final ArrayList<Soldier> soldiers;
-    private final ArrayList<Person> persons;
+    // private final ArrayList<Person> persons; Not needed
     private final HashMap<AssetType, HashMap<Asset, Integer>> assets;
     private final PopularityFactors popularity;
     private int gold;
@@ -25,7 +25,6 @@ public class Governance {
         this.owner = owner;
         buildings = new ArrayList<>();
         soldiers = new ArrayList<>();
-        persons = new ArrayList<>();
         assets = Asset.getAllAssets();
         popularity = new PopularityFactors(this);
         gold = 100;
@@ -36,11 +35,21 @@ public class Governance {
         return owner;
     }
 
+    public PopularityFactors getPopularity() {
+        return popularity;
+    }
+
     public int getGold() {
         return gold;
     }
 
-    // TODO: getters & setters
+    public int getNonMilitaryCharacters() {
+        return nonMilitaryCharacters;
+    }
+
+    public void addNonMilitaryCharacters(int nonMilitaryCharacters) {
+        this.nonMilitaryCharacters += nonMilitaryCharacters;
+    }
 
 
     public void addSpecificAsset(Asset asset, int count) {
@@ -88,6 +97,10 @@ public class Governance {
 
     public void addBuilding(BuildingType buildingType, Cell cell) {
         buildings.add(new Building(buildingType, this, cell));
+    }
+
+    public void addSoldier(Cell cell, SoldierType soldierType) {
+        soldiers.add(new Soldier(cell, this, soldierType));
     }
 
 }

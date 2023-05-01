@@ -3,6 +3,7 @@ package com.example.model;
 import java.util.ArrayList;
 
 import com.example.model.Buildings.BuildingType;
+import com.example.model.People.SoldierType;
 
 public class Game {
     private final GameMap gameMap;
@@ -44,5 +45,12 @@ public class Game {
         governance.addBuilding(buildingType, gameMap.getTileByLocation(xCordinate, yCordinate));
     }
 
+    public void addSoldier(Governance governance, SoldierType soldierType, int xCordinate, int yCordinate) {
+        governance.addSoldier(new Cell(xCordinate, yCordinate), soldierType);
+    }
+
+    public void addNonMilitaryCharacters(Governance governance, int nonMilitaryCharacters) {
+        governance.addNonMilitaryCharacters(nonMilitaryCharacters);
+    }
 
 }

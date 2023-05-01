@@ -16,6 +16,7 @@ public class Building {
     protected final Cell cell;
     protected int hitpoint;
 
+    // TODO: relate to cell Object
     public Building(BuildingType buildingType, Governance governance, Cell cell) {
         this.buildingType = buildingType;
         this.workersNumber = workersNumber;

@@ -2,6 +2,7 @@ package com.example.model.People;
 
 public enum SoldierType {
     //Todo (add all types of soldiers)
+    ;
     private final String type;
     private final int attackPower;
     private final int defencePower;
