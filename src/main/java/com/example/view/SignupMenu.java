@@ -39,20 +39,20 @@ public class SignupMenu {
                 loginMenu.run(scanner);
                 break;
             } else {
-                GlobalMethods.invalidCommand();
+                globalMethods.invalidCommand();
             }
         }
     }
 
     private void register(Matcher matcher, Scanner scanner) {
-        ArrayList<String> fields = GlobalMethods.commandSplit(matcher.group("fields"));
+        ArrayList<String> fields = globalMethods.commandSplit(matcher.group("fields"));
         fields = signupMenuMethods.sortFields(fields);
         if (fields == null) {
             System.out.println("you inserted an invalid field!");
             return;
-        } else if (GlobalMethods.checkEmptyFields(fields) != -1) {
+        } else if (globalMethods.checkEmptyFields(fields) != -1) {
             String error = "";
-            switch (GlobalMethods.checkEmptyFields(fields)) {
+            switch (globalMethods.checkEmptyFields(fields)) {
                 case 0 -> error = "username";
                 case 1 -> error = "password";
                 case 2 -> error = "email";
@@ -76,10 +76,10 @@ public class SignupMenu {
         if (!signupMenuMethods.usernameValidation(username)) {
             System.out.println("your username should consist of letters, digits and underline");
             return;
-        } else if (signupMenuMethods.passwordValidation(password) != null) {
-            System.out.println("your password is not valid.\nreason: " + signupMenuMethods.passwordValidation(password));
+        } else if (globalMethods.passwordValidation(password) != null) {
+            System.out.println("your password is not valid.\nreason: " + globalMethods.passwordValidation(password));
             return;
-        } else if (!signupMenuMethods.emailValidation(email)) {
+        } else if (!globalMethods.emailValidation(email)) {
             System.out.println("your email format is invalid");
             return;
         }

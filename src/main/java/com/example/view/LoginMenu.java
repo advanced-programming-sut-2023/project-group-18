@@ -28,7 +28,11 @@ public class LoginMenu {
         while (true) {
             input = scanner.nextLine();
             if ((matcher = LoginMenuCommands.getMatcher(input, LoginMenuCommands.LOGIN_USER)).find()) {
-                login(matcher, scanner);
+                if (login(matcher, scanner)) {
+                    ProfileMenu profileMenu = ProfileMenu.getInstance();
+                    profileMenu.run(scanner);
+                    break;
+                }
             } else if ((matcher = LoginMenuCommands.getMatcher(input, LoginMenuCommands.FORGOT_PASS)).find()) {
                 forgotPassword(matcher, scanner);
             } else if (LoginMenuCommands.getMatcher(input, LoginMenuCommands.SIGNUP_MENU).find()) {
@@ -36,20 +40,20 @@ public class LoginMenu {
                 signupMenu.run(scanner);
                 break;
             } else {
-                GlobalMethods.invalidCommand();
+                globalMethods.invalidCommand();
             }
         }
     }
 
-    private void login(Matcher matcher, Scanner scanner) {
-        ArrayList<String> fields = GlobalMethods.commandSplit(matcher.group("fields"));
+    private boolean login(Matcher matcher, Scanner scanner) {
+        ArrayList<String> fields = globalMethods.commandSplit(matcher.group("fields"));
         fields = loginMenuMethods.sortLoginFields(fields);
         if (fields == null) {
             System.out.println("you inserted and invalid field!");
             return;
-        } else if (GlobalMethods.checkEmptyFields(fields) != -1) {
+        } else if (globalMethods.checkEmptyFields(fields) != -1) {
             String error = "";
-            switch (GlobalMethods.checkEmptyFields(fields)) {
+            switch (globalMethods.checkEmptyFields(fields)) {
                 case 0 -> error = "username";
                 case 1 -> error = "password";
             }

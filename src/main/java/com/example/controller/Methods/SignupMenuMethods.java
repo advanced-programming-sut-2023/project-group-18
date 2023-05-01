@@ -13,9 +13,11 @@ import java.util.regex.Matcher;
 public class SignupMenuMethods {
     private static SignupMenuMethods instance;
     private final UsersData usersData;
+    private final GlobalMethods globalMethods;
 
     private SignupMenuMethods() {
         usersData = UsersData.getUsersData();
+        globalMethods = GlobalMethods.getInstance();
     }
 
     public static SignupMenuMethods getInstance() {
@@ -72,24 +74,6 @@ public class SignupMenuMethods {
         return username.matches("\\w+");
     }
 
-    public String passwordValidation(String password) {
-        if (password.length() < 6)
-            return "password must contain at least six characters";
-        else if (!password.matches(".*[a-z].*"))
-            return "password must contain at least one lowercase letter";
-        else if (!password.matches(".*[A-Z].*"))
-            return "password must contain at least one uppercase letter";
-        else if (!password.matches(".*\\d.*"))
-            return "password must contain at least one digit";
-        else if (!password.matches(".*[^\\sa-zA-Z0-9].*"))
-            return "password must contain at least one character not being letter and digit";
-        return null;
-    }
-
-    public boolean emailValidation(String email) {
-        return email.matches("[\\w.]+@[\\w.]+\\.[\\w.]+");
-    }
-
     public String getRecoveryQuestion(Scanner scanner) {
         int error;
         Matcher matcher;
@@ -102,13 +86,13 @@ public class SignupMenuMethods {
             if (!(matcher = SignupMenuCommands.getMatcher(recoveryQuestion, SignupMenuCommands.SECURITY_QUESTION)).find()) {
                 System.out.println("your answer is not in valid format! please answer again.");
                 recoveryQuestion = scanner.nextLine();
-            } else if (sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))) == null) {
+            } else if (sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))) == null) {
                 System.out.println("you entered an invalid field. please answer again.");
                 recoveryQuestion = scanner.nextLine();
-            } else if (!sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(0).matches("\\d")) {
+            } else if (!sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))).get(0).matches("\\d")) {
                 System.out.println("you should enter a number in -q field. please answer again");
                 recoveryQuestion = scanner.nextLine();
-            } else if ((error = GlobalMethods.checkEmptyFields(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))))) != -1) {
+            } else if ((error = globalMethods.checkEmptyFields(sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))))) != -1) {
                 if (error == 1)
                     System.out.println("you left answer field empty. please answer again.");
                 if (error == 2)
@@ -116,14 +100,14 @@ public class SignupMenuMethods {
                 recoveryQuestion = scanner.nextLine();
             } else break;
         }
-        String confirm = sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(2);
+        String confirm = sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))).get(2);
         while (true) {
-            if (!confirm.equals(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(1))) {
+            if (!confirm.equals(sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))).get(1))) {
                 System.out.println("your confirmed security question is not correct. please submit again:");
                 confirm = scanner.nextLine();
             } else break;
         }
-        return sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(0) + " " + confirm;
+        return sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))).get(0) + " " + confirm;
     }
 
     public void register(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
