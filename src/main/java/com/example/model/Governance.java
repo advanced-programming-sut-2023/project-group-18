@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.example.model.Assets.Asset;
 import com.example.model.Assets.AssetType;
 import com.example.model.Buildings.Building;
+import com.example.model.Buildings.BuildingType;
 import com.example.model.Buildings.Storage;
 import com.example.model.People.Person;
 import com.example.model.People.Soldier;
@@ -60,7 +61,7 @@ public class Governance {
         return false;
     }
 
-    private void addAssetToStorage(Asset asset, int count) {
+    public void addAssetToStorage(Asset asset, int count) {
         for (Building building : buildings) {
             if (!(building instanceof Storage)) continue;
             Storage storage = (Storage) building;
@@ -73,7 +74,7 @@ public class Governance {
         return;
     }
 
-    private void removeAssetFromStorage(Asset asset, int count) {
+    public void removeAssetFromStorage(Asset asset, int count) {
         for (Building building : buildings) {
             if (!(building instanceof Storage)) continue;
             Storage storage = (Storage) building;
@@ -85,5 +86,8 @@ public class Governance {
         }
     }
 
+    public void addBuilding(BuildingType buildingType, Cell cell) {
+        buildings.add(new Building(buildingType, this, cell));
+    }
 
 }

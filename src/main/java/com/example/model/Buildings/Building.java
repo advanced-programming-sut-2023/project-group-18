@@ -7,7 +7,7 @@ import com.example.model.Governance;
 import com.example.model.Assets.Asset;
 
 public class Building {
-    private final String buildingType;
+    private final BuildingType buildingType;
     protected final int workersNumber;
     protected final Governance governance;
     protected final String groundType;
@@ -16,7 +16,7 @@ public class Building {
     protected final Cell cell;
     protected int hitpoint;
 
-    public Building(String buildingType, Governance governance, Cell cell) {
+    public Building(BuildingType buildingType, Governance governance, Cell cell) {
         this.buildingType = buildingType;
         this.workersNumber = workersNumber;
         this.governance = governance;
