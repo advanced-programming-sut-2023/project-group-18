@@ -7,7 +7,8 @@ import com.example.model.Assets.Asset;
 import com.example.model.Assets.AssetType;
 import com.example.model.Cell;
 
-public class Storage extends Building{
+public class Storage extends Building {
+    private final StorageType storageType;
     private final AssetType type;
     private final int capacity;
     private final HashMap<Asset, Integer> products;

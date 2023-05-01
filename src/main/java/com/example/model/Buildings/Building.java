@@ -10,11 +10,11 @@ public class Building {
     private final String buildingType;
     protected final int workersNumber;
     protected final Governance governance;
-    protected int hitpoint;
     protected final String groundType;
     protected final Asset resourceType;
     protected final int resourceCost;
     protected final Cell cell;
+    protected int hitpoint;
 
     public Building(String buildingType, Governance governance, Cell cell) {
         this.buildingType = buildingType;
