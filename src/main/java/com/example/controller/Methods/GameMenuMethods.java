@@ -7,4 +7,7 @@ public class GameMenuMethods {
     public static GameMenuMethods gameMenuMethods() {
         return  gameMenuMethods == null ? gameMenuMethods = new GameMenuMethods() : gameMenuMethods;
     }
+
+    
+
 }

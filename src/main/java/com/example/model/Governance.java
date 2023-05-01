@@ -35,6 +35,10 @@ public class Governance {
         return owner;
     }
 
+    public int getGold() {
+        return gold;
+    }
+
     // TODO: getters & setters
 
 
