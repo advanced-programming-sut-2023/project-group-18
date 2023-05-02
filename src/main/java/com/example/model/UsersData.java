@@ -67,6 +67,11 @@ public class UsersData {
         return false;
     }
 
+    public boolean isPasswordCorrect(String username, String password) {
+        User user = getUserByUsername(username);
+        return user.isPasswordCorrect(password);
+    }
+
 
     private List<User> initializeUsers() {
         Gson gson = new Gson();
