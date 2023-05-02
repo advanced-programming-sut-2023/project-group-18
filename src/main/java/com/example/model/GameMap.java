@@ -7,12 +7,13 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+// import com.google.gson.JsonSyntaxException;
 
 public class GameMap implements NeedsId, WriteInFile {
+    private final Game game;
     private final int id;
     private final Cell[][] map;
-
+/*
     public GameMap(int id) throws Exception {
         Gson gson = new Gson();
         this.id = id;
@@ -23,8 +24,10 @@ public class GameMap implements NeedsId, WriteInFile {
             throw e;
         }
     }
+*/
 
-    public GameMap(String size) {
+    public GameMap(String size, Game game) {
+        this.game = game;
         id = getNextId();
         goToNextId();
         int length = MapSizes.getMapSize(size);
@@ -35,6 +38,10 @@ public class GameMap implements NeedsId, WriteInFile {
     }
 
 
+    public Game getGame() {
+        return game;
+    }
+
     public Cell getTileByLocation(int xCordinate, int yCordinate) {
         return map[yCordinate][xCordinate];
     }
@@ -43,7 +50,7 @@ public class GameMap implements NeedsId, WriteInFile {
         return 0 <= xCordinate && 0 <= yCordinate && yCordinate < map.length && xCordinate < map.length;
     }
 
-
+/*
     private File getGameMapFileById(int id) {
         File main = new File("src", "main");
         File resources = new File(main, "resources");
@@ -69,7 +76,7 @@ public class GameMap implements NeedsId, WriteInFile {
         }
         return mapFile;
     }
-
+*/
 
     @Override
     public void writeInFile() {
