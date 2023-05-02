@@ -1,7 +1,5 @@
 package com.example.model;
 
-import com.example.model.People.Object;
-
 public class Cell implements ConsoleColors {
     private Object object;
     private Texture texture;
