@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.example.model.People.Object;
+
 public class Cell implements ConsoleColors {
     private Object object;
     private Texture texture;
@@ -9,7 +11,6 @@ public class Cell implements ConsoleColors {
     protected Cell(int xCordinate, int yCordinate) {
         this.xCordinate = xCordinate;
         this.yCordinate = yCordinate;
-        texture = Texture.getARondomTexture();
     }
 
     public Object getObject() {
@@ -36,16 +37,9 @@ public class Cell implements ConsoleColors {
         this.texture = texture;
     }
 
-    public String showDetails() {
-        // TODO: have to complete
-        return "Texture: " + texture.name
-            + "\n"
-                ;
-    }
-
     @Override
     public String toString() {
-        return texture.color + "      " + RESET;
+        return texture.color + "###" + RESET;
     }
 
 }

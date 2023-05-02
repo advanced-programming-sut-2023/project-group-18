@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 
 public class GameMap implements NeedsId, WriteInFile {
     private static final int length = 3;
-    private static final String line = "\n--------------------------------------------------------------------------------------------";
+    private static final String line = "\n-----------------------------\n";
     private final Game game;
     private final int id;
     private final Cell[][] map;
@@ -30,9 +30,8 @@ public class GameMap implements NeedsId, WriteInFile {
 
     public GameMap(String size, Game game) {
         this.game = game;
-        // id = getNextId();
-        // goToNextId();
-        id = 0;
+        id = getNextId();
+        goToNextId();
         int length = MapSizes.getMapSize(size);
         map = new Cell[length][length];
         for (int yCordinate = 0; yCordinate < map.length; yCordinate++)
@@ -83,12 +82,10 @@ public class GameMap implements NeedsId, WriteInFile {
 
     public String showMap(int xCordinate, int yCordinate) {
         String result = line;
-        for (int i = yCordinate - length; i <= yCordinate + length; i++) {
-            for (int k = 0; k < 3; k++) {
-                result += "\n|";
-                for (int j = xCordinate - 2 * length; j <= xCordinate + 2 * length; j++) {
-                    result += map[i][j].toString() + "|";
-                }
+        for (int i = yCordinate - length; i < yCordinate + length; i++) {
+            result += "\n|";
+            for (int j = xCordinate - length; j < xCordinate + length; j++) {
+                result += map[i][j].toString() + "|";
             }
             result += line;
         }
