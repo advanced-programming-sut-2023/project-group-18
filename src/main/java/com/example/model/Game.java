@@ -18,6 +18,10 @@ public class Game {
         players = round = turn = 0;
     }
 
+    public GameMap getGameMap() {
+        return gameMap;
+    }
+
     public int getPlayers() {
         return players;
     }

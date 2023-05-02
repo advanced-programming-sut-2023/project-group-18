@@ -10,10 +10,11 @@ import com.google.gson.Gson;
 // import com.google.gson.JsonSyntaxException;
 
 public class GameMap implements NeedsId, WriteInFile {
-    private static final int length = 3;
+    private static final int LENGTH = 3;
     private static final String line = "\n--------------------------------------------------------------------------------------------";
     private final Game game;
     private final int id;
+    private final int length;
     private final Cell[][] map;
 /*
     public GameMap(int id) throws Exception {
@@ -33,7 +34,7 @@ public class GameMap implements NeedsId, WriteInFile {
         // id = getNextId();
         // goToNextId();
         id = 0;
-        int length = MapSizes.getMapSize(size);
+        length = MapSizes.getMapSize(size);
         map = new Cell[length][length];
         for (int yCordinate = 0; yCordinate < map.length; yCordinate++)
             for (int xCordinate = 0; xCordinate < map.length; xCordinate++)
@@ -83,16 +84,27 @@ public class GameMap implements NeedsId, WriteInFile {
 
     public String showMap(int xCordinate, int yCordinate) {
         String result = line;
-        for (int i = yCordinate - length; i <= yCordinate + length; i++) {
+        for (int i = yCordinate - LENGTH; i <= yCordinate + LENGTH; i++) {
             for (int k = 0; k < 3; k++) {
                 result += "\n|";
-                for (int j = xCordinate - 2 * length; j <= xCordinate + 2 * length; j++) {
+                for (int j = xCordinate - 2 * LENGTH; j <= xCordinate + 2 * LENGTH; j++) {
                     result += map[i][j].toString() + "|";
                 }
             }
             result += line;
         }
         return result;
+    }
+
+    public String showDetails(int xCordinate, int yCordinate) {
+        return map[yCordinate][xCordinate].showDetails();
+    }
+
+    public boolean areCordinatesValid(int xCordinate, int yCordinate) {
+        return (xCordinate - 2 * LENGTH) >= 0
+            && (xCordinate + 2 * LENGTH) <= length
+            && (yCordinate - LENGTH) >= 0
+            && (yCordinate + LENGTH) <= length;
     }
 
     @Override
