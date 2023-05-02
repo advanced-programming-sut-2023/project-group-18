@@ -50,7 +50,7 @@ public class LoginMenu {
         fields = loginMenuMethods.sortLoginFields(fields);
         if (fields == null) {
             System.out.println("you inserted and invalid field!");
-            return;
+            return false;
         } else if (globalMethods.checkEmptyFields(fields) != -1) {
             String error = "";
             switch (globalMethods.checkEmptyFields(fields)) {
@@ -58,30 +58,31 @@ public class LoginMenu {
                 case 1 -> error = "password";
             }
             System.out.println("you left " + error + " field empty!");
-            return;
+            return false;
         }
         String username = fields.get(0);
         String password = fields.get(1);
         if (!(globalMethods.doesUsernameExist(username))) {
             System.out.println("this username doesn't exist!");
-            return;
+            return false;
         } else if (!globalMethods.checkPassword(username, password)) {
-            // the method is not coded
             System.out.println("your entered password is false!");
-            return;
+            return false;
         }
         if (matcher.group("stayLoggedIn") != null) {
-            loginMenuMethods.stayLoggedIn();
+            loginMenuMethods.stayLoggedIn(username);
         }
+        System.out.println("you logged in successfully.");
+        return true;
     }
 
     private void forgotPassword(Matcher matcher, Scanner scanner) {
-        // sout security question
-        String answer = scanner.nextLine();
-        if (!loginMenuMethods.checkSecurityQuestion(answer)) {
-        }
-        // getting new password
-        String newPassword = scanner.nextLine();
-        loginMenuMethods.setNewPassword(newPassword);
+//        // sout security question
+//        String answer = scanner.nextLine();
+//        if (!loginMenuMethods.checkSecurityQuestion(answer)) {
+//        }
+//        // getting new password
+//        String newPassword = scanner.nextLine();
+//        loginMenuMethods.setNewPassword(newPassword);
     }
 }

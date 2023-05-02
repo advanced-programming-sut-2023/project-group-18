@@ -39,7 +39,7 @@ public class LoginMenuMethods {
         return output;
     }
 
-    public void stayLoggedIn() {
-        usersData.setStayLoggedInUser();
+    public void stayLoggedIn(String username) {
+        usersData.setStayLoggedInUser(usersData.getUserByUsername(username));
     }
 }

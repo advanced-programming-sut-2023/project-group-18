@@ -59,7 +59,7 @@ public class GlobalMethods {
     }
 
     public boolean checkPassword(String username, String password) {
-        return true;
+        return usersData.isPasswordCorrect(username, password);
     }
 
     public String passwordValidation(String password) {
