@@ -2,7 +2,7 @@ package com.example.model;
 
 import com.example.model.People.Object;
 
-public class Cell {
+public class Cell implements ConsoleColors {
     private Object object;
     private Texture texture;
     private final int xCordinate;
@@ -35,6 +35,11 @@ public class Cell {
 
     public void setTexture(Texture texture) {
         this.texture = texture;
+    }
+
+    @Override
+    public String toString() {
+        return texture.color + "###" + RESET;
     }
 
 }

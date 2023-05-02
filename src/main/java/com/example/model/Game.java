@@ -13,7 +13,7 @@ public class Game {
     private int turn;
 
     public Game(String size) {
-        gameMap = new GameMap(size);
+        gameMap = new GameMap(size, this);
         governances = new ArrayList<>();
         players = round = turn = 0;
     }

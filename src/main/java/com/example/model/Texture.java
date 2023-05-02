@@ -1,28 +1,29 @@
 package com.example.model;
 
-public enum Texture {
-    DEFAULT ("default"),
-    GROUND ("ground"),
-    GRAVEL ("gravel"),
-    STONE ("stone"),
-    IRON ("iron"),
-    LAWN ("lawn"),
-    RARE_GRASSLAND ("rare grassland"),
-    OVERGROWN_GRASSLAND ("overgrown grassland"),
-    PETROLEUM ("petroleum"),
-    PLAIN ("plain"),
-    SHALLOW_WATER ("shallow water"),
-    RIVER ("river"),
-    POOL ("pool"),
-    BEACH ("beach"),
-    SEA ("sea")
+public enum Texture implements ConsoleColors {
+    GROUND ("ground", BLACK_BACKGROUND),
+    GRAVEL ("gravel", YELLOW_BACKGROUND),
+    STONE ("stone", WHITE_BACKGROUND),
+    IRON ("iron", WHITE_BACKGROUND_BRIGHT),
+    LAWN ("lawn", RED_BACKGROUND),
+    RARE_GRASSLAND ("rare grassland", GREEN_BACKGROUND),
+    OVERGROWN_GRASSLAND ("overgrown grassland", GREEN_BACKGROUND_BRIGHT),
+    PETROLEUM ("petroleum", PURPLE_BACKGROUND),
+    PLAIN ("plain", BLUE_BACKGROUND),
+    SHALLOW_WATER ("shallow water", BLUE_BACKGROUND),
+    RIVER ("river", BLUE_BACKGROUND),
+    POOL ("pool", BLUE_BACKGROUND),
+    BEACH ("beach", BLUE_BACKGROUND),
+    SEA ("sea", BLUE_BACKGROUND)
 
     ;
 
-    private final String name;
+    public final String name;
+    public final String color;
 
-    Texture(String name) {
+    Texture(String name, String color) {
         this.name = name;
+        this.color = color;
     }
 
     public static Texture getTextureByName(String name) {

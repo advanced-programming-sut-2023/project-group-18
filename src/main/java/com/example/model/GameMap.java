@@ -10,6 +10,8 @@ import com.google.gson.Gson;
 // import com.google.gson.JsonSyntaxException;
 
 public class GameMap implements NeedsId, WriteInFile {
+    private static final int length = 3;
+    private static final String line = "\n-----------------------------\n";
     private final Game game;
     private final int id;
     private final Cell[][] map;
@@ -77,6 +79,18 @@ public class GameMap implements NeedsId, WriteInFile {
         return mapFile;
     }
 */
+
+    public String showMap(int xCordinate, int yCordinate) {
+        String result = line;
+        for (int i = yCordinate - length; i < yCordinate + length; i++) {
+            result += "\n|";
+            for (int j = xCordinate - length; j < xCordinate + length; j++) {
+                result += map[i][j].toString() + "|";
+            }
+            result += line;
+        }
+        return result;
+    }
 
     @Override
     public void writeInFile() {

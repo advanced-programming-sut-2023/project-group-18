@@ -34,4 +34,15 @@ public interface ConsoleColors {
     String CYAN_BACKGROUND = "\033[46m";   // CYAN
     String WHITE_BACKGROUND = "\033[47m";  // WHITE
 
+    // High Intensity backgrounds
+    String BLACK_BACKGROUND_BRIGHT = "\033[0;100m";// BLACK
+    String RED_BACKGROUND_BRIGHT = "\033[0;101m";// RED
+    String GREEN_BACKGROUND_BRIGHT = "\033[0;102m";// GREEN
+    String YELLOW_BACKGROUND_BRIGHT = "\033[0;103m";// YELLOW
+    String BLUE_BACKGROUND_BRIGHT = "\033[0;104m";// BLUE
+    String PURPLE_BACKGROUND_BRIGHT = "\033[0;105m"; // PURPLE
+    String CYAN_BACKGROUND_BRIGHT = "\033[0;106m";  // CYAN
+    String WHITE_BACKGROUND_BRIGHT = "\033[0;107m";   // WHITE
+    
+
 }
