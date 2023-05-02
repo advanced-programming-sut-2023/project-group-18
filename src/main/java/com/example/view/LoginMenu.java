@@ -39,6 +39,8 @@ public class LoginMenu {
                 SignupMenu signupMenu = SignupMenu.getInstance();
                 signupMenu.run(scanner);
                 break;
+            } else if (LoginMenuCommands.getMatcher(input, LoginMenuCommands.CURRENT_MENU).find()) {
+                globalMethods.showCurrentMenu("login menu");
             } else {
                 globalMethods.invalidCommand();
             }
@@ -49,7 +51,7 @@ public class LoginMenu {
         ArrayList<String> fields = globalMethods.commandSplit(matcher.group("fields"));
         fields = loginMenuMethods.sortLoginFields(fields);
         if (fields == null) {
-            System.out.println("you inserted and invalid field!");
+            System.out.println("you inserted an invalid field!");
             return false;
         } else if (globalMethods.checkEmptyFields(fields) != -1) {
             String error = "";

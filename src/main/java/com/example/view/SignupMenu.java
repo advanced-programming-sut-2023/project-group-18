@@ -38,6 +38,8 @@ public class SignupMenu {
                 LoginMenu loginMenu = LoginMenu.getInstance();
                 loginMenu.run(scanner);
                 break;
+            } else if (SignupMenuCommands.getMatcher(input, SignupMenuCommands.CURRENT_MENU).find()) {
+                globalMethods.showCurrentMenu("signup menu");
             } else {
                 globalMethods.invalidCommand();
             }

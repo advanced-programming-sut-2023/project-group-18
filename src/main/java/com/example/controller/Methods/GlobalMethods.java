@@ -79,4 +79,8 @@ public class GlobalMethods {
     public boolean emailValidation(String email) {
         return email.matches("[\\w.]+@[\\w.]+\\.[\\w.]+");
     }
+
+    public void showCurrentMenu(String menu) {
+        System.out.println("you are currently at " + menu);
+    }
 }

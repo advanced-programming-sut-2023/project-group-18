@@ -19,6 +19,7 @@ public class LoginMenuMethods {
         output.add("a");
         output.add("b");
         for (String field : fields) {
+            System.out.println(field);
             if (field.length() < 4) {
                 return null;
             }
@@ -33,7 +34,7 @@ public class LoginMenuMethods {
                 if (isQuoted)
                     output.add(1, quoteSubstring);
                 else
-                    output.add(0, field.substring(3).trim());
+                    output.add(1, field.substring(3).trim());
             } else return null;
         }
         return output;
