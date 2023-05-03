@@ -3,96 +3,127 @@ package com.example.model;
 public class PopularityFactors {
     private final Governance governance;
     private int popularity;
-    private int food;
-    private int foodRateInput;
-    private double foodRate;
-    private int tax;
-    private int taxRateInput;
-    private double taxRate;
-    private int religious;
-    private int fear;
+    private int foodFactor;
+    private int foodRate;
+    private double foodCoefficient;
+    private int taxFactor;
+    private int taxRate;
+    private double taxCoefficient;
+    private int religiousFactor;
+    private int fearFactor;
     private int fearRate;
-    private int fearBuilding;
-    private int ale;
-    private int aleCoverage;
+    private int fearBuildings;
+    private double fearCoefficient;
+    private int aleFactor;
+    private double aleCoverage;
 
-    public PopularityFactors(Governance governance) {
+    protected PopularityFactors(Governance governance) {
         this.governance = governance;
+        setFoodRate(0);
+        setTaxRate(0);
+        religiousFactor = 0;
+        setFearRate(0);
+        setAleCoverage(0);
     }
 
     public int getPopularity() {
-        calculatePopularity();
+        popularity = foodFactor + taxFactor + religiousFactor + fearFactor + aleFactor;
         return popularity;
     }
 
-    public void setFoodRateInput(int foodRateInput) {
-        this.foodRateInput = foodRateInput;
-        foodRate = (foodRateInput + 2) / 2;
-        food = 4 * foodRateInput;
-    }
 
-    public double getFoodRate() {
+    public int getFoodRate() {
         return foodRate;
     }
 
-    public int getFoodRateInput() {
-        return foodRateInput;
+    public double getFoodCoefficient() {
+        return foodCoefficient;
     }
 
-    public void setTaxRateInput(int taxRateInput) {
-        this.taxRateInput = taxRateInput;
-        int sign = Integer.signum(taxRateInput);
-        if (sign == 0) taxRate = 0;
-        else taxRate = 0.4 * sign + 0.2 * taxRateInput;
-        // if (taxRateInput <= 0) TODO: must complete
+    public void setFoodRate(int foodRate) {
+        this.foodRate = foodRate;
+        foodFactor = foodRate * 4 + governance.getKindsOfFoods();
+        foodCoefficient = (foodRate + 2) / 2;
     }
 
-    private void calculatePopularity() {
-        popularity = food + tax + religious + fear + ale;
-    }
-
-    /* TODO: must change
-
-    public String showFoodList() {
-        String result = "";
-        for (Asset food : assets.get(AssetType.FOOD).keySet()) {
-            if (assets.get(AssetType.FOOD).get(food).equals(0)) continue;
-            result += "\n" + food.getName() + ": " + assets.get(AssetType.FOOD).get(food);
-        }
-        if (result.equals(null)) return "You have No food Yet!";
-        return result.substring(1);
-    }
-
-    public boolean haveEnoughFood() {
-        return nonMilitaryCharacters * foodRate <= getAllFoodCount();
-    }
-
-    private int getAllFoodCount() {
-        int result = 0;
-        for (Asset food : assets.get(AssetType.FOOD).keySet())
-            result += assets.get(AssetType.FOOD).get(food);
+    public boolean canSetFoodRate(int foodRate) {
+        final int currentFoodRate = this.foodRate;
+        setFoodRate(foodRate);
+        boolean result;
+        result = governance.getFoodCount() >= governance.getNonMilitaryCharacters() * foodCoefficient;
+        setFoodRate(currentFoodRate);
         return result;
     }
 
 
-    private double calculateTaxRate(int taxRate) {
-        int sign = Integer.signum(taxRate);
-        return taxRate == 0 ? 0 : 0.4 * sign + 0.2 * taxRate;
+    public int getTaxRate() {
+        return taxRate;
     }
 
-    public int getTaxRate() {
-        if (taxRate == 0) return 0;
-        int sign = taxRate > 0 ? 1 : -1;
-        return (int) ((taxRate - 0.4 * sign) * 5);
+    public double getTaxCoefficient() {
+        return taxCoefficient;
     }
 
     public void setTaxRate(int taxRate) {
-        this.taxRate = calculateTaxRate(taxRate);
+        this.taxRate = taxRate;
+        taxFactor = taxRate <= 0 ? 1 - 2 * taxRate : (taxRate <= 4 ? -2 * taxRate : 8 - 4 * taxRate);
+        taxCoefficient = taxRate == 0 ? 0 : taxRate * 0.2 + 0.4 * (taxRate < 0 ? -1 : 1);
     }
 
-    public boolean canTaxPeople(int taxRate) {
-        return gold - calculateTaxRate(taxRate) * nonMilitaryCharacters > 0;
+    public boolean canSetTaxRate(int taxRate) {
+        final int currentTaxRate = this.taxRate;
+        setTaxRate(taxRate);
+        boolean result;
+        result = governance.getGold() - governance.getNonMilitaryCharacters() * taxCoefficient >= 0;
+        setTaxRate(currentTaxRate);
+        return result;
     }
 
-*/
+
+    public int getReligiousFactor() {
+        return religiousFactor;
+    }
+
+    public void addReligiousFactor(int religious) {
+        this.religiousFactor += religious;
+    }
+
+
+    public int getFearRate() {
+        return fearRate;
+    }
+
+    public int getFearBuildings() {
+        return fearBuildings;
+    }
+
+    public double getFearCoefficient() {
+        return fearCoefficient;
+    }
+
+    public void setFearRate(int fearRate) {
+        this.fearRate = fearRate;
+        fearCoefficient = 0.05 * fearRate;
+        fearFactor = fearRate + fearBuildings;
+    }
+
+    public void addFearBuildings(int fearBuildings) {
+        this.fearBuildings += fearBuildings;
+        fearFactor += fearBuildings;
+    }
+
+
+    public double getAleCoverage() {
+        return aleCoverage;
+    }
+
+    public int getAleFactor() {
+        return aleFactor;
+    }
+
+    public void setAleCoverage(double aleCoverage) {
+        this.aleCoverage = aleCoverage;
+        aleFactor = (int) (aleCoverage * 8);
+    }
+
 }

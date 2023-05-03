@@ -17,7 +17,7 @@ public class Governance {
     private final ArrayList<Soldier> soldiers;
     // private final ArrayList<Person> persons; Not needed
     private final HashMap<AssetType, HashMap<Asset, Integer>> assets;
-    private final PopularityFactors popularity;
+    private final PopularityFactors popularityFactors;
     private int gold;
     private int nonMilitaryCharacters;
 
@@ -26,7 +26,7 @@ public class Governance {
         buildings = new ArrayList<>();
         soldiers = new ArrayList<>();
         assets = Asset.getAllAssets();
-        popularity = new PopularityFactors(this);
+        popularityFactors = new PopularityFactors(this);
         gold = 100;
         nonMilitaryCharacters = 0;
     }
@@ -35,8 +35,8 @@ public class Governance {
         return owner;
     }
 
-    public PopularityFactors getPopularity() {
-        return popularity;
+    public PopularityFactors getPopularityFactors() {
+        return popularityFactors;
     }
 
     public int getGold() {
@@ -50,6 +50,37 @@ public class Governance {
     public void addNonMilitaryCharacters(int nonMilitaryCharacters) {
         this.nonMilitaryCharacters += nonMilitaryCharacters;
     }
+
+
+    public String showPopularityFactors() {
+        return "Food rate: " + popularityFactors.getFoodRate()
+            + "\nKinds of foods: " + getKindsOfFoods()
+            + "\nTax rate: " + popularityFactors.getTaxRate()
+            + "\nReligious Factor: " + popularityFactors.getReligiousFactor()
+            + "\nFear rate: " + popularityFactors.getFearRate()
+            + "\nFear buildings" + popularityFactors.getFearBuildings()
+            + "\nAle coverage: " + popularityFactors.getAleCoverage();
+    }
+
+    public int showPopularity() {
+        return popularityFactors.getPopularity();
+    }
+
+    public String showFoodList() {
+        return "Apple: " + assets.get(AssetType.FOOD).get(Asset.APPLE)
+            + "\nMeat: " + assets.get(AssetType.FOOD).get(Asset.MEAT)
+            + "\nCheese: " + assets.get(AssetType.FOOD).get(Asset.CHEESE)
+            + "\nBread" + assets.get(AssetType.FOOD).get(Asset.BREAD);
+    }
+
+    public void setFearRate(int fearRate) {
+        popularityFactors.setFearRate(fearRate);
+    }
+
+    public int getFearRate() {
+        return popularityFactors.getFearRate();
+    }
+
 
 
     public void addSpecificAsset(Asset asset, int count) {
@@ -101,6 +132,20 @@ public class Governance {
 
     public void addSoldier(Cell cell, SoldierType soldierType) {
         soldiers.add(new Soldier(cell, this, soldierType));
+    }
+
+    public int getKindsOfFoods() {
+        int result = 0;
+        for (Asset food : assets.get(AssetType.FOOD).keySet())
+            if (!assets.get(AssetType.FOOD).get(food).equals(0)) result++;
+        return result;
+    }
+
+    public int getFoodCount() {
+        int result = 0;
+        for (Asset food : assets.get(AssetType.FOOD).keySet())
+            result += assets.get(AssetType.FOOD).get(food);
+        return result;
     }
 
 }
