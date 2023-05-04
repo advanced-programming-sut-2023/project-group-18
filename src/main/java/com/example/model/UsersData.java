@@ -49,6 +49,10 @@ public class UsersData {
         writeStayLoggedInUserIdInFile(stayLoggedInUser);
     }
 
+    public void logout() {
+        loggedInUser = null;
+        writeStayLoggedInUserIdInFile(loggedInUser);
+    }
 
     private void writeStayLoggedInUserIdInFile(User user) {
         File main = new File("src", "main");
@@ -57,7 +61,9 @@ public class UsersData {
         File users = new File(json, "stayLoggedInUserId.txt");
         try {
             FileWriter fileWriter = new FileWriter(users);
-            fileWriter.write(user.getUsername());
+            String username = user.getUsername();
+            username = username == null ? "?" : username;
+            fileWriter.write(username);
             fileWriter.close();
         } catch (IOException e) {
             System.err.println("Can't write in file!!!");
