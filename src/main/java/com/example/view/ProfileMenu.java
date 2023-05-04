@@ -50,6 +50,12 @@ public class ProfileMenu {
                 displaySlogan();
             } else if (ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.DISPLAY_PROFILE).find()) {
                 displayProfile();
+            } else if (ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.CURRENT_MENU).find()) {
+                globalMethods.showCurrentMenu("profile menu");
+            } else if (ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.LOGOUT).find()) {
+                LoginMenu loginMenu = LoginMenu.getInstance();
+                loginMenu.run(scanner);
+                break;
             } else {
                 globalMethods.invalidCommand();
             }

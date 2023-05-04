@@ -13,7 +13,9 @@ public enum ProfileMenuCommands {
     DISPLAY_HIGHSCORE("^profile display highscore$"),
     DISPLAY_RANK("^profile display rank$"),
     DISPLAY_SLOGAN("^profile display slogan$"),
-    DISPLAY_PROFILE("^profile display$");
+    DISPLAY_PROFILE("^profile display$"),
+    CURRENT_MENU("^show current menu$"),
+    LOGOUT("^logout$");
     private final String regex;
     ProfileMenuCommands(String regex) {
         this.regex = regex;

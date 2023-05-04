@@ -100,7 +100,6 @@ public class UsersData {
         return user.isPasswordCorrect(password);
     }
 
-
     private List<User> initializeUsers() {
         Gson gson = new Gson();
         File main = new File("src", "main");

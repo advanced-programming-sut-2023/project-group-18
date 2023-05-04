@@ -24,22 +24,23 @@ public class LoginMenuMethods {
             }
             String quoteSubstring = field.trim().substring(4, field.trim().length() - 1);
             boolean isQuoted = field.trim().charAt(3) == '\"' && field.trim().endsWith("\"");
-            if (field.startsWith("-u")) {
+            if (field.trim().startsWith("-u")) {
                 if (isQuoted)
                     output.add(0, quoteSubstring);
                 else
                     output.add(0, field.substring(3).trim());
-            } else if (field.startsWith("-p")) {
+            } else if (field.trim().startsWith("-p")) {
                 if (isQuoted)
                     output.add(1, quoteSubstring);
                 else
-                    output.add(0, field.substring(3).trim());
+                    output.add(1, field.substring(3).trim());
             } else return null;
         }
         return output;
     }
 
-    public void stayLoggedIn() {
-        usersData.setStayLoggedInUser();
+    public void stayLoggedIn(String username) {
+        System.out.println("setting user stay-logged-in for username: " + username);
+        usersData.setStayLoggedInUser(usersData.getUserByUsername(username));
     }
 }

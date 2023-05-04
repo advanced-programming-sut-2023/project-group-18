@@ -7,7 +7,8 @@ public enum SignupMenuCommands {
     CREATE_USER("^user create (?<fields>(-[a-zA-Z] .+){4,5})$"),
     SECURITY_QUESTION("^question pick (?<fields>(-[a-zA-Z] .+){3})$"),
     LOGIN_MENU("^login menu$"),
-    EXIT("exit");
+    EXIT("exit"),
+    CURRENT_MENU("^show current menu$");
 
     private final String regex;
 

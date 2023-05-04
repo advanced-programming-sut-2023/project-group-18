@@ -59,7 +59,7 @@ public class GlobalMethods {
     }
 
     public boolean checkPassword(String username, String password) {
-        return true;
+        return usersData.isPasswordCorrect(username, password);
     }
 
     public String passwordValidation(String password) {
@@ -78,5 +78,9 @@ public class GlobalMethods {
 
     public boolean emailValidation(String email) {
         return email.matches("[\\w.]+@[\\w.]+\\.[\\w.]+");
+    }
+
+    public void showCurrentMenu(String menu) {
+        System.out.println("you are currently at " + menu);
     }
 }
