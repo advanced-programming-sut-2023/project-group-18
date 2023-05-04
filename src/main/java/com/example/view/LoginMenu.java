@@ -3,6 +3,8 @@ package com.example.view;
 import com.example.controller.Commands.LoginMenuCommands;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.LoginMenuMethods;
+import com.example.model.User;
+import com.example.model.UsersData;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -76,17 +78,27 @@ public class LoginMenu {
         if (matcher.group("stayLoggedIn") != null) {
             loginMenuMethods.stayLoggedIn(username);
         }
+        while (!globalMethods.captchaCheck(scanner)) {
+            System.out.println("you didn't answer captcha correctly! try again.");
+        }
+        UsersData.getUsersData().setLoggedInUser(UsersData.getUsersData().getUserByUsername(username));
         System.out.println("you logged in successfully.");
         return true;
     }
 
     private void forgotPassword(Matcher matcher, Scanner scanner) {
-//        // sout security question
-//        String answer = scanner.nextLine();
-//        if (!loginMenuMethods.checkSecurityQuestion(answer)) {
-//        }
-//        // getting new password
-//        String newPassword = scanner.nextLine();
-//        loginMenuMethods.setNewPassword(newPassword);
+        String username = matcher.group("username");
+        if (!loginMenuMethods.checkSecurityQuestion(scanner, username)) {
+            System.out.println("your answer was not correct!");
+            return;
+        }
+        System.out.println("enter your new password:");
+        String newPassword = scanner.nextLine();
+        String error = "";
+        if ((error = loginMenuMethods.setNewPassword(newPassword, username)) != null) {
+            System.out.println(error);
+            return;
+        }
+        System.out.println("your password was changed successfully.");
     }
 }

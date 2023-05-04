@@ -1,8 +1,10 @@
 package com.example.controller.Methods;
 
+import com.example.model.User;
 import com.example.model.UsersData;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class LoginMenuMethods {
     private static LoginMenuMethods loginMenuMethods;
@@ -40,7 +42,23 @@ public class LoginMenuMethods {
     }
 
     public void stayLoggedIn(String username) {
-        System.out.println("setting user stay-logged-in for username: " + username);
         usersData.setStayLoggedInUser(usersData.getUserByUsername(username));
+    }
+
+    public boolean checkSecurityQuestion(Scanner scanner, String username) {
+        User user = UsersData.getUsersData().getUserByUsername(username);
+        System.out.println(user.getRecoveryQuestion());
+        String answer = scanner.nextLine();
+        return user.isRecoveryAnswerCorrect(answer);
+    }
+
+    public String setNewPassword(String newPassword, String username) {
+        GlobalMethods globalMethods = GlobalMethods.getInstance();
+        User user = UsersData.getUsersData().getUserByUsername(username);
+        if (globalMethods.passwordValidation(newPassword) != null) {
+            return globalMethods.passwordValidation(newPassword);
+        }
+        user.setPassword(newPassword);
+        return null;
     }
 }

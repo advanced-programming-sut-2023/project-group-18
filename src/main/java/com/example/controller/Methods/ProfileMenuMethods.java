@@ -1,5 +1,8 @@
 package com.example.controller.Methods;
 
+import com.example.model.User;
+import com.example.model.UsersData;
+
 import java.util.ArrayList;
 
 public class ProfileMenuMethods {
@@ -38,5 +41,25 @@ public class ProfileMenuMethods {
             } else return null;
         }
         return output;
+    }
+
+    public boolean checkPassword(String password) {
+        return UsersData.getUsersData().getLoggedInUser().isPasswordCorrect(password);
+    }
+
+    public void setNewPassword(String password) {
+        UsersData.getUsersData().getLoggedInUser().setPassword(password);
+    }
+
+    public void setNewEmail(String email) {
+        UsersData.getUsersData().getLoggedInUser().setEmail(email);
+    }
+
+    public void setNewSlogan(String slogan) {
+        UsersData.getUsersData().getLoggedInUser().setSlogan(slogan);
+    }
+
+    public void removeSlogan() {
+        UsersData.getUsersData().getLoggedInUser().setSlogan("");
     }
 }

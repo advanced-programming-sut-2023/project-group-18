@@ -6,6 +6,7 @@ import com.example.controller.Methods.LoginMenuMethods;
 import com.example.controller.Methods.ProfileMenuMethods;
 import com.example.model.User;
 import com.example.model.UsersData;
+import com.google.gson.internal.bind.util.ISO8601Utils;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,11 +17,13 @@ public class ProfileMenu {
     private final ProfileMenuMethods profileMenuMethods;
     private final GlobalMethods globalMethods;
     private final UsersData usersData;
+
     private ProfileMenu() {
         profileMenuMethods = ProfileMenuMethods.getInstance();
         globalMethods = GlobalMethods.getInstance();
         usersData = UsersData.getUsersData();
     }
+
     public static ProfileMenu getInstance() {
         return profileMenu == null ? profileMenu = new ProfileMenu() : profileMenu;
     }
@@ -74,10 +77,12 @@ public class ProfileMenu {
             System.out.println("this username is occupied!");
             return;
         }
+        UsersData.getUsersData().getLoggedInUser().setUsername(username);
+        System.out.println("your username was changed successfully.");
     }
 
     private void changeNickname(Matcher matcher) {
-        String nickname = matcher.group("nickname");
+        UsersData.getUsersData().getLoggedInUser().setNickname(matcher.group("nickname"));
     }
 
     private void changePassword(Matcher matcher) {
@@ -97,15 +102,16 @@ public class ProfileMenu {
         }
         String oldPass = fields.get(0);
         String newPass = fields.get(1);
-        //TODO check old password
-        if (globalMethods.passwordValidation(newPass) != null) {
+        if (!profileMenuMethods.checkPassword(oldPass)) {
+            System.out.println("Current password is incorrect!");
+        } else if (globalMethods.passwordValidation(newPass) != null) {
             System.out.println("your password is not valid.\nreason: " + globalMethods.passwordValidation(newPass));
             return;
         } else if (oldPass.equals(newPass)) {
             System.out.println("Please enter a new password!");
             return;
         }
-        //TODO set new password
+        profileMenuMethods.setNewPassword(newPass);
     }
 
     private void changeEmail(Matcher matcher) {
@@ -117,35 +123,38 @@ public class ProfileMenu {
             System.out.println("this email is already on an account!");
             return;
         }
-        //TODO set email
+        profileMenuMethods.setNewEmail(email);
         System.out.println("your email changed to " + email + " successfully.");
-        return;
     }
 
     private void changeSlogan(Matcher matcher) {
-        String slogan = matcher.group("slogan");
-        //TODO set slogan?
+        profileMenuMethods.setNewSlogan(matcher.group("slogan"));
         System.out.println("your slogan changed successfully.");
     }
-    
+
     private void removeSlogan() {
-        //TODO remove slogan
+        profileMenuMethods.removeSlogan();
         System.out.println("removed slogan successfully.");
     }
 
     private void displayHighscore() {
-
+        System.out.println("your highscore is: " + UsersData.getUsersData().getLoggedInUser().getHighscore());
     }
 
     private void displayRank() {
-
     }
 
     private void displaySlogan() {
-
+        String slogan = UsersData.getUsersData().getLoggedInUser().getSlogan();
+        if (slogan.equals(""))
+            System.out.println("Slogan is empty!");
+        else System.out.println("your slogan is: " + slogan);
     }
 
     private void displayProfile() {
-
+        User user = UsersData.getUsersData().getLoggedInUser();
+        System.out.println("your highscore is: " + user.getHighscore());
+        System.out.println("your rank is: (empty for now)");
+        displaySlogan();
     }
 }

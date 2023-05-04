@@ -1,8 +1,10 @@
 package com.example.controller.Methods;
 
+import com.example.model.CapthaCode;
 import com.example.model.UsersData;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GlobalMethods {
     private static GlobalMethods globalMethods;
@@ -82,5 +84,11 @@ public class GlobalMethods {
 
     public void showCurrentMenu(String menu) {
         System.out.println("you are currently at " + menu);
+    }
+
+    public boolean captchaCheck(Scanner scanner) {
+        System.out.println(CapthaCode.generateCapthaCode());
+        String answer = scanner.nextLine();
+        return CapthaCode.isCodeCorrect(answer);
     }
 }

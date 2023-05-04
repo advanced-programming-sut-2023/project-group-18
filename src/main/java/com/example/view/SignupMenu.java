@@ -91,7 +91,7 @@ public class SignupMenu {
             return;
         }
         String recoveryQuestion = signupMenuMethods.getRecoveryQuestion(scanner);      /*this is number and the question together*/
-        while (!signupMenuMethods.captchaCheck(scanner)) {
+        while (!globalMethods.captchaCheck(scanner)) {
             System.out.println("you didn't answer captcha correctly! try again.");
         }
         int recoveryQuestionNumber = Integer.parseInt(recoveryQuestion.substring(0, 1));
