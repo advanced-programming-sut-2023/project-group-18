@@ -53,8 +53,11 @@ public class ProfileMenu {
             } else if (ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.CURRENT_MENU).find()) {
                 globalMethods.showCurrentMenu("profile menu");
             } else if (ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.LOGOUT).find()) {
+                usersData.logout();
                 LoginMenu loginMenu = LoginMenu.getInstance();
                 loginMenu.run(scanner);
+                break;
+            } else if (ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.EXIT).find()) {
                 break;
             } else {
                 globalMethods.invalidCommand();

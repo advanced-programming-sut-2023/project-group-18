@@ -15,7 +15,8 @@ public enum ProfileMenuCommands {
     DISPLAY_SLOGAN("^profile display slogan$"),
     DISPLAY_PROFILE("^profile display$"),
     CURRENT_MENU("^show current menu$"),
-    LOGOUT("^logout$");
+    LOGOUT("^logout$"),
+    EXIT("^exit$");
     private final String regex;
     ProfileMenuCommands(String regex) {
         this.regex = regex;

@@ -61,8 +61,9 @@ public class UsersData {
         File users = new File(json, "stayLoggedInUserId.txt");
         try {
             FileWriter fileWriter = new FileWriter(users);
-            String username = user.getUsername();
-            username = username == null ? "?" : username;
+            String username = (user == null ? "?" : user.getUsername());
+//            String username = user.getUsername();
+//            username = username == null ? "?" : username;
             fileWriter.write(username);
             fileWriter.close();
         } catch (IOException e) {

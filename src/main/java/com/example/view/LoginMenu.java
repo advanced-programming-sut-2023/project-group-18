@@ -41,6 +41,8 @@ public class LoginMenu {
                 break;
             } else if (LoginMenuCommands.getMatcher(input, LoginMenuCommands.CURRENT_MENU).find()) {
                 globalMethods.showCurrentMenu("login menu");
+            } else if (LoginMenuCommands.getMatcher(input, LoginMenuCommands.EXIT).find()) {
+                break;
             } else {
                 globalMethods.invalidCommand();
             }
