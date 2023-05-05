@@ -11,23 +11,25 @@ public class Building {
     protected final int workersNumber;
     protected final Governance governance;
     protected final String groundType;
+    protected final int goldCost;
     protected final Asset resourceType;
     protected final int resourceCost;
     protected final Cell cell;
     protected int hitpoint;
 
-    // TODO: relate to cell Object
     public Building(BuildingType buildingType, Governance governance, Cell cell) {
         this.buildingType = buildingType;
-        this.workersNumber = workersNumber;
+        this.workersNumber = buildingType.getWorkersNumber();
         this.governance = governance;
-        this.hitpoint = hitpoint;
-        this.groundType = groundType;
-        this.costHashmap = costHashmap;
+        this.hitpoint = buildingType.getHitpoint();
+        this.groundType = buildingType.getGroundType();
+        this.goldCost = buildingType.getGoldCost();
+        this.resourceType = buildingType.getResourceType();
+        this.resourceCost = buildingType.getResourceCost();
         this.cell = cell;
     }
 
-    public String getBuildingType() {
+    public BuildingType getBuildingType() {
         return buildingType;
     }
 
@@ -47,11 +49,19 @@ public class Building {
         return groundType;
     }
 
-    public HashMap<String, Integer> getCostHashmap() {
-        return costHashmap;
-    }
-
     public Cell getCell() {
         return cell;
+    }
+
+    public int getGoldCost() {
+        return goldCost;
+    }
+
+    public Asset getResourceType() {
+        return resourceType;
+    }
+
+    public int getResourceCost() {
+        return resourceCost;
     }
 }
