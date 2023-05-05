@@ -1,19 +1,23 @@
 package com.example.controller.Methods;
 
 import com.example.controller.Commands.SignupMenuCommands;
+import com.example.model.CapthaCode;
+import com.example.model.RandomSlogan;
 import com.example.model.UsersData;
-import com.google.gson.internal.bind.util.ISO8601Utils;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class SignupMenuMethods {
+public class SignupMenuMethods implements RandomSlogan {
     private static SignupMenuMethods instance;
     private final UsersData usersData;
+    private final GlobalMethods globalMethods;
 
     private SignupMenuMethods() {
         usersData = UsersData.getUsersData();
+        globalMethods = GlobalMethods.getInstance();
     }
 
     public static SignupMenuMethods getInstance() {
@@ -28,6 +32,9 @@ public class SignupMenuMethods {
         output.add("d");
         output.add("e");
         for (String field : fields) {
+            if (field.trim().length() < 4) {
+                return null;
+            }
             String quoteSubstring = field.trim().substring(4, field.trim().length() - 1);
             boolean isQuoted = field.trim().charAt(3) == '\"' && field.trim().endsWith("\"");
             if (field.startsWith("-u")) {
@@ -67,24 +74,6 @@ public class SignupMenuMethods {
         return username.matches("\\w+");
     }
 
-    public String passwordValidation(String password) {
-        if (password.length() < 6)
-            return "password must contain at least six characters";
-        else if (!password.matches(".*[a-z].*"))
-            return "password must contain at least one lowercase letter";
-        else if (!password.matches(".*[A-Z].*"))
-            return "password must contain at least one uppercase letter";
-        else if (!password.matches(".*\\d.*"))
-            return "password must contain at least one digit";
-        else if (!password.matches(".*[^\\sa-zA-Z0-9].*"))
-            return "password must contain at least one character not being letter and digit";
-        return null;
-    }
-
-    public boolean emailValidation(String email) {
-        return email.matches("[\\w.]+@[\\w.]+\\.[\\w.]+");
-    }
-
     public String getRecoveryQuestion(Scanner scanner) {
         int error;
         Matcher matcher;
@@ -97,14 +86,13 @@ public class SignupMenuMethods {
             if (!(matcher = SignupMenuCommands.getMatcher(recoveryQuestion, SignupMenuCommands.SECURITY_QUESTION)).find()) {
                 System.out.println("your answer is not in valid format! please answer again.");
                 recoveryQuestion = scanner.nextLine();
-            } else if (sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))) == null) {
+            } else if (sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))) == null) {
                 System.out.println("you entered an invalid field. please answer again.");
                 recoveryQuestion = scanner.nextLine();
-            } else if (!sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(0).matches("\\d")) {
-//                System.out.println(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(0));
+            } else if (!sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))).get(0).matches("\\d")) {
                 System.out.println("you should enter a number in -q field. please answer again");
                 recoveryQuestion = scanner.nextLine();
-            } else if ((error = GlobalMethods.checkEmptyFields(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))))) != -1) {
+            } else if ((error = globalMethods.checkEmptyFields(sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))))) != -1) {
                 if (error == 1)
                     System.out.println("you left answer field empty. please answer again.");
                 if (error == 2)
@@ -112,15 +100,14 @@ public class SignupMenuMethods {
                 recoveryQuestion = scanner.nextLine();
             } else break;
         }
-        String confirm = sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(2);
+        String confirm = sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))).get(2);
         while (true) {
-            if (!confirm.equals(sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(1))) {
+            if (!confirm.equals(sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))).get(1))) {
                 System.out.println("your confirmed security question is not correct. please submit again:");
                 confirm = scanner.nextLine();
-            }
-            else break;
+            } else break;
         }
-        return sortSecurityQuestionFields(GlobalMethods.commandSplit(matcher.group("fields"))).get(0) + " " + confirm;
+        return sortSecurityQuestionFields(globalMethods.commandSplit(matcher.group("fields"))).get(0) + " " + confirm;
     }
 
     public void register(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
@@ -149,4 +136,53 @@ public class SignupMenuMethods {
         return output;
     }
 
+    public String generateRandomPassword() {
+        Random random = new Random();
+        int length = random.nextInt(6, 9);
+        String uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+        String digits = "123456789";
+        String characters = "!@#$%^&*";
+        String all = uppercaseLetters + lowercaseLetters + digits + characters;
+        StringBuilder password = new StringBuilder();
+        password.append(uppercaseLetters.charAt(random.nextInt(uppercaseLetters.length())));
+        password.append(lowercaseLetters.charAt(random.nextInt(lowercaseLetters.length())));
+        password.append(digits.charAt(random.nextInt(digits.length())));
+        password.append(characters.charAt(random.nextInt(characters.length())));
+        for (int i = 4; i < length; i++) {
+            password.append(all.charAt(random.nextInt(all.length())));
+        }
+        return password.toString();
+    }
+
+    public boolean checkRandomPassword(String password, Scanner scanner) {
+        System.out.println("Your random password is: " + password + "\nPlease re-enter your password here:");
+        String confirmPass = scanner.nextLine();
+        while (!password.equals(confirmPass)) {
+            if (confirmPass.equals("back")) return false;
+            System.out.println("your entered password is incorrect. please try again");
+            confirmPass = scanner.nextLine();
+        }
+        return true;
+    }
+
+    public boolean doesUsernameExist(String username) {
+        return usersData.getUserByUsername(username) != null;
+    }
+
+    public boolean doesEmailExist(String email) {
+        return usersData.doesEmailExist(email);
+    }
+
+    public boolean captchaCheck(Scanner scanner) {
+        System.out.println(CapthaCode.generateCapthaCode());
+        String answer = scanner.nextLine();
+        return CapthaCode.isCodeCorrect(answer);
+    }
+
+    public String getRandomSlogan() {
+        Random random = new Random();
+        int index = random.nextInt(10);
+        return RandomSlogan.RANDOM_SLOGANS[index];
+    }
 }

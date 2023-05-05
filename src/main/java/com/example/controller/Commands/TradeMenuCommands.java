@@ -4,7 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum TradeMenuCommands {
-    private String regex;
+    ;
+    private final String regex;
     TradeMenuCommands(String regex) {
         this.regex = regex;
     }
