@@ -1,16 +1,13 @@
 package com.example.model.Buildings;
 
 import com.example.model.Assets.Asset;
-import com.example.model.Governance;
 import com.example.model.Texture;
 
-import java.util.HashMap;
 
 public enum BuildingType {
     SMALL_STONE_GATEHOUSE("small stone gatehouse",0,Asset.STONE,0,
             0,Texture.GROUND,100,0,0,0,
-            8,0,0,20,10,35,null,null,2
-    ),
+            8,0,0,20,10,35,null,null,2),
     BIG_STONE_GATEHOUSE("big stone gatehouse",0,Asset.STONE,20,
             0,Texture.GROUND,1,1,1,1,
             1,1,1,1,1,1,null,null,3),
@@ -66,7 +63,7 @@ public enum BuildingType {
             Texture.PLAIN,20,0,0,0,0,
             5,0,0,0,0,null,null,1),
     QUARRY("quarry",0,Asset.WOOD,20,3,
-            1,Texture.STONE,30,0,0,0,
+            Texture.STONE, 1,30,0,0,0,
             10,0,0,0,0,null,Asset.STONE,2),
     STOCKPILE("stockpile",0,null,0,0,
             Texture.GROUND,50,100,0,0,0,
@@ -261,12 +258,10 @@ public enum BuildingType {
         return width;
     }
 
-    public BuildingType getBuildingTypeByName(String name){
-        for (BuildingType buildingType : BuildingType.values()){
-            if (buildingType.getName().equals(name)){
+    public BuildingType getBuildingTypeByName(String name) {
+        for (BuildingType buildingType : BuildingType.values())
+            if (buildingType.getName().equals(name))
                 return buildingType;
-            }
-        }
         return null;
     }
 }
