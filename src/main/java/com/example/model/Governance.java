@@ -136,6 +136,27 @@ public class Governance {
     }
 
 
+    public void buyItem(Asset asset, int count) {
+        gold -= count * asset.getBuyPrice();
+        addAssetToStorage(asset, count);
+    }
+
+    public void sellItem(Asset asset, int count) {
+        gold += count * asset.getSellPrice();
+        removeAssetFromStorage(asset, count);
+    }
+
+    public String showPriceList() {
+        String result = "Items:";
+        for (AssetType assetType : assets.keySet()) {
+            result += "\n\t" + assetType.getName() + "s:";
+            for (Asset asset : assets.get(assetType).keySet())
+                result += "\n\t\t- " + asset.toString() + "{" + assets.get(assetType).get(asset) + "}";
+        }
+        return result;
+    }
+
+
     public String showPopularityFactors() {
         return "Food rate: " + popularityFactors.getFoodRate()
             + "\nKinds of foods: " + getKindsOfFoods()
@@ -185,6 +206,17 @@ public class Governance {
         return false;
     }
 
+    public boolean canAddAssetToStorage(Asset asset, int count) {
+        for (Building building : buildings) {
+            if (!(building instanceof Storage)) continue;
+            Storage storage = (Storage) building;
+            if (!storage.isAssetCompatible(asset)) continue;
+            count -= storage.remainingCapacity();
+            if (count <= 0) return true;
+        }
+        return false;
+    }
+
     public void addAssetToStorage(Asset asset, int count) {
         for (Building building : buildings) {
             if (!(building instanceof Storage)) continue;
@@ -195,7 +227,6 @@ public class Governance {
             count -= canAdd;
             if (count == 0) return;
         }
-        return;
     }
 
     public void removeAssetFromStorage(Asset asset, int count) {

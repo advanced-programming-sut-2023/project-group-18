@@ -44,8 +44,12 @@ public enum Asset {
         return assetType;
     }
 
-    public int getPrice() {
+    public int getBuyPrice() {
         return price;
+    }
+
+    public int getSellPrice() {
+        return (price * 4) / 5;
     }
 
     public static Asset getAssetByName(String name) {
@@ -70,4 +74,10 @@ public enum Asset {
         return assets;
     }
     
+
+    @Override
+    public String toString() {
+        return name + " [Buy = " + price + "] [Sell = " + getSellPrice() + "] ";
+    }
+
 }
