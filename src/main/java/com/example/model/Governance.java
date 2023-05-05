@@ -20,6 +20,10 @@ public class Governance {
     private final PopularityFactors popularityFactors;
     private int gold;
     private int nonMilitaryCharacters;
+    private final ArrayList<Trade> tradeList;
+    private final ArrayList<Trade> requestList;
+    private final ArrayList<Trade> tradeHistory;
+    private final ArrayList<Trade> tradeNotifications;
 
     public Governance(User owner) {
         this.owner = owner;
@@ -29,6 +33,10 @@ public class Governance {
         popularityFactors = new PopularityFactors(this);
         gold = 100;
         nonMilitaryCharacters = 0;
+        tradeList = new ArrayList<>();
+        requestList = new ArrayList<>();
+        tradeHistory = new ArrayList<>();
+        tradeNotifications = new ArrayList<>();
     }
 
     public User getOwner() {
@@ -47,8 +55,84 @@ public class Governance {
         return nonMilitaryCharacters;
     }
 
+    protected ArrayList<Trade> getTradeList() {
+        return tradeList;
+    }
+
+    protected ArrayList<Trade> getRequestList() {
+        return requestList;
+    }
+
+    protected ArrayList<Trade> getTradeHistory() {
+        return tradeHistory;
+    }
+
+    protected ArrayList<Trade> getTradeNotifications() {
+        return tradeNotifications;
+    }
+
     public void addNonMilitaryCharacters(int nonMilitaryCharacters) {
         this.nonMilitaryCharacters += nonMilitaryCharacters;
+    }
+
+    public void addGold(int gold) {
+        this.gold += gold;
+    }
+
+
+    public boolean canAcceptTrade(int id) {
+        Trade trade = Trade.getTradebyId(id, tradeList);
+        // TODO: have to complete
+        return trade != null;
+    }
+
+    public void acceptTrade(int id, String meesage) {
+        Trade.getTradebyId(id, tradeList).acceptTrade(meesage);
+    }
+
+    public void rejectTrade(int id, String message) {
+        Trade.getTradebyId(id, tradeList).rejectTrade(message);
+    }
+
+    public void cancelTrade(int id) {
+        Trade.getTradebyId(id, requestList).cancelTrade();
+    }
+
+    public void requestTrade(Governance accepter, Asset resourceType, int resourceAmount, int price, String message) {
+        new Trade(this, accepter, resourceType, resourceAmount, price, message);
+    }
+
+    public String showNotifications() {
+        tradeNotifications.clear();
+        String result = "Trade Notifications: ";
+        int index = 0;
+        for (Trade trade : tradeNotifications)
+            result += "\n" + (++index) + ") " + trade.toStringTradeList();
+        return result;
+    }
+
+    public String showTradeList() {
+        String result = "Trade List: ";
+        int index = 0;
+        for (Trade trade : tradeList)
+            result += "\n" + (++index) + ") " + trade.toStringTradeList();
+        return result;
+    }
+
+    public String showRequestList() {
+        String result = "Requst List: ";
+        int index = 0;
+        for (Trade trade : requestList)
+            result += "\n" + (++index) + ") " + trade.toStringRequestList();
+        return result;
+    }
+
+    public String showTradeHistory() {
+        String result = "Trade History: ";
+        int index = 0;
+        for (Trade trade : tradeHistory)
+            result += "\n" + (++index) + ") " + trade.toString();
+        return result;
     }
 
 
