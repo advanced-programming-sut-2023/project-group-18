@@ -1,19 +1,30 @@
 package com.example.model;
 
+import java.util.ArrayList;
+
+import com.example.model.Buildings.Building;
+import com.example.model.People.Unit;
+
 public class Cell implements ConsoleColors {
-    private Object object;
+    private final ArrayList<Unit> units;
+    private Building building;
     private Texture texture;
     private final int xCordinate;
     private final int yCordinate;
 
     protected Cell(int xCordinate, int yCordinate) {
+        units = new ArrayList<>();
+        texture = Texture.getARondomTexture();
         this.xCordinate = xCordinate;
         this.yCordinate = yCordinate;
-        texture = Texture.getARondomTexture();
     }
 
-    public Object getObject() {
-        return object;
+    public ArrayList<Unit> getUnits() {
+        return units;
+    }
+
+    public Building getBuilding() {
+        return building;
     }
 
     public Texture getTexture() {
@@ -28,8 +39,8 @@ public class Cell implements ConsoleColors {
         return yCordinate;
     }
 
-    public void setObject(Object object) {
-        this.object = object;
+    public void setBuilding(Building building) {
+        this.building = building;
     }
 
     public void setTexture(Texture texture) {

@@ -3,7 +3,7 @@ package com.example.model.People;
 import com.example.model.Cell;
 import com.example.model.Governance;
 
-public class Soldier extends Person {
+public class Soldier extends Unit {
     private final SoldierType soldierType;
     private final int attackPower;
     private final int defencePower;
