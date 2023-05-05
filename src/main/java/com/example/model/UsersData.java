@@ -129,5 +129,7 @@ public class UsersData {
         return null;
     }
 
-
+    public ArrayList<User> getUsers() {
+        return users;
+    }
 }

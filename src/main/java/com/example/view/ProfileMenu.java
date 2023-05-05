@@ -9,6 +9,7 @@ import com.example.model.UsersData;
 import com.google.gson.internal.bind.util.ISO8601Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -34,7 +35,7 @@ public class ProfileMenu {
         while (true) {
             input = scanner.nextLine();
             if ((matcher = ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.CHANGE_USERNAME)).find()) {
-                changeUsername(matcher);
+                changeUsername(matcher, scanner);
             } else if ((matcher = ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.CHANGE_NICKNAME)).find()) {
                 changeNickname(matcher);
             } else if ((matcher = ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.CHANGE_PASSWORD)).find()) {
@@ -68,14 +69,17 @@ public class ProfileMenu {
         }
     }
 
-    private void changeUsername(Matcher matcher) {
+    private void changeUsername(Matcher matcher, Scanner scanner) {
         String username = matcher.group("username");
         if (!profileMenuMethods.usernameValidation(username)) {
             System.out.println("your username doesn't have a valid format!");
             return;
-        } else if (globalMethods.doesUsernameExist(username)) {
-            System.out.println("this username is occupied!");
-            return;
+        }
+        while (globalMethods.doesUsernameExist(username)) {
+            System.out.println("this username already exists!");
+            username = globalMethods.getNewUsername(username, scanner);
+            if (username.equals("0"))
+                return;
         }
         UsersData.getUsersData().getLoggedInUser().setUsername(username);
         System.out.println("your username was changed successfully.");
@@ -161,7 +165,14 @@ public class ProfileMenu {
     private void displayProfile() {
         User user = UsersData.getUsersData().getLoggedInUser();
         System.out.println("your highscore is: " + user.getHighscore());
-        System.out.println("your rank is: (empty for now)");
+        ArrayList<User> users = UsersData.getUsersData().getUsers();
+        ArrayList<Integer> highscores = new ArrayList<>();
+        for (User user1 : users) {
+            highscores.add(user1.getHighscore());
+        }
+        Collections.sort(highscores);
+        int rank = highscores.indexOf(user.getHighscore());
+        System.out.println("your rank is: " + (rank + 1));
         displaySlogan();
     }
 }
