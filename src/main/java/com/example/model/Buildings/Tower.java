@@ -1,5 +1,8 @@
 package com.example.model.Buildings;
 
+import com.example.model.Assets.Asset;
+import com.example.model.Cell;
+import com.example.model.Governance;
 import com.example.model.People.Soldier;
 
 import java.util.ArrayList;
@@ -7,19 +10,20 @@ import java.util.ArrayList;
 public class Tower extends Building{
     private final int fireRange;
     private final int defendRange;
-    private final String type;
-    private int soldierNumbers;
+    private final int soldiersCapacity;
     private boolean hasLadder;
     private final ArrayList<Soldier> soldiers;
+    private final boolean strong;
 
-    public Tower(String buildingType, Governance governance, Cell cell, int fireRange, int defendRange, String type) {
+    public Tower(BuildingType buildingType, Governance governance, Cell cell) {
         super(buildingType, governance, cell);
-        this.fireRange = fireRange;
-        this.defendRange = defendRange;
-        this.type = type;
+        this.fireRange = buildingType.getFireRange();
+        this.defendRange = buildingType.getDefendRange();
         hasLadder = false;
-        soldierNumbers = 0;
+        soldiersCapacity = buildingType.getSoldiersCapacity();
         soldiers = new ArrayList<>();
+        strong = true;
+        canDeployEquipment = true;
     }
 
     public int getFireRange() {
@@ -30,12 +34,8 @@ public class Tower extends Building{
         return defendRange;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public int getSoldierNumbers() {
-        return soldierNumbers;
+    public int getSoldiersCapacity() {
+        return soldiersCapacity;
     }
 
     public boolean isHasLadder() {
@@ -54,7 +54,38 @@ public class Tower extends Building{
         return soldiers;
     }
 
+    public int soldiersCount(){
+        return this.soldiers.size();
+    }
     public void addSoldier(Soldier soldier){
         this.soldiers.add(soldier);
+    }
+    public void removeSoldier(Soldier soldier){
+        this.soldiers.remove(soldier);
+    }
+
+    public boolean isStrong(){
+        return strong;
+    }
+
+    public boolean canDeployEquipment() {
+        return canDeployEquipment;
+    }
+    public boolean canRepair(){
+        Asset asset = Asset.STONE;
+        int stoneNeeded = this.getBuildingType().getHitpoint() - this.hitpoint;
+        return governance.canRemoveAssetFromStorage(asset,stoneNeeded);
+    }
+    public void repair(){
+        Asset asset = Asset.STONE;
+        int stoneNeeded = this.getBuildingType().getHitpoint() - this.hitpoint;
+        if (governance.canRemoveAssetFromStorage(asset,stoneNeeded)){
+            governance.removeAssetFromStorage(asset,stoneNeeded);
+            this.hitpoint = this.getBuildingType().getHitpoint();
+        }
+        else {
+            this.hitpoint += governance.getAssetCount(asset);
+            governance.removeAssetFromStorage(asset, governance.getAssetCount(asset));
+        }
     }
 }
