@@ -83,6 +83,7 @@ public class ProfileMenu {
 
     private void changeNickname(Matcher matcher) {
         UsersData.getUsersData().getLoggedInUser().setNickname(matcher.group("nickname"));
+        System.out.println("nickname changed successfully.");
     }
 
     private void changePassword(Matcher matcher) {
@@ -128,7 +129,13 @@ public class ProfileMenu {
     }
 
     private void changeSlogan(Matcher matcher) {
-        profileMenuMethods.setNewSlogan(matcher.group("slogan"));
+        String slogan = matcher.group("slogan");
+        String quoteSubstring = slogan.trim().substring(4, slogan.trim().length() - 1);
+        boolean isQuoted = slogan.trim().charAt(3) == '\"' && slogan.trim().endsWith("\"");
+        if (isQuoted) {
+            profileMenuMethods.setNewSlogan(quoteSubstring);
+        } else
+            profileMenuMethods.setNewSlogan(slogan);
         System.out.println("your slogan changed successfully.");
     }
 

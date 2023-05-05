@@ -9,12 +9,15 @@ import java.util.Scanner;
 public class GlobalMethods {
     private static GlobalMethods globalMethods;
     private final UsersData usersData;
+
     private GlobalMethods() {
         usersData = UsersData.getUsersData();
     }
+
     public static GlobalMethods getInstance() {
         return globalMethods == null ? globalMethods = new GlobalMethods() : globalMethods;
     }
+
     public ArrayList<String> commandSplit(String command) {
         int counter = 0;
         boolean passedFirstDash = false;
@@ -27,8 +30,7 @@ public class GlobalMethods {
             if (character == '-') {
                 if (!passedFirstDash) {
                     passedFirstDash = true;
-                }
-                else if (counter % 2 == 0) {
+                } else if (counter % 2 == 0) {
                     output.add(temp.toString());
                     temp = new StringBuilder();
                 }
@@ -90,5 +92,16 @@ public class GlobalMethods {
         System.out.println(CapthaCode.generateCapthaCode());
         String answer = scanner.nextLine();
         return CapthaCode.isCodeCorrect(answer);
+    }
+
+    public String getNewUsername(String username, Scanner scanner) {
+        int counter = 0;
+        while (UsersData.getUsersData().getUserByUsername(username + counter) != null)
+            counter++;
+        System.out.println("you can have this username: " + username + counter + " type 1 to approve, 0 to exit or type a new username.");
+        String answer = scanner.nextLine();
+        if (answer.equals("1"))
+            return (username + counter);
+        return answer;
     }
 }

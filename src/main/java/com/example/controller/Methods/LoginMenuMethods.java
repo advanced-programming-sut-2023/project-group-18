@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class LoginMenuMethods {
     private static LoginMenuMethods loginMenuMethods;
     private final UsersData usersData;
+
     private LoginMenuMethods() {
         usersData = UsersData.getUsersData();
     }
@@ -16,6 +17,7 @@ public class LoginMenuMethods {
     public static LoginMenuMethods getInstance() {
         return loginMenuMethods == null ? loginMenuMethods = new LoginMenuMethods() : loginMenuMethods;
     }
+
     public ArrayList<String> sortLoginFields(ArrayList<String> fields) {
         ArrayList<String> output = new ArrayList<>();
         output.add("a");

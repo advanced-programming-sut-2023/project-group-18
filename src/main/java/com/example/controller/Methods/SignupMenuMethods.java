@@ -2,15 +2,15 @@ package com.example.controller.Methods;
 
 import com.example.controller.Commands.SignupMenuCommands;
 import com.example.model.CapthaCode;
+import com.example.model.RandomSlogan;
 import com.example.model.UsersData;
-import com.google.gson.internal.bind.util.ISO8601Utils;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class SignupMenuMethods {
+public class SignupMenuMethods implements RandomSlogan {
     private static SignupMenuMethods instance;
     private final UsersData usersData;
     private final GlobalMethods globalMethods;
@@ -178,5 +178,11 @@ public class SignupMenuMethods {
         System.out.println(CapthaCode.generateCapthaCode());
         String answer = scanner.nextLine();
         return CapthaCode.isCodeCorrect(answer);
+    }
+
+    public String getRandomSlogan() {
+        Random random = new Random();
+        int index = random.nextInt(10);
+        return RandomSlogan.RANDOM_SLOGANS[index];
     }
 }

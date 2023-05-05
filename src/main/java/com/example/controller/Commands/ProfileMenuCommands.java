@@ -8,7 +8,7 @@ public enum ProfileMenuCommands {
     CHANGE_NICKNAME("^profile change -n (?<nickname>\\S+)$"),
     CHANGE_PASSWORD("^profile change password (?<fields>(-[a-zA-Z] .+){2})$"),
     CHANGE_EMAIL("^profile change -e (?<email>\\S+)$"),
-    CHANGE_SLOGAN("^profile change slogan -s (?<slogan>\\S+)$"),
+    CHANGE_SLOGAN("^profile change slogan (?<slogan>-s .+)$"),
     REMOVE_SLOGAN("^profile remove slogan$"),
     DISPLAY_HIGHSCORE("^profile display highscore$"),
     DISPLAY_RANK("^profile display rank$"),

@@ -49,6 +49,7 @@ public class SignupMenu {
     private void register(Matcher matcher, Scanner scanner) {
         ArrayList<String> fields = globalMethods.commandSplit(matcher.group("fields"));
         fields = signupMenuMethods.sortFields(fields);
+        boolean randomPasswordFlag = false;
         if (fields == null) {
             System.out.println("you inserted an invalid field!");
             return;
@@ -68,10 +69,20 @@ public class SignupMenu {
         String password = fields.get(1);
         String email = fields.get(2);
         String slogan = fields.get(4).equals("a") ? "" : fields.get(4);
-        if (globalMethods.doesUsernameExist(username)) {
+        if (password.equals("random")) {
+            password = signupMenuMethods.generateRandomPassword();
+            randomPasswordFlag = true;
+        }
+        if (slogan.equals("random")) {
+            slogan = signupMenuMethods.getRandomSlogan();
+        }
+        while (globalMethods.doesUsernameExist(username)) {
             System.out.println("this username already exists!");
-            return;
-        } else if (globalMethods.doesEmailExist(email)) {
+            username = globalMethods.getNewUsername(username, scanner);
+            if (username.equals("0"))
+                return;
+        }
+        if (globalMethods.doesEmailExist(email)) {
             System.out.println("this email already exists!");
             return;
         }
@@ -85,9 +96,14 @@ public class SignupMenu {
             System.out.println("your email format is invalid");
             return;
         }
-        System.out.println("Please re-enter your password here:");
-        if (!scanner.nextLine().equals(password)) {
-            System.out.println("your re-entered password was incorrect!");
+        if (!randomPasswordFlag) {
+            System.out.println("Please re-enter your password here:");
+            if (!scanner.nextLine().equals(password)) {
+                System.out.println("your re-entered password was incorrect!");
+                return;
+            }
+        } else if (!signupMenuMethods.checkRandomPassword(password, scanner)) {
+            System.out.println("you didn't re-enter password correctly!");
             return;
         }
         String recoveryQuestion = signupMenuMethods.getRecoveryQuestion(scanner);      /*this is number and the question together*/

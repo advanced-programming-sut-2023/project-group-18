@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public enum ShopMenuCommands {
     ;
-    private String regex;
+    private final String regex;
     ShopMenuCommands(String regex) {
         this.regex = regex;
     }

@@ -7,6 +7,7 @@ import com.example.view.ProfileMenu;
 import com.example.view.SignupMenu;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -17,6 +18,7 @@ public class Main {
             LoginMenu loginMenu = LoginMenu.getInstance();
             loginMenu.run(scanner);
         } else {
+            usersData.setLoggedInUser(usersData.getStayLoggedInUser());
             ProfileMenu profileMenu = ProfileMenu.getInstance();
             profileMenu.run(scanner);
         }
