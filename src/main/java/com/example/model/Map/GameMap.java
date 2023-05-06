@@ -1,18 +1,14 @@
 package com.example.model.Map;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 import com.example.model.Game;
-import com.example.model.NeedsId;
 import com.example.model.WriteInFile;
 import com.google.gson.Gson;
-// import com.google.gson.JsonSyntaxException;
 
-public class GameMap implements NeedsId, WriteInFile {
+public class GameMap implements WriteInFile {
     private static final int LENGTH = 3;
     private static final String line = "\n--------------------------------------------------------------------------------------------";
     private final Game game;
@@ -123,7 +119,7 @@ public class GameMap implements NeedsId, WriteInFile {
             System.err.println("Can't write in file!!!");
         }
     }
-
+/*
     @Override
     public File getNextIdFile() {
         File main = new File("src", "main");
@@ -154,7 +150,6 @@ public class GameMap implements NeedsId, WriteInFile {
             e.printStackTrace();
         }
     }
-
-
+*/
 
 }
