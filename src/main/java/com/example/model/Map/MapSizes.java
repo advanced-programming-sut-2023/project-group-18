@@ -1,4 +1,4 @@
-package com.example.model;
+package com.example.model.Map;
 
 public enum MapSizes {
     NORMAL ("normal", 200),

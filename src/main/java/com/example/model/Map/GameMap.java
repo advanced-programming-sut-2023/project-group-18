@@ -1,4 +1,4 @@
-package com.example.model;
+package com.example.model.Map;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,6 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import com.example.model.Game;
+import com.example.model.NeedsId;
+import com.example.model.WriteInFile;
 import com.google.gson.Gson;
 // import com.google.gson.JsonSyntaxException;
 
@@ -38,7 +41,7 @@ public class GameMap implements NeedsId, WriteInFile {
         map = new Cell[length][length];
         for (int yCordinate = 0; yCordinate < map.length; yCordinate++)
             for (int xCordinate = 0; xCordinate < map.length; xCordinate++)
-                map[yCordinate][xCordinate] = new Cell(xCordinate, yCordinate);
+                map[yCordinate][xCordinate] = new Cell(xCordinate, yCordinate, this);
     }
 
 
@@ -46,7 +49,7 @@ public class GameMap implements NeedsId, WriteInFile {
         return game;
     }
 
-    public Cell getTileByLocation(int xCordinate, int yCordinate) {
+    public Cell getCellByLocation(int xCordinate, int yCordinate) {
         return map[yCordinate][xCordinate];
     }
 

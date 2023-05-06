@@ -1,22 +1,29 @@
-package com.example.model;
+package com.example.model.Map;
 
 import java.util.ArrayList;
 
+import com.example.model.ConsoleColors;
 import com.example.model.Buildings.Building;
 import com.example.model.People.Unit;
 
 public class Cell implements ConsoleColors {
+    private final GameMap gameMap;
     private final ArrayList<Unit> units;
     private Building building;
     private Texture texture;
     private final int xCordinate;
     private final int yCordinate;
 
-    protected Cell(int xCordinate, int yCordinate) {
+    protected Cell(int xCordinate, int yCordinate, GameMap gameMap) {
+        this.gameMap = gameMap;
         units = new ArrayList<>();
         texture = Texture.getARondomTexture();
         this.xCordinate = xCordinate;
         this.yCordinate = yCordinate;
+    }
+
+    public GameMap getGameMap() {
+        return gameMap;
     }
 
     public ArrayList<Unit> getUnits() {
@@ -52,6 +59,10 @@ public class Cell implements ConsoleColors {
         return "Texture: " + texture.name
             + "\n"
                 ;
+    }
+
+    public double calculatePythagorean(Cell cell) {
+        return Math.sqrt(Math.pow(xCordinate, cell.xCordinate) + Math.pow(yCordinate, cell.yCordinate));
     }
 
     @Override

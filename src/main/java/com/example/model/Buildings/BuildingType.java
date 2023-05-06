@@ -1,7 +1,7 @@
 package com.example.model.Buildings;
 
 import com.example.model.Assets.Asset;
-import com.example.model.Texture;
+import com.example.model.Map.Texture;
 
 
 public enum BuildingType {

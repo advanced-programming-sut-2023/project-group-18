@@ -2,9 +2,9 @@ package com.example.model.Buildings;
 
 import java.util.HashMap;
 
-import com.example.model.Cell;
 import com.example.model.Governance;
 import com.example.model.Assets.Asset;
+import com.example.model.Map.Cell;
 
 public class Building {
     private final BuildingType buildingType;
