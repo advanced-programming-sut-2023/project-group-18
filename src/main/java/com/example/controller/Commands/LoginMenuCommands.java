@@ -4,8 +4,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum LoginMenuCommands {
-    LOGIN_USER("^user login (?<fields>(-[a-zA-Z] .+){2})(?<stayLoggedIn> --stay-logged-in)?$"),
-    FORGOT_PASS("^forgot my password -u (?<username>.+)$");
+    LOGIN_USER("^user login(?<fields>( -[a-zA-Z] ((\\S+)|(\".+\"))){2})(?<stayLoggedIn> --stay-logged-in)?"),
+    FORGOT_PASS("^forgot my password -u (?<username>.+)$"),
+    SIGNUP_MENU("^signup menu$"),
+    CURRENT_MENU("^show current menu$"),
+    EXIT("^exit$");
     private final String regex;
     LoginMenuCommands(String regex) {
         this.regex = regex;
