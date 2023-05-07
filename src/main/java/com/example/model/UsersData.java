@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 public class UsersData {
     private static UsersData usersData;
     private final ArrayList<User> users;
-    private User loggedInUser;
+    private User stayLoggedInUser;
 
     private UsersData() {
         users = new ArrayList<>(initializeUsers());
@@ -23,52 +23,17 @@ public class UsersData {
         return usersData == null ? usersData = new UsersData() : usersData;
     }
 
-    public void setLoggedInUser(User loggedInUser) {
-        this.loggedInUser = loggedInUser;
-    }
-
-    public User getLoggedInUser() {
-        return loggedInUser;
-    }
-
     public User getStayLoggedInUser() {
-        File main = new File("src", "main");
-        File resources = new File(main, "resources");
-        File json = new File(resources, "json");
-        File users = new File(json, "stayLoggedInUserId.txt");
-        try (Scanner scanner = new Scanner(users)) {
-            String username = scanner.nextLine();
-            return getUserByUsername(username);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return stayLoggedInUser;
     }
 
     public void setStayLoggedInUser(User stayLoggedInUser) {
-        writeStayLoggedInUserIdInFile(stayLoggedInUser);
+        this.stayLoggedInUser = stayLoggedInUser;
     }
 
-    public void logout() {
-        loggedInUser = null;
-        writeStayLoggedInUserIdInFile(loggedInUser);
-    }
 
-    private void writeStayLoggedInUserIdInFile(User user) {
-        File main = new File("src", "main");
-        File resources = new File(main, "resources");
-        File json = new File(resources, "json");
-        File users = new File(json, "stayLoggedInUserId.txt");
-        try {
-            FileWriter fileWriter = new FileWriter(users);
-            String username = (user == null ? "?" : user.getUsername());
-//            String username = user.getUsername();
-//            username = username == null ? "?" : username;
-            fileWriter.write(username);
-            fileWriter.close();
-        } catch (IOException e) {
-            System.err.println("Can't write in file!!!");
-        }
+    public void writeStayLoggedInUserIdInFile() {
+        // TODO: write
     }
 
     public void writeUsersInFile() {
@@ -102,10 +67,6 @@ public class UsersData {
         return false;
     }
 
-    public boolean isPasswordCorrect(String username, String password) {
-        User user = getUserByUsername(username);
-        return user.isPasswordCorrect(password);
-    }
 
     private List<User> initializeUsers() {
         Gson gson = new Gson();
@@ -129,7 +90,5 @@ public class UsersData {
         return null;
     }
 
-    public ArrayList<User> getUsers() {
-        return users;
-    }
+
 }

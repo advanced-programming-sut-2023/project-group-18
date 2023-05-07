@@ -1,17 +1,21 @@
 package com.example.model.People;
 
-public enum UnitType {
+import com.example.model.Buildings.BuildingType;
 
+public enum UnitType {
+    PEASANTS("Peasants", 0,1);
     ;
 
     private final String name;
     private final int maxSpeed;
     private final int maxHitpoint;
+    private final BuildingType buildingType;
 
-    UnitType(String name, int maxSpeed, int maxHitpoint) {
+    UnitType(String name, int maxSpeed, int maxHitpoint, BuildingType buildingType) {
         this.name = name;
         this.maxSpeed = maxSpeed;
         this.maxHitpoint = maxHitpoint;
+        this.buildingType = buildingType;
     }
 
     public static UnitType getUnitTypeByName(String name) {
@@ -20,7 +24,13 @@ public enum UnitType {
         return null;
     }
 
-
+    public static UnitType getUnitTypeByBuildingType(BuildingType buildingType){
+        for (UnitType unitType : UnitType.values()){
+            if (unitType.buildingType.equals(buildingType))
+                return unitType;
+        }
+        return null;
+    }
     public String getName() {
         return name;
     }
