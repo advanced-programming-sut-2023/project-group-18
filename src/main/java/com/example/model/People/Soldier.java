@@ -1,7 +1,7 @@
 package com.example.model.People;
 
+import com.example.model.Cell;
 import com.example.model.Governance;
-import com.example.model.Map.Cell;
 
 public class Soldier extends Unit {
     private final SoldierType soldierType;

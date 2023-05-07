@@ -1,7 +1,7 @@
 package com.example.model.Buildings;
 
+import com.example.model.Cell;
 import com.example.model.Governance;
-import com.example.model.Map.Cell;
 import com.example.model.People.Soldier;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class Wall extends Building{
     private boolean hasShield;
     private final int soldiersCapacity;
     private final ArrayList<Soldier> soldiers;
-    private final boolean hasLadder;
+    private final ArrayList<Stair> stairs;
 
     public Wall(BuildingType buildingType, Governance governance, Cell cell) {
         super(buildingType, governance, cell);
@@ -19,7 +19,7 @@ public class Wall extends Building{
         this.hasShield = false;
         this.soldiersCapacity = 5;
         this.soldiers = new ArrayList<>();
-        this.hasLadder = false;
+        this.stairs = new ArrayList<>();
     }
 
     public int getHeight() {
@@ -38,13 +38,6 @@ public class Wall extends Building{
         return soldiers;
     }
 
-    public boolean hasLadder() {
-        return hasLadder;
-    }
-
-    public boolean addLadder(){
-
-    }
 
     public boolean canMove(){
         return this.getHitpoint() == this.getBuildingType().getHitpoint();

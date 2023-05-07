@@ -8,7 +8,6 @@ import com.example.model.Assets.AssetType;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Buildings.Storage;
-import com.example.model.Map.Cell;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
 
@@ -21,6 +20,7 @@ public class Governance {
     private final PopularityFactors popularityFactors;
     private int gold;
     private int nonMilitaryCharacters;
+    private int remainingNonMilitary;
     private final ArrayList<Trade> tradeList;
     private final ArrayList<Trade> requestList;
     private final ArrayList<Trade> tradeHistory;
@@ -34,6 +34,7 @@ public class Governance {
         popularityFactors = new PopularityFactors(this);
         gold = 100;
         nonMilitaryCharacters = 0;
+        this.remainingNonMilitary = 0;
         tradeList = new ArrayList<>();
         requestList = new ArrayList<>();
         tradeHistory = new ArrayList<>();
@@ -264,4 +265,19 @@ public class Governance {
         return result;
     }
 
+    public int getAssetCount(Asset asset) {
+        return assets.get(asset.getAssetType()).get(asset);
+    }
+
+    public int getRemainingNonMilitary(){
+        return remainingNonMilitary;
+    }
+
+    public void updateRemainingNonMilitary(){
+        this.remainingNonMilitary = this.nonMilitaryCharacters;
+    }
+
+    public void removeRemainingCharacter(){
+        this.remainingNonMilitary --;
+    }
 }

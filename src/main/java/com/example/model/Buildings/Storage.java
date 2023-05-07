@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.example.model.Governance;
 import com.example.model.Assets.Asset;
 import com.example.model.Assets.AssetType;
-import com.example.model.Map.Cell;
+import com.example.model.Cell;
 
 public class Storage extends Building {
     private final StorageType storageType;
@@ -14,11 +14,12 @@ public class Storage extends Building {
     private final HashMap<Asset, Integer> products;
     private int currentCapacity;
 
-    public Storage(String buildingType, Governance governance, Cell cell, AssetType type, int capacity) {
+    public Storage(BuildingType buildingType, Governance governance, Cell cell, AssetType type) {
         super(buildingType, governance, cell);
         products = Asset.getAllAssets(type);
         this.type = type;
-        this.capacity = capacity;
+        this.capacity = buildingType.getCapacity();
+        this.storageType = type.getStorageType();
     }
 
     public AssetType getType() {

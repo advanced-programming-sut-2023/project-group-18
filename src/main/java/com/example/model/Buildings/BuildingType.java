@@ -264,4 +264,13 @@ public enum BuildingType {
                 return buildingType;
         return null;
     }
+
+    public static Asset getAnotherWeapon(BuildingType buildingType, Asset weapon) {
+        for (BuildingType buildingType1 : BuildingType.values()) {
+            if (buildingType1.getName().equals(buildingType1.getName()))
+                if (!buildingType1.getProductionAsset().equals(weapon))
+                    return buildingType1.getOutputProduct();
+        }
+        return null;
+    }
 }

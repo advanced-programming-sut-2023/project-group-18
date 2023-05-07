@@ -1,7 +1,7 @@
 package com.example.model.Buildings;
 
 import com.example.model.Assets.Asset;
-import com.example.model.Map.Cell;
+import com.example.model.Cell;
 import com.example.model.Governance;
 import com.example.model.People.Soldier;
 
@@ -22,8 +22,9 @@ public class Tower extends Building{
         hasLadder = false;
         soldiersCapacity = buildingType.getSoldiersCapacity();
         soldiers = new ArrayList<>();
-        strong = true;
-        canDeployEquipment = true;
+        if (buildingType.equals(BuildingType.CIRCLE_TOWER) || buildingType.equals(BuildingType.SQUARE_TOWER))
+            strong = true;
+        else strong = false;
     }
 
     public int getFireRange() {
@@ -66,10 +67,6 @@ public class Tower extends Building{
 
     public boolean isStrong(){
         return strong;
-    }
-
-    public boolean canDeployEquipment() {
-        return canDeployEquipment;
     }
     public boolean canRepair(){
         Asset asset = Asset.STONE;
