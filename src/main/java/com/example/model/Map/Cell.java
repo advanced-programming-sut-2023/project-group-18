@@ -61,6 +61,9 @@ public class Cell implements ConsoleColors {
                 ;
     }
 
+    public boolean isHole(){
+        return this.texture.equals(Texture.HOLE);
+    }
     public double calculatePythagorean(Cell cell) {
         return Math.sqrt(Math.pow(xCordinate, cell.xCordinate) + Math.pow(yCordinate, cell.yCordinate));
     }

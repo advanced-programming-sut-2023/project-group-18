@@ -4,7 +4,7 @@ import com.example.model.Cell;
 import com.example.model.Governance;
 
 public class Tunneler extends Soldier{
-    public Tunneler(Cell personCell, Governance governance, SoldierTypes soldierType) {
+    public Tunneler(Cell personCell, Governance governance, SoldierType soldierType) {
         super(personCell, governance, soldierType);
     }
 

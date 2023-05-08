@@ -3,7 +3,8 @@ package com.example.model.People;
 import com.example.model.Buildings.BuildingType;
 
 public enum UnitType {
-    PEASANTS("Peasants", 0,1);
+    SOLDIER("Soldier", 0, 0,null),
+    PEASANTS("Peasants", 0,1,null);
     ;
 
     private final String name;
