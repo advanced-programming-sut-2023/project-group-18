@@ -104,11 +104,11 @@ public enum SoldierType {
         return horseType;
     }
 
-    public boolean isCanDig() {
+    public boolean canDig() {
         return canDig;
     }
 
-    public boolean isCanClimb() {
+    public boolean canClimb() {
         return canClimb;
     }
 }

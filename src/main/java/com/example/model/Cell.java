@@ -3,6 +3,7 @@ package com.example.model;
 import java.util.ArrayList;
 
 import com.example.model.Buildings.Building;
+import com.example.model.Map.Texture;
 import com.example.model.People.Unit;
 
 public class Cell implements ConsoleColors {

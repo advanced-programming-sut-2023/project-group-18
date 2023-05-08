@@ -21,8 +21,8 @@ public enum Texture implements ConsoleColors {
     RIVER ("river", BLUE_BACKGROUND),
     POOL ("pool", BLUE_BACKGROUND),
     BEACH ("beach", BLUE_BACKGROUND),
-    SEA ("sea", BLUE_BACKGROUND)
-
+    SEA ("sea", BLUE_BACKGROUND),
+    HOLE("hole", BLUE_BACKGROUND)
     ;
     private static final List<Texture> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
     private static final int SIZE = VALUES.size();
