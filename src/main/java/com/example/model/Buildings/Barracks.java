@@ -1,6 +1,5 @@
 package com.example.model.Buildings;
 
-import com.example.model.Cell;
 import com.example.model.Governance;
 import com.example.model.People.SoldierType;
 

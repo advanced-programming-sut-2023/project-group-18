@@ -101,9 +101,9 @@ public class GameMap implements WriteInFile {
 
     public boolean areCordinatesValid(int xCordinate, int yCordinate) {
         return (xCordinate - 2 * LENGTH) >= 0
-            && (xCordinate + 2 * LENGTH) <= length
-            && (yCordinate - LENGTH) >= 0
-            && (yCordinate + LENGTH) <= length;
+                && (xCordinate + 2 * LENGTH) <= length
+                && (yCordinate - LENGTH) >= 0
+                && (yCordinate + LENGTH) <= length;
     }
 
     @Override

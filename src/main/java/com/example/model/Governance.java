@@ -8,6 +8,7 @@ import com.example.model.Assets.AssetType;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Buildings.Storage;
+import com.example.model.Map.Cell;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
 

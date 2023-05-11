@@ -5,7 +5,6 @@ import java.util.HashMap;
 import com.example.model.Governance;
 import com.example.model.Assets.Asset;
 import com.example.model.Assets.AssetType;
-import com.example.model.Cell;
 
 public class Storage extends Building {
     private final StorageType storageType;

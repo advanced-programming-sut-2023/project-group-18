@@ -14,7 +14,7 @@ public class Cell implements ConsoleColors {
     private final int xCordinate;
     private final int yCordinate;
 
-    protected Cell(int xCordinate, int yCordinate, GameMap gameMap) {
+    public Cell(int xCordinate, int yCordinate, GameMap gameMap) {
         this.gameMap = gameMap;
         units = new ArrayList<>();
         texture = Texture.getARondomTexture();

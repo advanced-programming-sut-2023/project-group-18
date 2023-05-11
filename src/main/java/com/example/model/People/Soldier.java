@@ -1,9 +1,10 @@
 package com.example.model.People;
 
-import com.example.model.Cell;
+import com.example.model.Map.Cell;
 import com.example.model.Governance;
 import com.example.model.Map.Texture;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Soldier extends Unit {
@@ -13,6 +14,7 @@ public class Soldier extends Unit {
     private final int speed;
     private final int cost;
     private final int attackRange;
+    private int damage;
 
     public Soldier(Cell personCell, Governance governance, SoldierType soldierType) {
         super(governance,UnitType.SOLDIER,personCell);
@@ -22,7 +24,17 @@ public class Soldier extends Unit {
         this.speed = soldierType.getSpeed();
         this.cost = soldierType.getCost();
         this.attackRange = soldierType.getAttackRange();
+        this.damage = soldierType.getAttackPower() * (20 + governance.getFearRate());
     }
+
+    public void updateDamage(){
+        this.damage = soldierType.getAttackPower() * (20 + this.getGovernance().getFearRate());
+    }
+    public int getDamage() {
+        updateDamage();
+        return damage;
+    }
+
     public boolean canDigHole(){
         return this.soldierType.canDig();
     }
@@ -36,10 +48,13 @@ public class Soldier extends Unit {
     }
 
     public void attack(Cell cell){
-        //Todo
-    }
-
-    public void move(Cell cell){
-        //Todo
+        Unit enemyUnit = null;
+        for (Unit unit : cell.getUnits()){
+            if (!unit.getGovernance().equals(this.getGovernance()))
+                enemyUnit = unit;
+        }
+        if (enemyUnit == null)
+            return;
+        enemyUnit.addHitpoint(-this.getDamage());
     }
 }

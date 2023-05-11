@@ -1,6 +1,5 @@
 package com.example.model.People;
 
-import com.example.model.Cell;
 import com.example.model.Governance;
 
 public class Engineer extends Soldier{

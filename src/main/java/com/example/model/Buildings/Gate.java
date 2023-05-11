@@ -1,7 +1,5 @@
 package com.example.model.Buildings;
 
-import com.example.model.Assets.Asset;
-import com.example.model.Cell;
 import com.example.model.Governance;
 
 public class Gate extends Tower{
