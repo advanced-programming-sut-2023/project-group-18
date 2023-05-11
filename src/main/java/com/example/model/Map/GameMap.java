@@ -3,12 +3,13 @@ package com.example.model.Map;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.example.model.Game;
 import com.example.model.WriteInFile;
 import com.google.gson.Gson;
 
-public class GameMap implements WriteInFile {
+public class GameMap implements WriteInFile, Successor {
     private static final int LENGTH = 3;
     private static final String line = "\n--------------------------------------------------------------------------------------------";
     private final Game game;
@@ -118,6 +119,20 @@ public class GameMap implements WriteInFile {
         } catch (IOException e) {
             System.err.println("Can't write in file!!!");
         }
+    }
+
+    public ArrayList<Cell> neighbourCells(Cell cell){
+        ArrayList<Cell> neighbourCells = new ArrayList<>();
+        int xCoordinate = cell.getxCordinate();
+        int yCoordinate = cell.getyCordinate();
+        for (int[] neighbour : SUCCESSORS){
+            int x = xCoordinate+neighbour[0];
+            int y = yCoordinate+neighbour[1];
+            Cell neighbourCell = game.getGameMap().getCellByLocation(x,y);
+            if (neighbourCell != null)
+                neighbourCells.add(neighbourCell);
+        }
+        return neighbourCells;
     }
 /*
     @Override

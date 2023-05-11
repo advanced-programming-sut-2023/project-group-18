@@ -24,7 +24,7 @@ public class Unit extends Object implements Successor {
         this.governance = governance;
         this.unitType = unitType;
         this.unitCell = unitCell;
-        unitCell.getUnits().add(this);
+        unitCell.addUnit(this);
         this.isFree = true;
         hitpoint = unitType.getMaxHitpoint();
         speed = unitType.getMaxSpeed();

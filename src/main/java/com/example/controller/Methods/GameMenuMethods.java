@@ -3,6 +3,7 @@ package com.example.controller.Methods;
 import com.example.model.Assets.Asset;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
+import com.example.model.Buildings.Tower;
 import com.example.model.Game;
 import com.example.model.Governance;
 import com.example.model.Map.Cell;
@@ -10,6 +11,8 @@ import com.example.model.Map.Texture;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
 import com.example.model.People.UnitType;
+
+import java.util.ArrayList;
 
 public class GameMenuMethods {
     private static GameMenuMethods gameMenuMethods;
@@ -123,7 +126,27 @@ public class GameMenuMethods {
         governance.removeAssetFromStorage(armor, count);
         governance.createSoldier(count);
         Cell barracksCell = game.getSelectedBuilding().getCell();
-        Soldier soldier = new Soldier(barracksCell, governance, soldierType);
-        barracksCell.addUnit(soldier);
+        new Soldier(barracksCell, governance, soldierType);
+    }
+
+    public boolean canRepair(){
+        Building building = game.getSelectedBuilding();
+        return building instanceof Tower;
+    }
+
+    public boolean haveEnoughAssetForRepair(){
+        Tower tower = (Tower)game.getSelectedBuilding();
+        return tower.canRepair();
+    }
+
+    public boolean haveEnemyInNeighbourCells(){
+        Building building = game.getSelectedBuilding();
+        ArrayList<Cell> neighbourCells = game.getGameMap().neighbourCells(building.getCell());
+        neighbourCells.add(building.getCell());
+        for (Cell cell : neighbourCells){
+            if (cell.hasEnemy(game.getCurrentGovernance()))
+                return true;
+        }
+        return false;
     }
 }
