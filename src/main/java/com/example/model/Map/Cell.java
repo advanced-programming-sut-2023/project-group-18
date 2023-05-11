@@ -68,6 +68,10 @@ public class Cell implements ConsoleColors {
         return Math.sqrt(Math.pow(xCordinate, cell.xCordinate) + Math.pow(yCordinate, cell.yCordinate));
     }
 
+    public void addUnit(Unit unit){
+        this.units.add(unit);
+    }
+
     @Override
     public String toString() {
         return texture.color + "      " + RESET;

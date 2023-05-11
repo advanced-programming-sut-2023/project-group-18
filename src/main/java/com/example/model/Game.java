@@ -2,6 +2,7 @@ package com.example.model;
 
 import java.util.ArrayList;
 
+import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Map.Cell;
 import com.example.model.Map.GameMap;
@@ -11,6 +12,7 @@ public class Game {
     private final GameMap gameMap;
     private final ArrayList<Governance> governances;
     private Governance currentGovernance;
+    private Building selectedBuilding;
     private int players;
     private int round;
     private int turn;
@@ -19,7 +21,8 @@ public class Game {
         gameMap = new GameMap(size, this);
         governances = new ArrayList<>();
         players = round = turn = 0;
-        this.currentGovernance = null;
+        currentGovernance = null;
+        selectedBuilding = null;
     }
 
     public GameMap getGameMap() {
@@ -67,5 +70,13 @@ public class Game {
 
     public Governance getCurrentGovernance() {
         return currentGovernance;
+    }
+
+    public Building getSelectedBuilding() {
+        return selectedBuilding;
+    }
+
+    public void selectBuilding(Building selectedBuilding) {
+        this.selectedBuilding = selectedBuilding;
     }
 }
