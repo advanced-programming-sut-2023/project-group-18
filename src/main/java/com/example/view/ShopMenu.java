@@ -21,11 +21,11 @@ public class ShopMenu {
         while (true) {
             input = scanner.nextLine();
             if (ShopMenuCommands.getMatcher(input, ShopMenuCommands.SHOW_RPICE_LIST).find()) {
-                showPriceList();
+//                showPriceList();
             } else if ((matcher = ShopMenuCommands.getMatcher(input, ShopMenuCommands.BUY)).find()) {
-                buy(matcher);
+//                buy(matcher);
             } else if ((matcher = ShopMenuCommands.getMatcher(input, ShopMenuCommands.SELL)).find()) {
-                sell(matcher);
+//                sell(matcher);
             }
         }
     }

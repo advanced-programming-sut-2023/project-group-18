@@ -32,7 +32,8 @@ public enum GameMenuCommands {
     DROP_ROCK("^droprock (?<fields>( -\\S \\S+){3})$"),
     DROP_TREE("^droptree (?<fields>( -\\S \\S+){3})$"),
     DROP_UNIT("^dropunit (?<fields>( -\\S \\S+){4})$"),
-    CURRENT_MENU("^show current menu$");
+    CURRENT_MENU("^show current menu$"),
+    SHOW_MAP("^show map (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$");
     private String regex;
 
     GameMenuCommands(String regex) {

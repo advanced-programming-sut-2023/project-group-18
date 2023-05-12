@@ -18,18 +18,17 @@ public class MapMenu {
         globalMethods = GlobalMethods.getInstance();
     }
 
-    public MapMenu getMapMenu() {
+    public static MapMenu getMapMenu() {
         return mapMenu == null ? mapMenu = new MapMenu() : mapMenu;
     }
 
     public void run(Scanner scanner) {
         String input;
         Matcher matcher;
+        System.out.println(MapMenuMethods.getInstance().showMap());
         while (true) {
             input = scanner.nextLine();
-            if ((matcher = MapMenuCommands.getMatcher(input, MapMenuCommands.SHOW_MAP)).find()) {
-                showMap(matcher);
-            } else if ((matcher = MapMenuCommands.getMatcher(input, MapMenuCommands.MOVE_MAP)).find()) {
+            if ((matcher = MapMenuCommands.getMatcher(input, MapMenuCommands.MOVE_MAP)).find()) {
                 moveMap(matcher);
             } else if ((matcher = MapMenuCommands.getMatcher(input, MapMenuCommands.SHOW_DETAILS)).find()) {
                 showDetails(matcher);
@@ -39,11 +38,6 @@ public class MapMenu {
                 globalMethods.invalidCommand();
             }
         }
-    }
-
-    private void showMap(Matcher matcher) {
-        int xCoordinate = mapMenuMethods.getXCoordinate(matcher);
-        int yCoordinate = mapMenuMethods.getYCoordinate(matcher);
     }
 
     private void moveMap(Matcher matcher) {

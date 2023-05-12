@@ -1,6 +1,7 @@
 package com.example.view;
 
 import com.example.controller.Commands.ProfileMenuCommands;
+import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.LoginMenuMethods;
 import com.example.controller.Methods.ProfileMenuMethods;
@@ -64,7 +65,9 @@ public class ProfileMenu {
             } else if (ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.EXIT).find()) {
                 break;
             } else if ((matcher = ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.START_GAME)).find()) {
-                startGame(matcher, scanner);
+                if (!startGame(matcher, scanner)) {
+                    break;
+                }
             } else {
                 globalMethods.invalidCommand();
             }
@@ -187,6 +190,12 @@ public class ProfileMenu {
         }
         String size = profileMenuMethods.getMapSize(scanner);
         ArrayList<User> players = profileMenuMethods.getPlayers(usernames);
+        System.out.print("you entered a game with ");
+        for (String user : usernames) {
+            System.out.print(user + " ");
+        }
+        System.out.println();
+        GameMenuMethods.gameMenuMethods().run(scanner, players, size);
         return true;
     }
 }
