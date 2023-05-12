@@ -95,5 +95,108 @@ public class GameMenu {
 
     }
 
-    private
+    private void showPopularity() {
+
+    }
+
+    private void showFoodList() {
+
+    }
+
+    private void foodRate() {
+
+    }
+
+    private void showFoodRate() {
+
+    }
+
+    private void setTaxRate(Matcher matcher) {
+
+    }
+
+    private void showTaxRate() {
+    }
+
+    private void setFearRate(Matcher matcher) {
+
+    }
+
+    private void selectBuilding(Matcher matcher) {
+
+    }
+
+    private void createUnit(Matcher matcher) {
+
+    }
+
+    private void repair() {
+
+    }
+
+    private void selectUnit() {
+    }
+
+    private void moveUnit(Matcher matcher) {
+
+    }
+
+    private void patrolUnit(Matcher matcher) {
+
+    }
+
+    private void setState(Matcher matcher) {
+
+    }
+
+    private void attack(Matcher matcher) {
+
+    }
+
+    private void airAttack(Matcher matcher) {
+
+    }
+
+    private void pourOil(Matcher matcher) {
+
+    }
+
+    private void digTunnel(Matcher matcher) {
+
+    }
+
+    private void buildEquipment(Matcher matcher) {
+
+    }
+
+    private void disbandUnit() {
+
+    }
+
+    private void setTexture(Matcher matcher) {
+
+    }
+
+    private void setTextureRectangle(Matcher matcher) {
+
+    }
+
+    private void clearUnits(Matcher matcher) {
+
+    }
+
+    private void dropRock(Matcher matcher) {
+
+    }
+
+    private void dropTree(Matcher matcher) {
+
+    }
+
+    private void dropBuilding(Matcher matcher) {
+    }
+
+    private void dropUnit(Matcher matcher) {
+
+    }
 }
