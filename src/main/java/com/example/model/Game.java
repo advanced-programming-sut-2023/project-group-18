@@ -10,6 +10,7 @@ import com.example.model.People.SoldierType;
 import com.example.model.People.Unit;
 
 public class Game {
+    private static Game instance;
     private final GameMap gameMap;
     private final ArrayList<Governance> governances;
     private final int players;
@@ -26,6 +27,10 @@ public class Game {
         round = turn = 0;
         currentGovernance = governances.get(0);
         selectedBuilding = null;
+    }
+
+    public static Game getInstance() {
+        return instance == null ? instance = new Game() : instance;
     }
 
     private ArrayList<Governance> makeNewGovernances(ArrayList<User> users) {
