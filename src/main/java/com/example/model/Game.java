@@ -7,12 +7,14 @@ import com.example.model.Buildings.BuildingType;
 import com.example.model.Map.Cell;
 import com.example.model.Map.GameMap;
 import com.example.model.People.SoldierType;
+import com.example.model.People.Unit;
 
 public class Game {
     private final GameMap gameMap;
     private final ArrayList<Governance> governances;
     private Governance currentGovernance;
     private Building selectedBuilding;
+    private Unit selectedUnit;
     private int players;
     private int round;
     private int turn;
@@ -78,5 +80,14 @@ public class Game {
 
     public void selectBuilding(Building selectedBuilding) {
         this.selectedBuilding = selectedBuilding;
+    }
+
+    public Unit getSelectedUnit() {
+        return selectedUnit;
+    }
+
+    public void selectUnit(Unit selectedUnit) {
+        if (selectedUnit.isControllable())
+            this.selectedUnit = selectedUnit;
     }
 }

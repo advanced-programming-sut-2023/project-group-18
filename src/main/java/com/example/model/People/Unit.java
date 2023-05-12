@@ -18,7 +18,9 @@ public class Unit extends Object implements Successor {
     private int hitpoint;
     private int speed;
     private Cell targetCell;
+    private Cell patrolCell;
     private LinkedList<Cell> path;
+    private final boolean controllable;
 
     public Unit(Governance governance, UnitType unitType, Cell unitCell) {
         this.governance = governance;
@@ -28,6 +30,7 @@ public class Unit extends Object implements Successor {
         this.isFree = true;
         hitpoint = unitType.getMaxHitpoint();
         speed = unitType.getMaxSpeed();
+        this.controllable = unitType.isControllable();
     }
 
     public Governance getGovernance() {
@@ -76,6 +79,14 @@ public class Unit extends Object implements Successor {
 
     public void setTargetCell(Cell targetCell) {
         this.targetCell = targetCell;
+    }
+
+    public Cell getPatrolCell() {
+        return patrolCell;
+    }
+
+    public void setPatrolCell(Cell patrolCell) {
+        this.patrolCell = patrolCell;
     }
 
     public boolean addHitpoint(int hitpoint) {
@@ -164,4 +175,22 @@ public class Unit extends Object implements Successor {
         return false;
     }
 
+    public LinkedList<Cell> getPath() {
+        return path;
+    }
+
+    public boolean isControllable() {
+        return controllable;
+    }
+
+    public void patrol(){
+        movePath();
+        Cell cell = this.patrolCell;
+        if (this.unitCell.equals(this.targetCell)){
+            this.patrolCell = this.targetCell;
+            this.targetCell = cell;
+            findPath();
+            patrol();
+        }
+    }
 }

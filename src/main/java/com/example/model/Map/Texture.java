@@ -8,21 +8,21 @@ import java.util.Random;
 import com.example.model.ConsoleColors;
 
 public enum Texture implements ConsoleColors {
-    GROUND ("ground", BLACK_BACKGROUND_BRIGHT),
-    GRAVEL ("gravel", YELLOW_BACKGROUND),
-    STONE ("stone", WHITE_BACKGROUND),
-    IRON ("iron", WHITE_BACKGROUND_BRIGHT),
-    LAWN ("lawn", RED_BACKGROUND),
-    RARE_GRASSLAND ("rare grassland", GREEN_BACKGROUND),
-    OVERGROWN_GRASSLAND ("overgrown grassland", GREEN_BACKGROUND_BRIGHT),
-    PETROLEUM ("petroleum", PURPLE_BACKGROUND),
-    PLAIN ("plain", BLUE_BACKGROUND),
-    SHALLOW_WATER ("shallow water", BLUE_BACKGROUND),
-    RIVER ("river", BLUE_BACKGROUND),
-    POOL ("pool", BLUE_BACKGROUND),
-    BEACH ("beach", BLUE_BACKGROUND),
-    SEA ("sea", BLUE_BACKGROUND),
-    HOLE("hole", BLUE_BACKGROUND)
+    GROUND ("ground", BLACK_BACKGROUND_BRIGHT, true),
+    GRAVEL ("gravel", YELLOW_BACKGROUND, true),
+    STONE ("stone", WHITE_BACKGROUND, true),
+    IRON ("iron", WHITE_BACKGROUND_BRIGHT, true),
+    LAWN ("lawn", RED_BACKGROUND,true),
+    RARE_GRASSLAND ("rare grassland", GREEN_BACKGROUND, true),
+    OVERGROWN_GRASSLAND ("overgrown grassland", GREEN_BACKGROUND_BRIGHT, true),
+    PETROLEUM ("petroleum", PURPLE_BACKGROUND, true),
+    PLAIN ("plain", BLUE_BACKGROUND, true),
+    SHALLOW_WATER ("shallow water", BLUE_BACKGROUND,false),
+    RIVER ("river", BLUE_BACKGROUND, false),
+    POOL ("pool", BLUE_BACKGROUND, false),
+    BEACH ("beach", BLUE_BACKGROUND, false),
+    SEA ("sea", BLUE_BACKGROUND, false),
+    HOLE("hole", BLUE_BACKGROUND, false)
     ;
     private static final List<Texture> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
     private static final int SIZE = VALUES.size();
@@ -30,10 +30,12 @@ public enum Texture implements ConsoleColors {
 
     public final String name;
     public final String color;
+    private final boolean isReachable;
 
-    Texture(String name, String color) {
+    Texture(String name, String color, boolean isReachable) {
         this.name = name;
         this.color = color;
+        this.isReachable = isReachable;
     }
 
     public static Texture getTextureByName(String name) {
@@ -46,4 +48,7 @@ public enum Texture implements ConsoleColors {
         return VALUES.get(RANDOM.nextInt(SIZE));
     }
 
+    public boolean isReachable() {
+        return isReachable;
+    }
 }

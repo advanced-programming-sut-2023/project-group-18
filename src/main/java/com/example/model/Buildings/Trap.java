@@ -1,6 +1,7 @@
 package com.example.model.Buildings;
 
 import com.example.model.Governance;
+import com.example.model.Map.Cell;
 
 public class Trap extends Building{
     private final int damage;

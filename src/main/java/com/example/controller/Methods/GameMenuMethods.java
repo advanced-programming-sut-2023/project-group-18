@@ -3,6 +3,7 @@ package com.example.controller.Methods;
 import com.example.model.Assets.Asset;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
+import com.example.model.Buildings.Gate;
 import com.example.model.Buildings.Tower;
 import com.example.model.Game;
 import com.example.model.Governance;
@@ -10,6 +11,7 @@ import com.example.model.Map.Cell;
 import com.example.model.Map.Texture;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
+import com.example.model.People.Unit;
 import com.example.model.People.UnitType;
 
 import java.util.ArrayList;
@@ -149,4 +151,73 @@ public class GameMenuMethods {
         }
         return false;
     }
+
+    public boolean haveSoldierInCell(int xCoordinate, int yCoordinate){
+        Cell cell = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
+        Governance governance = game.getCurrentGovernance();
+        for (Unit unit : cell.getUnits()){
+            if (unit.isControllable()){
+                if (unit.getGovernance().equals(governance))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public void selectUnit(int xCoordinate, int yCoordinate){
+        Cell cell = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
+        Governance governance = game.getCurrentGovernance();
+        for (Unit unit : cell.getUnits()){
+            if (unit.isControllable()){
+                if (unit.getGovernance().equals(governance)){
+                    game.selectUnit(unit);
+                    return;
+                }
+            }
+        }
+    }
+
+    public boolean isDestinationValid(int xCoordinate, int yCoordinate){
+        Cell cell = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
+        Texture texture = cell.getTexture();
+        return texture.isReachable();
+    }
+
+    public void move(int xCoordinate, int yCoordinate){
+        Cell destination = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
+        Unit selectedUnit = game.getSelectedUnit();
+        selectedUnit.setTargetCell(destination);
+        selectedUnit.findPath();
+        selectedUnit.movePath();
+    }
+
+    public void patrol(int xCoordinate, int yCoordinate){
+        Cell destination = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
+        Unit selectedUnit = game.getSelectedUnit();
+        selectedUnit.setPatrolCell(selectedUnit.getUnitCell());
+        selectedUnit.setTargetCell(destination);
+        selectedUnit.findPath();
+    }
+
+    public void cancelPatrol(){
+        Unit selectedUnit = game.getSelectedUnit();
+        selectedUnit.setPatrolCell(null);
+        selectedUnit.setTargetCell(null);
+        selectedUnit.getPath().clear();
+    }
+
+    public boolean checkIsGate(){
+        return game.getSelectedBuilding() instanceof Gate;
+    }
+
+    public void closeGate(){
+        Gate gate = (Gate) game.getSelectedBuilding();
+        gate.close();
+    }
+
+    public void openGate(){
+        Gate gate = (Gate) game.getSelectedBuilding();
+        gate.open();
+    }
+
 }
