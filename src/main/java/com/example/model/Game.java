@@ -12,19 +12,27 @@ import com.example.model.People.Unit;
 public class Game {
     private final GameMap gameMap;
     private final ArrayList<Governance> governances;
+    private final int players;
     private Governance currentGovernance;
     private Building selectedBuilding;
     private Unit selectedUnit;
-    private int players;
     private int round;
     private int turn;
 
-    public Game(String size) {
+    public Game(String size, ArrayList<User> users) {
         gameMap = new GameMap(size, this);
-        governances = new ArrayList<>();
-        players = round = turn = 0;
-        currentGovernance = null;
+        governances = makeNewGovernances(users);
+        players = users.size();
+        round = turn = 0;
+        currentGovernance = governances.get(0);
         selectedBuilding = null;
+    }
+
+    private ArrayList<Governance> makeNewGovernances(ArrayList<User> users) {
+        ArrayList<Governance> governances = new ArrayList<>();
+        for (User user : users)
+            governances.add(new Governance(user));
+        return governances;
     }
 
     public GameMap getGameMap() {
@@ -47,11 +55,6 @@ public class Game {
         for (Governance governance : governances)
             if (governance.getOwner().equals(user)) return true;
         return false;
-    }
-
-    public void addPlayer(User user) {
-        governances.add(new Governance(user));
-        players++;
     }
 
     public void addBuilding(Governance governance, BuildingType buildingType, int xCordinate, int yCordinate) {
@@ -90,4 +93,5 @@ public class Game {
         if (selectedUnit.isControllable())
             this.selectedUnit = selectedUnit;
     }
+
 }
