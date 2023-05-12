@@ -10,8 +10,16 @@ import com.example.model.Governance;
 import com.example.model.Map.Cell;
 import com.example.model.Map.Texture;
 import com.example.model.People.*;
+import com.example.model.People.Soldier;
+import com.example.model.People.SoldierType;
+import com.example.model.People.Unit;
+import com.example.model.People.UnitType;
+import com.example.model.User;
+import com.example.view.GameMenu;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.regex.Matcher;
 
 public class GameMenuMethods {
     private static GameMenuMethods gameMenuMethods;
@@ -22,6 +30,12 @@ public class GameMenuMethods {
 
     public static GameMenuMethods gameMenuMethods() {
         return gameMenuMethods == null ? gameMenuMethods = new GameMenuMethods() : gameMenuMethods;
+    }
+
+    public void run(Scanner scanner, ArrayList<User> players, String size) {
+        game.setGameMap(size);
+        game.makeNewGovernances(players);
+        GameMenu.getGameMenu().run(scanner);
     }
 
     public boolean areCoordinatesValid(int xCoordinate, int yCoordinate) {
@@ -224,6 +238,43 @@ public class GameMenuMethods {
     public void openGate(){
         Gate gate = (Gate) game.getSelectedBuilding();
         gate.open();
+    }
+
+
+    /*--------------------------------------------------------------------------------------------------------------------------------*/
+
+    public int getXCoordinate(Matcher matcher) {
+        if (matcher.group("xCoordinate") != null) {
+            return Integer.parseInt(matcher.group("xCoordinate"));
+        } else {
+            return Integer.parseInt(matcher.group("xCoordinate2"));
+        }
+    }
+
+    public int getYCoordinate(Matcher matcher) {
+        if (matcher.group("yCoordinate") != null) {
+            return Integer.parseInt(matcher.group("yCoordinate"));
+        } else {
+            return Integer.parseInt(matcher.group("yCoordinate2"));
+        }
+    }
+
+    public int getCount(Matcher matcher) {
+        if (matcher.group("count") != null) {
+            return Integer.parseInt(matcher.group("count"));
+        }
+        return Integer.parseInt(matcher.group("count2"));
+    }
+
+    public String getType(Matcher matcher) {
+        if (matcher.group("type") != null) {
+            return matcher.group("type");
+        }
+        return matcher.group("type2");
+    }
+
+    public ArrayList<String> sortPatrolUnitFields(ArrayList<String> fields) {
+
     }
 
     public boolean isEngineer(){
