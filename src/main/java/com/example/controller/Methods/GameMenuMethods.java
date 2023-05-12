@@ -13,8 +13,11 @@ import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
 import com.example.model.People.Unit;
 import com.example.model.People.UnitType;
+import com.example.model.User;
+import com.example.view.GameMenu;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GameMenuMethods {
     private static GameMenuMethods gameMenuMethods;
@@ -25,6 +28,12 @@ public class GameMenuMethods {
 
     public static GameMenuMethods gameMenuMethods() {
         return gameMenuMethods == null ? gameMenuMethods = new GameMenuMethods() : gameMenuMethods;
+    }
+
+    public void run(Scanner scanner, ArrayList<User> players, String size) {
+        game.setGameMap(size);
+        game.makeNewGovernances(players);
+        GameMenu.getGameMenu().run(scanner);
     }
 
     public boolean areCoordinatesValid(int xCoordinate, int yCoordinate) {

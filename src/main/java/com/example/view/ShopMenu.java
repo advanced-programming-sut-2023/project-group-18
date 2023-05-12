@@ -1,5 +1,6 @@
 package com.example.view;
 
+import com.example.controller.Commands.ShopMenuCommands;
 import com.example.controller.Methods.ShopMenuMethods;
 
 import java.util.Scanner;
@@ -19,6 +20,13 @@ public class ShopMenu {
         Matcher matcher;
         while (true) {
             input = scanner.nextLine();
+            if (ShopMenuCommands.getMatcher(input, ShopMenuCommands.SHOW_RPICE_LIST).find()) {
+                showPriceList();
+            } else if ((matcher = ShopMenuCommands.getMatcher(input, ShopMenuCommands.BUY)).find()) {
+                buy(matcher);
+            } else if ((matcher = ShopMenuCommands.getMatcher(input, ShopMenuCommands.SELL)).find()) {
+                sell(matcher);
+            }
         }
     }
 }

@@ -187,7 +187,6 @@ public class ProfileMenu {
         }
         String size = profileMenuMethods.getMapSize(scanner);
         ArrayList<User> players = profileMenuMethods.getPlayers(usernames);
-
         return true;
     }
 }
