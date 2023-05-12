@@ -11,20 +11,18 @@ import com.example.model.People.Unit;
 
 public class Game {
     private static Game instance;
-    private final GameMap gameMap;
+    private GameMap gameMap;
     private final ArrayList<Governance> governances;
-    private final int players;
+    private int players;
     private Governance currentGovernance;
     private Building selectedBuilding;
     private Unit selectedUnit;
     private int round;
     private int turn;
 
-    public Game(String size, ArrayList<User> users) {
-        gameMap = new GameMap(size, this);
-        governances = makeNewGovernances(users);
-        players = users.size();
-        round = turn = 0;
+    private Game() {
+        governances = new ArrayList<>();
+        players = round = turn = 0;
         currentGovernance = governances.get(0);
         selectedBuilding = null;
     }
@@ -33,11 +31,14 @@ public class Game {
         return instance == null ? instance = new Game() : instance;
     }
 
-    private ArrayList<Governance> makeNewGovernances(ArrayList<User> users) {
-        ArrayList<Governance> governances = new ArrayList<>();
+    public void makeNewGovernances(ArrayList<User> users) {
         for (User user : users)
             governances.add(new Governance(user));
-        return governances;
+        players = users.size();
+    }
+
+    public void setGameMap(String size) {
+        gameMap = new GameMap(size, this);
     }
 
     public GameMap getGameMap() {

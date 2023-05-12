@@ -20,7 +20,7 @@ public class GameMenuMethods {
     private static GameMenuMethods gameMenuMethods;
     private final Game game;
     private GameMenuMethods() {
-        game = new Game("normal");
+        game = Game.getInstance();
     }
 
     public static GameMenuMethods gameMenuMethods() {
