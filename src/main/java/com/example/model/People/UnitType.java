@@ -4,7 +4,8 @@ import com.example.model.Buildings.BuildingType;
 
 public enum UnitType {
     SOLDIER("Soldier", 0, 0,null,true),
-    PEASANTS("Peasants", 0,1,null,false);
+    PEASANTS("Peasants", 0,1,null,false),
+    ATTACK_TOOL("Attack Tool",50,1000,null,true),
     ;
 
     private final String name;
