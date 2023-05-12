@@ -178,14 +178,16 @@ public class ProfileMenu {
         displaySlogan();
     }
 
-    private void startGame(Matcher matcher, Scanner scanner) {
+    private boolean startGame(Matcher matcher, Scanner scanner) {
         String[] usernames = profileMenuMethods.getUsernames(matcher);
         String username;
         if ((username = profileMenuMethods.checkUsers(usernames)) != null) {
             System.out.println("user " + username + " is invalid!");
-            return;
+            return false;
         }
         String size = profileMenuMethods.getMapSize(scanner);
         ArrayList<User> players = profileMenuMethods.getPlayers(usernames);
+
+        return true;
     }
 }
