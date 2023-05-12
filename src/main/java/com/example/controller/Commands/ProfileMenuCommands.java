@@ -16,7 +16,8 @@ public enum ProfileMenuCommands {
     DISPLAY_PROFILE("^profile display$"),
     CURRENT_MENU("^show current menu$"),
     LOGOUT("^logout$"),
-    EXIT("^exit$");
+    EXIT("^exit$"),
+    START_GAME("^start game(?<users>(( \\S+){1,7}))$");
     private final String regex;
     ProfileMenuCommands(String regex) {
         this.regex = regex;

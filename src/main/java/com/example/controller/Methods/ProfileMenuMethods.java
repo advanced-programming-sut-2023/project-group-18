@@ -4,10 +4,15 @@ import com.example.model.User;
 import com.example.model.UsersData;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.regex.Matcher;
 
 public class ProfileMenuMethods {
     private static ProfileMenuMethods profileMenuMethods;
+    private final UsersData usersData;
+
     private ProfileMenuMethods() {
+        usersData = UsersData.getUsersData();
     }
 
     public static ProfileMenuMethods getInstance() {
@@ -61,5 +66,37 @@ public class ProfileMenuMethods {
 
     public void removeSlogan() {
         UsersData.getUsersData().getLoggedInUser().setSlogan("");
+    }
+
+    public String[] getUsernames(Matcher matcher) {
+        String allUsernames = matcher.group("users").trim();
+        return allUsernames.split(" ");
+    }
+
+    public String checkUsers(String[] usernames) {
+        for (String user : usernames) {
+            if (usersData.getUserByUsername(user) == null || usersData.getLoggedInUser().equals(usersData.getUserByUsername(user))) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public String getMapSize(Scanner scanner) {
+        System.out.println("what size should the map be? type normal or large");
+        String size = scanner.nextLine();
+        while (!size.equals("normal")  && !size.equals("large")) {
+            System.out.println("the entered size is not valid. please type again.");
+            size = scanner.nextLine();
+        }
+        return size;
+    }
+
+    public ArrayList<User> getPlayers(String[] usernames) {
+        ArrayList<User> players = new ArrayList<>();
+        for (String username : usernames) {
+            players.add(usersData.getUserByUsername(username));
+        }
+        return players;
     }
 }

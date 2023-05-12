@@ -1,6 +1,7 @@
 import com.example.controller.Commands.LoginMenuCommands;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.LoginMenuMethods;
+import com.example.controller.Methods.ProfileMenuMethods;
 import com.example.model.CapthaCode;
 import com.example.model.User;
 import com.example.model.UsersData;
