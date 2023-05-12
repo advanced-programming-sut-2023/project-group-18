@@ -18,6 +18,7 @@ import com.example.view.GameMenu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 
 public class GameMenuMethods {
     private static GameMenuMethods gameMenuMethods;
@@ -227,6 +228,43 @@ public class GameMenuMethods {
     public void openGate(){
         Gate gate = (Gate) game.getSelectedBuilding();
         gate.open();
+    }
+
+
+    /*--------------------------------------------------------------------------------------------------------------------------------*/
+
+    public int getXCoordinate(Matcher matcher) {
+        if (matcher.group("xCoordinate") != null) {
+            return Integer.parseInt(matcher.group("xCoordinate"));
+        } else {
+            return Integer.parseInt(matcher.group("xCoordinate2"));
+        }
+    }
+
+    public int getYCoordinate(Matcher matcher) {
+        if (matcher.group("yCoordinate") != null) {
+            return Integer.parseInt(matcher.group("yCoordinate"));
+        } else {
+            return Integer.parseInt(matcher.group("yCoordinate2"));
+        }
+    }
+
+    public int getCount(Matcher matcher) {
+        if (matcher.group("count") != null) {
+            return Integer.parseInt(matcher.group("count"));
+        }
+        return Integer.parseInt(matcher.group("count2"));
+    }
+
+    public String getType(Matcher matcher) {
+        if (matcher.group("type") != null) {
+            return matcher.group("type");
+        }
+        return matcher.group("type2");
+    }
+
+    public ArrayList<String> sortPatrolUnitFields(ArrayList<String> fields) {
+
     }
 
 }

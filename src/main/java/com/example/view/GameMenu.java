@@ -5,6 +5,7 @@ import com.example.controller.Commands.MapMenuCommands;
 import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -33,8 +34,8 @@ public class GameMenu {
                 showPopularity();
             } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_FOOD_LIST).find()) {
                 showFoodList();
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.FOOD_RATE).find()) {
-                foodRate();
+            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.FOOD_RATE)).find()) {
+                foodRate(matcher);
             } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_FOOD_RATE).find()) {
                 showFoodRate();
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.TAX_RATE)).find()) {
@@ -103,8 +104,12 @@ public class GameMenu {
 
     }
 
-    private void foodRate() {
-
+    private void foodRate(Matcher matcher) {
+        int foodRate = Integer.parseInt(matcher.group("rateNumber"));
+        if (foodRate < -2 || foodRate > 2) {
+            System.out.println("food rate is invalid");
+            return;
+        }
     }
 
     private void showFoodRate() {
@@ -112,6 +117,11 @@ public class GameMenu {
     }
 
     private void setTaxRate(Matcher matcher) {
+        int taxRate = Integer.parseInt(matcher.group("rateNumber"));
+        if (taxRate < -3 || taxRate > 8) {
+            System.out.println("tax rate is invalid");
+            return;
+        }
 
     }
 
@@ -119,14 +129,21 @@ public class GameMenu {
     }
 
     private void setFearRate(Matcher matcher) {
-
+        int fearRate = Integer.parseInt(matcher.group("rateNumber"));
+        if (fearRate < -5 || fearRate > 5) {
+            System.out.println("fear rate is invalid");
+            return;
+        }
     }
 
     private void selectBuilding(Matcher matcher) {
-
+        int xCoordinate = gameMenuMethods.getXCoordinate(matcher);
+        int yCoordinate = gameMenuMethods.getYCoordinate(matcher);
     }
 
     private void createUnit(Matcher matcher) {
+        int count = gameMenuMethods.getCount(matcher);
+        String type = gameMenuMethods.getType(matcher);
 
     }
 
@@ -142,7 +159,8 @@ public class GameMenu {
     }
 
     private void patrolUnit(Matcher matcher) {
-
+        ArrayList<String> fields = globalMethods.commandSplit(matcher.group("fields"));
+        fields = gameMenuMethods.sortPatrolUnitFields(fields);
     }
 
     private void setState(Matcher matcher) {
