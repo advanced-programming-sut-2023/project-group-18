@@ -10,21 +10,35 @@ import com.example.model.People.SoldierType;
 import com.example.model.People.Unit;
 
 public class Game {
-    private final GameMap gameMap;
+    private static Game instance;
+    private GameMap gameMap;
     private final ArrayList<Governance> governances;
+    private int players;
     private Governance currentGovernance;
     private Building selectedBuilding;
     private Unit selectedUnit;
-    private int players;
     private int round;
     private int turn;
 
-    public Game(String size) {
-        gameMap = new GameMap(size, this);
+    private Game() {
         governances = new ArrayList<>();
         players = round = turn = 0;
-        currentGovernance = null;
+        currentGovernance = governances.get(0);
         selectedBuilding = null;
+    }
+
+    public static Game getInstance() {
+        return instance == null ? instance = new Game() : instance;
+    }
+
+    public void makeNewGovernances(ArrayList<User> users) {
+        for (User user : users)
+            governances.add(new Governance(user));
+        players = users.size();
+    }
+
+    public void setGameMap(String size) {
+        gameMap = new GameMap(size, this);
     }
 
     public GameMap getGameMap() {
@@ -47,11 +61,6 @@ public class Game {
         for (Governance governance : governances)
             if (governance.getOwner().equals(user)) return true;
         return false;
-    }
-
-    public void addPlayer(User user) {
-        governances.add(new Governance(user));
-        players++;
     }
 
     public void addBuilding(Governance governance, BuildingType buildingType, int xCordinate, int yCordinate) {
@@ -90,4 +99,5 @@ public class Game {
         if (selectedUnit.isControllable())
             this.selectedUnit = selectedUnit;
     }
+
 }

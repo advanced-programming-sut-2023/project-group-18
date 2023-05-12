@@ -63,6 +63,8 @@ public class ProfileMenu {
                 break;
             } else if (ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.EXIT).find()) {
                 break;
+            } else if ((matcher = ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.START_GAME)).find()) {
+                startGame(matcher, scanner);
             } else {
                 globalMethods.invalidCommand();
             }
@@ -174,5 +176,18 @@ public class ProfileMenu {
         int rank = highscores.indexOf(user.getHighscore());
         System.out.println("your rank is: " + (rank + 1));
         displaySlogan();
+    }
+
+    private boolean startGame(Matcher matcher, Scanner scanner) {
+        String[] usernames = profileMenuMethods.getUsernames(matcher);
+        String username;
+        if ((username = profileMenuMethods.checkUsers(usernames)) != null) {
+            System.out.println("user " + username + " is invalid!");
+            return false;
+        }
+        String size = profileMenuMethods.getMapSize(scanner);
+        ArrayList<User> players = profileMenuMethods.getPlayers(usernames);
+
+        return true;
     }
 }

@@ -23,7 +23,7 @@ public class LoginMenuMethods {
         output.add("a");
         output.add("b");
         for (String field : fields) {
-            if (field.length() < 4) {
+            if (field.trim().length() < 4) {
                 return null;
             }
             String quoteSubstring = field.trim().substring(4, field.trim().length() - 1);

@@ -20,11 +20,11 @@ public class GameMenuMethods {
     private static GameMenuMethods gameMenuMethods;
     private final Game game;
     private GameMenuMethods() {
-        game = new Game("normal");
+        game = Game.getInstance();
     }
 
     public static GameMenuMethods gameMenuMethods() {
-        return  gameMenuMethods == null ? gameMenuMethods = new GameMenuMethods() : gameMenuMethods;
+        return gameMenuMethods == null ? gameMenuMethods = new GameMenuMethods() : gameMenuMethods;
     }
 
     public boolean areCoordinatesValid(int xCoordinate, int yCoordinate) {
