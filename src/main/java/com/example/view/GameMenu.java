@@ -26,7 +26,7 @@ public class GameMenu {
         Matcher matcher;
         while (true) {
             input = scanner.nextLine();
-            if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.CURRENT_MENU)))
+            // if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.CURRENT_MENU)))
         }
     }
 
