@@ -6,7 +6,8 @@ import java.util.regex.Pattern;
 public enum MapMenuCommands {
     SHOW_MAP("^show map (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
     MOVE_MAP("^map (?<directionOne>\\S+)(?<directionOneNumber> \\d+)?( (?<directionTwo>\\S+)(?<directionTwoNumber> \\d+)?)?$"),
-    SHOW_DETAILS("^show details (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$");
+    SHOW_DETAILS("^show details (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
+    EXIT("^exit$");
     private final String regex;
     MapMenuCommands(String regex) {
         this.regex = regex;
