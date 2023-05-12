@@ -51,7 +51,7 @@ public class LoginMenu {
         }
     }
 
-    private boolean login(Matcher matcher, Scanner scanner) {
+    public boolean login(Matcher matcher, Scanner scanner) {
         ArrayList<String> fields = globalMethods.commandSplit(matcher.group("fields"));
         fields = loginMenuMethods.sortLoginFields(fields);
         if (fields == null) {

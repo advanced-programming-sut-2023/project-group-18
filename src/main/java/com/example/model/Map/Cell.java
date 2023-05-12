@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.example.model.ConsoleColors;
 import com.example.model.Buildings.Building;
+import com.example.model.Governance;
 import com.example.model.People.Unit;
 
 public class Cell implements ConsoleColors {
@@ -14,7 +15,7 @@ public class Cell implements ConsoleColors {
     private final int xCordinate;
     private final int yCordinate;
 
-    protected Cell(int xCordinate, int yCordinate, GameMap gameMap) {
+    public Cell(int xCordinate, int yCordinate, GameMap gameMap) {
         this.gameMap = gameMap;
         units = new ArrayList<>();
         texture = Texture.getARondomTexture();
@@ -68,9 +69,20 @@ public class Cell implements ConsoleColors {
         return Math.sqrt(Math.pow(xCordinate, cell.xCordinate) + Math.pow(yCordinate, cell.yCordinate));
     }
 
+    public void addUnit(Unit unit){
+        this.units.add(unit);
+    }
+
     @Override
     public String toString() {
         return texture.color + "      " + RESET;
     }
 
+    public boolean hasEnemy(Governance governance){
+        for (Unit unit : this.getUnits()){
+            if (!unit.getGovernance().equals(governance))
+                return true;
+        }
+        return false;
+    }
 }

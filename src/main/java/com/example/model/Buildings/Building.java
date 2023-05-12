@@ -1,11 +1,10 @@
 package com.example.model.Buildings;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import com.example.model.Cell;
 import com.example.model.Governance;
 import com.example.model.Assets.Asset;
+import com.example.model.Map.Cell;
 import com.example.model.People.Unit;
 import com.example.model.People.UnitType;
 import com.example.model.People.Worker;

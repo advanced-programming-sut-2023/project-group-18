@@ -3,20 +3,22 @@ package com.example.model.People;
 import com.example.model.Buildings.BuildingType;
 
 public enum UnitType {
-    SOLDIER("Soldier", 0, 0,null),
-    PEASANTS("Peasants", 0,1,null);
+    SOLDIER("Soldier", 0, 0,null,true),
+    PEASANTS("Peasants", 0,1,null,false);
     ;
 
     private final String name;
     private final int maxSpeed;
     private final int maxHitpoint;
     private final BuildingType buildingType;
+    private final boolean controllable;
 
-    UnitType(String name, int maxSpeed, int maxHitpoint, BuildingType buildingType) {
+    UnitType(String name, int maxSpeed, int maxHitpoint, BuildingType buildingType, boolean controllable) {
         this.name = name;
         this.maxSpeed = maxSpeed;
         this.maxHitpoint = maxHitpoint;
         this.buildingType = buildingType;
+        this.controllable = controllable;
     }
 
     public static UnitType getUnitTypeByName(String name) {
@@ -44,4 +46,11 @@ public enum UnitType {
         return maxHitpoint;
     }
 
+    public BuildingType getBuildingType() {
+        return buildingType;
+    }
+
+    public boolean isControllable() {
+        return controllable;
+    }
 }

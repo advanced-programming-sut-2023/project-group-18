@@ -8,6 +8,7 @@ import com.example.model.Assets.AssetType;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Buildings.Storage;
+import com.example.model.Map.Cell;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
 
@@ -25,7 +26,7 @@ public class Governance {
     private final ArrayList<Trade> requestList;
     private final ArrayList<Trade> tradeHistory;
     private final ArrayList<Trade> tradeNotifications;
-
+    private int soldiersCreatedInTurn;
     public Governance(User owner) {
         this.owner = owner;
         buildings = new ArrayList<>();
@@ -39,6 +40,7 @@ public class Governance {
         requestList = new ArrayList<>();
         tradeHistory = new ArrayList<>();
         tradeNotifications = new ArrayList<>();
+        soldiersCreatedInTurn = 0;
     }
 
     public User getOwner() {
@@ -279,5 +281,13 @@ public class Governance {
 
     public void removeRemainingCharacter(){
         this.remainingNonMilitary --;
+    }
+
+    public int getSoldiersCreatedInTurn() {
+        return soldiersCreatedInTurn;
+    }
+
+    public void createSoldier(int count){
+        this.soldiersCreatedInTurn += count;
     }
 }

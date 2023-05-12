@@ -4,7 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum ShopMenuCommands {
-    ;
+    SHOW_RPICE_LIST("^show price list$"),
+    BUY("^buy -i (?<name>(\\S+)|(\".+\")) -a (?<amount>\\d+)$"),
+    SELL("^sell -i (?<name>(\\S+)|(\".+\")) -a (?<amount>\\d+)$");
     private final String regex;
     ShopMenuCommands(String regex) {
         this.regex = regex;

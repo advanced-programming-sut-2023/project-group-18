@@ -1,8 +1,8 @@
 package com.example.model.Buildings;
 
 import com.example.model.Assets.Asset;
-import com.example.model.Cell;
 import com.example.model.Governance;
+import com.example.model.Map.Cell;
 import com.example.model.People.Soldier;
 
 import java.util.ArrayList;

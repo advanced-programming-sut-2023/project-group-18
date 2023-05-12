@@ -1,6 +1,7 @@
 package com.example.view;
 
 import com.example.controller.Commands.GameMenuCommands;
+import com.example.controller.Commands.MapMenuCommands;
 import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
 
@@ -22,11 +23,11 @@ public class GameMenu {
         Matcher matcher;
         while (true) {
             input = scanner.nextLine();
-            if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_MAP)).find()) {
-                showMap(matcher, scanner);
-            } else {
-                GlobalMethods.invalidCommand();
-            }
+//            if ((matcher = GameMenuCommands.getMatcher(input, MapMenuCommands.SHOW_MAP)).find()) {
+//                showMap(matcher, scanner);
+//            } else {
+//                GlobalMethods.getInstance().invalidCommand();
+//            }
         }
     }
 
