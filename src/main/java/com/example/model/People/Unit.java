@@ -3,13 +3,14 @@ package com.example.model.People;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.example.model.ConsoleColors;
 import com.example.model.Governance;
 import com.example.model.Buildings.Building;
 import com.example.model.Map.Cell;
 import com.example.model.Map.Node;
 import com.example.model.Map.Successor;
 
-public class Unit extends Object implements Successor {
+public class Unit extends Object implements Successor, ConsoleColors {
     private final Governance governance;
     private final UnitType unitType;
     private Cell unitCell;
@@ -193,4 +194,21 @@ public class Unit extends Object implements Successor {
             patrol();
         }
     }
+
+    public void attack(Building building) {
+
+    }
+
+    @Override
+    public String toString() {
+        String hitpoint;
+        if (this.hitpoint < unitType.getMaxHitpoint() / 3) hitpoint = RED_BOLD;
+        else if (this.hitpoint < unitType.getMaxHitpoint() * 2 / 3) hitpoint = YELLOW_BOLD;
+        else hitpoint = GREEN_BOLD;
+        hitpoint += this.hitpoint + RESET;
+        hitpoint += "/" + unitType.getMaxHitpoint();
+        String owner = BLUE_BOLD + governance.getOwner().getNickname() + RESET;
+        return unitType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
+    }
+
 }

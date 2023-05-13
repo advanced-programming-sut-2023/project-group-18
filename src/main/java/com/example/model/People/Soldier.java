@@ -4,9 +4,6 @@ import com.example.model.Map.Cell;
 import com.example.model.Governance;
 import com.example.model.Map.Texture;
 
-import java.util.ArrayList;
-import java.util.Map;
-
 public class Soldier extends Unit {
     private final SoldierType soldierType;
     private final int attackPower;
@@ -30,6 +27,7 @@ public class Soldier extends Unit {
     public void updateDamage(){
         this.damage = soldierType.getAttackPower() * (20 + this.getGovernance().getFearRate());
     }
+
     public int getDamage() {
         updateDamage();
         return damage;
@@ -57,4 +55,5 @@ public class Soldier extends Unit {
             return;
         enemyUnit.addHitpoint(-this.getDamage());
     }
+
 }

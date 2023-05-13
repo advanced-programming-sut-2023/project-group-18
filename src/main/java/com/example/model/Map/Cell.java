@@ -56,10 +56,15 @@ public class Cell implements ConsoleColors {
     }
 
     public String showDetails() {
-        // TODO: have to complete
-        return "Texture: " + texture.name
-            + "\n"
-                ;
+        String result = "Location: (" + xCordinate + ", " + yCordinate + ")";
+        result += "\nTexture: " + texture.name;
+        if (building != null) result += "\nBuilding: " + building.toString();
+        if (!units.isEmpty()) {
+            result += "\nUnits: ";
+            for (Unit unit : units)
+                result += "\n-" + unit.toString();
+        }
+        return result;
     }
 
     public boolean isHole(){
