@@ -97,6 +97,7 @@ public class ProfileMenuMethods {
         for (String username : usernames) {
             players.add(usersData.getUserByUsername(username));
         }
+        players.add(usersData.getLoggedInUser());
         return players;
     }
 }

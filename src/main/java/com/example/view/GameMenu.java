@@ -262,6 +262,10 @@ public class GameMenu {
     private void showMap(Matcher matcher, Scanner scanner) {
         int x = gameMenuMethods.getXCoordinate(matcher);
         int y = gameMenuMethods.getYCoordinate(matcher);
+        if (!gameMenuMethods.areCoordinatesValid(x, y)) {
+            System.out.println("your entered coordination's are not valid");
+            return;
+        }
         MapMenuMethods.getInstance().run(scanner, x, y);
     }
 }
