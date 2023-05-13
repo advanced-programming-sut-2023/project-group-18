@@ -31,23 +31,7 @@ public class GameMenu {
         Matcher matcher;
         while (true) {
             input = scanner.nextLine();
-            if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_POPULARITY_FACTORS).find()) {
-                showPopularityFactors();
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_POPULARITY).find()) {
-                showPopularity();
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_FOOD_LIST).find()) {
-                showFoodList();
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.FOOD_RATE)).find()) {
-                foodRate(matcher);
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_FOOD_RATE).find()) {
-                showFoodRate();
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.TAX_RATE)).find()) {
-                setTaxRate(matcher);
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_TAX_RATE).find()) {
-                showTaxRate();
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.FEAR_RATE)).find()) {
-                setFearRate(matcher);
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DROP_BUILDING)).find()) {
+            if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DROP_BUILDING)).find()) {
                 dropBuilding(matcher);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SELECT_BUILDING)).find()) {
                 selectBuilding(matcher, scanner);
@@ -96,50 +80,6 @@ public class GameMenu {
             } else {
                 globalMethods.invalidCommand();
             }
-        }
-    }
-
-    private void showPopularityFactors() {
-
-    }
-
-    private void showPopularity() {
-
-    }
-
-    private void showFoodList() {
-
-    }
-
-    private void foodRate(Matcher matcher) {
-        int foodRate = Integer.parseInt(matcher.group("rateNumber"));
-        if (foodRate < -2 || foodRate > 2) {
-            System.out.println("food rate is invalid");
-            return;
-        }
-    }
-
-    private void showFoodRate() {
-
-    }
-
-    private void setTaxRate(Matcher matcher) {
-        int taxRate = Integer.parseInt(matcher.group("rateNumber"));
-        if (taxRate < -3 || taxRate > 8) {
-            System.out.println("tax rate is invalid");
-            return;
-        }
-
-    }
-
-    private void showTaxRate() {
-    }
-
-    private void setFearRate(Matcher matcher) {
-        int fearRate = Integer.parseInt(matcher.group("rateNumber"));
-        if (fearRate < -5 || fearRate > 5) {
-            System.out.println("fear rate is invalid");
-            return;
         }
     }
 
