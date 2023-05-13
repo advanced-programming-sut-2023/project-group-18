@@ -91,7 +91,7 @@ public class GameMap implements WriteInFile, Successor {
             for (int k = 0; k < 3; k++) {
                 result += "\n|";
                 for (int j = xCoordinate - 2 * LENGTH; j <= xCoordinate + 2 * LENGTH; j++)
-                    result += map[i][j].toString(j, k) + "|";
+                    result += map[i][j].toString(j - xCoordinate, k) + "|";
             }
             result += line;
         }
