@@ -34,6 +34,7 @@ public class Building implements ConsoleColors {
         this.resourceCost = buildingType.getResourceCost();
         this.cell = cell;
         this.width = buildingType.getWidth();
+        setCellBuilding();
     }
 
     public BuildingType getBuildingType() {
@@ -93,9 +94,30 @@ public class Building implements ConsoleColors {
     }
 
     public void doDamage(int damage){
-        if (this.getHitpoint() <= damage)
-            return;
-        this.hitpoint -= damage;
+        if (this.hitpoint <= damage)
+            killBuilding();
+        else this.hitpoint -= damage;
+    }
+
+    private void setCellBuilding() {
+        for (int i = -width + 1; i < width; i++)
+            for (int j = -width + 1; j < width; j++) {
+                int xCoordinate = cell.getxCoordinate() + i;
+                int yCoordinate = cell.getyCoordinate() + j;
+                Cell underCell = cell.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
+                underCell.setBuilding(this);
+            }
+    }
+
+    private void killBuilding() {
+        for (int i = -width + 1; i < width; i++)
+            for (int j = -width + 1; j < width; j++) {
+                int xCoordinate = cell.getxCoordinate() + i;
+                int yCoordinate = cell.getyCoordinate() + j;
+                Cell underCell = cell.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
+                underCell.setBuilding(null);
+            }
+        governance.removeBuilding(this);
     }
 
     @Override

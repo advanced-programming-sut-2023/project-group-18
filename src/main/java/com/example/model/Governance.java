@@ -249,6 +249,10 @@ public class Governance {
         buildings.add(new Building(buildingType, this, cell));
     }
 
+    public void removeBuilding(Building building) {
+        buildings.remove(building);
+    }
+
     public void addSoldier(Cell cell, SoldierType soldierType) {
         soldiers.add(new Soldier(cell, this, soldierType));
     }
