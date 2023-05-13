@@ -160,6 +160,9 @@ public enum BuildingType {
             0,null,null,2, Category.STORAGE, null),
     KEEP("keep",0,Asset.STONE,0, 0,Texture.GROUND,100,0,0,
             0, 8,0,0,20,10,35,
+            null,null,2, Category.BUILDING, KeepMethods.getKeepMethods()),
+    TREE("tree",0,Asset.STONE,0, 0,Texture.GROUND,100,0,0,
+            0, 0,0,0,0,0,0,
             null,null,2, Category.BUILDING, KeepMethods.getKeepMethods());
     private final int workersNumber;
     private int hitpoint;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.example.model.ConsoleColors;
 import com.example.model.Buildings.Building;
+import com.example.model.Buildings.BuildingType;
 import com.example.model.Governance;
 import com.example.model.People.Unit;
 
@@ -79,12 +80,12 @@ public class Cell implements ConsoleColors {
         this.units.add(unit);
     }
 
-    public String toString(int row) {
+    public String toString(int row, int column) {
         String letter;
-        if (row == 0) letter = " ";
+        if (row != 0 || column != 1) letter = " ";
         else if (!units.isEmpty()) letter = "S";
         else if (building == null) letter = " ";
-        // else if (building.getBuildingType().equals(BuildingType.)) letter = "T";
+        else if (building.getBuildingType().equals(BuildingType.TREE)) letter = "T";
         // else if (building.getBuildingType().equals(BuildingType.)) letter = "W";
         else letter = "B";
         return texture.color + "  " + letter + "   " + RESET;
