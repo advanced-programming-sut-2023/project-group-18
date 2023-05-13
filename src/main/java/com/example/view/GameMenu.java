@@ -6,6 +6,7 @@ import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.MapMenuMethods;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Map.GameMap;
+import com.example.model.Map.Texture;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,26 +32,10 @@ public class GameMenu {
         Matcher matcher;
         while (true) {
             input = scanner.nextLine();
-            if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_POPULARITY_FACTORS).find()) {
-                showPopularityFactors();
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_POPULARITY).find()) {
-                showPopularity();
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_FOOD_LIST).find()) {
-                showFoodList();
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.FOOD_RATE)).find()) {
-                foodRate(matcher);
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_FOOD_RATE).find()) {
-                showFoodRate();
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.TAX_RATE)).find()) {
-                setTaxRate(matcher);
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_TAX_RATE).find()) {
-                showTaxRate();
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.FEAR_RATE)).find()) {
-                setFearRate(matcher);
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DROP_BUILDING)).find()) {
+            if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DROP_BUILDING)).find()) {
                 dropBuilding(matcher);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SELECT_BUILDING)).find()) {
-                selectBuilding(matcher);
+                selectBuilding(matcher, scanner);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.CREATE_UNIT)).find()) {
                 createUnit(matcher);
             } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.REPAIR).find()) {
@@ -99,53 +84,20 @@ public class GameMenu {
         }
     }
 
-    private void showPopularityFactors() {
-
-    }
-
-    private void showPopularity() {
-
-    }
-
-    private void showFoodList() {
-
-    }
-
-    private void foodRate(Matcher matcher) {
-        int foodRate = Integer.parseInt(matcher.group("rateNumber"));
-        if (foodRate < -2 || foodRate > 2) {
-            System.out.println("food rate is invalid");
-            return;
-        }
-    }
-
-    private void showFoodRate() {
-
-    }
-
-    private void setTaxRate(Matcher matcher) {
-        int taxRate = Integer.parseInt(matcher.group("rateNumber"));
-        if (taxRate < -3 || taxRate > 8) {
-            System.out.println("tax rate is invalid");
-            return;
-        }
-
-    }
-
-    private void showTaxRate() {
-    }
-
-    private void setFearRate(Matcher matcher) {
-        int fearRate = Integer.parseInt(matcher.group("rateNumber"));
-        if (fearRate < -5 || fearRate > 5) {
-            System.out.println("fear rate is invalid");
-            return;
-        }
-    }
-
-    private void selectBuilding(Matcher matcher) {
+    private void selectBuilding(Matcher matcher, Scanner scanner) {
         int xCoordinate = gameMenuMethods.getXCoordinate(matcher);
         int yCoordinate = gameMenuMethods.getYCoordinate(matcher);
+        if (!gameMenuMethods.inRange(xCoordinate, yCoordinate)) {
+            System.out.println("the coordination's are not in range");
+            return;
+        } else if (gameMenuMethods.isCellEmpty(xCoordinate, yCoordinate)) {
+            System.out.println("there is no building in that cell!");
+            return;
+        } else if (!gameMenuMethods.isCurrentGovernanceOwner(xCoordinate, yCoordinate)) {
+            System.out.println("you are not the owner of this building");
+            return;
+        }
+        gameMenuMethods.selectBuilding(xCoordinate, yCoordinate, scanner);
     }
 
     private void createUnit(Matcher matcher) {
@@ -202,7 +154,29 @@ public class GameMenu {
     }
 
     private void setTexture(Matcher matcher) {
-
+        HashMap<String, String> fields = gameMenuMethods.sortFields(globalMethods.commandSplit(matcher.group("fields")));
+        if (!gameMenuMethods.checkDropBuildingInvalidField(fields)) {
+            System.out.println("you inserted an invalid field");
+            return;
+        } else if (!fields.get("-x").matches("\\d+") || !fields.get("-y").matches("\\d+")) {
+            System.out.println("you didn't enter a number for coordinates!");
+            return;
+        }
+        int x = Integer.parseInt(fields.get("-x"));
+        int y = Integer.parseInt(fields.get("-y"));
+        String buildingTypeName = fields.get("-t");
+        Texture texture;
+        if (!gameMenuMethods.areCoordinatesValid(x, y)) {
+            System.out.println("your entered coordination's are not valid");
+            return;
+        } else if (gameMenuMethods.isCellEmpty(x, y)) {
+            System.out.println("the cell in this coordination is not empty!");
+            return;
+        } else if ((texture = Texture.getTextureByName(buildingTypeName)) == null) {
+            System.out.println("the building type is not valid");
+            return;
+        }
+        gameMenuMethods.getGame().getGameMap().getCellByLocation(x, y).setTexture(texture);
     }
 
     private void setTextureRectangle(Matcher matcher) {
@@ -262,6 +236,10 @@ public class GameMenu {
     private void showMap(Matcher matcher, Scanner scanner) {
         int x = gameMenuMethods.getXCoordinate(matcher);
         int y = gameMenuMethods.getYCoordinate(matcher);
+        if (!gameMenuMethods.areCoordinatesValid(x, y)) {
+            System.out.println("your entered coordination's are not valid");
+            return;
+        }
         MapMenuMethods.getInstance().run(scanner, x, y);
     }
 }

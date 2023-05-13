@@ -191,8 +191,8 @@ public class ProfileMenu {
         String size = profileMenuMethods.getMapSize(scanner);
         ArrayList<User> players = profileMenuMethods.getPlayers(usernames);
         System.out.print("you entered a game with ");
-        for (String user : usernames) {
-            System.out.print(user + " ");
+        for (int i = 0; i < players.size() - 1; i++) {
+            System.out.print(players.get(i).getUsername() + " ");
         }
         System.out.println();
         GameMenuMethods.gameMenuMethods().run(scanner, players, size);

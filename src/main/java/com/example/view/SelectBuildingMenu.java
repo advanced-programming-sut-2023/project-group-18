@@ -1,5 +1,8 @@
 package com.example.view;
 
-public class SelectBuildingMenu {
-    
+import java.util.Scanner;
+
+public interface SelectBuildingMenu {
+    void run(Scanner scanner);
 }
+

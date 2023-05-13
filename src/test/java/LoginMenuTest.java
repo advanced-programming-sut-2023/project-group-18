@@ -8,8 +8,8 @@ import com.example.model.UsersData;
 import com.example.view.LoginMenu;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+//import org.mockito.Mock;
+//import org.mockito.Mockito;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -52,10 +52,6 @@ public class LoginMenuTest {
         UsersData.getUsersData().setStayLoggedInUser(stayLoggedInUser);
     }
 
-    @Test
-    void captchaTest() {
-        String captcha = CapthaCode.generateCapthaCode();
-    }
 
     @Test
     void loginSuccessfully() {
