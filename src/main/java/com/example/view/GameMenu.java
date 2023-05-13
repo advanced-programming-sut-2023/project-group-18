@@ -153,6 +153,28 @@ public class GameMenu {
     }
 
     private void setTexture(Matcher matcher) {
+        HashMap<String, String> fields = gameMenuMethods.sortFields(globalMethods.commandSplit(matcher.group("fields")));
+        if (!gameMenuMethods.checkDropBuildingInvalidField(fields)) {
+            System.out.println("you inserted an invalid field");
+            return;
+        } else if (!fields.get("-x").matches("\\d+") || !fields.get("-y").matches("\\d+")) {
+            System.out.println("you didn't enter a number for coordinates!");
+            return;
+        }
+        int x = Integer.parseInt(fields.get("-x"));
+        int y = Integer.parseInt(fields.get("-y"));
+        String buildingTypeName = fields.get("-t");
+        BuildingType buildingType;
+        if (!gameMenuMethods.areCoordinatesValid(x, y)) {
+            System.out.println("your entered coordination's are not valid");
+            return;
+        } else if (gameMenuMethods.isCellEmpty(x, y)) {
+            System.out.println("the cell in this coordination is empty!");
+            return;
+        } else if ((buildingType = gameMenuMethods.getBuildingType(buildingTypeName)) == null) {
+            System.out.println("the building type is not valid");
+            return;
+        }
 
     }
 
