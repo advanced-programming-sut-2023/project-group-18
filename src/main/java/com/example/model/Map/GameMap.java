@@ -4,9 +4,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.example.model.Game;
 import com.example.model.WriteInFile;
+import com.example.model.Buildings.BuildingType;
+import com.example.model.Buildings.Tree;
 import com.google.gson.Gson;
 
 public class GameMap implements WriteInFile, Successor {
@@ -30,6 +33,7 @@ public class GameMap implements WriteInFile, Successor {
 */
 
     public GameMap(String size, Game game) {
+        Random random = new Random();
         this.game = game;
         // id = getNextId();
         // goToNextId();
@@ -37,8 +41,10 @@ public class GameMap implements WriteInFile, Successor {
         length = MapSizes.getMapSize(size);
         map = new Cell[length][length];
         for (int yCoordinate = 0; yCoordinate < map.length; yCoordinate++)
-            for (int xCoordinate = 0; xCoordinate < map.length; xCoordinate++)
+            for (int xCoordinate = 0; xCoordinate < map.length; xCoordinate++) {
                 map[yCoordinate][xCoordinate] = new Cell(xCoordinate, yCoordinate, this);
+                if (0 == random.nextInt(10)) game.addTree(new Tree(BuildingType.TREE, null, map[yCoordinate][xCoordinate]));
+            }
     }
 
     public int getMapSize() {
@@ -91,7 +97,7 @@ public class GameMap implements WriteInFile, Successor {
             for (int k = 0; k < 3; k++) {
                 result += "\n|";
                 for (int j = xCoordinate - 2 * LENGTH; j <= xCoordinate + 2 * LENGTH; j++)
-                    result += map[i][j].toString(j - xCoordinate, k) + "|";
+                    result += map[i][j].toString(k) + "|";
             }
             result += line;
         }
