@@ -6,5 +6,3 @@ public interface SelectBuildingMenu {
     void run(Scanner scanner);
 }
 
-
-}

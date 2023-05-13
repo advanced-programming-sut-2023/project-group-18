@@ -294,6 +294,10 @@ public enum BuildingType {
         return width;
     }
 
+    public SelectBuildingMenuMethods getSelectBuildingMenuMethods() {
+        return selectBuildingMenuMethods;
+    }
+
     public BuildingType getBuildingTypeByName(String name) {
         for (BuildingType buildingType : BuildingType.values())
             if (buildingType.getName().equals(name))

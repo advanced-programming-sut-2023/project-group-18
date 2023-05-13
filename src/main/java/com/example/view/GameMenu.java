@@ -6,6 +6,7 @@ import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.MapMenuMethods;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Map.GameMap;
+import com.example.model.Map.Texture;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -164,18 +165,18 @@ public class GameMenu {
         int x = Integer.parseInt(fields.get("-x"));
         int y = Integer.parseInt(fields.get("-y"));
         String buildingTypeName = fields.get("-t");
-        BuildingType buildingType;
+        Texture texture;
         if (!gameMenuMethods.areCoordinatesValid(x, y)) {
             System.out.println("your entered coordination's are not valid");
             return;
         } else if (gameMenuMethods.isCellEmpty(x, y)) {
-            System.out.println("the cell in this coordination is empty!");
+            System.out.println("the cell in this coordination is not empty!");
             return;
-        } else if ((buildingType = gameMenuMethods.getBuildingType(buildingTypeName)) == null) {
+        } else if ((texture = Texture.getTextureByName(buildingTypeName)) == null) {
             System.out.println("the building type is not valid");
             return;
         }
-
+        gameMenuMethods.getGame().getGameMap().getCellByLocation(x, y).setTexture(texture);
     }
 
     private void setTextureRectangle(Matcher matcher) {
