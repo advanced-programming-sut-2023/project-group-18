@@ -9,9 +9,11 @@ import com.example.model.Game;
 import com.example.model.Governance;
 import com.example.model.Map.Cell;
 import com.example.model.Map.Texture;
+import com.example.model.People.*;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
 import com.example.model.People.Unit;
+import com.example.model.People.UnitType;
 import com.example.model.User;
 import com.example.view.GameMenu;
 
@@ -200,6 +202,16 @@ public class GameMenuMethods {
         return texture.isReachable();
     }
 
+    public boolean canMove(int xCoordinate, int yCoordinate){
+        Cell destination = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
+        Unit selectedUnit = game.getSelectedUnit();
+        selectedUnit.setTargetCell(destination);
+        selectedUnit.findPath();
+        boolean output = selectedUnit.getPath().size() != 0;
+        selectedUnit.getPath().clear();
+        return output;
+    }
+
     public void move(int xCoordinate, int yCoordinate) {
         Cell destination = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
         Unit selectedUnit = game.getSelectedUnit();
@@ -303,6 +315,14 @@ public class GameMenuMethods {
                 return false;
         }
         return hashMap.size() == 4;
+    }
+
+    public boolean isEngineer(){
+        return game.getSelectedUnit() instanceof Engineer;
+    }
+
+    public void buildAttackTool(int xCoordinate, int yCoordinate){
+        dropBuilding(BuildingType.SIEGE_TENT, xCoordinate, yCoordinate);
     }
 
     public boolean checkDropBuildingInvalidField(HashMap<String, String> hashMap) {
