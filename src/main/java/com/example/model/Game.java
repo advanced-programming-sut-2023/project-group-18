@@ -2,6 +2,7 @@ package com.example.model;
 
 import java.util.ArrayList;
 
+import com.example.model.Assets.Asset;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Buildings.Tree;
@@ -42,6 +43,9 @@ public class Game {
         if (gameMap.getMapSize() == 200) keepLocations = new NormalMap();
         else keepLocations = new LargeMap();
         keepLocations.dropKeeps(this);
+        for (Governance governance : governances) {
+            governance.addAssetToStorage(Asset.WOOD, 50);
+        }
     }
 
     public void setGameMap(String size) {

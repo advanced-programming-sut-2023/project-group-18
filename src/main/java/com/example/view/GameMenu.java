@@ -4,6 +4,7 @@ import com.example.controller.Commands.GameMenuCommands;
 import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.MapMenuMethods;
+import com.example.model.Assets.Asset;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Map.GameMap;
 import com.example.model.Map.Texture;
@@ -28,6 +29,7 @@ public class GameMenu {
     }
 
     public void run(Scanner scanner) {
+        System.out.println(gameMenuMethods.getGame().getCurrentGovernance().getAssetCount(Asset.WOOD));
         String input;
         Matcher matcher;
         while (true) {

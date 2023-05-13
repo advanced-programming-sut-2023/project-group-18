@@ -193,6 +193,7 @@ public class Governance {
 
 
     public void addSpecificAsset(Asset asset, int count) {
+        if (asset == null) return;
         int governanceCount = assets.get(asset.getAssetType()).get(asset);
         assets.get(asset.getAssetType()).put(asset, governanceCount + count);
     }
@@ -231,6 +232,7 @@ public class Governance {
             count -= canAdd;
             if (count == 0) return;
         }
+        addSpecificAsset(asset, count);
     }
 
     public void removeAssetFromStorage(Asset asset, int count) {
@@ -243,6 +245,7 @@ public class Governance {
             count -= canRemove;
             if (count == 0) return;
         }
+        addSpecificAsset(asset, -count);
     }
 
     public void addBuilding(BuildingType buildingType, Cell cell) {
