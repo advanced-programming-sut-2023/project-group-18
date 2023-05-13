@@ -25,9 +25,9 @@ public class TradeMenu {
         while (true) {
             input = scanner.nextLine();
             if ((matcher = TradeMenuCommands.getMatcher(input, TradeMenuCommands.TRADE)).find()) {
-                trade(matcher);
+//                trade(matcher);
             } else if (TradeMenuCommands.getMatcher(input, TradeMenuCommands.TRADE_LIST).find()) {
-                tradeList(matcher);
+//                tradeList(matcher);
             } else if ((matcher = TradeMenuCommands.getMatcher(input, TradeMenuCommands.ACCEPT_TRADE)).find()) {
                 tradeAccept(matcher);
             } else if (TradeMenuCommands.getMatcher(input, TradeMenuCommands.TRADE_HISTORY).find()) {
@@ -36,5 +36,13 @@ public class TradeMenu {
                 globalMethods.invalidCommand();
             }
         }
+    }
+
+    private void tradeAccept(Matcher matcher) {
+
+    }
+
+    private void tradeHistory() {
+
     }
 }

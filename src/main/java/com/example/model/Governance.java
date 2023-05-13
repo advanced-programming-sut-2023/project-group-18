@@ -268,6 +268,8 @@ public class Governance {
     }
 
     public int getAssetCount(Asset asset) {
+        if (asset == null)
+            return 0;
         return assets.get(asset.getAssetType()).get(asset);
     }
 
