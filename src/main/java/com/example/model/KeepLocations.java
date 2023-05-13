@@ -2,6 +2,7 @@ package com.example.model;
 
 import java.util.Random;
 
+import com.example.controller.Methods.GameMenuMethods;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Map.Cell;
 import com.example.model.Map.Texture;
@@ -26,9 +27,12 @@ class NormalMap implements KeepLocations {
             Cell cell = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
             cell.setTexture(Texture.GROUND);
             governance.addBuilding(BuildingType.KEEP, cell);
+            GameMenuMethods.gameMenuMethods().dropBuilding(BuildingType.KEEP, xCoordinate, yCoordinate);
+            xCoordinate += 6;
+            yCoordinate += 6;
             Cell stockpileCell = game.getGameMap().getCellByLocation(xCoordinate + 6, yCoordinate + 6);
             stockpileCell.setTexture(Texture.GROUND);
-            governance.addBuilding(BuildingType.STOCKPILE, stockpileCell);
+            GameMenuMethods.gameMenuMethods().dropBuilding(BuildingType.STOCKPILE, xCoordinate, yCoordinate);
         }
     }
 }
@@ -45,9 +49,12 @@ class LargeMap implements KeepLocations {
             Cell cell = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
             cell.setTexture(Texture.GROUND);
             governance.addBuilding(BuildingType.KEEP, cell);
+            GameMenuMethods.gameMenuMethods().dropBuilding(BuildingType.KEEP, xCoordinate, yCoordinate);
+            xCoordinate += 6;
+            yCoordinate += 6;
             Cell stockpileCell = game.getGameMap().getCellByLocation(xCoordinate + 6, yCoordinate + 6);
             stockpileCell.setTexture(Texture.GROUND);
-            governance.addBuilding(BuildingType.STOCKPILE, stockpileCell);
+            GameMenuMethods.gameMenuMethods().dropBuilding(BuildingType.STOCKPILE, xCoordinate, yCoordinate);
         }
     }
 }

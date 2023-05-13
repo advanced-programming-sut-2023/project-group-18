@@ -93,9 +93,10 @@ public class GameMenuMethods {
         return game.getGameMap().getCellByLocation(xCoordinate, yCoordinate).getBuilding();
     }
 
-    public void selectBuilding(int xCoordinate, int yCoordinate) {
+    public void selectBuilding(int xCoordinate, int yCoordinate, Scanner scanner) {
         Building building = getCoordinatesBuildingType(xCoordinate, yCoordinate);
         game.selectBuilding(building);
+        building.getBuildingType().getSelectBuildingMenuMethods().run(scanner);
     }
 
     public boolean checkCreateUnitCommandValid(String type, int count) {
@@ -243,6 +244,10 @@ public class GameMenuMethods {
             }
         }
         return null;
+    }
+
+    public boolean inRange(int x, int y) {
+        return (x >= 0 && y >= 0 && x < game.getGameMap().getMapSize() && y < game.getGameMap().getMapSize());
     }
 
 

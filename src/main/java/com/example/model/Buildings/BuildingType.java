@@ -1,5 +1,7 @@
 package com.example.model.Buildings;
 
+import com.example.controller.Methods.KeepMethods;
+import com.example.controller.Methods.SelectBuildingMenuMethods;
 import com.example.model.Assets.Asset;
 import com.example.model.Map.Texture;
 
@@ -7,6 +9,7 @@ import java.util.ArrayList;
 
 
 public enum BuildingType {
+    /*
     SMALL_STONE_GATEHOUSE("small stone gatehouse",0,Asset.STONE,0,
             0,Texture.GROUND,100,0,0,0,
             8,0,0,20,10,35,null,null,2),
@@ -136,9 +139,10 @@ public enum BuildingType {
     FOOD_STORAGE("food storage",0,Asset.WOOD,5,0,
             Texture.GROUND,50,200,0,0, 0,
             0,0,0,0,0,null,null,2),
+    */
     KEEP("keep",0,Asset.STONE,0,
             0,Texture.GROUND,100,0,0,0,
-            8,0,0,20,10,35,null,null,2);
+            8,0,0,20,10,35,null,null,2, KeepMethods.getKeepMethods());
     private final int workersNumber;
     private int hitpoint;
     private final Texture groundType;
@@ -159,6 +163,7 @@ public enum BuildingType {
     private final int soldiersCapacity;
     private final Asset outputProduct;
     private final int width;
+    private final SelectBuildingMenuMethods selectBuildingMenuMethods;
     private static final ArrayList<BuildingType> barracks = new ArrayList<>();
     static {
 
@@ -166,7 +171,7 @@ public enum BuildingType {
     BuildingType(String name, int goldCost,Asset resourceType, int resourceCost,int workersNumber,
                  Texture groundType, int height, int capacity, int attackPoint, int popularityEffect,
                  int populationEffect, int productionRate, int producePrice, int fireRange, int defendRange,
-                 int soldiersCapacity, Asset productionAsset, Asset outputProduct, int width) {
+                 int soldiersCapacity, Asset productionAsset, Asset outputProduct, int width, SelectBuildingMenuMethods selectBuildingMenuMethods) {
         this.workersNumber = workersNumber;
         this.groundType = groundType;
         this.resourceType = resourceType;
@@ -186,6 +191,7 @@ public enum BuildingType {
         this.soldiersCapacity = soldiersCapacity;
         this.outputProduct = outputProduct;
         this.width = width;
+        this.selectBuildingMenuMethods = selectBuildingMenuMethods;
     }
 
     public int getWorkersNumber() {
@@ -265,6 +271,10 @@ public enum BuildingType {
 
     public int getWidth() {
         return width;
+    }
+
+    public SelectBuildingMenuMethods getSelectBuildingMenuMethods() {
+        return selectBuildingMenuMethods;
     }
 
     public BuildingType getBuildingTypeByName(String name) {

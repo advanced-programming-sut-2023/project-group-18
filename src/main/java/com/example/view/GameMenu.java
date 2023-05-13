@@ -50,7 +50,7 @@ public class GameMenu {
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DROP_BUILDING)).find()) {
                 dropBuilding(matcher);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SELECT_BUILDING)).find()) {
-                selectBuilding(matcher);
+                selectBuilding(matcher, scanner);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.CREATE_UNIT)).find()) {
                 createUnit(matcher);
             } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.REPAIR).find()) {
@@ -143,9 +143,20 @@ public class GameMenu {
         }
     }
 
-    private void selectBuilding(Matcher matcher) {
+    private void selectBuilding(Matcher matcher, Scanner scanner) {
         int xCoordinate = gameMenuMethods.getXCoordinate(matcher);
         int yCoordinate = gameMenuMethods.getYCoordinate(matcher);
+        if (!gameMenuMethods.inRange(xCoordinate, yCoordinate)) {
+            System.out.println("the coordination's are not in range");
+            return;
+        } else if (gameMenuMethods.isCellEmpty(xCoordinate, yCoordinate)) {
+            System.out.println("there is no building in that cell!");
+            return;
+        } else if (!gameMenuMethods.isCurrentGovernanceOwner(xCoordinate, yCoordinate)) {
+            System.out.println("you are not the owner of this building");
+            return;
+        }
+        gameMenuMethods.selectBuilding(xCoordinate, yCoordinate, scanner);
     }
 
     private void createUnit(Matcher matcher) {
