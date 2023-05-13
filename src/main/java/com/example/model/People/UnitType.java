@@ -50,6 +50,8 @@ public enum UnitType {
             Asset.PIKE, 1),
     TANNER("Tanner", 5, 1, null,false,null,null,
             0),
+    ENGINEER("Tanner", 5, 1, null,false,null,null,
+            0),
     ATTACK_TOOL("Attack Tool",50,1000,null,true,null,
             null,0),
     ;
