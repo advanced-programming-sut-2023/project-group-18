@@ -139,8 +139,8 @@ public class Unit extends Object implements Successor, ConsoleColors {
             Node node = findLeastTotalNode(openList);
             openList.remove(node);
             for (int[] successor : SUCCESSORS) {
-                int x = node.getCell().getxCordinate() + successor[0];
-                int y = node.getCell().getyCordinate() + successor[1];
+                int x = node.getCell().getxCoordinate() + successor[0];
+                int y = node.getCell().getxCoordinate() + successor[1];
                 Cell cell = unitCell.getGameMap().getCellByLocation(x, y);
                 if (cell == null) continue;
                 if (!canGoCell(cell)) continue;
