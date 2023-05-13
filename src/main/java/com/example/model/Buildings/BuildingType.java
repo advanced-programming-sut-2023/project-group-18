@@ -123,7 +123,7 @@ public enum BuildingType {
             0,0,0,Asset.IRON,Asset.MACE,2, Category.GUNSMITH,
             GunsmithMethods.getGunsmithMethods(),200),
     OIL_SMELTER("oil smelter",100,Asset.IRON,10,1, Texture.PETROLEUM,20,
-            0,0,0,0, 0,0,0,0,
+            0,0,0,0, 5,0,0,0,
             0,null,Asset.PITCH,1, Category.INDUSTRIAL_BUILDING
             , null,200),
     PITCH_DITCH("pitch ditch",0,Asset.PITCH,2,0, Texture.GROUND,0,0,

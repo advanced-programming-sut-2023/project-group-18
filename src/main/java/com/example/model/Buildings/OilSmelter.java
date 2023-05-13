@@ -13,10 +13,14 @@ public class OilSmelter extends IndustrialBuilding{
         this.oilCount = 0;
     }
     public boolean canWork(){
-        return workers.get(0).getUnitType().equals(UnitType.ENGINEER) && super.canWork();
+        return workers.get(0).getUnitType().equals(UnitType.ENGINEER) && super.canWork() && this.oilCount != 0;
     }
 
     public void produce(){
         this.oilCount += this.getBuildingType().getProductionRate();
+    }
+
+    public void useOil(){
+        this.oilCount --;
     }
 }
