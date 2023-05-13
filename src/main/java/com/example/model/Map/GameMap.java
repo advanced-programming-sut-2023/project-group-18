@@ -36,22 +36,25 @@ public class GameMap implements WriteInFile, Successor {
         id = 0;
         length = MapSizes.getMapSize(size);
         map = new Cell[length][length];
-        for (int yCordinate = 0; yCordinate < map.length; yCordinate++)
-            for (int xCordinate = 0; xCordinate < map.length; xCordinate++)
-                map[yCordinate][xCordinate] = new Cell(xCordinate, yCordinate, this);
+        for (int yCoordinate = 0; yCoordinate < map.length; yCoordinate++)
+            for (int xCoordinate = 0; xCoordinate < map.length; xCoordinate++)
+                map[yCoordinate][xCoordinate] = new Cell(xCoordinate, yCoordinate, this);
     }
 
+    public int getMapSize() {
+        return map.length;
+    }
 
     public Game getGame() {
         return game;
     }
 
-    public Cell getCellByLocation(int xCordinate, int yCordinate) {
-        return map[yCordinate][xCordinate];
+    public Cell getCellByLocation(int xCoordinate, int yCoordinate) {
+        return map[yCoordinate][xCoordinate];
     }
 
-    public boolean isInBounds(int xCordinate, int yCordinate) {
-        return 0 <= xCordinate && 0 <= yCordinate && yCordinate < map.length && xCordinate < map.length;
+    public boolean isInBounds(int xCoordinate, int yCoordinate) {
+        return 0 <= xCoordinate && 0 <= yCoordinate && yCoordinate < map.length && xCoordinate < map.length;
     }
 
 /*
@@ -82,29 +85,28 @@ public class GameMap implements WriteInFile, Successor {
     }
 */
 
-    public String showMap(int xCordinate, int yCordinate) {
+    public String showMap(int xCoordinate, int yCoordinate) {
         String result = line;
-        for (int i = yCordinate - LENGTH; i <= yCordinate + LENGTH; i++) {
+        for (int i = yCoordinate - LENGTH; i <= yCoordinate + LENGTH; i++) {
             for (int k = 0; k < 3; k++) {
                 result += "\n|";
-                for (int j = xCordinate - 2 * LENGTH; j <= xCordinate + 2 * LENGTH; j++) {
-                    result += map[i][j].toString() + "|";
-                }
+                for (int j = xCoordinate - 2 * LENGTH; j <= xCoordinate + 2 * LENGTH; j++)
+                    result += map[i][j].toString(j) + "|";
             }
             result += line;
         }
         return result;
     }
 
-    public String showDetails(int xCordinate, int yCordinate) {
-        return map[yCordinate][xCordinate].showDetails();
+    public String showDetails(int xCoordinate, int yCoordinate) {
+        return map[yCoordinate][xCoordinate].showDetails();
     }
 
-    public boolean areCordinatesValid(int xCordinate, int yCordinate) {
-        return (xCordinate - 2 * LENGTH) >= 0
-                && (xCordinate + 2 * LENGTH) <= length
-                && (yCordinate - LENGTH) >= 0
-                && (yCordinate + LENGTH) <= length;
+    public boolean areCoordinatesValid(int xCoordinate, int yCoordinate) {
+        return (xCoordinate - 2 * LENGTH) >= 0
+                && (xCoordinate + 2 * LENGTH) <= length
+                && (yCoordinate - LENGTH) >= 0
+                && (yCoordinate + LENGTH) <= length;
     }
 
     @Override
@@ -123,8 +125,8 @@ public class GameMap implements WriteInFile, Successor {
 
     public ArrayList<Cell> neighbourCells(Cell cell){
         ArrayList<Cell> neighbourCells = new ArrayList<>();
-        int xCoordinate = cell.getxCordinate();
-        int yCoordinate = cell.getyCordinate();
+        int xCoordinate = cell.getxCoordinate();
+        int yCoordinate = cell.getyCoordinate();
         for (int[] neighbour : SUCCESSORS){
             int x = xCoordinate+neighbour[0];
             int y = yCoordinate+neighbour[1];

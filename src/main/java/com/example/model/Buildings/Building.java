@@ -2,6 +2,7 @@ package com.example.model.Buildings;
 
 import java.util.ArrayList;
 
+import com.example.model.ConsoleColors;
 import com.example.model.Governance;
 import com.example.model.Assets.Asset;
 import com.example.model.Map.Cell;
@@ -10,7 +11,7 @@ import com.example.model.People.UnitType;
 import com.example.model.People.Worker;
 import com.example.model.Map.Texture;
 
-public class Building {
+public class Building implements ConsoleColors {
     private final BuildingType buildingType;
     protected final ArrayList<Unit> workers;
     protected final Governance governance;
@@ -75,6 +76,7 @@ public class Building {
     public int getWorkersNumber(){
         return this.workers.size();
     }
+
     public void addWorker(){
         workers.add(new Worker(governance,UnitType.getUnitTypeByBuildingType(buildingType),cell));
     }
@@ -95,4 +97,17 @@ public class Building {
             return;
         this.hitpoint -= damage;
     }
+
+    @Override
+    public String toString() {
+        String hitpoint;
+        if (this.hitpoint < buildingType.getHitpoint() / 3) hitpoint = RED_BOLD;
+        else if (this.hitpoint < buildingType.getHitpoint() * 2 / 3) hitpoint = YELLOW_BOLD;
+        else hitpoint = GREEN_BOLD;
+        hitpoint += this.hitpoint + RESET;
+        hitpoint += "/" + buildingType.getHitpoint();
+        final String owner = YELLOW_BOLD + governance.getOwner().getNickname() + RESET;
+        return buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
+    }
+
 }
