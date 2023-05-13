@@ -80,9 +80,9 @@ public class Cell implements ConsoleColors {
         this.units.add(unit);
     }
 
-    public String toString(int row, int column) {
+    public String toString(int column) {
         String letter;
-        if (row != 0 || column != 1) letter = " ";
+        if (column != 1) letter = " ";
         else if (!units.isEmpty()) letter = "S";
         else if (building == null) letter = " ";
         else if (building.getBuildingType().equals(BuildingType.TREE)) letter = "T";

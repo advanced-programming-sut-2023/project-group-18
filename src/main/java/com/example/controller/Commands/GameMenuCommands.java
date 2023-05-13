@@ -26,7 +26,7 @@ public enum GameMenuCommands {
     DIG_TUNNEL("^dig tunnel (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
     BUILD("^build -q (?<equipmentName>\\S+)$"),
     DISBAND_UNIT("^disband unit$"),
-    SET_TEXTURE("^settexture (?<fields>( -\\S \\S+){3})$"),
+    SET_TEXTURE("^settexture(?<fields>( -\\S .+){3})$"),
     SET_TEXTURE_RECTANGLE("^settexture (?<fields>( -\\S \\S+){5})$"),
     CLEAR("^clear (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
     DROP_ROCK("^droprock (?<fields>( -\\S \\S+){3})$"),

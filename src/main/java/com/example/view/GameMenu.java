@@ -164,16 +164,16 @@ public class GameMenu {
         }
         int x = Integer.parseInt(fields.get("-x"));
         int y = Integer.parseInt(fields.get("-y"));
-        String buildingTypeName = fields.get("-t");
+        String textureName = fields.get("-t");
         Texture texture;
         if (!gameMenuMethods.areCoordinatesValid(x, y)) {
             System.out.println("your entered coordination's are not valid");
             return;
-        } else if (gameMenuMethods.isCellEmpty(x, y)) {
+        } else if (!gameMenuMethods.isCellEmpty(x, y)) {
             System.out.println("the cell in this coordination is not empty!");
             return;
-        } else if ((texture = Texture.getTextureByName(buildingTypeName)) == null) {
-            System.out.println("the building type is not valid");
+        } else if ((texture = Texture.getTextureByName(textureName)) == null) {
+            System.out.println("the texture type is not valid");
             return;
         }
         gameMenuMethods.getGame().getGameMap().getCellByLocation(x, y).setTexture(texture);

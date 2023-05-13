@@ -298,7 +298,6 @@ public class GameMenuMethods {
     public HashMap<String, String> sortFields(ArrayList<String> fields) {
         HashMap<String, String> hashMap = new HashMap<>();
         for (String string : fields) {
-            System.out.println(string);
             String quoteSubstring = string.trim().substring(4, string.trim().length() - 1);
             boolean isQuoted = string.trim().charAt(3) == '\"' && string.trim().endsWith("\"");
             if (isQuoted) {
