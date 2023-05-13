@@ -226,6 +226,11 @@ public class Unit extends Object implements Successor, ConsoleColors {
         return bestTree;
     }
 
+    public void doDamage(int damage){
+        if (this.hitpoint < damage)
+            this.hitpoint = 0;
+        else this.hitpoint -= damage;
+    }
     @Override
     public String toString() {
         String hitpoint;
