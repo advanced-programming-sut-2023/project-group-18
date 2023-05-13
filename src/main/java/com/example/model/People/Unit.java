@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import com.example.model.ConsoleColors;
 import com.example.model.Governance;
 import com.example.model.Buildings.Building;
+import com.example.model.Buildings.Tree;
 import com.example.model.Map.Cell;
 import com.example.model.Map.Node;
 import com.example.model.Map.Successor;
@@ -197,6 +198,32 @@ public class Unit extends Object implements Successor, ConsoleColors {
 
     public void attack(Building building) {
 
+    }
+
+    public boolean findNearestTree() {
+        ArrayList<Tree> trees = unitCell.getGameMap().getGame().getTrees();
+        while (!trees.isEmpty()) {
+            Tree tree = findNearestTree(trees);
+            targetCell = tree.getCell();
+            trees.remove(tree);
+            findPath();
+            if (path == null) continue;
+            return true;
+        }
+        return false;
+    }
+
+    public Tree findNearestTree(ArrayList<Tree> trees) {
+        Tree bestTree = trees.get(0);
+        double bestDistance = unitCell.calculatePythagorean(bestTree.getCell());
+        for (Tree tree : trees) {
+            double distance = unitCell.calculatePythagorean(tree.getCell());
+            if (distance < bestDistance) {
+                bestDistance = distance;
+                bestTree = tree;
+            }
+        }
+        return bestTree;
     }
 
     @Override

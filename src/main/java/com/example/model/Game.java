@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
+import com.example.model.Buildings.Tree;
 import com.example.model.Map.Cell;
 import com.example.model.Map.GameMap;
 import com.example.model.People.SoldierType;
@@ -19,9 +20,11 @@ public class Game {
     private Unit selectedUnit;
     private int round;
     private int turn;
+    private final ArrayList<Tree> trees;
 
     private Game() {
         governances = new ArrayList<>();
+        trees = new ArrayList<>();
         players = round = turn = 0;
         selectedBuilding = null;
     }
@@ -102,6 +105,18 @@ public class Game {
     public void selectUnit(Unit selectedUnit) {
         if (selectedUnit.isControllable())
             this.selectedUnit = selectedUnit;
+    }
+
+    public ArrayList<Tree> getTrees() {
+        return trees;
+    }
+
+    public void addTree(Tree tree) {
+        trees.add(tree);
+    }
+
+    public void removeTree(Tree tree) {
+        trees.remove(tree);
     }
 
 }
