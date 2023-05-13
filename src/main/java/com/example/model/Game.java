@@ -35,6 +35,10 @@ public class Game {
             governances.add(new Governance(user));
         players = users.size();
         currentGovernance = governances.get(0);
+        KeepLocations keepLocations;
+        if (gameMap.getMapSize() == 200) keepLocations = new NormalMap();
+        else keepLocations = new LargeMap();
+        keepLocations.dropKeeps(this);
     }
 
     public void setGameMap(String size) {

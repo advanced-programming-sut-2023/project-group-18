@@ -43,7 +43,7 @@ public class GameMenuMethods {
     }
 
     public boolean areCoordinatesValid(int xCoordinate, int yCoordinate) {
-        return game.getGameMap().areCordinatesValid(xCoordinate, yCoordinate);
+        return game.getGameMap().areCoordinatesValid(xCoordinate, yCoordinate);
     }
 
     public boolean isCellEmpty(int xCoordinate, int yCoordinate) {

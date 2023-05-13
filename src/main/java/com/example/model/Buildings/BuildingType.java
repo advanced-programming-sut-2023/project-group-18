@@ -135,7 +135,10 @@ public enum BuildingType {
             1,1,0,0,0,Asset.HOPS,Asset.ALE,2),
     FOOD_STORAGE("food storage",0,Asset.WOOD,5,0,
             Texture.GROUND,50,200,0,0, 0,
-            0,0,0,0,0,null,null,2);
+            0,0,0,0,0,null,null,2),
+    KEEP("keep",0,Asset.STONE,0,
+            0,Texture.GROUND,100,0,0,0,
+            8,0,0,20,10,35,null,null,2);
     private final int workersNumber;
     private int hitpoint;
     private final Texture groundType;

@@ -22,7 +22,8 @@ public enum Texture implements ConsoleColors {
     POOL ("pool", BLUE_BACKGROUND, false),
     BEACH ("beach", BLUE_BACKGROUND, false),
     SEA ("sea", BLUE_BACKGROUND, false),
-    HOLE("hole", BLUE_BACKGROUND, false)
+    HOLE("hole", BLUE_BACKGROUND, false),
+    ROCK ("rock", BLACK_BACKGROUND, false)
     ;
     private static final List<Texture> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
     private static final int SIZE = VALUES.size();
@@ -45,6 +46,7 @@ public enum Texture implements ConsoleColors {
     }
 
     public static Texture getARondomTexture() {
+        if (RANDOM.nextInt(4) == 0) return GROUND;
         return VALUES.get(RANDOM.nextInt(SIZE));
     }
 

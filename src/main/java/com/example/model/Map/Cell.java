@@ -12,15 +12,15 @@ public class Cell implements ConsoleColors {
     private final ArrayList<Unit> units;
     private Building building;
     private Texture texture;
-    private final int xCordinate;
-    private final int yCordinate;
+    private final int xCoordinate;
+    private final int yCoordinate;
 
-    public Cell(int xCordinate, int yCordinate, GameMap gameMap) {
+    public Cell(int xCoordinate, int yCoordinate, GameMap gameMap) {
         this.gameMap = gameMap;
         units = new ArrayList<>();
         texture = Texture.getARondomTexture();
-        this.xCordinate = xCordinate;
-        this.yCordinate = yCordinate;
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
     }
 
     public GameMap getGameMap() {
@@ -39,12 +39,12 @@ public class Cell implements ConsoleColors {
         return texture;
     }
 
-    public int getxCordinate() {
-        return xCordinate;
+    public int getxCoordinate() {
+        return xCoordinate;
     }
 
-    public int getyCordinate() {
-        return yCordinate;
+    public int getyCoordinate() {
+        return yCoordinate;
     }
 
     public void setBuilding(Building building) {
@@ -56,7 +56,7 @@ public class Cell implements ConsoleColors {
     }
 
     public String showDetails() {
-        String result = "Location: (" + xCordinate + ", " + yCordinate + ")";
+        String result = "Location: (" + xCoordinate + ", " + yCoordinate + ")";
         result += "\nTexture: " + texture.name;
         if (building != null) result += "\nBuilding: " + building.toString();
         if (!units.isEmpty()) {
@@ -70,17 +70,24 @@ public class Cell implements ConsoleColors {
     public boolean isHole(){
         return this.texture.equals(Texture.HOLE);
     }
+
     public double calculatePythagorean(Cell cell) {
-        return Math.sqrt(Math.pow(xCordinate, cell.xCordinate) + Math.pow(yCordinate, cell.yCordinate));
+        return Math.sqrt(Math.pow(xCoordinate, cell.xCoordinate) + Math.pow(yCoordinate, cell.yCoordinate));
     }
 
     public void addUnit(Unit unit){
         this.units.add(unit);
     }
 
-    @Override
-    public String toString() {
-        return texture.color + "      " + RESET;
+    public String toString(int row) {
+        String letter;
+        if (row == 0) letter = " ";
+        else if (!units.isEmpty()) letter = "S";
+        else if (building == null) letter = " ";
+        // else if (building.getBuildingType().equals(BuildingType.)) letter = "T";
+        // else if (building.getBuildingType().equals(BuildingType.)) letter = "W";
+        else letter = "B";
+        return texture.color + "  " + letter + "   " + RESET;
     }
 
     public boolean hasEnemy(Governance governance){
@@ -90,4 +97,5 @@ public class Cell implements ConsoleColors {
         }
         return false;
     }
+
 }
