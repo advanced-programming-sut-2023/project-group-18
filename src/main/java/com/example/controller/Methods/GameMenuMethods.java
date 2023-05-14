@@ -2,7 +2,10 @@ package com.example.controller.Methods;
 
 import com.example.model.Assets.Asset;
 import com.example.model.Assets.AssetType;
-import com.example.model.Buildings.*;
+import com.example.model.Buildings.Building;
+import com.example.model.Buildings.BuildingType;
+import com.example.model.Buildings.Gate;
+import com.example.model.Buildings.Tower;
 import com.example.model.ConsoleColors;
 import com.example.model.Game;
 import com.example.model.Governance;
@@ -403,6 +406,13 @@ public class GameMenuMethods implements ConsoleColors {
         return false;
     }
 
+    public boolean checkDropRockInvalidField(HashMap<String, String> hashMap) {
+        for (String string : hashMap.keySet()) {
+            if (!string.trim().equals("-x") && !string.trim().equals("-y") && !string.trim().equals("-d"))
+                return false;
+        }
+        return hashMap.size() == 3;
+    }
     public void disbandUnit(){
         ArrayList<Building> buildings =  game.getCurrentGovernance().getBuildings();
         for (Building building : buildings){
