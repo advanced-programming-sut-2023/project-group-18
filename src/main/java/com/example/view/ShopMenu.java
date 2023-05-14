@@ -36,7 +36,9 @@ public class ShopMenu {
                 shop(matcher, true);
             } else if ((matcher = ShopMenuCommands.getMatcher(input, ShopMenuCommands.SELL)).find()) {
                 shop(matcher, false);
-            }
+            } else if(ShopMenuCommands.getMatcher(input, ShopMenuCommands.EXIT).find()) {
+                break;
+            } else globalMethods.invalidCommand();
         }
     }
 
