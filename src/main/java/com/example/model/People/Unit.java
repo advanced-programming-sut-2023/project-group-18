@@ -18,12 +18,12 @@ public class Unit implements Successor, ConsoleColors {
     private boolean isFree;
     private Building place;
     private int hitpoint;
-    private int speed;
+    protected int speed;
     protected Cell targetCell;
     private Cell patrolCell;
     protected LinkedList<Cell> path;
     private final boolean controllable;
-    private State state;
+    protected State state;
 
     public Unit(Governance governance, UnitType unitType, Cell unitCell) {
         this.governance = governance;

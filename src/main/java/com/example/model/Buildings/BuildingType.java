@@ -310,6 +310,10 @@ public enum BuildingType {
         return width;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
     public SelectBuildingMenuMethods getSelectBuildingMenuMethods() {
         return selectBuildingMenuMethods;
     }

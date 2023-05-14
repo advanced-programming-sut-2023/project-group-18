@@ -5,30 +5,35 @@ import com.example.model.Map.Cell;
 import java.util.ArrayList;
 
 import com.example.model.Governance;
+import com.example.model.Buildings.Category;
 import com.example.model.Map.Texture;
 
 public class Soldier extends Unit {
     private final SoldierType soldierType;
     private final int attackPower;
-    private final int defencePower;
-    private final int speed;
-    private final int cost;
     private final int attackRange;
     private int damage;
+    private boolean isAttack;
 
     public Soldier(Cell personCell, Governance governance, SoldierType soldierType) {
         super(governance,UnitType.SOLDIER,personCell);
         this.soldierType = soldierType;
         this.attackPower = soldierType.getAttackPower();
-        this.defencePower = soldierType.getDefencePower();
-        this.speed = soldierType.getSpeed();
-        this.cost = soldierType.getCost();
         this.attackRange = soldierType.getAttackRange();
         this.damage = soldierType.getAttackPower() * (20 + governance.getFearRate());
+        this.isAttack = false;
     }
 
-    public void updateDamage(){
-        this.damage = soldierType.getAttackPower() * (20 + this.getGovernance().getFearRate());
+    public boolean isAttack() {
+        return isAttack;
+    }
+
+    public void setAttack(boolean isAttack) {
+        this.isAttack = isAttack;
+    }
+
+    public void updateDamage() {
+        this.damage = attackPower * (20 + this.getGovernance().getFearRate());
     }
 
     public int getDamage() {
@@ -48,17 +53,43 @@ public class Soldier extends Unit {
         cell.setTexture(Texture.GROUND);
     }
 
-    public void attack(Cell cell){
-        Unit enemyUnit = null;
+    public void attack(Cell cell) {
         for (Unit unit : cell.getUnits()){
             if (!unit.getGovernance().equals(this.getGovernance()))
-                enemyUnit = unit;
+                unit.addHitpoint(-this.getDamage());
         }
-        if (enemyUnit == null)
-            return;
-        enemyUnit.addHitpoint(-this.getDamage());
     }
 
+    public void attackInBuilding(int additiveRange) {
+        if (findNearestEnemyInBuilding(attackRange + additiveRange)) 
+            attack(targetCell);
+    }
+
+
+    public void attack() {
+        while (speed > 0 && !path.isEmpty()) {
+            if (path.size() <= attackRange)
+            moveOneCell(path.getFirst());
+            path.removeFirst();
+            speed--;
+        }
+    }
+
+    public boolean findNearestEnemyInBuilding(int range) {
+        ArrayList<Governance> governances = new ArrayList<>(unitCell.getGameMap().getGame().getGovernances());
+        final int index = governances.indexOf(governance);
+        governances.remove(governance);
+        while (!governances.isEmpty()) {
+            Governance targetGovernance = governances.get(index % governances.size());
+            governances.remove(targetGovernance);
+            ArrayList<Unit> units = new ArrayList<>(targetGovernance.getSoldiers());
+            Unit unit = findNearestEnemy(units);
+            if (unit.getUnitCell().calculatePythagorean(unitCell) > range) continue;
+            targetCell = unit.getUnitCell();
+            return true;
+        }
+        return false;
+    }
 
     public boolean findNearestEnemy(int range) {
         ArrayList<Governance> governances = new ArrayList<>(unitCell.getGameMap().getGame().getGovernances());
@@ -96,6 +127,16 @@ public class Soldier extends Unit {
         return bestUnit;
     }
 
-    
+    public void run() {
+        if (unitCell.getBuilding().getBuildingType().getCategory().equals(Category.TOWER))
+            attackInBuilding(unitCell.getBuilding().getBuildingType().getFireRange());
+        else if (isAttack) {
+            if (findNearestEnemy(attackRange + state.getAdditiveRange()))
+                attack();
+        } else if (targetCell != null) {
+            findPath();
+            movePath();
+        }
+    }
 
 }
