@@ -5,10 +5,7 @@ import java.util.HashMap;
 
 import com.example.model.Assets.Asset;
 import com.example.model.Assets.AssetType;
-import com.example.model.Buildings.Building;
-import com.example.model.Buildings.BuildingType;
-import com.example.model.Buildings.Category;
-import com.example.model.Buildings.Storage;
+import com.example.model.Buildings.*;
 import com.example.model.Map.Cell;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
@@ -261,11 +258,27 @@ public class Governance {
         addSpecificAsset(asset, -count);
     }
 
-    public void addBuilding(BuildingType buildingType, Cell cell) {
-        if (buildingType.getCategory().equals(Category.STORAGE))
-            buildings.add(new Storage(buildingType, this, cell));
-        else
-            buildings.add(new Building(buildingType, this, cell));
+    public boolean addBuilding(BuildingType buildingType, Cell cell) {
+        switch (buildingType.getCategory()){
+            case WALL -> buildings.add(new Wall(buildingType, this, cell));
+            case STAIR -> buildings.add(new Stair(buildingType, this, cell, Direction.DOWN));
+            case FARM -> buildings.add(new Farm(buildingType, this, cell));
+            case TRAP -> buildings.add(new Trap(buildingType, this, cell));
+            case GATE -> buildings.add(new Gate(buildingType, this, cell, Direction.DOWN));
+            case TOWER -> buildings.add(new Tower(buildingType, this, cell));
+            case STABLE -> buildings.add(new Stable(buildingType, this, cell));
+            case STORAGE -> buildings.add(new Storage(buildingType, this, cell));
+            case BARRACKS -> buildings.add(new Barracks(buildingType, this, cell));
+            case GUNSMITH -> buildings.add(new Gunsmith(buildingType, this, cell));
+            case PROCESSING -> buildings.add(new Processing(buildingType, this, cell));
+            case DAIRY_PRODUCTS -> buildings.add(new DairyProducts(buildingType, this, cell));
+            case INDUSTRIAL_BUILDING -> buildings.add(new IndustrialBuilding(buildingType, this, cell));
+            case BUILDING -> buildings.add(new Building(buildingType, this, cell));
+            default -> {
+                return false;
+            }
+        }
+        return true;
     }
 
 

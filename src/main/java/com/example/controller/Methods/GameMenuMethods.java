@@ -15,9 +15,9 @@ import com.example.model.People.*;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
 import com.example.model.People.Unit;
+import com.example.model.People.UnitType;
 import com.example.model.User;
 import com.example.view.GameMenu;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -53,14 +53,32 @@ public class GameMenuMethods implements ConsoleColors {
         Cell cell = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
         return cell.getBuilding() == null && cell.getUnits().isEmpty();
     }
-
+    public boolean isNotEdge(BuildingType buildingType, int xCoordinate, int yCoordinate){
+        int width = buildingType.getWidth() - 1;
+        int mapSize = game.getGameMap().getMapSize();
+        if ((xCoordinate >= width) && (xCoordinate <= mapSize - width - 1)){
+            return (yCoordinate >= width) && (yCoordinate <= mapSize - width - 1);
+        }
+        return false;
+    }
     public boolean isTextureCompatible(BuildingType buildingType, int xCoordinate, int yCoordinate) {
         Cell cell = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
-        if (buildingType.getGroundType().equals(Texture.GROUND)) {
-            if (cell.getTexture().equals(Texture.GRAVEL))
-                return true;
-        }
-        return buildingType.getGroundType().equals(cell.getTexture());
+        int width = buildingType.getWidth();
+        Texture properTexture = buildingType.getGroundType();
+        for (int i = -width + 1; i < width; i++)
+            for (int j = -width + 1; j < width; j++) {
+                int x = cell.getxCoordinate() + i;
+                int y = cell.getyCoordinate() + j;
+                Cell underCell = cell.getGameMap().getCellByLocation(x, y);
+                Texture texture = underCell.getTexture();
+                if (properTexture.equals(Texture.GROUND)) {
+                    if (texture.equals(Texture.LAWN) || texture.equals(Texture.RARE_GRASSLAND))
+                        continue;
+                }
+                if (!properTexture.equals(texture))
+                    return false;
+            }
+        return true;
     }
 
     public boolean haveEnoughResources(BuildingType buildingType) {
@@ -148,7 +166,12 @@ public class GameMenuMethods implements ConsoleColors {
         governance.removeAssetFromStorage(armor, count);
         governance.createSoldier(count);
         Cell barracksCell = game.getSelectedBuilding().getCell();
-        new Soldier(barracksCell, governance, soldierType);
+        switch (soldierType){
+            case LADDERMEN -> new LadderMan(barracksCell, governance, soldierType);
+            case TUNNELER -> new Tunneler(barracksCell, governance, soldierType);
+            case ENGINEER -> new Engineer(barracksCell, governance, soldierType);
+            default -> new Soldier(barracksCell, governance, soldierType);
+        }
     }
 
     public boolean canRepair() {

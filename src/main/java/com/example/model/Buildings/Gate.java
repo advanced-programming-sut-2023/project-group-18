@@ -6,9 +6,9 @@ import com.example.model.Map.Cell;
 public class Gate extends Tower{
     private boolean isOpen;
     private boolean hasBridge;
-    private final String direction;
+    private final Direction direction;
 
-    public Gate(BuildingType buildingType, Governance governance, Cell cell, String direction) {
+    public Gate(BuildingType buildingType, Governance governance, Cell cell, Direction direction) {
         super(buildingType, governance, cell);
         this.isOpen = false;
         this.hasBridge = false;
@@ -35,7 +35,7 @@ public class Gate extends Tower{
         hasBridge = true;
         this.hitpoint += 100;
     }
-    public String getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 }
