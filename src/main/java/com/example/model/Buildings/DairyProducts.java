@@ -11,11 +11,11 @@ public class DairyProducts extends Farm{
         this.cowNumber = 4;
     }
 
-    private void addCow(int count){
+    public void addCow(int count){
         cowNumber += count;
     }
 
-    private void useCow(){
+    public void useCow(){
         cowNumber--;
     }
 
