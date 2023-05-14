@@ -59,6 +59,10 @@ public class Governance {
         return nonMilitaryCharacters;
     }
 
+    public ArrayList<Soldier> getSoldiers() {
+        return soldiers;
+    }
+
     protected ArrayList<Trade> getTradeList() {
         return tradeList;
     }

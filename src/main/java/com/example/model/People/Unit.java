@@ -11,18 +11,19 @@ import com.example.model.Map.Cell;
 import com.example.model.Map.Node;
 import com.example.model.Map.Successor;
 
-public class Unit extends Object implements Successor, ConsoleColors {
-    private final Governance governance;
+public class Unit implements Successor, ConsoleColors {
+    protected final Governance governance;
     private final UnitType unitType;
-    private Cell unitCell;
+    protected Cell unitCell;
     private boolean isFree;
     private Building place;
     private int hitpoint;
     private int speed;
-    private Cell targetCell;
+    protected Cell targetCell;
     private Cell patrolCell;
-    private LinkedList<Cell> path;
+    protected LinkedList<Cell> path;
     private final boolean controllable;
+    private State state;
 
     public Unit(Governance governance, UnitType unitType, Cell unitCell) {
         this.governance = governance;
@@ -33,6 +34,7 @@ public class Unit extends Object implements Successor, ConsoleColors {
         hitpoint = unitType.getMaxHitpoint();
         speed = unitType.getMaxSpeed();
         this.controllable = unitType.isControllable();
+        this.state = State.STANDING;
     }
 
     public Governance getGovernance() {
@@ -67,6 +69,10 @@ public class Unit extends Object implements Successor, ConsoleColors {
         return targetCell;
     }
 
+    public State getState() {
+        return state;
+    }
+
     public void setUnitCell(Cell unitCell) {
         this.unitCell = unitCell;
     }
@@ -89,6 +95,10 @@ public class Unit extends Object implements Successor, ConsoleColors {
 
     public void setPatrolCell(Cell patrolCell) {
         this.patrolCell = patrolCell;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     public boolean addHitpoint(int hitpoint) {
@@ -207,7 +217,7 @@ public class Unit extends Object implements Successor, ConsoleColors {
             targetCell = tree.getCell();
             trees.remove(tree);
             findPath();
-            if (path == null) continue;
+            if (path.isEmpty()) continue;
             return true;
         }
         return false;
@@ -231,6 +241,7 @@ public class Unit extends Object implements Successor, ConsoleColors {
             this.hitpoint = 0;
         else this.hitpoint -= damage;
     }
+
     @Override
     public String toString() {
         String hitpoint;

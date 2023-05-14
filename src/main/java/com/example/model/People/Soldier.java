@@ -1,6 +1,9 @@
 package com.example.model.People;
 
 import com.example.model.Map.Cell;
+
+import java.util.ArrayList;
+
 import com.example.model.Governance;
 import com.example.model.Map.Texture;
 
@@ -55,5 +58,44 @@ public class Soldier extends Unit {
             return;
         enemyUnit.addHitpoint(-this.getDamage());
     }
+
+
+    public boolean findNearestEnemy(int range) {
+        ArrayList<Governance> governances = new ArrayList<>(unitCell.getGameMap().getGame().getGovernances());
+        final int index = governances.indexOf(governance);
+        governances.remove(governance);
+        while (!governances.isEmpty()) {
+            Governance targetGovernance = governances.get(index % governances.size());
+            governances.remove(targetGovernance);
+            ArrayList<Unit> units = new ArrayList<>(targetGovernance.getSoldiers());
+            while (!units.isEmpty()) {
+                Unit unit = findNearestEnemy(units);
+                targetCell = unit.getUnitCell();
+                units.remove(unit);
+                findPath();
+                if (path.isEmpty() && path.size() > range) {
+                    path.clear();
+                    continue;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Unit findNearestEnemy(ArrayList<Unit> units) {
+        Unit bestUnit = units.get(0);
+        double bestDistance = unitCell.calculatePythagorean(bestUnit.getUnitCell());
+        for (Unit unit : units) {
+            double distance = unitCell.calculatePythagorean(unit.getUnitCell());
+            if (distance < bestDistance) {
+                bestDistance = distance;
+                bestUnit = unit;
+            }
+        }
+        return bestUnit;
+    }
+
+    
 
 }
