@@ -29,12 +29,14 @@ public class GameMenu {
     }
 
     public void run(Scanner scanner) {
-        System.out.println(gameMenuMethods.getGame().getCurrentGovernance().getAssetCount(Asset.WOOD));
+        System.out.println("It's " + gameMenuMethods.getGame().getCurrentGovernance().getOwner().getUsername() + " turn!");
         String input;
         Matcher matcher;
         while (true) {
             input = scanner.nextLine();
-            if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DROP_BUILDING)).find()) {
+            if (GameMenuCommands.getMatcher(input, GameMenuCommands.NEXT_TURN).find()) {
+                break;
+            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DROP_BUILDING)).find()) {
                 dropBuilding(matcher);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SELECT_BUILDING)).find()) {
                 selectBuilding(matcher, scanner);
@@ -155,21 +157,23 @@ public class GameMenu {
         int y = Integer.parseInt(fields.get("-y"));
         String buildingTypeName = fields.get("-t");
         BuildingType buildingType;
-        if (!gameMenuMethods.areCoordinatesValid(x, y)) {
-            System.out.println("your entered coordination's are not valid");
-            return;
-        } else if (!gameMenuMethods.isCellEmpty(x, y)) {
-            System.out.println("the cell in this coordination is not empty!");
-            return;
-        } else if ((buildingType = gameMenuMethods.getBuildingType(buildingTypeName)) == null) {
+        if ((buildingType = gameMenuMethods.getBuildingType(buildingTypeName)) == null) {
             System.out.println("the building type is not valid");
             return;
-        }
-        if (!gameMenuMethods.isTextureCompatible(buildingType, x, y)) {
+        } else if (!gameMenuMethods.isNotEdge(buildingType, x, y)) {
+            System.out.println("your entered coordination's are not valid");
+            return;
+        } else if (!gameMenuMethods.isAreaEmpty(buildingType, x, y)) {
+            System.out.println("the cell in this coordination is not empty!");
+            return;
+        } else if (!gameMenuMethods.isTextureCompatible(buildingType, x, y)) {
             System.out.println("the texture for this cell is not compatible with the building");
             return;
         } else if (!gameMenuMethods.haveEnoughResources(buildingType)) {
             System.out.println("you don't have enough resources to build this building");
+            return;
+        } else if (!gameMenuMethods.isStockpileOK(buildingType, x, y)) {
+            System.out.println("you have to drop stockpiles next to each other");
             return;
         }
         gameMenuMethods.dropBuilding(buildingType, x, y);

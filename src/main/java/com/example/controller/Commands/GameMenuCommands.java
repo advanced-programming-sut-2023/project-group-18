@@ -35,6 +35,7 @@ public enum GameMenuCommands {
     CURRENT_MENU("^show current menu$"),
     SHOW_MAP("^show map (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
     EXIT("^exit$"),
+    NEXT_TURN("^next turn$"),
     CANCEL_PATROL("^cancel patrol$");
     private String regex;
 

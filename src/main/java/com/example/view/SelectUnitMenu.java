@@ -79,7 +79,7 @@ public class SelectUnitMenu {
             System.out.println("coordinates are not valid");
             return;
         }
-        gameMenuMethods.patrol(x1, y1, x2, y2);
+        // gameMenuMethods.patrol(x1, y1, x2, y2);
         System.out.println("patrol unit successful");
     }
     
@@ -131,7 +131,7 @@ public class SelectUnitMenu {
     }
     
     private void buildEquipment(Matcher matcher) {
-        String equipmentName = gameMenuMethods.getEquipmentName(matcher.group("equipmentName"));
+        // String equipmentName = gameMenuMethods.getEquipmentName(matcher.group("equipmentName"));
 //        gameMenuMethods.buildAttackTool();
     }
     

@@ -207,6 +207,7 @@ public class Governance {
     }
 
     public boolean canRemoveAssetFromStorage(Asset asset, int count) {
+        if (asset == null) return true;
         int canRemove = 0;
         for (Building building : buildings) {
             if (!(building instanceof Storage)) continue;
@@ -220,6 +221,7 @@ public class Governance {
     }
 
     public boolean canAddAssetToStorage(Asset asset, int count) {
+        if (asset == null) return true;
         for (Building building : buildings) {
             if (!(building instanceof Storage)) continue;
             Storage storage = (Storage) building;
@@ -231,6 +233,7 @@ public class Governance {
     }
 
     public void addAssetToStorage(Asset asset, int count) {
+        if (asset == null) return;
         for (Building building : buildings) {
             if (!(building instanceof Storage)) continue;
             Storage storage = (Storage) building;
@@ -352,8 +355,8 @@ public class Governance {
         return lord;
     }
 
-    public void setLord(Unit lord){
-        this.lord = lord;
+    protected void setLord() {
+        this.lord = new Unit(this, UnitType.LORD, buildings.get(0).getCell());
     }
 
     public void getTaxFromPeople(){

@@ -10,10 +10,11 @@ import com.example.model.ConsoleColors;
 public enum Texture implements ConsoleColors {
     GROUND ("ground", BLACK_BACKGROUND_BRIGHT, true),
     GRAVEL ("gravel", YELLOW_BACKGROUND, true),
-    STONE ("stone", WHITE_BACKGROUND, true),
+    SLAB ("slab", WHITE_BACKGROUND, false),
+    STONE ("stone", RED_BACKGROUND_BRIGHT, true),
     IRON ("iron", WHITE_BACKGROUND_BRIGHT, true),
-    LAWN ("lawn", RED_BACKGROUND,true),
-    RARE_GRASSLAND ("rare grassland", GREEN_BACKGROUND, true),
+    LAWN ("lawn", GREEN_BACKGROUND,true),
+    RARE_GRASSLAND ("rare grassland", YELLOW_BACKGROUND_BRIGHT, true),
     OVERGROWN_GRASSLAND ("overgrown grassland", GREEN_BACKGROUND_BRIGHT, true),
     PETROLEUM ("petroleum", PURPLE_BACKGROUND, true),
     PLAIN ("plain", BLUE_BACKGROUND, true),
@@ -53,4 +54,5 @@ public enum Texture implements ConsoleColors {
     public boolean isReachable() {
         return isReachable;
     }
+
 }
