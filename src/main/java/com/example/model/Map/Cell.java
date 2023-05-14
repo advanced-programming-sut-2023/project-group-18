@@ -7,6 +7,7 @@ import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Buildings.Category;
 import com.example.model.Buildings.Tree;
+import com.example.model.Buildings.TreeType;
 import com.example.model.Governance;
 import com.example.model.People.Unit;
 
@@ -23,6 +24,7 @@ public class Cell implements ConsoleColors {
         this.gameMap = gameMap;
         units = new ArrayList<>();
         texture = Texture.getARondomTexture();
+        if (texture.equals(Texture.OVERGROWN_GRASSLAND)) building = new Tree(this, TreeType.getRandomTreeType());
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
     }

@@ -4,8 +4,10 @@ import java.util.Random;
 
 public enum TreeType {
     DESERT_SHRUB ("desert shrub"),
-
-    ;
+    CHERRY_PALM ("cherry palm"),
+    OLIVE_TREE ("olive tree"),
+    COCONUT_PALM ("coconut palm"),
+    DATE_PALM ("date palm");
 
     private final String name;
 

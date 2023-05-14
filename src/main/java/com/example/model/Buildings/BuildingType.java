@@ -170,7 +170,7 @@ public enum BuildingType {
             0, 8,0,0,20,10,35,
             null,null,2, Category.BUILDING, KeepMethods.getKeepMethods(),
             1000000),
-    TREE("tree",0,null,0, 0,Texture.GROUND,100,0,
+    TREE("tree",0,null,0, 0,Texture.OVERGROWN_GRASSLAND,100,0,
             0, 0, 0,0,0,0,0
             ,0, null,null,1, Category.BUILDING, null
             ,1),
