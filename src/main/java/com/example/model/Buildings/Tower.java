@@ -64,7 +64,7 @@ public class Tower extends Building{
     public void removeSoldier(Soldier soldier){
         this.soldiers.remove(soldier);
     }
-
+    
     public boolean isStrong(){
         return strong;
     }
