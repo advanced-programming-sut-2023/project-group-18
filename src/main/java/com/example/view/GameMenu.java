@@ -5,6 +5,9 @@ import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.MapMenuMethods;
 import com.example.model.Buildings.BuildingType;
+import com.example.model.Buildings.Tree;
+import com.example.model.Buildings.TreeType;
+import com.example.model.Map.Directions;
 import com.example.model.Map.Texture;
 
 import java.util.HashMap;
@@ -158,10 +161,10 @@ public class GameMenu {
             return;
         }
         String direction = fields.get("-d");
-//        if (! directionValidation) {
-//            System.out.println("the input direction is invalid");
-//            return;
-//        }
+       if (Directions.getDirectionByName(direction) == null) {
+           System.out.println("the input direction is invalid");
+           return;
+       }
         //TODO drop rock
         System.out.println("rock was dropped successfully");
     }
@@ -178,14 +181,18 @@ public class GameMenu {
         int x = Integer.parseInt(fields.get("-x"));
         int y = Integer.parseInt(fields.get("-y"));
         String type = fields.get("-t");
+        TreeType treeType;
         if (!gameMenuMethods.inRange(x, y)) {
             System.out.println("the coordinates are not valid");
             return;
         } else if (!gameMenuMethods.isTextureCompatible(BuildingType.TREE, x, y)) {
             System.out.println("the texture of this place is not valid to place a tree");
             return;
+        } else if ((treeType = TreeType.getTreeTypeByName(type)) == null) {
+            System.out.println("Invalid tree type");
+            return;
         }
-        //TODO place the tree
+        gameMenuMethods.getGame().addTree(new Tree(gameMenuMethods.getGame().getGameMap().getCellByLocation(x, y), treeType));
         System.out.println("tree was placed successfully");
     }
 

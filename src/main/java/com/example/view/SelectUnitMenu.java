@@ -123,12 +123,13 @@ public class SelectUnitMenu {
             System.out.println("the input direction is invalid");
             return;
         }
-//        gameMenuMethods.pourOil(direcion);
+        gameMenuMethods.pourOil(Directions.getDirectionByName(direcion).getDirection());
         System.out.println("pour oil was operated successfully");
     }
     
     private void digTunnel(Matcher matcher) {
-//        gameMenuMethods.digTunnel()
+        // 1- is selected unit tunneler 2- can dig tunnel 3- digtunnel(x, y)
+        // gameMenuMethods.digTunnel();
     }
     
     private void buildEquipment(Matcher matcher) {
