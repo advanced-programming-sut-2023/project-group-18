@@ -406,4 +406,23 @@ public class GameMenuMethods implements ConsoleColors {
         return false;
     }
 
+    public void attack(int x, int y) {
+        if (!(game.getSelectedUnit() instanceof Soldier)) return;
+        Soldier soldier = (Soldier)game.getSelectedUnit();
+        Cell cell = game.getGameMap().getCellByLocation(x, y);
+        if (cell.getBuilding() != null) {
+            if (!cell.getBuilding().isReachable() && soldier.getSoldierType().getAttackRange() == 1) return;
+        }
+        game.getSelectedUnit().setTargetCell(cell);
+        game.getSelectedUnit().findPath();
+        ((Soldier)game.getSelectedUnit()).attack();
+    }
+
+    public void airAttack(int x, int y) {
+        if (!(game.getSelectedUnit() instanceof Soldier)) return;
+        Soldier soldier = (Soldier)game.getSelectedUnit();
+        Building building = soldier.getUnitCell().getBuilding();
+        if (building != null) soldier.attackInBuilding(building.getBuildingType().getFireRange());
+    }
+
 }

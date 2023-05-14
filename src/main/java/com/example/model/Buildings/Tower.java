@@ -11,7 +11,7 @@ public class Tower extends Building{
     private final int fireRange;
     private final int defendRange;
     private final int soldiersCapacity;
-    private boolean hasLadder;
+    protected boolean hasLadder;
     private final ArrayList<Soldier> soldiers;
     private final boolean strong;
 
@@ -85,4 +85,10 @@ public class Tower extends Building{
             governance.removeAssetFromStorage(asset, governance.getAssetCount(asset));
         }
     }
+
+    @Override
+    public boolean isReachable() {
+        return hasLadder;
+    }
+
 }

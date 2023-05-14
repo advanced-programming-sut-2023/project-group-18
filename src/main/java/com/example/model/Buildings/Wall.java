@@ -6,7 +6,7 @@ import com.example.model.People.Soldier;
 
 import java.util.ArrayList;
 
-public class Wall extends Building{
+public class Wall extends Tower {
     private final int height;
     private boolean hasShield;
     private final int soldiersCapacity;
@@ -36,6 +36,10 @@ public class Wall extends Building{
 
     public ArrayList<Soldier> getSoldiers() {
         return soldiers;
+    }
+
+    public void setHasShield(boolean hasShield) {
+        this.hasShield = hasShield;
     }
 
 

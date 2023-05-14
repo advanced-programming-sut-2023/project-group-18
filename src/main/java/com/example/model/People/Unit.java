@@ -206,10 +206,6 @@ public class Unit implements Successor, ConsoleColors {
         }
     }
 
-    public void attack(Building building) {
-
-    }
-
     public boolean findNearestTree() {
         ArrayList<Tree> trees = unitCell.getGameMap().getGame().getTrees();
         while (!trees.isEmpty()) {
@@ -240,6 +236,10 @@ public class Unit implements Successor, ConsoleColors {
         if (this.hitpoint < damage)
             this.hitpoint = 0;
         else this.hitpoint -= damage;
+    }
+
+    public void attack(int x, int y) {
+        
     }
 
     @Override

@@ -79,6 +79,7 @@ public class Building implements ConsoleColors {
     public int getWorkersNumber(){
         return this.workers.size();
     }
+
     public void setHitpoint(int hitpoint){
         this.hitpoint = hitpoint;
     }
@@ -123,6 +124,10 @@ public class Building implements ConsoleColors {
                 underCell.setBuilding(null);
             }
         governance.removeBuilding(this);
+    }
+
+    public boolean isReachable() {
+        return true;
     }
 
     @Override

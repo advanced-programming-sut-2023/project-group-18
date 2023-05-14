@@ -10,7 +10,7 @@ public class Gate extends Tower{
 
     public Gate(BuildingType buildingType, Governance governance, Cell cell, Direction direction) {
         super(buildingType, governance, cell);
-        this.isOpen = false;
+        this.isOpen = true;
         this.hasBridge = false;
         this.direction = direction;
     }
@@ -35,7 +35,14 @@ public class Gate extends Tower{
         hasBridge = true;
         this.hitpoint += 100;
     }
+
     public Direction getDirection() {
         return direction;
     }
+
+    @Override
+    public boolean isReachable() {
+        return hasLadder || isOpen;
+    }
+
 }

@@ -101,7 +101,7 @@ public class SelectUnitMenu {
             System.out.println("coordinates are not valid");
             return;
         }
-//        gameMenuMethods.attack(x, y)
+        gameMenuMethods.attack(x, y);
         System.out.println("attack was successful");
     }
     
@@ -112,7 +112,7 @@ public class SelectUnitMenu {
             System.out.println("coordinates are not valid");
             return;
         }
-//        gameMenuMethods.airAttack(x, y);
+       gameMenuMethods.airAttack(x, y);
         System.out.println("air attack was successful");
     }
     
@@ -142,4 +142,5 @@ public class SelectUnitMenu {
     private void cancelPatrol() {
         gameMenuMethods.cancelPatrol();
     }
+    
 }

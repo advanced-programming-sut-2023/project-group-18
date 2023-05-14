@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import com.example.model.Governance;
 import com.example.model.Buildings.Category;
+import com.example.model.Buildings.Wall;
 import com.example.model.Map.Texture;
 
 public class Soldier extends Unit {
@@ -26,6 +27,10 @@ public class Soldier extends Unit {
         this.hitpoint = soldierType.getHitpoint();
     }
 
+    public SoldierType getSoldierType() {
+        return soldierType;
+    }
+
     public boolean isAttack() {
         return isAttack;
     }
@@ -43,20 +48,28 @@ public class Soldier extends Unit {
         return damage;
     }
 
-    public boolean canDigHole(){
+    public boolean canDigHole() {
         return this.soldierType.canDig();
     }
 
-    public void digHole(Cell cell){
+    public void digHole(Cell cell) {
         cell.setTexture(Texture.HOLE);
     }
 
-    public void removeHole(Cell cell){
+    public void removeHole(Cell cell) {
         cell.setTexture(Texture.GROUND);
     }
 
     public void attack(Cell cell) {
-        for (Unit unit : cell.getUnits()){
+        isAttack = false;
+        if ((cell.getBuilding() != null) || (cell.getBuilding() instanceof Wall)) {
+            Wall wall = (Wall)cell.getBuilding();
+            if (wall.hasShield()) {
+                wall.setHasShield(false);
+                return;
+            }
+        }
+        for (Unit unit : cell.getUnits()) {
             if (!unit.getGovernance().equals(this.getGovernance()))
                 unit.addHitpoint(-this.getDamage());
         }
@@ -68,13 +81,25 @@ public class Soldier extends Unit {
     }
 
 
+    private boolean isInRange() {
+        if (targetCell.getBuilding() != null) {
+            final int range = targetCell.getBuilding().getBuildingType().getDefendRange();
+            if (range != 0) return path.size() <= range;
+        }
+        return path.size() <= attackRange;
+    }
+
     public void attack() {
         while (speed > 0 && !path.isEmpty()) {
-            if (path.size() <= attackRange)
+            if (isInRange()) {
+                attack(targetCell);
+                break;
+            }
             moveOneCell(path.getFirst());
             path.removeFirst();
             speed--;
         }
+
     }
 
     public boolean findNearestEnemyInBuilding(int range) {

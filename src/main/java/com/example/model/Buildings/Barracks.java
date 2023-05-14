@@ -24,4 +24,9 @@ public class Barracks extends Building{
         governance.addGold(-soldier.getCost());
         governance.removeRemainingCharacter();
     }
+
+    @Override
+    public boolean isReachable() {
+        return false;
+    }
 }
