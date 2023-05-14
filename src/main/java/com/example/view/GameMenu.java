@@ -52,7 +52,7 @@ public class GameMenu {
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SET_TEXTURE_RECTANGLE)).find()) {
                 setTextureRectangle(matcher);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.CLEAR)).find()) {
-                clearUnits(matcher);
+                clearTexture(matcher);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DROP_ROCK)).find()) {
                 dropRock(matcher);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DROP_TREE)).find()) {
@@ -101,8 +101,6 @@ public class GameMenu {
     }
 
 
-
-
     private void setTexture(Matcher matcher) {
         HashMap<String, String> fields = gameMenuMethods.sortFields(globalMethods.commandSplit(matcher.group("fields")));
         if (!gameMenuMethods.checkDropBuildingInvalidField(fields)) {
@@ -133,16 +131,62 @@ public class GameMenu {
 
     }
 
-    private void clearUnits(Matcher matcher) {
-
+    private void clearTexture(Matcher matcher) {
+        int x = gameMenuMethods.getXCoordinate(matcher);
+        int y = gameMenuMethods.getYCoordinate(matcher);
+        if (!gameMenuMethods.inRange(x, y)) {
+            System.out.println("the coordinates are not valid");
+            return;
+        }
+        //TODO clear block
+        System.out.println("cell was cleared successfully");
     }
 
     private void dropRock(Matcher matcher) {
-
+        HashMap<String, String> fields = gameMenuMethods.sortFields(globalMethods.commandSplit(matcher.group("fields")));
+        if (!gameMenuMethods.checkDropRockInvalidField(fields)) {
+            System.out.println("you inserted an invalid field");
+            return;
+        } else if (!fields.get("-x").matches("\\d+") || !fields.get("-y").matches("\\d+")) {
+            System.out.println("you didn't enter a number for coordinates!");
+            return;
+        }
+        int x = Integer.parseInt(fields.get("-x"));
+        int y = Integer.parseInt(fields.get("-y"));
+        if (!gameMenuMethods.inRange(x, y)) {
+            System.out.println("the coordinates are not valid");
+            return;
+        }
+        String direction = fields.get("-d");
+//        if (! directionValidation) {
+//            System.out.println("the input direction is invalid");
+//            return;
+//        }
+        //TODO drop rock
+        System.out.println("rock was dropped successfully");
     }
 
     private void dropTree(Matcher matcher) {
-
+        HashMap<String, String> fields = gameMenuMethods.sortFields(globalMethods.commandSplit(matcher.group("fields")));
+        if (!gameMenuMethods.checkDropBuildingInvalidField(fields)) {
+            System.out.println("you inserted an invalid field");
+            return;
+        } else if (!fields.get("-x").matches("\\d+") || !fields.get("-y").matches("\\d+")) {
+            System.out.println("you didn't enter a number for coordinates!");
+            return;
+        }
+        int x = Integer.parseInt(fields.get("-x"));
+        int y = Integer.parseInt(fields.get("-y"));
+        String type = fields.get("-t");
+        if (!gameMenuMethods.inRange(x, y)) {
+            System.out.println("the coordinates are not valid");
+            return;
+        } else if (!gameMenuMethods.isTextureCompatible(BuildingType.TREE, x, y)) {
+            System.out.println("the texture of this place is not valid to place a tree");
+            return;
+        }
+        //TODO place the tree
+        System.out.println("tree was placed successfully");
     }
 
     private void dropBuilding(Matcher matcher) {

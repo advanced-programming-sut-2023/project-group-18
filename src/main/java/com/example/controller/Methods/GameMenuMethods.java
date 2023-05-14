@@ -406,4 +406,11 @@ public class GameMenuMethods implements ConsoleColors {
         return false;
     }
 
+    public boolean checkDropRockInvalidField(HashMap<String, String> hashMap) {
+        for (String string : hashMap.keySet()) {
+            if (!string.trim().equals("-x") && !string.trim().equals("-y") && !string.trim().equals("-d"))
+                return false;
+        }
+        return hashMap.size() == 3;
+    }
 }
