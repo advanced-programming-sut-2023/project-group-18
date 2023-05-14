@@ -1,7 +1,5 @@
 package com.example.controller.Methods;
 
-import com.example.view.KeepMenu;
-
 import java.util.Scanner;
 
 public class GateMethods implements SelectBuildingMenuMethods{

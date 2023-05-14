@@ -2,8 +2,6 @@ package com.example.model.People;
 
 import com.example.model.Governance;
 import com.example.model.Map.Cell;
-import com.example.model.People.Unit;
-import com.example.model.People.UnitType;
 
 import java.util.ArrayList;
 

@@ -1,8 +1,5 @@
 package com.example.model.People;
 
-import com.example.model.Assets.Asset;
-import com.example.model.Buildings.BuildingType;
-
 public enum AttackToolType {
     SIEGE_TOWER("siege tower",4,0,20,0),
     PORTABLE_SHIELD("portable shield", 1,0,20,0),

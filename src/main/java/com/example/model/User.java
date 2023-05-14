@@ -73,6 +73,11 @@ public class User implements PasswordRecoveryQuestions {
     public void addScore(int score){
         this.score += score;
     }
+
+    public int getScore() {
+        return score;
+    }
+
     public void setScore(int score) {
         if (this.highscore < score)
             this.highscore = score;

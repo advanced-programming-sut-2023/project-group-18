@@ -1,6 +1,5 @@
 package com.example.controller.Methods;
 
-import com.example.model.Game;
 import com.example.model.Map.Directions;
 import com.example.model.Map.GameMap;
 import com.example.view.MapMenu;

@@ -2,8 +2,6 @@ package com.example.model.Buildings;
 
 import com.example.model.Governance;
 import com.example.model.Map.Cell;
-import com.example.model.People.SoldierType;
-import com.example.model.People.Unit;
 import com.example.model.People.UnitType;
 
 public class OilSmelter extends IndustrialBuilding{

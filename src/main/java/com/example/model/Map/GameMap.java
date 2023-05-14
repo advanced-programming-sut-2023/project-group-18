@@ -16,18 +16,6 @@ public class GameMap implements WriteInFile, Successor {
     private final int id;
     private final int length;
     private final Cell[][] map;
-/*
-    public GameMap(int id) throws Exception {
-        Gson gson = new Gson();
-        this.id = id;
-        File mapFile = getGameMapFileById(id);
-        try (Scanner scanner = new Scanner(mapFile)) {
-            map = gson.fromJson(scanner.nextLine(), Cell[][].class);
-        } catch (JsonSyntaxException | FileNotFoundException e) {
-            throw e;
-        }
-    }
-*/
 
     public GameMap(String size, Game game) {
         this.game = game;
@@ -56,34 +44,6 @@ public class GameMap implements WriteInFile, Successor {
     public boolean isInBounds(int xCoordinate, int yCoordinate) {
         return 0 <= xCoordinate && 0 <= yCoordinate && yCoordinate < map.length && xCoordinate < map.length;
     }
-
-/*
-    private File getGameMapFileById(int id) {
-        File main = new File("src", "main");
-        File resources = new File(main, "resources");
-        File maps = new File(resources, "maps");
-        File nextId = new File(maps, "nextId.txt");
-        Scanner scanner;
-        int lastId = 0;
-        try {
-            scanner = new Scanner(nextId);
-            lastId = scanner.nextInt() - 1;
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            System.err.println("File mot found!");
-            e.printStackTrace();
-        }
-        File mapFile = new File(nextId, "map" + id + ".json");
-        if (id <= lastId) return mapFile;
-        try {
-            mapFile.createNewFile();
-        } catch (IOException e) {
-            System.out.println("Some problem in creating file!");
-            e.printStackTrace();
-        }
-        return mapFile;
-    }
-*/
 
     public String showMap(int xCoordinate, int yCoordinate) {
         String result = line;
@@ -136,37 +96,5 @@ public class GameMap implements WriteInFile, Successor {
         }
         return neighbourCells;
     }
-/*
-    @Override
-    public File getNextIdFile() {
-        File main = new File("src", "main");
-        File resources = new File(main, "resources");
-        File maps = new File(resources, "maps");
-        return new File(maps, "nextId.txt");
-    }
-
-    @Override
-    public int getNextId() {
-        File nextIdFile = getNextIdFile();
-        try (Scanner scanner = new Scanner(nextIdFile)) {
-            return scanner.nextInt();
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found!");
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    @Override
-    public void goToNextId() {
-        File nextIdFile = getNextIdFile();
-        try (FileWriter fileWriter = new FileWriter(nextIdFile)) {
-            fileWriter.write(getNextId() + 1);
-        } catch (IOException e) {
-            System.err.println("Can't write in file!");
-            e.printStackTrace();
-        }
-    }
-*/
 
 }
