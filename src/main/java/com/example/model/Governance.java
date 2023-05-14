@@ -323,8 +323,22 @@ public class Governance {
         nonMilitaryCharacters += (getFoodCount() - workers.size()) / 2;
     }
 
+    private void peopleEat() {
+        int haveToEat = nonMilitaryCharacters + workers.size();
+        for (Asset asset : assets.get(AssetType.FOOD).keySet()) {
+            int count = assets.get(AssetType.FOOD).get(asset);
+            if (haveToEat <= count) {
+                removeAssetFromStorage(asset, haveToEat);
+                return;
+            }
+            removeAssetFromStorage(asset, count);
+            haveToEat -= count;
+        }
+    }
+
     public void run() {
         addPopulation();
+        peopleEat();
     }
 
 }
