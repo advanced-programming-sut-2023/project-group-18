@@ -2,10 +2,7 @@ package com.example.controller.Methods;
 
 import com.example.model.Assets.Asset;
 import com.example.model.Assets.AssetType;
-import com.example.model.Buildings.Building;
-import com.example.model.Buildings.BuildingType;
-import com.example.model.Buildings.Gate;
-import com.example.model.Buildings.Tower;
+import com.example.model.Buildings.*;
 import com.example.model.ConsoleColors;
 import com.example.model.Game;
 import com.example.model.Governance;
@@ -406,4 +403,69 @@ public class GameMenuMethods implements ConsoleColors {
         return false;
     }
 
+    public void disbandUnit(){
+        ArrayList<Building> buildings =  game.getCurrentGovernance().getBuildings();
+        for (Building building : buildings){
+            if (building.getBuildingType().equals(BuildingType.KEEP)){
+                game.getSelectedUnit().setTargetCell(building.getCell());
+                game.getSelectedUnit().movePath();
+            }
+        }
+    }
+
+    public boolean isSelectedUnitTunneler(){
+        if (game.getSelectedUnit().getUnitType().equals(UnitType.SOLDIER)){
+            Soldier soldier = (Soldier) game.getSelectedUnit();
+            return soldier.getSoldierType().equals(SoldierType.ENGINEER);
+        }
+        return false;
+    }
+    public boolean canDigTunnel(int xCoordinate, int yCoordinate){
+        BuildingType buildingType = getCoordinatesBuildingType(xCoordinate, yCoordinate).getBuildingType();
+        Category category = buildingType.getCategory();
+        if (category.equals(Category.TOWER)){
+            Tower tower = (Tower) getCoordinatesBuildingType(xCoordinate, yCoordinate);
+            return !tower.isStrong();
+        }
+        return category.equals(Category.GATE) || category.equals(Category.STAIR) || category.equals(Category.WALL);
+    }
+
+    public void digTunnel(int xCoordinate, int yCoordinate){
+        Building building = getCoordinatesBuildingType(xCoordinate, yCoordinate);
+        building.setHitpoint(0);
+    }
+
+    public boolean canPourOil(){
+        for (Building building : game.getCurrentGovernance().getBuildings()){
+            if (building.getBuildingType().equals(BuildingType.OIL_SMELTER)){
+                if (building.getWorkers().contains((Worker) game.getSelectedUnit())){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void pourOil(Direction direction){
+        Cell cell = game.getSelectedUnit().getUnitCell();
+        int size = game.getGameMap().getMapSize();
+        int x = cell.getxCoordinate();
+        int y = cell.getxCoordinate();
+        int xEnd = x;
+        int yEnd = y;
+        switch (direction){
+            case UP -> y = y > 4 ? y - 4 : 0;
+            case DOWN -> yEnd = yEnd < size - 4 ? y + 4 : size - 1;
+            case LEFT -> x = x > 4 ? x - 4 : 0;
+            case RIGHT -> xEnd = xEnd < size - 5 ? xEnd + 5 : size - 1;
+        }
+        for (int cellX = x + 1; cellX < xEnd; cellX++){
+            for (int cellY = y + 1; cellY < yEnd ; cellY++){
+                for (Unit unit : game.getGameMap().getCellByLocation(cellX, cellY).getUnits()){
+                    if (!unit.getGovernance().equals(game.getCurrentGovernance()))
+                        unit.doDamage(unit.getHitpoint());
+                }
+            }
+        }
+    }
 }

@@ -371,4 +371,7 @@ public class Governance {
         peopleEat();
     }
 
+    public ArrayList<Building> getBuildings() {
+        return buildings;
+    }
 }
