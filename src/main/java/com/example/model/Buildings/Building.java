@@ -13,7 +13,7 @@ import com.example.model.Map.Texture;
 
 public class Building implements ConsoleColors {
     private final BuildingType buildingType;
-    protected final ArrayList<Unit> workers;
+    protected final ArrayList<Worker> workers;
     protected final Governance governance;
     protected final Texture groundType;
     protected final int goldCost;
@@ -70,12 +70,15 @@ public class Building implements ConsoleColors {
         return resourceCost;
     }
 
-    public ArrayList<Unit> getWorkers() {
+    public ArrayList<Worker> getWorkers() {
         return workers;
     }
 
     public int getWorkersNumber(){
         return this.workers.size();
+    }
+    public void setHitpoint(int hitpoint){
+        this.hitpoint = hitpoint;
     }
 
     public void addWorker(){
@@ -130,6 +133,28 @@ public class Building implements ConsoleColors {
         hitpoint += "/" + buildingType.getHitpoint();
         final String owner = YELLOW_BOLD + governance.getOwner().getNickname() + RESET;
         return buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
+    }
+
+    public void run(){
+        //getMaterial
+        if (!this.canWork())
+            return;
+        for (Worker worker : workers){
+            if (worker.isFree()){
+                if (worker.getMaterial() != null){
+                    worker.setFree(false);
+                    if (governance.canRemoveAssetFromStorage(worker.getMaterial(),1)){
+
+                    }
+                }
+                else if (worker.getProduct() != null){
+                    worker.setFree(false);
+                    if (governance.canAddAssetToStorage(worker.getProduct(),worker.getProductCount())){
+
+                    }
+                }
+            }
+        }
     }
 
 }
