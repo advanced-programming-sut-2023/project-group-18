@@ -166,7 +166,12 @@ public class GameMenuMethods implements ConsoleColors {
         governance.removeAssetFromStorage(armor, count);
         governance.createSoldier(count);
         Cell barracksCell = game.getSelectedBuilding().getCell();
-        new Soldier(barracksCell, governance, soldierType);
+        switch (soldierType){
+            case LADDERMEN -> new LadderMan(barracksCell, governance, soldierType);
+            case TUNNELER -> new Tunneler(barracksCell, governance, soldierType);
+            case ENGINEER -> new Engineer(barracksCell, governance, soldierType);
+            default -> new Soldier(barracksCell, governance, soldierType);
+        }
     }
 
     public boolean canRepair() {
