@@ -4,7 +4,7 @@ import com.example.model.Assets.Asset;
 import com.example.model.Buildings.BuildingType;
 
 public enum UnitType {
-    LORD("Lord", 5, 1, BuildingType.KEEP,true,null,null,
+    LORD("Lord", 5, 5000, BuildingType.KEEP,true,null,null,
             0),
     WOOD_CUTTERS("Woodcutters", 5, 1, BuildingType.WOOD_CUTTER,false,null,
             Asset.WOOD, 15),

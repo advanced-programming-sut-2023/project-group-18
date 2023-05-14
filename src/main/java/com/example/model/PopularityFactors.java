@@ -114,6 +114,10 @@ public class PopularityFactors {
 
 
     public double getAleCoverage() {
+        if (aleCoverage < 0)
+            return 0;
+        if (aleCoverage > 1)
+            return 1;
         return aleCoverage;
     }
 
@@ -124,6 +128,10 @@ public class PopularityFactors {
     public void setAleCoverage(double aleCoverage) {
         this.aleCoverage = aleCoverage;
         aleFactor = (int) (aleCoverage * 8);
+    }
+
+    public void addAleCoverage(double aleCoverage){
+        setAleCoverage(this.aleCoverage + aleCoverage);
     }
 
 }

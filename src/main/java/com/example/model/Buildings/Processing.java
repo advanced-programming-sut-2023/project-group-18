@@ -27,4 +27,12 @@ public class Processing extends Building{
         governance.addAssetToStorage(product,rate);
         governance.removeAssetFromStorage(material,rate);
     }
+
+    public void run(){
+        if (this.canWork()){
+            produce();
+            governance.getPopularityFactors().addAleCoverage(0.5);
+        }
+        else governance.getPopularityFactors().addAleCoverage(-0.5);
+    }
 }

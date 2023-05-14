@@ -349,7 +349,14 @@ public class Governance {
         }
     }
 
+    public void getTaxFromPeople(){
+        int population = this.nonMilitaryCharacters + this.workers.size();
+        double taxRate = popularityFactors.getTaxCoefficient();
+        this.addGold((int)(population * taxRate));
+    }
+
     public void run() {
+        getTaxFromPeople();
         addPopulation();
         peopleEat();
     }

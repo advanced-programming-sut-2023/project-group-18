@@ -10,6 +10,7 @@ import com.example.model.Map.Texture;
 
 public class Soldier extends Unit {
     private final SoldierType soldierType;
+    int hitpoint;
     private final int attackPower;
     private final int attackRange;
     private int damage;
@@ -22,6 +23,7 @@ public class Soldier extends Unit {
         this.attackRange = soldierType.getAttackRange();
         this.damage = soldierType.getAttackPower() * (20 + governance.getFearRate());
         this.isAttack = false;
+        this.hitpoint = soldierType.getHitpoint();
     }
 
     public boolean isAttack() {
