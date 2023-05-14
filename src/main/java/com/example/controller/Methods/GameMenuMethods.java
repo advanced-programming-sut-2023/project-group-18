@@ -15,7 +15,6 @@ import com.example.model.People.*;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
 import com.example.model.People.Unit;
-import com.example.model.People.UnitType;
 import com.example.model.User;
 import com.example.view.GameMenu;
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class GameMenuMethods implements ConsoleColors {
     public void run(Scanner scanner, ArrayList<User> players, String size) {
         game.setGameMap(size);
         game.makeNewGovernances(players);
-        while (!game.getGovernances().isEmpty()){
+        while (game.getGovernances().size() > 1){
             for (Governance governance : game.getGovernances()){
                 game.setCurrentGovernance(governance);
                 GameMenu.getGameMenu().run(scanner);
@@ -54,6 +53,8 @@ public class GameMenuMethods implements ConsoleColors {
                 governance.getOwner().addScore(score);
             }
         }
+        if (game.getGovernances().isEmpty()) return;
+        game.getGovernances().get(0).getOwner().addScore(10);
     }
 
     public Game getGame() {
@@ -325,8 +326,6 @@ public class GameMenuMethods implements ConsoleColors {
         return result;
     }
 
-
-    /*--------------------------------------------------------------------------------------------------------------------------------*/
 
     public int getXCoordinate(Matcher matcher) {
         if (matcher.group("xCoordinate") != null) {

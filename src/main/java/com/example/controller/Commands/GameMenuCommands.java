@@ -36,6 +36,8 @@ public enum GameMenuCommands {
     SHOW_MAP("^show map (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
     EXIT("^exit$"),
     NEXT_TURN("^next turn$"),
+    SHOW_TURN("^show turn$"),
+    SHOW_ASSET("^show asset$"),
     CANCEL_PATROL("^cancel patrol$");
     private String regex;
 

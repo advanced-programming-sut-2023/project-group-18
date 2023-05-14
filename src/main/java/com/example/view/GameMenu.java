@@ -4,12 +4,9 @@ import com.example.controller.Commands.GameMenuCommands;
 import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.MapMenuMethods;
-import com.example.model.Assets.Asset;
 import com.example.model.Buildings.BuildingType;
-import com.example.model.Map.GameMap;
 import com.example.model.Map.Texture;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -36,6 +33,10 @@ public class GameMenu {
             input = scanner.nextLine();
             if (GameMenuCommands.getMatcher(input, GameMenuCommands.NEXT_TURN).find()) {
                 break;
+            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_TURN).find()) {
+                showTurn();
+            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_ASSET).find()) {
+                showAssets();
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DROP_BUILDING)).find()) {
                 dropBuilding(matcher);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SELECT_BUILDING)).find()) {
@@ -87,8 +88,8 @@ public class GameMenu {
     }
 
     private void createUnit(Matcher matcher) {
-        int count = gameMenuMethods.getCount(matcher);
-        String type = gameMenuMethods.getType(matcher);
+        // int count = gameMenuMethods.getCount(matcher);
+        // String type = gameMenuMethods.getType(matcher);
 
     }
 
@@ -193,4 +194,13 @@ public class GameMenu {
         }
         MapMenuMethods.getInstance().run(scanner, x, y);
     }
+
+    private void showAssets() {
+        System.out.println(gameMenuMethods.showAssets());
+    }
+
+    private void showTurn() {
+        System.out.println(gameMenuMethods.getGame().showTurn());
+    }
+
 }

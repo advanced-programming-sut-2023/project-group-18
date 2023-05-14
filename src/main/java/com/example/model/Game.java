@@ -17,7 +17,6 @@ public class Game implements KeepLocations {
     private static Game instance;
     private GameMap gameMap;
     private final ArrayList<Governance> governances;
-    private int players;
     private Governance currentGovernance;
     private Building selectedBuilding;
     private Unit selectedUnit;
@@ -29,7 +28,7 @@ public class Game implements KeepLocations {
     private Game() {
         governances = new ArrayList<>();
         trees = new ArrayList<>();
-        players = round = turn = 0;
+        round = turn = 0;
         selectedBuilding = null;
     }
 
@@ -40,7 +39,6 @@ public class Game implements KeepLocations {
     public void makeNewGovernances(ArrayList<User> users) {
         for (User user : users)
             governances.add(new Governance(user));
-        players = users.size();
         dropKeeps();
         for (Governance governance : governances) {
             governance.addAssetToStorage(Asset.WOOD, 20);
@@ -95,16 +93,13 @@ public class Game implements KeepLocations {
         return gameMap;
     }
 
-    public int getPlayers() {
-        return players;
+    public String showTurn() {
+        return "Turn: " + turn + "\nRound: " + round;
     }
 
-    public int getRound() {
-        return round;
-    }
-
-    public int getTurn() {
-        return turn;
+    public void nextTurn() {
+        turn = governances.indexOf(currentGovernance);
+        if (turn == 0) round++;
     }
 
     public boolean isInGame(User user) {
