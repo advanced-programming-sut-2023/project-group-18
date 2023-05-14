@@ -27,8 +27,6 @@ class NormalMap implements KeepLocations {
             Cell cell = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
             cell.setTexture(Texture.GROUND);
             governance.addBuilding(BuildingType.KEEP, cell);
-            xCoordinate += 6;
-            yCoordinate += 6;
             Cell stockpileCell = game.getGameMap().getCellByLocation(xCoordinate + 6, yCoordinate + 6);
             stockpileCell.setTexture(Texture.GROUND);
             governance.addBuilding(BuildingType.STOCKPILE, stockpileCell);
@@ -48,8 +46,6 @@ class LargeMap implements KeepLocations {
             Cell cell = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
             cell.setTexture(Texture.GROUND);
             governance.addBuilding(BuildingType.KEEP, cell);
-            xCoordinate += 6;
-            yCoordinate += 6;
             Cell stockpileCell = game.getGameMap().getCellByLocation(xCoordinate + 6, yCoordinate + 6);
             stockpileCell.setTexture(Texture.GROUND);
             governance.addBuilding(BuildingType.STOCKPILE, stockpileCell);

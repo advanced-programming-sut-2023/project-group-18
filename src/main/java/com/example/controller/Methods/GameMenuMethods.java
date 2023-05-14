@@ -244,10 +244,11 @@ public class GameMenuMethods implements ConsoleColors {
         selectedUnit.movePath();
     }
 
-    public void patrol(int xCoordinate, int yCoordinate) {
+    public void patrol(int xCoordinate, int yCoordinate, int xCoordinate2, int yCoordinate2) {
         Cell destination = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
+        Cell destination2 = game.getGameMap().getCellByLocation(xCoordinate2, yCoordinate2);
         Unit selectedUnit = game.getSelectedUnit();
-        selectedUnit.setPatrolCell(selectedUnit.getUnitCell());
+        selectedUnit.setPatrolCell(destination2);
         selectedUnit.setTargetCell(destination);
         selectedUnit.findPath();
     }
@@ -365,5 +366,21 @@ public class GameMenuMethods implements ConsoleColors {
                 return false;
         }
         return hashMap.size() == 3;
+    }
+    
+    public boolean checkSetStateInvalidField(HashMap<String, String> fields) {
+        for (String string : fields.keySet()) {
+            if (!string.trim().equals("-x") && !string.trim().equals("-y") && !string.trim().equals("-s"))
+                return false;
+        }
+        return fields.size() == 3;
+    }
+    
+    public String getEquipmentName(String equipmentName) {
+        boolean isQuoted = equipmentName.trim().charAt(3) == '\"' && equipmentName.trim().endsWith("\"");
+        if (isQuoted) {
+            return equipmentName.substring(1, equipmentName.length() -1);
+        }
+        return equipmentName;
     }
 }

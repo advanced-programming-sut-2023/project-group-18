@@ -65,9 +65,7 @@ public class ProfileMenu {
             } else if (ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.EXIT).find()) {
                 break;
             } else if ((matcher = ProfileMenuCommands.getMatcher(input, ProfileMenuCommands.START_GAME)).find()) {
-                if (!startGame(matcher, scanner)) {
-                    break;
-                }
+                startGame(matcher, scanner);
             } else {
                 globalMethods.invalidCommand();
             }

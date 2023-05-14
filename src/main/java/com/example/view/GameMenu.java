@@ -44,24 +44,6 @@ public class GameMenu {
                 repair();
             } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SELECT_UNIT).find()) {
                 selectUnit();
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.MOVE_UNIT)).find()) {
-                moveUnit(matcher);
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.PATROL_UNIT)).find()) {
-                patrolUnit(matcher);
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SET_STATE)).find()) {
-                setState(matcher);
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.ATTACK)).find()) {
-                attack(matcher);
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.AIR_ATTACK)).find()) {
-                airAttack(matcher);
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.POUR_OIL)).find()) {
-                pourOil(matcher);
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.DIG_TUNNEL)).find()) {
-                digTunnel(matcher);
-            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.BUILD)).find()) {
-                buildEquipment(matcher);
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.DISBAND_UNIT).find()) {
-                disbandUnit();
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SET_TEXTURE)).find()) {
                 setTexture(matcher);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SET_TEXTURE_RECTANGLE)).find()) {
@@ -115,45 +97,8 @@ public class GameMenu {
     private void selectUnit() {
     }
 
-    private void moveUnit(Matcher matcher) {
 
-    }
 
-    private void patrolUnit(Matcher matcher) {
-        HashMap<String, String> fields = gameMenuMethods.sortFields(globalMethods.commandSplit(matcher.group("fields")));
-        if (!gameMenuMethods.checkPatrolUnitInvalidField(fields)) {
-            System.out.println("you inserted an invalid field");
-        }
-    }
-
-    private void setState(Matcher matcher) {
-        HashMap<String, String> fields = gameMenuMethods.sortFields(globalMethods.commandSplit(matcher.group("fields")));
-
-    }
-
-    private void attack(Matcher matcher) {
-
-    }
-
-    private void airAttack(Matcher matcher) {
-
-    }
-
-    private void pourOil(Matcher matcher) {
-
-    }
-
-    private void digTunnel(Matcher matcher) {
-
-    }
-
-    private void buildEquipment(Matcher matcher) {
-
-    }
-
-    private void disbandUnit() {
-
-    }
 
     private void setTexture(Matcher matcher) {
         HashMap<String, String> fields = gameMenuMethods.sortFields(globalMethods.commandSplit(matcher.group("fields")));

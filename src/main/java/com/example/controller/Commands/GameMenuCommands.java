@@ -19,12 +19,12 @@ public enum GameMenuCommands {
     SELECT_UNIT("^select unit (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
     MOVE_UNIT("^move unit to (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
     PATROL_UNIT("^patrol unit(?<fields>( -\\S+ \\d+){4})$"),
-    SET_STATE("^set(?<fields>( -\\S \\S+){3})$"),
+    SET_STATE("^set -s (?<state>\\S+)$"),
     ATTACK("^attack -e (?<xCoordinate>\\d+) (?<yCoordinate>\\d+)$"),
     AIR_ATTACK("^attack (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
     POUR_OIL("^pour oil -d \\S+$"),
     DIG_TUNNEL("^dig tunnel (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
-    BUILD("^build -q (?<equipmentName>\\S+)$"),
+    BUILD("^build -q (?<equipmentName>.+)$"),
     DISBAND_UNIT("^disband unit$"),
     SET_TEXTURE("^settexture(?<fields>( -\\S .+){3})$"),
     SET_TEXTURE_RECTANGLE("^settexture (?<fields>( -\\S \\S+){5})$"),
@@ -34,7 +34,8 @@ public enum GameMenuCommands {
     DROP_UNIT("^dropunit (?<fields>( -\\S \\S+){4})$"),
     CURRENT_MENU("^show current menu$"),
     SHOW_MAP("^show map (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
-    EXIT("^exit$");
+    EXIT("^exit$"),
+    CANCEL_PATROL("^cancel patrol$");
     private String regex;
 
     GameMenuCommands(String regex) {

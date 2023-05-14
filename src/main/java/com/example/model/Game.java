@@ -77,6 +77,8 @@ public class Game {
     public void addBuilding(Governance governance, BuildingType buildingType, int xCordinate, int yCordinate) {
         governance.addBuilding(buildingType, gameMap.getCellByLocation(xCordinate, yCordinate));
     }
+    
+    
 
     public void addSoldier(Governance governance, SoldierType soldierType, int xCoordinate, int yCoordinate) {
         governance.addSoldier(new Cell(xCoordinate, yCoordinate,this.gameMap), soldierType);
