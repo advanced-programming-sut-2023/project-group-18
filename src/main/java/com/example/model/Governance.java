@@ -12,12 +12,13 @@ import com.example.model.Buildings.Storage;
 import com.example.model.Map.Cell;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
+import com.example.model.People.Worker;
 
 public class Governance {
     private final User owner;
     private final ArrayList<Building> buildings;
     private final ArrayList<Soldier> soldiers;
-    // private final ArrayList<Person> persons; Not needed
+    private final ArrayList<Worker> workers;
     private final HashMap<AssetType, HashMap<Asset, Integer>> assets;
     private final PopularityFactors popularityFactors;
     private int gold;
@@ -28,14 +29,16 @@ public class Governance {
     private final ArrayList<Trade> tradeHistory;
     private final ArrayList<Trade> tradeNotifications;
     private int soldiersCreatedInTurn;
+
     public Governance(User owner) {
         this.owner = owner;
         buildings = new ArrayList<>();
         soldiers = new ArrayList<>();
+        workers = new ArrayList<>();
         assets = Asset.getAllAssets();
         popularityFactors = new PopularityFactors(this);
         gold = 100;
-        nonMilitaryCharacters = 0;
+        nonMilitaryCharacters = 10;
         this.remainingNonMilitary = 0;
         tradeList = new ArrayList<>();
         requestList = new ArrayList<>();
@@ -62,6 +65,10 @@ public class Governance {
 
     public ArrayList<Soldier> getSoldiers() {
         return soldiers;
+    }
+
+    public HashMap<AssetType, HashMap<Asset, Integer>> getAssets() {
+        return assets;
     }
 
     protected ArrayList<Trade> getTradeList() {
@@ -310,4 +317,14 @@ public class Governance {
     public void createSoldier(int count){
         this.soldiersCreatedInTurn += count;
     }
+
+
+    private void addPopulation() {
+        nonMilitaryCharacters += (getFoodCount() - workers.size()) / 2;
+    }
+
+    public void run() {
+        addPopulation();
+    }
+
 }

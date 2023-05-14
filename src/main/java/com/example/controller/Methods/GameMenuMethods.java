@@ -1,10 +1,12 @@
 package com.example.controller.Methods;
 
 import com.example.model.Assets.Asset;
+import com.example.model.Assets.AssetType;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
 import com.example.model.Buildings.Gate;
 import com.example.model.Buildings.Tower;
+import com.example.model.ConsoleColors;
 import com.example.model.Game;
 import com.example.model.Governance;
 import com.example.model.Map.Cell;
@@ -21,7 +23,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class GameMenuMethods {
+public class GameMenuMethods implements ConsoleColors {
     private static GameMenuMethods gameMenuMethods;
     private final Game game;
 
@@ -259,6 +261,17 @@ public class GameMenuMethods {
 
     public boolean inRange(int x, int y) {
         return (x >= 0 && y >= 0 && x < game.getGameMap().getMapSize() && y < game.getGameMap().getMapSize());
+    }
+
+    public String showAssets() {
+        Governance governance = game.getCurrentGovernance();
+        String result = GREEN_BOLD + "Gold: " + governance.getGold() + RESET;
+        for (AssetType assetType : governance.getAssets().keySet()) {
+            result += BLUE_BOLD + "\n" + assetType.getName() + ":" + RESET;
+            for (Asset asset : governance.getAssets().get(assetType).keySet())
+                result += "\n" + asset.getName() + ": " + governance.getAssets().get(assetType).get(asset);
+        }
+        return result;
     }
 
 
