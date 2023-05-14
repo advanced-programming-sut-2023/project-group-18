@@ -7,9 +7,7 @@ import com.example.model.Assets.Asset;
 import com.example.model.Assets.AssetType;
 import com.example.model.Buildings.*;
 import com.example.model.Map.Cell;
-import com.example.model.People.Soldier;
-import com.example.model.People.SoldierType;
-import com.example.model.People.Worker;
+import com.example.model.People.*;
 
 public class Governance {
     private final User owner;
@@ -26,6 +24,7 @@ public class Governance {
     private final ArrayList<Trade> tradeHistory;
     private final ArrayList<Trade> tradeNotifications;
     private int soldiersCreatedInTurn;
+    private Unit lord;
 
     public Governance(User owner) {
         this.owner = owner;
@@ -347,6 +346,14 @@ public class Governance {
             removeAssetFromStorage(asset, count);
             haveToEat -= count;
         }
+    }
+
+    public Unit getLord() {
+        return lord;
+    }
+
+    public void setLord(Unit lord){
+        this.lord = lord;
     }
 
     public void getTaxFromPeople(){

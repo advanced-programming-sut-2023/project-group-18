@@ -38,7 +38,22 @@ public class GameMenuMethods implements ConsoleColors {
     public void run(Scanner scanner, ArrayList<User> players, String size) {
         game.setGameMap(size);
         game.makeNewGovernances(players);
-        GameMenu.getGameMenu().run(scanner);
+        while (!game.getGovernances().isEmpty()){
+            for (Governance governance : game.getGovernances()){
+                game.setCurrentGovernance(governance);
+                GameMenu.getGameMenu().run(scanner);
+            }
+            ArrayList<Governance> shouldRemoveGovernances = new ArrayList<>();
+            for (Governance governance : game.getGovernances()){
+                if (governance.getLord().getHitpoint() == 0)
+                    shouldRemoveGovernances.add(governance);
+            }
+            game.getGovernances().removeAll(shouldRemoveGovernances);
+            int score = 10 - game.getGovernances().size();
+            for (Governance governance : shouldRemoveGovernances){
+                governance.getOwner().addScore(score);
+            }
+        }
     }
 
     public Game getGame() {
@@ -366,4 +381,5 @@ public class GameMenuMethods implements ConsoleColors {
         }
         return hashMap.size() == 3;
     }
+
 }
