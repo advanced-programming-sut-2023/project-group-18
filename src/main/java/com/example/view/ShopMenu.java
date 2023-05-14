@@ -5,7 +5,6 @@ import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.MarketMethods;
 import com.example.model.Assets.Asset;
-import com.example.model.Governance;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -22,9 +21,11 @@ public class ShopMenu {
         globalMethods = GlobalMethods.getInstance();
         marketMethods = MarketMethods.getMarketMethods();
     }
+    
     public static ShopMenu getShopMenu() {
         return shopMenu == null ? shopMenu = new ShopMenu() : shopMenu;
     }
+
     public void run(Scanner scanner) {
         String input;
         Matcher matcher;
@@ -74,4 +75,5 @@ public class ShopMenu {
             System.out.println("sell was successful");
         }
     }
+
 }

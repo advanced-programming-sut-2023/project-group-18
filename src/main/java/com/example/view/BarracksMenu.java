@@ -14,11 +14,13 @@ public class BarracksMenu {
     private final GlobalMethods globalMethods;
     private final BarracksMethods barracksMethods;
     private final GameMenuMethods gameMenuMethods;
+
     private BarracksMenu() {
         globalMethods = GlobalMethods.getInstance();
         barracksMethods = BarracksMethods.getBarracksMethods();
         gameMenuMethods = GameMenuMethods.gameMenuMethods();
     }
+
     public static BarracksMenu getBarracksMenu() {
         return barracksMenu == null ? barracksMenu = new BarracksMenu() : barracksMenu;
     }
@@ -55,4 +57,5 @@ public class BarracksMenu {
         gameMenuMethods.deployTroop(typeName,count);
         System.out.println("troops were created successfully");
     }
+
 }

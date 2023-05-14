@@ -3,7 +3,6 @@ package com.example.view;
 import com.example.controller.Commands.GameMenuCommands;
 import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
-import com.example.model.Buildings.Direction;
 import com.example.model.Map.Directions;
 import com.example.model.People.State;
 
@@ -15,11 +14,13 @@ public class SelectUnitMenu {
     private static SelectUnitMenu selectUnitMenu;
     private final GlobalMethods globalMethods;
     private final GameMenuMethods gameMenuMethods;
+
     private SelectUnitMenu() {
         globalMethods = GlobalMethods.getInstance();
         gameMenuMethods = GameMenuMethods.gameMenuMethods();
     }
-    private static SelectUnitMenu selectUnitMenu() {
+
+    public static SelectUnitMenu selectUnitMenu() {
         return selectUnitMenu == null ? selectUnitMenu = new SelectUnitMenu() : selectUnitMenu;
     }
     
@@ -136,7 +137,7 @@ public class SelectUnitMenu {
     }
     
     private void disbandUnit() {
-//        gameMenuMethods.disbandUnit();
+       gameMenuMethods.disbandUnit();
     }
     
     private void cancelPatrol() {

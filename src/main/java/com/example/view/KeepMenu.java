@@ -3,9 +3,7 @@ package com.example.view;
 import com.example.controller.Commands.GameMenuCommands;
 import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
-import com.example.view.SelectBuildingMenu;
 
-import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -97,4 +95,5 @@ public class KeepMenu implements SelectBuildingMenu {
         gameMenuMethods.getGame().getCurrentGovernance().setFearRate(fearRate);
         System.out.println("fear rate was set successfully");
     }
+
 }

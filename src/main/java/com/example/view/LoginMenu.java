@@ -3,7 +3,6 @@ package com.example.view;
 import com.example.controller.Commands.LoginMenuCommands;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.LoginMenuMethods;
-import com.example.model.User;
 import com.example.model.UsersData;
 
 import java.util.ArrayList;
