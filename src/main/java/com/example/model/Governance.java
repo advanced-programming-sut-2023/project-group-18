@@ -94,8 +94,8 @@ public class Governance {
 
     public boolean canAcceptTrade(int id) {
         Trade trade = Trade.getTradebyId(id, tradeList);
-        // TODO: have to complete
-        return trade != null;
+        if (trade == null) return false;
+        return trade.getPrice() <= gold;
     }
 
     public void acceptTrade(int id, String meesage) {
@@ -115,11 +115,11 @@ public class Governance {
     }
 
     public String showNotifications() {
-        tradeNotifications.clear();
         String result = "Trade Notifications: ";
         int index = 0;
         for (Trade trade : tradeNotifications)
             result += "\n" + (++index) + ") " + trade.toStringTradeList();
+        tradeNotifications.clear();
         return result;
     }
 

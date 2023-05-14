@@ -53,6 +53,10 @@ public class Trade {
         return resourceType;
     }
 
+    public int getResourceAmount() {
+        return resourceAmount;
+    }
+
     public int getPrice() {
         return price;
     }

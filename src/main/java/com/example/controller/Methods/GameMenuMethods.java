@@ -496,4 +496,12 @@ public class GameMenuMethods implements ConsoleColors {
         }
     }
     
+    public String showGovernancesInTrade() {
+        String result = "Enter the index of a governance:";
+        int index = 0;
+        for (Governance governance : game.getGovernances())
+            result += "\n" + (index++) + ") " + governance.getOwner().getUsername();
+        return result;
+    }
+
 }
