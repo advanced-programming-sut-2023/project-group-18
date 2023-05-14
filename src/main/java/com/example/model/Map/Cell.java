@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import com.example.model.ConsoleColors;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
+import com.example.model.Buildings.Category;
+import com.example.model.Buildings.Tree;
 import com.example.model.Governance;
 import com.example.model.People.Unit;
+
 
 public class Cell implements ConsoleColors {
     private final GameMap gameMap;
@@ -59,7 +62,11 @@ public class Cell implements ConsoleColors {
     public String showDetails() {
         String result = "Location: (" + xCoordinate + ", " + yCoordinate + ")";
         result += "\nTexture: " + texture.name;
-        if (building != null) result += "\nBuilding: " + building.toString();
+        if (building != null) {
+            result += "\n";
+            if (!(building instanceof Tree)) result += "Building: ";
+            result += building.toString();
+        }
         if (!units.isEmpty()) {
             result += "\nUnits: ";
             for (Unit unit : units)
@@ -86,7 +93,7 @@ public class Cell implements ConsoleColors {
         else if (!units.isEmpty()) letter = "S";
         else if (building == null) letter = " ";
         else if (building.getBuildingType().equals(BuildingType.TREE)) letter = "T";
-        // else if (building.getBuildingType().equals(BuildingType.)) letter = "W";
+        else if (building.getBuildingType().getCategory().equals(Category.TOWER)) letter = "W";
         else letter = "B";
         return texture.color + "  " + letter + "   " + RESET;
     }

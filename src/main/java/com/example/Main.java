@@ -1,13 +1,9 @@
 package com.example;
 
-import com.example.model.CapthaCode;
 import com.example.model.UsersData;
 import com.example.view.LoginMenu;
 import com.example.view.ProfileMenu;
-import com.example.view.SignupMenu;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {

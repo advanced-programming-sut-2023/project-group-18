@@ -13,7 +13,6 @@ import com.example.model.People.*;
 import com.example.model.People.Soldier;
 import com.example.model.People.SoldierType;
 import com.example.model.People.Unit;
-import com.example.model.People.UnitType;
 import com.example.model.User;
 import com.example.view.GameMenu;
 
@@ -78,7 +77,7 @@ public class GameMenuMethods {
         int resourceNeeded = buildingType.getResourceCost();
         governance.addGold(-goldNeeded);
         governance.removeAssetFromStorage(resourceType, resourceNeeded);
-        cell.setBuilding(new Building(buildingType, governance, cell));
+        governance.addBuilding(buildingType, cell);
     }
 
     public boolean coordinatesHasBuilding(int xCoordinate, int yCoordinate) {

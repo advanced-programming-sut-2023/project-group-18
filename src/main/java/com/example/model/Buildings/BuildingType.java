@@ -4,9 +4,6 @@ import com.example.controller.Methods.*;
 import com.example.model.Assets.Asset;
 import com.example.model.Map.Texture;
 
-import java.util.ArrayList;
-
-
 public enum BuildingType {
     SMALL_STONE_GATEHOUSE("small stone gatehouse",0,Asset.STONE,0, 0,
             Texture.GROUND,100,0,0,0, 8,0, 0,
@@ -198,10 +195,7 @@ public enum BuildingType {
     private final int width;
     private final Category category;
     private final SelectBuildingMenuMethods selectBuildingMenuMethods;
-    private static final ArrayList<BuildingType> barracks = new ArrayList<>();
-    static {
 
-    }
     BuildingType(String name, int goldCost,Asset resourceType, int resourceCost,int workersNumber,
                  Texture groundType, int height, int capacity, int attackPoint, int popularityEffect,
                  int populationEffect, int productionRate, int producePrice, int fireRange, int defendRange,

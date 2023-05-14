@@ -7,6 +7,7 @@ import com.example.model.Assets.Asset;
 import com.example.model.Assets.AssetType;
 import com.example.model.Buildings.Building;
 import com.example.model.Buildings.BuildingType;
+import com.example.model.Buildings.Category;
 import com.example.model.Buildings.Storage;
 import com.example.model.Map.Cell;
 import com.example.model.People.Soldier;
@@ -240,6 +241,7 @@ public class Governance {
     }
 
     public void removeAssetFromStorage(Asset asset, int count) {
+        if (asset == null) return;
         for (Building building : buildings) {
             if (!(building instanceof Storage)) continue;
             Storage storage = (Storage) building;
@@ -253,8 +255,13 @@ public class Governance {
     }
 
     public void addBuilding(BuildingType buildingType, Cell cell) {
-        buildings.add(new Building(buildingType, this, cell));
+        if (buildingType.getCategory().equals(Category.STORAGE))
+            buildings.add(new Storage(buildingType, this, cell));
+        else
+            buildings.add(new Building(buildingType, this, cell));
     }
+
+
 
     public void removeBuilding(Building building) {
         buildings.remove(building);
