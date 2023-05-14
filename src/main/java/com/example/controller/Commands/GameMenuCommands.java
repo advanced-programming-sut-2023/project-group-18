@@ -14,7 +14,7 @@ public enum GameMenuCommands {
     FEAR_RATE("fear rate -r (?<rateNumber>-?\\d)$"),
     DROP_BUILDING("^dropbuilding(?<fields>( -\\S+ ((\\S+)|(\".+\"))){3})$"),
     SELECT_BUILDING("^select building (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
-    CREATE_UNIT("^createunit (-t (?<type>\\S+) -c (?<count>\\d+))|(-c (?<count2>\\d+) -t (?<type2>\\S+))$"),
+    CREATE_UNIT("^createunit (-t (?<type>(\\S+)|(\".+\")) -c (?<count>\\d+))|(-c (?<count2>\\d+) -t (?<type2>(\\S+)|(\".+\")))$"),
     REPAIR("^repair$"),
     SELECT_UNIT("^select unit (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
     MOVE_UNIT("^move unit to (-x (?<xCoordinate>\\d+) -y (?<yCoordinate>\\d+))|(-y (?<yCoordinate2>\\d+) -x (?<xCoordinate2>\\d+))$"),
