@@ -1,5 +1,6 @@
 package com.example.controller.Methods;
 
+import com.example.view.GateMenu;
 import com.example.view.KeepMenu;
 
 import java.util.Scanner;
@@ -14,6 +15,6 @@ public class GateMethods implements SelectBuildingMenuMethods{
     }
     @Override
     public void run(Scanner scanner) {
-        GateMethods.getGateMethods().run(scanner);
+        GateMenu.getInstance().run(scanner);
     }
 }
