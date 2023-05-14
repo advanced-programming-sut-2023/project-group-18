@@ -2,10 +2,7 @@ package com.example.controller.Methods;
 
 import com.example.model.Assets.Asset;
 import com.example.model.Assets.AssetType;
-import com.example.model.Buildings.Building;
-import com.example.model.Buildings.BuildingType;
-import com.example.model.Buildings.Gate;
-import com.example.model.Buildings.Tower;
+import com.example.model.Buildings.*;
 import com.example.model.ConsoleColors;
 import com.example.model.Game;
 import com.example.model.Governance;
