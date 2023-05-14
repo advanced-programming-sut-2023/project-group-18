@@ -154,6 +154,10 @@ public class Soldier extends Unit {
         return bestUnit;
     }
 
+    public SoldierType getSoldierType() {
+        return soldierType;
+    }
+
     public void run() {
         if (unitCell.getBuilding().getBuildingType().getCategory().equals(Category.TOWER))
             attackInBuilding(unitCell.getBuilding().getBuildingType().getFireRange());

@@ -28,4 +28,20 @@ public class Gunsmith extends Building{
         this.weapon = BuildingType.getAnotherWeapon(this.getBuildingType(), weapon);
     }
 
+    public void run(){
+        if (this.weapon.equals(Asset.LEATHER_ARMOR)){
+            for (Building building : governance.getBuildings()){
+                if (building.getBuildingType().equals(BuildingType.DAIRY_PRODUCTS)){
+                    DairyProducts dairyProducts = (DairyProducts) building;
+                    if (dairyProducts.canUseCow()){
+                        dairyProducts.useCow();
+                        governance.addSpecificAsset(weapon,rate);
+                        return;
+                    }
+                }
+            }
+        }
+        makeWeapon();
+    }
+
 }

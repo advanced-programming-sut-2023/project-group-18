@@ -38,7 +38,9 @@ public enum GameMenuCommands {
     NEXT_TURN("^next turn$"),
     SHOW_TURN("^show turn$"),
     SHOW_ASSET("^show asset$"),
-    CANCEL_PATROL("^cancel patrol$");
+    CANCEL_PATROL("^cancel patrol$"),
+    CLOSE_GATE("^close gate$"),
+    OPEN_GATE("^open gate$");
     private String regex;
 
     GameMenuCommands(String regex) {
