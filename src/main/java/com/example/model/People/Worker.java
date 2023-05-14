@@ -26,4 +26,8 @@ public class Worker extends Unit{
     public int getProductCount() {
         return productCount;
     }
+
+    public void run(){
+
+    }
 }

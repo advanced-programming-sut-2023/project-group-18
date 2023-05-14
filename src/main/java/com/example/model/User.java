@@ -13,7 +13,7 @@ public class User implements PasswordRecoveryQuestions {
     private int highscore;
     private final int recoveryQuestionNumber;
     private final String recoveryAnswer;
-
+    private int score;
     protected User(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         this.username = username;
         setPassword(password);
@@ -23,6 +23,7 @@ public class User implements PasswordRecoveryQuestions {
         this.recoveryQuestionNumber = recoveryQuestionNumber;
         this.recoveryAnswer = SHA256Cryptographic(recoveryAnswer);
         this.highscore = 0;
+        this.score = 0;
     }
 
     public String getUsername() {
@@ -69,8 +70,13 @@ public class User implements PasswordRecoveryQuestions {
         this.slogan = slogan;
     }
 
-    public void setHighscore(int highscore) {
-        this.highscore = highscore;
+    public void addScore(int score){
+        this.score += score;
+    }
+    public void setScore(int score) {
+        if (this.highscore < score)
+            this.highscore = score;
+        this.score = score;
     }
 
 
@@ -95,5 +101,6 @@ public class User implements PasswordRecoveryQuestions {
         }
         return null;
     }
+
 
 }

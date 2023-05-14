@@ -38,7 +38,22 @@ public class GameMenuMethods implements ConsoleColors {
     public void run(Scanner scanner, ArrayList<User> players, String size) {
         game.setGameMap(size);
         game.makeNewGovernances(players);
-        GameMenu.getGameMenu().run(scanner);
+        while (!game.getGovernances().isEmpty()){
+            for (Governance governance : game.getGovernances()){
+                game.setCurrentGovernance(governance);
+                GameMenu.getGameMenu().run(scanner);
+            }
+            ArrayList<Governance> shouldRemoveGovernances = new ArrayList<>();
+            for (Governance governance : game.getGovernances()){
+                if (governance.getLord().getHitpoint() == 0)
+                    shouldRemoveGovernances.add(governance);
+            }
+            game.getGovernances().removeAll(shouldRemoveGovernances);
+            int score = 10 - game.getGovernances().size();
+            for (Governance governance : shouldRemoveGovernances){
+                governance.getOwner().addScore(score);
+            }
+        }
     }
 
     public Game getGame() {
@@ -244,11 +259,10 @@ public class GameMenuMethods implements ConsoleColors {
         selectedUnit.movePath();
     }
 
-    public void patrol(int xCoordinate, int yCoordinate, int xCoordinate2, int yCoordinate2) {
+    public void patrol(int xCoordinate, int yCoordinate) {
         Cell destination = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
-        Cell destination2 = game.getGameMap().getCellByLocation(xCoordinate2, yCoordinate2);
         Unit selectedUnit = game.getSelectedUnit();
-        selectedUnit.setPatrolCell(destination2);
+        selectedUnit.setPatrolCell(selectedUnit.getUnitCell());
         selectedUnit.setTargetCell(destination);
         selectedUnit.findPath();
     }
@@ -367,20 +381,5 @@ public class GameMenuMethods implements ConsoleColors {
         }
         return hashMap.size() == 3;
     }
-    
-    public boolean checkSetStateInvalidField(HashMap<String, String> fields) {
-        for (String string : fields.keySet()) {
-            if (!string.trim().equals("-x") && !string.trim().equals("-y") && !string.trim().equals("-s"))
-                return false;
-        }
-        return fields.size() == 3;
-    }
-    
-    public String getEquipmentName(String equipmentName) {
-        boolean isQuoted = equipmentName.trim().charAt(3) == '\"' && equipmentName.trim().endsWith("\"");
-        if (isQuoted) {
-            return equipmentName.substring(1, equipmentName.length() -1);
-        }
-        return equipmentName;
-    }
+
 }

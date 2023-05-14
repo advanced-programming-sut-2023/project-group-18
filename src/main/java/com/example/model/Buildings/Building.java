@@ -35,6 +35,8 @@ public class Building implements ConsoleColors {
         this.cell = cell;
         this.width = buildingType.getWidth();
         setCellBuilding();
+        if (buildingType.equals(BuildingType.CATHEDRAL) || buildingType.equals(BuildingType.CHURCH))
+            governance.getPopularityFactors().addReligiousFactor(buildingType.getPopularityEffect());
     }
 
     public BuildingType getBuildingType() {

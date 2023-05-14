@@ -10,6 +10,7 @@ import com.example.model.Map.Cell;
 import com.example.model.Map.GameMap;
 import com.example.model.People.SoldierType;
 import com.example.model.People.Unit;
+import com.example.model.People.UnitType;
 
 public class Game {
     private static Game instance;
@@ -38,7 +39,6 @@ public class Game {
         for (User user : users)
             governances.add(new Governance(user));
         players = users.size();
-        currentGovernance = governances.get(0);
         KeepLocations keepLocations;
         if (gameMap.getMapSize() == 200) keepLocations = new NormalMap();
         else keepLocations = new LargeMap();
@@ -46,6 +46,7 @@ public class Game {
         for (Governance governance : governances) {
             governance.addAssetToStorage(Asset.WOOD, 50);
         }
+        //Unit lord = new Unit(, UnitType.LORD,)
     }
 
     public void setGameMap(String size) {
@@ -123,6 +124,10 @@ public class Game {
 
     public void removeTree(Tree tree) {
         trees.remove(tree);
+    }
+
+    public void setCurrentGovernance(Governance governance){
+        this.currentGovernance = governance;
     }
 
 }
