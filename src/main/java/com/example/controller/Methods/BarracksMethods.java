@@ -3,6 +3,8 @@ package com.example.controller.Methods;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
+import com.example.view.BarracksMenu;
+
 public class BarracksMethods implements SelectBuildingMenuMethods{
     private static BarracksMethods barracksMethods;
     private BarracksMethods() {
@@ -13,7 +15,7 @@ public class BarracksMethods implements SelectBuildingMenuMethods{
     }
     @Override
     public void run(Scanner scanner) {
-        BarracksMethods.getBarracksMethods().run(scanner);
+        BarracksMenu.getBarracksMenu().run(scanner);
     }
     
     public String getType(Matcher matcher) {

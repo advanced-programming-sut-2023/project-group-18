@@ -4,6 +4,7 @@ import com.example.controller.Commands.GameMenuCommands;
 import com.example.controller.Methods.BarracksMethods;
 import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
+import com.example.model.People.SoldierType;
 import com.example.model.People.UnitType;
 
 import java.util.Scanner;
@@ -41,7 +42,7 @@ public class BarracksMenu {
     private void createUnit(Matcher matcher) {
         String typeName = barracksMethods.getType(matcher);
         int count = Integer.parseInt(barracksMethods.getCount(matcher));
-        if (UnitType.getUnitTypeByName(typeName) == null) {
+        if (SoldierType.getSoldierTypeByName(typeName) == null) {
             System.out.println("there is no unit type with this name");
             return;
         } else if (gameMenuMethods.haveEnoughPeople(count)) {
@@ -50,7 +51,7 @@ public class BarracksMenu {
         } else if (gameMenuMethods.haveEnoughResourcesForTroop(typeName, count)) {
             System.out.println("you don't have enough resources");
             return;
-        } else if (gameMenuMethods.isCompatibleWithBarracks(typeName)) {
+        } else if (!gameMenuMethods.isCompatibleWithBarracks(typeName)) {
             System.out.println("this type is not compatible with barracks");
             return;
         }

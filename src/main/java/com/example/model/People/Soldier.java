@@ -166,4 +166,16 @@ public class Soldier extends Unit {
         }
     }
 
+    @Override
+    public String toString() {
+        String hitpoint;
+        if (this.hitpoint < soldierType.getHitpoint() / 3) hitpoint = RED_BOLD;
+        else if (this.hitpoint < soldierType.getHitpoint() * 2 / 3) hitpoint = YELLOW_BOLD;
+        else hitpoint = GREEN_BOLD;
+        hitpoint += this.hitpoint + RESET;
+        hitpoint += "/" + soldierType.getHitpoint();
+        String owner = BLUE_BOLD + governance.getOwner().getNickname() + RESET;
+        return soldierType.getType() + " [" + hitpoint + "] \"" + owner + "\"";
+    }
+
 }

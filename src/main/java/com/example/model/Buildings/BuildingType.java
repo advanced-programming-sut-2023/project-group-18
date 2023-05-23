@@ -46,7 +46,7 @@ public enum BuildingType {
             ,BarracksMethods.getBarracksMethods(),200),
     MERCENARY_POST("mercenary post",0,Asset.WOOD,10,0,
             Texture.GROUND,50,0,0,0,0, 0,0,
-            0,0,0,null,null,3, Category.BARRACKS,
+            0,0,0,null,null,2, Category.BARRACKS,
             BarracksMethods.getBarracksMethods(),200),
     ENGINEER_GUILD("engineer guild",100,Asset.WOOD,10,0,
             Texture.GROUND,50,0,0,0,0, 0,0,
