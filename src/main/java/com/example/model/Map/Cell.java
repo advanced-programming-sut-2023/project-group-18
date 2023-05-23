@@ -82,7 +82,7 @@ public class Cell implements ConsoleColors {
     }
 
     public double calculatePythagorean(Cell cell) {
-        return Math.sqrt(Math.pow(xCoordinate, cell.xCoordinate) + Math.pow(yCoordinate, cell.yCoordinate));
+        return Math.sqrt(Math.pow(xCoordinate - cell.xCoordinate, 2) + Math.pow(yCoordinate - cell.yCoordinate, 2));
     }
 
     public void addUnit(Unit unit){
@@ -106,6 +106,16 @@ public class Cell implements ConsoleColors {
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return xCoordinate == ((Cell)obj).xCoordinate && yCoordinate == ((Cell)obj).yCoordinate;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + xCoordinate + ", " + yCoordinate + ")";
     }
 
 }

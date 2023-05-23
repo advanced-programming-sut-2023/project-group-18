@@ -61,6 +61,11 @@ public class SelectUnitMenu {
         if (!gameMenuMethods.inRange(x,y)) {
             System.out.println("your input coordinates are not valid");
             return;
+        } else if (!gameMenuMethods.isUnblocked(x, y)) {
+            System.out.println("target is blocked!");
+        } else if (!gameMenuMethods.canMove(x, y)) {
+            System.out.println("Cant't go there!");
+            return;
         }
         gameMenuMethods.move(x,y);
         System.out.println("selected units moved successfully");

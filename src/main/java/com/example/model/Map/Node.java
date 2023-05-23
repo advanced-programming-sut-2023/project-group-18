@@ -39,4 +39,9 @@ public class Node {
         return ((Node) obj).cell.equals(this.cell);
     }
 
+    @Override
+    public String toString() {
+        return "total: " + total + " given, heuristic: " + given + ", " + heuristic;
+    }
+
 }

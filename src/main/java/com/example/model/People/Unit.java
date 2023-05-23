@@ -147,18 +147,23 @@ public class Unit implements Successor, ConsoleColors {
         final ArrayList<Node> closedList = new ArrayList<>();
         openList.add(new Node(null, unitCell, targetCell));
         while (!openList.isEmpty()) {
+            System.out.println(openList.get(0).toString() + " size === " + openList.size());
             Node node = findLeastTotalNode(openList);
-            openList.remove(node);
+            System.out.println(node.toString());
+            System.out.println(node.getCell().getxCoordinate() + " , " + node.getCell().getyCoordinate());
+            System.out.println(openList.remove(node));
+            ;
+            l:
             for (int[] successor : SUCCESSORS) {
                 int x = node.getCell().getxCoordinate() + successor[0];
                 int y = node.getCell().getxCoordinate() + successor[1];
                 Cell cell = unitCell.getGameMap().getCellByLocation(x, y);
-                if (cell == null) continue;
-                if (!canGoCell(cell)) continue;
+                if (cell == null) continue l;
+                if (!canGoCell(cell)) continue l;
                 Node neighbor = new Node(node, cell, targetCell);
                 if (isDone(neighbor)) return neighbor;
-                if (betterChoiseInList(neighbor, openList)) continue;
-                if (betterChoiseInList(neighbor, closedList)) continue;
+                if (betterChoiseInList(neighbor, openList)) continue l;
+                if (betterChoiseInList(neighbor, closedList)) continue l;
                 openList.add(neighbor);
             }
             closedList.add(node);
@@ -172,7 +177,7 @@ public class Unit implements Successor, ConsoleColors {
 
     private Node findLeastTotalNode(ArrayList<Node> nodeList) {
         Node bestNode = null;
-        double leastTotal = Double.MAX_VALUE;
+        double leastTotal = 100000000000000.0;
         for (Node node : nodeList)
             if (node.getTotal() < leastTotal) {
                 leastTotal = node.getTotal();

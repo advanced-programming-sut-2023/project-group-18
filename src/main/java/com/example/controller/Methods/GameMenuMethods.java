@@ -14,6 +14,8 @@ import com.example.model.People.SoldierType;
 import com.example.model.People.Unit;
 import com.example.model.User;
 import com.example.view.GameMenu;
+import com.example.view.SelectUnitMenu;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -233,13 +235,14 @@ public class GameMenuMethods implements ConsoleColors {
         return false;
     }
 
-    public void selectUnit(int xCoordinate, int yCoordinate) {
+    public void selectUnit(int xCoordinate, int yCoordinate, Scanner scanner) {
         Cell cell = game.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
         Governance governance = game.getCurrentGovernance();
         for (Unit unit : cell.getUnits()) {
             if (unit.isControllable()) {
                 if (unit.getGovernance().equals(governance)) {
                     game.selectUnit(unit);
+                    SelectUnitMenu.selectUnitMenu().run(scanner);
                     return;
                 }
             }
@@ -502,6 +505,10 @@ public class GameMenuMethods implements ConsoleColors {
         for (Governance governance : game.getGovernances())
             result += "\n" + (index++) + ") " + governance.getOwner().getUsername();
         return result;
+    }
+
+    public boolean isUnblocked(int x, int y) {
+        return game.getSelectedUnit().canGoCell(game.getGameMap().getCellByLocation(x, y));
     }
 
 }

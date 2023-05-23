@@ -38,6 +38,7 @@ public class GameMap implements WriteInFile, Successor {
     }
 
     public Cell getCellByLocation(int xCoordinate, int yCoordinate) {
+        if (!isInBounds(xCoordinate, yCoordinate)) return null;
         return map[yCoordinate][xCoordinate];
     }
 

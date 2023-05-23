@@ -48,8 +48,8 @@ public class GameMenu {
                 createUnit(matcher);
             } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.REPAIR).find()) {
                 repair();
-            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.SELECT_UNIT).find()) {
-                selectUnit();
+            } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SELECT_UNIT)).find()) {
+                selectUnit(matcher, scanner);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SET_TEXTURE)).find()) {
                 setTexture(matcher);
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SET_TEXTURE_RECTANGLE)).find()) {
@@ -100,7 +100,10 @@ public class GameMenu {
 
     }
 
-    private void selectUnit() {
+    private void selectUnit(Matcher matcher, Scanner scanner) {
+        int xCoordinate = gameMenuMethods.getXCoordinate(matcher);
+        int yCoordinate = gameMenuMethods.getYCoordinate(matcher);
+        gameMenuMethods.selectUnit(xCoordinate, yCoordinate, scanner);
     }
 
 
