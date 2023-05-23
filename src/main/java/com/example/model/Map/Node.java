@@ -27,7 +27,7 @@ public class Node {
 
     private double calculateGiven() {
         if (parent == null) return 0;
-        return cell.calculatePythagorean(parent.cell);
+        return parent.given + 1;
     }
 
     private double calculateHeuristic(Cell target) {

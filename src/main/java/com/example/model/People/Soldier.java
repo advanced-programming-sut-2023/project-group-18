@@ -25,6 +25,7 @@ public class Soldier extends Unit {
         this.damage = soldierType.getAttackPower() * (20 + governance.getFearRate());
         this.isAttack = false;
         this.hitpoint = soldierType.getHitpoint();
+        governance.getSoldiers().add(this);
     }
 
     public SoldierType getSoldierType() {
@@ -161,9 +162,12 @@ public class Soldier extends Unit {
             if (findNearestEnemy(attackRange + state.getAdditiveRange()))
                 attack();
         } else if (targetCell != null) {
+            System.out.println("heyyy");
             findPath();
             movePath();
         }
+        System.out.println("hoouosij");
+
     }
 
     @Override

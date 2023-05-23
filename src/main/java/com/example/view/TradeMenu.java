@@ -24,7 +24,7 @@ public class TradeMenu {
         gameMenuMethods = GameMenuMethods.gameMenuMethods();
     }
 
-    public TradeMenu getTradeMenu() {
+    public static TradeMenu getTradeMenu() {
         return tradeMenu == null ? tradeMenu = new TradeMenu() : tradeMenu;
     }
 
@@ -50,7 +50,7 @@ public class TradeMenu {
         }
     }
 
-    private void trade(Matcher matcher, Scanner scanner) {
+    void trade(Matcher matcher, Scanner scanner) {
         HashMap<String, String> fields = gameMenuMethods.sortFields(globalMethods.commandSplit(matcher.group("fields")));
         if (!tradeMenuMethods.checkTradeInvalidField(fields)) {
             System.out.println("you inserted an invalid field");
@@ -88,11 +88,11 @@ public class TradeMenu {
         System.out.println("trade successful");
     }
 
-    private void tradeList() {
+    public void tradeList() {
         System.out.println(gameMenuMethods.getGame().getCurrentGovernance().showTradeList());
     }
 
-    private void tradeAccept(Matcher matcher) {
+    public void tradeAccept(Matcher matcher) {
         int id = tradeMenuMethods.getId(matcher);
         String message = tradeMenuMethods.getMessage(matcher);
         if (!gameMenuMethods.getGame().getCurrentGovernance().canAcceptTrade(id)) {
@@ -103,7 +103,7 @@ public class TradeMenu {
         System.out.println("trade was successfully accepted");
     }
 
-    private void tradeHistory() {
+    public void tradeHistory() {
         System.out.println(gameMenuMethods.getGame().getCurrentGovernance().showTradeHistory());
     }
 

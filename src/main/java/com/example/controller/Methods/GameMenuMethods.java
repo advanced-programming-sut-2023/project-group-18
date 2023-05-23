@@ -40,6 +40,7 @@ public class GameMenuMethods implements ConsoleColors {
             for (Governance governance : game.getGovernances()){
                 game.setCurrentGovernance(governance);
                 GameMenu.getGameMenu().run(scanner);
+                nextTurn();
             }
             ArrayList<Governance> shouldRemoveGovernances = new ArrayList<>();
             for (Governance governance : game.getGovernances()){
@@ -54,6 +55,12 @@ public class GameMenuMethods implements ConsoleColors {
         }
         if (game.getGovernances().isEmpty()) return;
         game.getGovernances().get(0).getOwner().addScore(10);
+    }
+
+    private void nextTurn() {
+        for (Soldier soldier : game.getCurrentGovernance().getSoldiers()) {
+            soldier.run();
+        }
     }
 
     public Game getGame() {

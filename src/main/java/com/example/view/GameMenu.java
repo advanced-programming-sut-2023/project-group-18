@@ -1,6 +1,7 @@
 package com.example.view;
 
 import com.example.controller.Commands.GameMenuCommands;
+import com.example.controller.Commands.TradeMenuCommands;
 import com.example.controller.Methods.GameMenuMethods;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.MapMenuMethods;
@@ -68,10 +69,21 @@ public class GameMenu {
                 globalMethods.showCurrentMenu("game menu");
             } else if ((matcher = GameMenuCommands.getMatcher(input, GameMenuCommands.SHOW_MAP)).find()) {
                 showMap(matcher, scanner);
+            } else if ((matcher = TradeMenuCommands.getMatcher(input, TradeMenuCommands.TRADE)).find()) {
+                TradeMenu.getTradeMenu().trade(matcher, scanner);
+            } else if (TradeMenuCommands.getMatcher(input, TradeMenuCommands.TRADE_LIST).find()) {
+                TradeMenu.getTradeMenu().tradeList();
+            } else if (GameMenuCommands.getMatcher(input, GameMenuCommands.EXIT).find()) {
+                break;
+            } else if ((matcher = TradeMenuCommands.getMatcher(input, TradeMenuCommands.ACCEPT_TRADE)).find()) {
+                TradeMenu.getTradeMenu().tradeAccept(matcher);
+            } else if (TradeMenuCommands.getMatcher(input, TradeMenuCommands.TRADE_HISTORY).find()) {
+                TradeMenu.getTradeMenu().tradeHistory();
             } else {
                 globalMethods.invalidCommand();
             }
         }
+
     }
 
     private void selectBuilding(Matcher matcher, Scanner scanner) {
