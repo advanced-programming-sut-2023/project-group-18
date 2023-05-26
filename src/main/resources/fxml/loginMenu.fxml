@@ -8,12 +8,12 @@
 <?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.view.controllers.SignupMenuController"
+            fx:controller="com.example.view.controllers.LoginMenuController"
             prefHeight="750" prefWidth="1500">
 
     <top>
         <VBox prefWidth="1500" prefHeight="50" alignment="CENTER" styleClass="title">
-            <Label text="Signup Menu" textAlignment="CENTER"/>
+            <Label text="Login Menu" textAlignment="CENTER"/>
         </VBox>
     </top>
 
@@ -30,31 +30,19 @@
                 <PasswordField promptText="Password" prefWidth="400"/>
                 <Label text="Error" styleClass="errorLabel" prefWidth="200"/>
             </HBox>
-
-            <HBox spacing="40" alignment="CENTER">
-                <Label text="Email" prefWidth="200"/>
-                <TextField promptText="example@gmail.com" prefWidth="400"/>
-                <Label text="Error" styleClass="errorLabel" prefWidth="200"/>
-            </HBox>
-
-            <HBox spacing="40" alignment="CENTER">
-                <Label text="Nickname" prefWidth="200"/>
-                <TextField promptText="Nickname" prefWidth="400"/>
-                <Label text="Error" styleClass="errorLabel" prefWidth="200"/>
-            </HBox>
-            <Button prefWidth="200" prefHeight="50" text="Submit"/>
         </VBox>
     </center>
 
+
     <bottom>
-        <HBox spacing="10" alignment="CENTER">
+        <VBox alignment="CENTER" spacing="20">
             <padding>
-                <Insets bottom="40"/>
+                <Insets right="20" bottom="20"/>
             </padding>
-            <Label text="Already have an account?" styleClass="note"/>
-            <Label text="login" styleClass="labelLink" onMouseClicked="#goLoginMenu"/>
-        </HBox>
+            <Button prefWidth="200" prefHeight="50" text="Back" onMouseClicked="#back"/>
+        </VBox>
     </bottom>
+
 
     <stylesheets>
         <URL value="@../css/MenuStyle.css"/>
