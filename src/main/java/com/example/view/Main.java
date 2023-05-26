@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 
 import com.example.model.UsersData;
+import com.example.view.images.Images;
 import com.example.view.music.Music;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -20,10 +22,11 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
         goToMenu("signupMenu");
-        // Music.LOGIN_MENU.getMediaPlayer().play();
+        Music.LOGIN_MENU.getMediaPlayer().play();
         stage.setScene(scene);
         stage.setTitle("Stronghold Crusader");
         closeApp();
+        setIcon();
         stage.show();
     }
 
@@ -44,10 +47,16 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(url);
         if (scene == null) scene = new Scene(root);
         else scene.setRoot(root);
+        scene.setCursor(new ImageCursor(Images.ICON.getImage()));
     }
 
     private void closeApp() {
         stage.setOnCloseRequest(event -> UsersData.getUsersData().writeUsersInFile());
+    }
+
+    private void setIcon() {
+        stage.getIcons().clear();
+        stage.getIcons().add(Images.ICON.getImage());
     }
 
 }

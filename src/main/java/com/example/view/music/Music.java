@@ -9,7 +9,7 @@ public enum Music {
     LOGIN_MENU ("login_menu"),
     HAPPY_TIMES ("happy_times"),
     SAD_TIMES ("sad_times"),
-    STIX_STONE_MELDEY ("stix_stones_meldey");
+    STIX_STONE_MELDEY ("stix_stones_medley");
 
     private final MediaPlayer mediaPlayer;
 
