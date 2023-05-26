@@ -22,7 +22,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
         goToMenu("signupMenu");
-//        Music.LOGIN_MENU.getMediaPlayer().play();
+       Music.LOGIN_MENU.getMediaPlayer().play();
         stage.setScene(scene);
         stage.setTitle("Stronghold Crusader");
         closeApp();

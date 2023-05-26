@@ -1,12 +1,13 @@
 package com.example.controller;
 
+import com.example.controller.responses.SignupResponses;
 import com.example.model.RandomSlogan;
 import com.example.model.UsersData;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class SignupController implements RandomSlogan {
+public class SignupController implements SignupResponses, RandomSlogan {
     private static SignupController controller;
     private final UsersData usersData;
 
@@ -19,7 +20,7 @@ public class SignupController implements RandomSlogan {
     }
 
 
-    public boolean usernameValidation(String username) {
+    private boolean isUsernameValid(String username) {
         return username.matches("\\w+");
     }
 
@@ -57,18 +58,48 @@ public class SignupController implements RandomSlogan {
         return true;
     }
 
-    public boolean doesUsernameExist(String username) {
+    private boolean doesUsernameExist(String username) {
         return usersData.getUserByUsername(username) != null;
     }
 
-    public boolean doesEmailExist(String email) {
+    private boolean doesEmailExist(String email) {
         return usersData.doesEmailExist(email);
+    }
+
+    private boolean isEmailValid(String email) {
+        return email.matches("[\\w.]+@[\\w.]+\\.[\\w.]+");
     }
 
     public String getRandomSlogan() {
         Random random = new Random();
         int index = random.nextInt(10);
         return RandomSlogan.RANDOM_SLOGANS[index];
+    }
+    
+    public String getUsernameError(String username) {
+        if (!isUsernameValid(username)) return USERNAME_INVALID;
+        if (doesUsernameExist(username)) return USERNAME_EXIST;
+        return null;
+    }
+
+    public String getPasswordError(String password) {
+        if (password.length() < 6)
+            return PASSWORD_SHORT;
+        else if (!password.matches(".*[a-z].*"))
+            return PASSWORD_LOWER_CASE;
+        else if (!password.matches(".*[A-Z].*"))
+            return PASSWORD_UPPER_CASE;
+        else if (!password.matches(".*\\d.*"))
+            return PASSWORD_DIGIT;
+        else if (!password.matches(".*[^\\sa-zA-Z0-9].*"))
+            return PASSWORD_START;
+        return null;
+    }
+
+    public String getEmailError(String email) {
+        if (!isEmailValid(email)) return EMAIL_VALID;
+        if (doesEmailExist(email)) return EMAIL_EXIST;
+        return null;
     }
 
 }
