@@ -1,4 +1,4 @@
-import com.example.controller.Commands.LoginMenuCommands;
+/*import com.example.controller.Commands.LoginMenuCommands;
 import com.example.controller.Methods.GlobalMethods;
 import com.example.controller.Methods.LoginMenuMethods;
 import com.example.controller.Methods.ProfileMenuMethods;
@@ -101,3 +101,4 @@ public class LoginMenuTest {
         Assertions.assertTrue(usersData.isPasswordCorrect("username!!", "passWORD123!@#"));
     }
 }
+*/

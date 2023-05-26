@@ -1,0 +1,49 @@
+@font-face {
+    -fx-font-family: "Supercell";
+    src: url("../fonts/supercell.ttf");
+}
+
+.root{
+    -fx-font-family: "Supercell-Magic", "Supercell";
+    -fx-font-size: 30;
+    -fx-background-image: url(../images/start.jpg);
+    -fx-background-size: cover;
+    -fx-opacity: 0.9;
+}
+
+.secondPage{
+    -fx-background-size: cover;
+    -fx-background-image: url("../images/backgrounds/18.png");
+    -fx-background-repeat: repeat-x;
+}
+
+.enteringMenus{
+    -fx-background-size: cover;
+    -fx-background-image: url("../images/backgrounds/Background_B.png");
+    -fx-background-repeat: repeat-x;
+}
+
+.upperPageText{
+    -fx-fill: #00bbff;
+}
+
+.text-field{
+    -fx-prompt-text-fill: #e50000;
+    -fx-background-color: #74bfc7;
+    -fx-border-color: blue;
+}
+
+.menu-button{
+    -fx-background-color: #00e1ff;
+    -fx-arc-width: 30;
+    -fx-arc-height: 30;
+}
+
+.label{
+    -fx-text-fill: white;
+}
+
+.pop-up{
+    -fx-background-color: #74bfc7;
+    -fx-border-color: blue;
+}
