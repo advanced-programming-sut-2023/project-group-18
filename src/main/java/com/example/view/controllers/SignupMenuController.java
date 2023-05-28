@@ -3,7 +3,9 @@ package com.example.view.controllers;
 import com.example.controller.SignupController;
 import com.example.controller.responses.FieldResponses;
 import com.example.view.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -12,6 +14,8 @@ import java.io.IOException;
 
 public class SignupMenuController implements FieldResponses {
     private final SignupController controller = SignupController.getInstance();
+    @FXML
+    private CheckBox showPassword;
     @FXML
     private TextField username;
     @FXML
@@ -60,5 +64,16 @@ public class SignupMenuController implements FieldResponses {
 
     public void goLoginMenu() throws IOException {
         Main.goToMenu("loginMenu");
+    }
+
+    public void changeVisibility(ActionEvent actionEvent) {
+        CheckBox checkBox = (CheckBox) actionEvent.getSource();
+        if (checkBox.isSelected()) {
+            password.setPromptText(password.getText());
+            password.setText("");
+        } else {
+            password.setText(password.getPromptText());
+            password.setPromptText("");
+        }
     }
 }
