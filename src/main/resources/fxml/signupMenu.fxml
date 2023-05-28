@@ -19,17 +19,18 @@
 
     <center>
         <VBox alignment="CENTER" spacing="20">
-            <HBox spacing="40" alignment="CENTER_RIGHT">
+            <HBox spacing="40" alignment="CENTER">
                 <Label text="Username" prefWidth="200"/>
                 <TextField fx:id="username" promptText="Username" prefWidth="400"/>
                 <Label styleClass="errorLabel" prefWidth="200" fx:id="usernameError"/>
-                <CheckBox text="show password" fx:id="showPassword" onAction="#changeVisibility"/>
             </HBox>
 
-            <HBox spacing="40" alignment="CENTER">
+            <HBox spacing="40" alignment="CENTER_RIGHT">
                 <Label text="Password" prefWidth="200"/>
                 <PasswordField fx:id="password" promptText="Password" prefWidth="400"/>
                 <Label styleClass="errorLabel" prefWidth="200" fx:id="passwordError"/>
+                <CheckBox text="show password" onMouseClicked="#changeVisibility" fx:id="showPasswordCheckBox"/>
+                <TextField text="password" promptText="Password" prefWidth="400" fx:id="passwordTextField"/>
             </HBox>
 
             <HBox spacing="40" alignment="CENTER">

@@ -3,19 +3,19 @@ package com.example.view.controllers;
 import com.example.controller.SignupController;
 import com.example.controller.responses.FieldResponses;
 import com.example.view.Main;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.util.converter.BooleanStringConverter;
 
 import java.io.IOException;
 
 public class SignupMenuController implements FieldResponses {
     private final SignupController controller = SignupController.getInstance();
     @FXML
-    private CheckBox showPassword;
+    private TextField passwordTextField;
+    @FXML
+    private CheckBox showPasswordCheckBox;
     @FXML
     private TextField username;
     @FXML
@@ -36,6 +36,11 @@ public class SignupMenuController implements FieldResponses {
 
     @FXML
     public void initialize() {
+        passwordTextField.setManaged(false);
+        passwordTextField.setVisible(false);
+        passwordTextField.managedProperty().bind(showPasswordCheckBox.selectedProperty());
+        passwordTextField.visibleProperty().bind(showPasswordCheckBox.selectedProperty());
+        passwordTextField.textProperty().bindBidirectional(password.textProperty());
         addListeners();
     }
 
@@ -66,14 +71,8 @@ public class SignupMenuController implements FieldResponses {
         Main.goToMenu("loginMenu");
     }
 
-    public void changeVisibility(ActionEvent actionEvent) {
-        CheckBox checkBox = (CheckBox) actionEvent.getSource();
-        if (checkBox.isSelected()) {
-            password.setPromptText(password.getText());
-            password.setText("");
-        } else {
-            password.setText(password.getPromptText());
-            password.setPromptText("");
-        }
+    public void changeVisibility(MouseEvent actionEvent) {
+        ToggleButton toggleButton = (ToggleButton) actionEvent.getSource();
+        password.textProperty().bindBidirectional(toggleButton.selectedProperty(), new BooleanStringConverter());
     }
 }
