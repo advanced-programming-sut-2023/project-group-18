@@ -4,7 +4,6 @@ import com.example.controller.responses.SignupResponses;
 import com.example.model.RandomSlogan;
 import com.example.model.UsersData;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class SignupController implements SignupResponses, RandomSlogan {
@@ -29,7 +28,7 @@ public class SignupController implements SignupResponses, RandomSlogan {
     }
 
     public String generateRandomPassword() {
-        Random random = new Random();
+        java.util.Random random = new java.util.Random();
         int length = random.nextInt(6, 9);
         String uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
@@ -71,7 +70,7 @@ public class SignupController implements SignupResponses, RandomSlogan {
     }
 
     public String getRandomSlogan() {
-        Random random = new Random();
+        java.util.Random random = new java.util.Random();
         int index = random.nextInt(10);
         return RandomSlogan.RANDOM_SLOGANS[index];
     }
