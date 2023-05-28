@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="tradeMenu" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="new_Menus" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PYdZS9h1vS62zAV5IHW6vLrOYn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Omidreza/IdeaProjects/project-group-18",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.General"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="" />
+      <created>1683638003954</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683638003954</updated>
+      <workItem from="1683638005251" duration="334000" />
+      <workItem from="1683638355594" duration="109000" />
+      <workItem from="1683638474163" duration="2161000" />
+      <workItem from="1683640662065" duration="264000" />
+      <workItem from="1683645574386" duration="6000" />
+      <workItem from="1683812978727" duration="770000" />
+      <workItem from="1683814569889" duration="7984000" />
+      <workItem from="1683975036223" duration="7707000" />
+      <workItem from="1683998732082" duration="9045000" />
+      <workItem from="1684089246516" duration="5899000" />
+      <workItem from="1684246193832" duration="60000" />
+      <workItem from="1684353305425" duration="19000" />
+      <workItem from="1684354270712" duration="1323000" />
+      <workItem from="1684395785534" duration="424000" />
+      <workItem from="1684530969148" duration="2172000" />
+      <workItem from="1684570562184" duration="15000" />
+      <workItem from="1684859499007" duration="4120000" />
+      <workItem from="1684878046990" duration="1374000" />
+      <workItem from="1685045827725" duration="37000" />
+    </task>
+    <task id="LOCAL-00001" summary="added mapmenu and map and some functions">
+      <created>1683973896988</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683973896988</updated>
+    </task>
+    <task id="LOCAL-00002" summary="idk what's added">
+      <created>1683981856728</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683981856728</updated>
+    </task>
+    <task id="LOCAL-00003" summary="empire factors">
+      <created>1683983235084</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683983235084</updated>
+    </task>
+    <task id="LOCAL-00004" summary="waiting for engineer">
+      <created>1683984214510</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683984214510</updated>
+    </task>
+    <task id="LOCAL-00005" summary="...">
+      <created>1683985397860</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683985397860</updated>
+    </task>
+    <task id="LOCAL-00006" summary="another commit">
+      <created>1684000632738</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684000632738</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fixing dropbuilding">
+      <created>1684001799584</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684001799584</updated>
+    </task>
+    <task id="LOCAL-00008" summary="a third commit(i'm losing mu mind)">
+      <created>1684011768549</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1684011768549</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added droprock droptree clear texture gate open close">
+      <created>1684093265035</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1684093265035</updated>
+    </task>
+    <task id="LOCAL-00010" summary="gatemenu run">
+      <created>1684095910027</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1684095910027</updated>
+    </task>
+    <task id="LOCAL-00011" summary="tradeMenu">
+      <created>1684098471193</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1684098471193</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added mapmenu and map and some functions" />
+    <MESSAGE value="idk what's added" />
+    <MESSAGE value="empire factors" />
+    <MESSAGE value="waiting for engineer" />
+    <MESSAGE value="..." />
+    <MESSAGE value="another commit" />
+    <MESSAGE value="fixing dropbuilding" />
+    <MESSAGE value="a third commit(i'm losing mu mind)" />
+    <MESSAGE value="added droprock droptree clear texture gate open close" />
+    <MESSAGE value="gatemenu run" />
+    <MESSAGE value="tradeMenu" />
+    <option name="LAST_COMMIT_MESSAGE" value="tradeMenu" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
