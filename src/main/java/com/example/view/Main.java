@@ -1,4 +1,5 @@
 package com.example.view;
+
 import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -11,6 +12,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -56,7 +58,7 @@ class PannableCanvas extends Pane {
             gc.strokeLine( 0, i, w, i);
         }
 
-        getChildren().add( grid);
+        getChildren().add(grid);
 
         grid.toBack();
     }
@@ -156,8 +158,8 @@ class NodeGestures {
  */
 class SceneGestures {
 
-    private static final double MAX_SCALE = 10.0d;
-    private static final double MIN_SCALE = .1d;
+    private static final double MAX_SCALE = 5.0d;
+    private static final double MIN_SCALE = 2.0d;
 
     private DragContext sceneDragContext = new DragContext();
 
@@ -180,33 +182,31 @@ class SceneGestures {
     }
 
     private EventHandler<MouseEvent> onMousePressedEventHandler = new EventHandler<MouseEvent>() {
-
+        @Override
         public void handle(MouseEvent event) {
-
-            // right mouse button => panning
-            if( !event.isSecondaryButtonDown())
-                return;
-
             sceneDragContext.mouseAnchorX = event.getSceneX();
             sceneDragContext.mouseAnchorY = event.getSceneY();
-
             sceneDragContext.translateAnchorX = canvas.getTranslateX();
             sceneDragContext.translateAnchorY = canvas.getTranslateY();
-
         }
 
     };
 
     private EventHandler<MouseEvent> onMouseDraggedEventHandler = new EventHandler<MouseEvent>() {
+        @Override
         public void handle(MouseEvent event) {
 
             // right mouse button => panning
-            if( !event.isSecondaryButtonDown())
+            if (!event.isSecondaryButtonDown())
                 return;
+            
+            double xTranslate = sceneDragContext.translateAnchorX + event.getSceneX() - sceneDragContext.mouseAnchorX;
+            double yTranslate = sceneDragContext.translateAnchorY + event.getSceneY() - sceneDragContext.mouseAnchorY;
 
-            canvas.setTranslateX(sceneDragContext.translateAnchorX + event.getSceneX() - sceneDragContext.mouseAnchorX);
-            canvas.setTranslateY(sceneDragContext.translateAnchorY + event.getSceneY() - sceneDragContext.mouseAnchorY);
 
+
+            canvas.setTranslateX(xTranslate);
+            canvas.setTranslateY(yTranslate);
             event.consume();
         }
     };
@@ -215,11 +215,9 @@ class SceneGestures {
      * Mouse wheel handler: zoom to pivot point
      */
     private EventHandler<ScrollEvent> onScrollEventHandler = new EventHandler<ScrollEvent>() {
-
         @Override
         public void handle(ScrollEvent event) {
-
-            double delta = 1.2;
+            double delta = 1.05;
 
             double scale = canvas.getScale(); // currently we only use Y, same value is used for X
             double oldScale = scale;
@@ -229,14 +227,13 @@ class SceneGestures {
             else
                 scale *= delta;
 
-            scale = clamp( scale, MIN_SCALE, MAX_SCALE);
+            scale = clamp(scale, MIN_SCALE, MAX_SCALE);
 
-            double f = (scale / oldScale)-1;
+            double f = (scale / oldScale) - 1;
+            double dx = (event.getX() - (canvas.getBoundsInParent().getWidth() / 2 + canvas.getBoundsInParent().getMinX()));
+            double dy = (event.getY() - (canvas.getBoundsInParent().getHeight() / 2 + canvas.getBoundsInParent().getMinY()));
 
-            double dx = (event.getSceneX() - (canvas.getBoundsInParent().getWidth()/2 + canvas.getBoundsInParent().getMinX()));
-            double dy = (event.getSceneY() - (canvas.getBoundsInParent().getHeight()/2 + canvas.getBoundsInParent().getMinY()));
-
-            canvas.setScale( scale);
+            canvas.setScale(scale);
 
             // note: pivot value must be untransformed, i. e. without scaling
             canvas.setPivot(f*dx, f*dy);
@@ -248,16 +245,14 @@ class SceneGestures {
     };
 
 
-    public static double clamp( double value, double min, double max) {
-
-        if( Double.compare(value, min) < 0)
+    private static double clamp(double value, double min, double max) {
+        if (Double.compare(value, min) < 0)
             return min;
-
-        if( Double.compare(value, max) > 0)
+        if (Double.compare(value, max) > 0)
             return max;
-
         return value;
     }
+
 }
 
 
@@ -273,11 +268,11 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
-        Group group = new Group();
+        BorderPane borderPane = new BorderPane();
 
         // create canvas
         PannableCanvas canvas = new PannableCanvas();
-
+        canvas.setScale(3.0);
         // we don't want the canvas on the top/left in this example => just
         // translate it a bit
         canvas.setTranslateX(100);
@@ -320,18 +315,21 @@ public class Main extends Application {
 
         canvas.getChildren().addAll(label1, label2, label3, circle1, rect1);
 
-        group.getChildren().add(canvas);
+        borderPane.setCenter(canvas);
         
+
+        Label label = new Label("Building Menu");
+        label.setStyle("-fx-background-color: blue;");
+        borderPane.setBottom(label);
         // create scene which can be dragged and zoomed
-        Scene scene = new Scene(group, 1024, 768);
+        Scene scene = new Scene(borderPane, 1024, 768);
         
         SceneGestures sceneGestures = new SceneGestures(canvas);
-        scene.addEventFilter( MouseEvent.MOUSE_PRESSED, sceneGestures.getOnMousePressedEventHandler());
-        scene.addEventFilter( MouseEvent.MOUSE_DRAGGED, sceneGestures.getOnMouseDraggedEventHandler());
-        // scene.addEventFilter( ScrollEvent.ANY, sceneGestures.getOnScrollEventHandler());
+        canvas.addEventFilter( MouseEvent.MOUSE_PRESSED, sceneGestures.getOnMousePressedEventHandler());
+        canvas.addEventFilter( MouseEvent.MOUSE_DRAGGED, sceneGestures.getOnMouseDraggedEventHandler());
+        canvas.addEventFilter( ScrollEvent.ANY, sceneGestures.getOnScrollEventHandler());
         
-        rect1.addEventFilter(ScrollEvent.ANY, sceneGestures.getOnScrollEventHandler());
-
+        // rect1.addEventFilter(ScrollEvent.ANY, sceneGestures.getOnScrollEventHandler());
         stage.setScene(scene);
         stage.show();
 
