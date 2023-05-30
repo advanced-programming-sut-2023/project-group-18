@@ -36,8 +36,6 @@ public class SignupMenuController implements FieldResponses {
 
     @FXML
     public void initialize() {
-        passwordTextField.setManaged(false);
-        passwordTextField.setVisible(false);
         passwordTextField.managedProperty().bind(showPasswordCheckBox.selectedProperty());
         passwordTextField.visibleProperty().bind(showPasswordCheckBox.selectedProperty());
         passwordTextField.textProperty().bindBidirectional(password.textProperty());
@@ -71,8 +69,12 @@ public class SignupMenuController implements FieldResponses {
         Main.goToMenu("loginMenu");
     }
 
-    public void changeVisibility(MouseEvent actionEvent) {
-        ToggleButton toggleButton = (ToggleButton) actionEvent.getSource();
-        password.textProperty().bindBidirectional(toggleButton.selectedProperty(), new BooleanStringConverter());
+    public void changeVisibility() {
+        password.setManaged(!password.isManaged());
+        password.setVisible(!password.isVisible());
+    }
+
+    public void generateRandomPassword() {
+        passwordTextField.setText(SignupController.getInstance().generateRandomPassword());
     }
 }

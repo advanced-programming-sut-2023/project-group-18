@@ -28,9 +28,10 @@
             <HBox spacing="40" alignment="CENTER_RIGHT">
                 <Label text="Password" prefWidth="200"/>
                 <PasswordField fx:id="password" promptText="Password" prefWidth="400"/>
+                <TextField text="password" promptText="Password" prefWidth="400" fx:id="passwordTextField"/>
                 <Label styleClass="errorLabel" prefWidth="200" fx:id="passwordError"/>
                 <CheckBox text="show password" onMouseClicked="#changeVisibility" fx:id="showPasswordCheckBox"/>
-                <TextField text="password" promptText="Password" prefWidth="400" fx:id="passwordTextField"/>
+                <Button text="random" onMouseClicked="#generateRandomPassword"/>
             </HBox>
 
             <HBox spacing="40" alignment="CENTER">
