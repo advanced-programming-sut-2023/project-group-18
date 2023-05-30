@@ -5,13 +5,17 @@ import com.example.controller.responses.FieldResponses;
 import com.example.view.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.util.converter.BooleanStringConverter;
 
 import java.io.IOException;
 
 public class SignupMenuController implements FieldResponses {
-    private final SignupController controller = SignupController.getInstance();
+    private final SignupController signupController = SignupController.getInstance();
+    @FXML
+    private Button randomSloganButton;
+    @FXML
+    private TextField slogan;
+    @FXML
+    private CheckBox showSloganCheckBox;
     @FXML
     private TextField passwordTextField;
     @FXML
@@ -36,6 +40,11 @@ public class SignupMenuController implements FieldResponses {
 
     @FXML
     public void initialize() {
+        slogan.managedProperty().bind(showSloganCheckBox.selectedProperty());
+        slogan.visibleProperty().bind(showSloganCheckBox.selectedProperty());
+        randomSloganButton.managedProperty().bind(showSloganCheckBox.selectedProperty());
+        randomSloganButton.visibleProperty().bind(showSloganCheckBox.selectedProperty());
+
         passwordTextField.managedProperty().bind(showPasswordCheckBox.selectedProperty());
         passwordTextField.visibleProperty().bind(showPasswordCheckBox.selectedProperty());
         passwordTextField.textProperty().bindBidirectional(password.textProperty());
@@ -44,17 +53,18 @@ public class SignupMenuController implements FieldResponses {
 
     private void addListeners() {
         username.textProperty().addListener((observable, oldValue, newValue) ->
-                usernameError.setText(controller.getUsernameError(newValue))
+                usernameError.setText(signupController.getUsernameError(newValue))
         );
         password.textProperty().addListener((observable, oldValue, newValue) ->
-                passwordError.setText(controller.getPasswordError(newValue))
+                passwordError.setText(signupController.getPasswordError(newValue))
         );
         email.textProperty().addListener((observable, oldValue, newValue) ->
-                emailError.setText(controller.getEmailError(newValue))
+                emailError.setText(signupController.getEmailError(newValue))
         );
         nickname.textProperty().addListener((observable, oldValue, newValue) ->
                 nicknameError.setText(null)
         );
+        slogan.textProperty().addListener();
     }
 
     public void submit() {
@@ -76,5 +86,9 @@ public class SignupMenuController implements FieldResponses {
 
     public void generateRandomPassword() {
         passwordTextField.setText(SignupController.getInstance().generateRandomPassword());
+    }
+
+    public void randomSlogan() {
+        slogan.setText(signupController.getRandomSlogan());
     }
 }

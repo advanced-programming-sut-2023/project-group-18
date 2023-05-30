@@ -45,6 +45,11 @@
                 <TextField fx:id="nickname" promptText="Nickname" prefWidth="400"/>
                 <Label styleClass="errorLabel" prefWidth="200" fx:id="nicknameError"/>
             </HBox>
+            <HBox spacing="40" alignment="CENTER">
+                <TextField promptText="slogan" fx:id="slogan" prefWidth="400"/>
+                <Button text="Random Slogan" onMouseClicked="#randomSlogan" fx:id="randomSloganButton"/>
+                <CheckBox text="Slogan" fx:id="showSloganCheckBox"/>
+            </HBox>
             <Button prefWidth="200" prefHeight="50" text="Submit" onMouseClicked="#submit"/>
         </VBox>
     </center>
