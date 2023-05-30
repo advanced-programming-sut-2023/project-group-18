@@ -11,6 +11,8 @@ import java.io.IOException;
 public class SignupMenuController implements FieldResponses {
     private final SignupController signupController = SignupController.getInstance();
     @FXML
+    private Label sloganError;
+    @FXML
     private Button randomSloganButton;
     @FXML
     private TextField slogan;
@@ -64,14 +66,18 @@ public class SignupMenuController implements FieldResponses {
         nickname.textProperty().addListener((observable, oldValue, newValue) ->
                 nicknameError.setText(null)
         );
-        slogan.textProperty().addListener();
+        slogan.textProperty().addListener((observable, oldValue, newValue) ->
+                sloganError.setText(null)
+        );
     }
 
     public void submit() {
-        if (username.getText() == null) usernameError.setText(EMPTY_FIELD);
-        else if (password.getText() == null) passwordError.setText(EMPTY_FIELD);
-        else if (email.getText() == null) emailError.setText(EMPTY_FIELD);
-        else if (nickname.getText() == null) nicknameError.setText(EMPTY_FIELD);
+        if (username.getText().equals("")) usernameError.setText(EMPTY_FIELD);
+        if (password.getText().equals("")) passwordError.setText(EMPTY_FIELD);
+        if (email.getText().equals("")) emailError.setText(EMPTY_FIELD);
+        if (nickname.getText().equals("")) nicknameError.setText(EMPTY_FIELD);
+        if (slogan.getText().equals("") && showSloganCheckBox.isSelected())
+            sloganError.setText(EMPTY_FIELD);
         // TODO: else go next Menu
     }
 
