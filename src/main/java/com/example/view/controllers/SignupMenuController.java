@@ -5,8 +5,6 @@ import com.example.controller.responses.FieldResponses;
 import com.example.view.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.util.converter.BooleanStringConverter;
 
 import java.io.IOException;
 
