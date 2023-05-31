@@ -1,6 +1,6 @@
 package com.example.view.controllers;
 
-import com.example.controller.SignupController;
+import com.example.controller.SignupMethods;
 import com.example.controller.responses.FieldResponses;
 import com.example.view.Main;
 import javafx.fxml.FXML;
@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import java.io.IOException;
 
 public class SignupMenuController implements FieldResponses {
-    private final SignupController signupController = SignupController.getInstance();
+    private final SignupMethods signupMethods = SignupMethods.getInstance();
     @FXML
     private Label sloganError;
     @FXML
@@ -55,13 +55,13 @@ public class SignupMenuController implements FieldResponses {
 
     private void addListeners() {
         username.textProperty().addListener((observable, oldValue, newValue) ->
-                usernameError.setText(signupController.getUsernameError(newValue))
+                usernameError.setText(signupMethods.getUsernameError(newValue))
         );
         password.textProperty().addListener((observable, oldValue, newValue) ->
-                passwordError.setText(signupController.getPasswordError(newValue))
+                passwordError.setText(signupMethods.getPasswordError(newValue))
         );
         email.textProperty().addListener((observable, oldValue, newValue) ->
-                emailError.setText(signupController.getEmailError(newValue))
+                emailError.setText(signupMethods.getEmailError(newValue))
         );
         nickname.textProperty().addListener((observable, oldValue, newValue) ->
                 nicknameError.setText(null)
@@ -71,14 +71,17 @@ public class SignupMenuController implements FieldResponses {
         );
     }
 
-    public void submit() {
+    public void submit() throws IOException {
         if (username.getText().equals("")) usernameError.setText(EMPTY_FIELD);
-        if (password.getText().equals("")) passwordError.setText(EMPTY_FIELD);
-        if (email.getText().equals("")) emailError.setText(EMPTY_FIELD);
-        if (nickname.getText().equals("")) nicknameError.setText(EMPTY_FIELD);
-        if (slogan.getText().equals("") && showSloganCheckBox.isSelected())
+        else if (password.getText().equals("")) passwordError.setText(EMPTY_FIELD);
+        else if (email.getText().equals("")) emailError.setText(EMPTY_FIELD);
+        else if (nickname.getText().equals("")) nicknameError.setText(EMPTY_FIELD);
+        else if (slogan.getText().equals("") && showSloganCheckBox.isSelected())
             sloganError.setText(EMPTY_FIELD);
+        else {
+//            Main.goToMenu("loginMenu");
         // TODO: else go next Menu
+        }
     }
 
     public void goLoginMenu() throws IOException {
@@ -91,10 +94,10 @@ public class SignupMenuController implements FieldResponses {
     }
 
     public void generateRandomPassword() {
-        passwordTextField.setText(SignupController.getInstance().generateRandomPassword());
+        passwordTextField.setText(SignupMethods.getInstance().generateRandomPassword());
     }
 
     public void randomSlogan() {
-        slogan.setText(signupController.getRandomSlogan());
+        slogan.setText(signupMethods.getRandomSlogan());
     }
 }

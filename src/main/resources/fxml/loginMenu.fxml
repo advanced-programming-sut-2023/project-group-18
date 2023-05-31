@@ -21,15 +21,16 @@
         <VBox alignment="CENTER" spacing="20">
             <HBox spacing="40" alignment="CENTER">
                 <Label text="Username" prefWidth="200"/>
-                <TextField promptText="Username" prefWidth="400"/>
-                <Label text="Error" styleClass="errorLabel" prefWidth="200"/>
+                <TextField promptText="Username" prefWidth="400" fx:id="username"/>
+                <Label fx:id="usernameError" styleClass="errorLabel" prefWidth="200"/>
             </HBox>
 
             <HBox spacing="40" alignment="CENTER">
                 <Label text="Password" prefWidth="200"/>
-                <PasswordField promptText="Password" prefWidth="400"/>
-                <Label text="Error" styleClass="errorLabel" prefWidth="200"/>
+                <PasswordField promptText="Password" prefWidth="400" fx:id="password"/>
+                <Label fx:id="passwordError" styleClass="errorLabel" prefWidth="200"/>
             </HBox>
+            <Button text="Login" prefWidth="200" prefHeight="50" onMouseClicked="#login"/>
         </VBox>
     </center>
 
