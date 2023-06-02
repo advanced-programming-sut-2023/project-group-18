@@ -9,7 +9,7 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.view.controllers.LoginMenuController"
-            prefHeight="750" prefWidth="1500">
+            prefHeight="750" prefWidth="1500" fx:id="borderPane">
 
     <top>
         <VBox prefWidth="1500" prefHeight="50" alignment="CENTER" styleClass="title">
@@ -21,15 +21,14 @@
         <VBox alignment="CENTER" spacing="20">
             <HBox spacing="40" alignment="CENTER">
                 <Label text="Username" prefWidth="200"/>
-                <TextField promptText="Username" prefWidth="400"/>
-                <Label text="Error" styleClass="errorLabel" prefWidth="200"/>
+                <TextField promptText="Username" prefWidth="400" fx:id="username"/>
             </HBox>
 
             <HBox spacing="40" alignment="CENTER">
                 <Label text="Password" prefWidth="200"/>
-                <PasswordField promptText="Password" prefWidth="400"/>
-                <Label text="Error" styleClass="errorLabel" prefWidth="200"/>
+                <PasswordField promptText="Password" prefWidth="400" fx:id="password"/>
             </HBox>
+            <Button text="Login" prefWidth="200" prefHeight="50" onMouseClicked="#login"/>
         </VBox>
     </center>
 
