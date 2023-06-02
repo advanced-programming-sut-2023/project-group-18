@@ -1,5 +1,6 @@
 package com.example.view.controllers;
 
+import com.example.controller.SecurityMethods;
 import com.example.controller.SignupMethods;
 import com.example.controller.responses.FieldResponses;
 import com.example.view.Main;
@@ -79,8 +80,9 @@ public class SignupMenuController implements FieldResponses {
         else if (slogan.getText().equals("") && showSloganCheckBox.isSelected())
             sloganError.setText(EMPTY_FIELD);
         else {
-//            Main.goToMenu("loginMenu");
-        // TODO: else go next Menu
+            SecurityMethods.getInstance().setTempUser(username.getText(), password.getText(),
+                    email.getText(), nickname.getText(), slogan.getText());
+            Main.goToMenu("SecurityMenu");
         }
     }
 
