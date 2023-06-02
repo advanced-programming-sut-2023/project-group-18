@@ -2,8 +2,6 @@ package com.example.view.controllers;
 
 import com.example.model.CapthaCode;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +18,10 @@ public class CaptchaMenuController {
     }
 
     public void setCaptcha(MouseEvent mouseEvent) {
+        captcha.setText(CapthaCode.generateCapthaCode());
+    }
+
+    public void submit(MouseEvent mouseEvent) {
 
     }
 }
