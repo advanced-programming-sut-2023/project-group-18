@@ -28,6 +28,7 @@ public class SecurityMenuController {
             securityQuestionError.setText("you should select a question!");
         } else {
             securityMethods.addUser(securityChoiceBox.getSelectionModel().getSelectedIndex(),securityAnswer.getText());
+            securityMethods.login();
             Main.goToMenu("CaptchaMenu");
         }
     }

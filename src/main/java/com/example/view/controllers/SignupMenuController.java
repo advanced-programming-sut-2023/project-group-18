@@ -4,10 +4,16 @@ import com.example.controller.SecurityMethods;
 import com.example.controller.SignupMethods;
 import com.example.controller.responses.FieldResponses;
 import com.example.view.Main;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Font;
+import javafx.stage.Popup;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
+import java.util.TimerTask;
 
 public class SignupMenuController implements FieldResponses {
     private final SignupMethods signupMethods = SignupMethods.getInstance();
@@ -82,7 +88,45 @@ public class SignupMenuController implements FieldResponses {
         else {
             SecurityMethods.getInstance().setTempUser(username.getText(), password.getText(),
                     email.getText(), nickname.getText(), slogan.getText());
-            Main.goToMenu("SecurityMenu");
+            Popup popup = new Popup();
+            Label label = new Label("Successful");
+            label.setFont(new Font(20));
+            popup.getContent().add(label);
+//            popup.setOnShown(windowEvent -> {
+//                try {
+//                    Main.getStage().wait(1000);
+//                    System.out.println("trying to wait");
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
+            popup.show(Main.getStage());
+//            new java.util.Timer().schedule(new TimerTask() {
+//                                               @Override
+//                                               public void run() {
+//                                                   popup.hide();
+//                                                   System.out.println("testing");
+//                                               }
+//                }, 4000
+//            );
+//            popup.hide();
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            // Call another method after one second
+                            Platform.runLater(() -> {
+                                popup.hide();
+                                try {
+                                    Main.goToMenu("SecurityMenu");
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+                        }
+                    },
+                    1000
+            );
         }
     }
 

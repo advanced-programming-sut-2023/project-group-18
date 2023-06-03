@@ -44,7 +44,11 @@ public class SecurityMethods {
     }
 
     public void addUser(int securityQuestionNumber, String securityAnswer) {
-        UsersData.getUsersData().addUser(tempUsername, tempPassword, tempNickname, tempEmail,
+        usersData.addUser(tempUsername, tempPassword, tempNickname, tempEmail,
                 tempSlogan, securityQuestionNumber, securityAnswer);
+    }
+
+    public void login() {
+        usersData.setLoggedInUser(usersData.getUserByUsername(tempUsername));
     }
 }

@@ -1,8 +1,11 @@
 package com.example.view;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 
+import com.example.controller.CaptchaMethods;
 import com.example.model.UsersData;
 import com.example.view.images.Images;
 import com.example.view.music.Music;
