@@ -25,7 +25,10 @@
                 <ImageView fx:id="captcha"/>
                 <Button text="want another captcha?" onMouseClicked="#setCaptcha"/>
             </HBox>
-            <TextField fx:id="captchaAnswer"/>
+            <HBox>
+                <TextField fx:id="captchaAnswer"/>
+                <Label styleClass="errorLabel" prefWidth="200" fx:id="captchaError"/>
+            </HBox>
             <Button onMouseClicked="#submit"/>
         </VBox>
     </center>

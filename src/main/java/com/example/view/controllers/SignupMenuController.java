@@ -92,6 +92,7 @@ public class SignupMenuController implements FieldResponses {
             Label label = new Label("Successful");
             label.setFont(new Font(20));
             popup.getContent().add(label);
+            popup.show(Main.getStage());
 //            popup.setOnShown(windowEvent -> {
 //                try {
 //                    Main.getStage().wait(1000);
@@ -100,7 +101,6 @@ public class SignupMenuController implements FieldResponses {
 //                    throw new RuntimeException(e);
 //                }
 //            });
-            popup.show(Main.getStage());
 //            new java.util.Timer().schedule(new TimerTask() {
 //                                               @Override
 //                                               public void run() {
