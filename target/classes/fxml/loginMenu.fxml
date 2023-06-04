@@ -19,12 +19,13 @@
 
     <center>
         <VBox alignment="CENTER" spacing="20">
-            <HBox spacing="40" alignment="CENTER">
+            <Label styleClass="errorLabel" prefWidth="300" fx:id="loginError"/>
+            <HBox spacing="20" alignment="CENTER">
                 <Label text="Username" prefWidth="200"/>
                 <TextField promptText="Username" prefWidth="400" fx:id="username"/>
             </HBox>
 
-            <HBox spacing="40" alignment="CENTER">
+            <HBox spacing="20" alignment="CENTER">
                 <Label text="Password" prefWidth="200"/>
                 <PasswordField promptText="Password" prefWidth="400" fx:id="password"/>
             </HBox>

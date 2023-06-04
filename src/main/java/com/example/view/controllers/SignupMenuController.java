@@ -131,7 +131,7 @@ public class SignupMenuController implements FieldResponses {
     }
 
     public void goLoginMenu() throws IOException {
-        Main.goToMenu("loginMenu");
+        Main.goToMenu("LoginMenu");
     }
 
     public void changeVisibility() {

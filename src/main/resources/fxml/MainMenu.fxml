@@ -19,7 +19,7 @@
     </top>
 
     <center>
-        <Label text="this is a menu"/>
+        <Button text="Profile Menu" onMouseClicked="#profileMenu"/>
     </center>
 
     <stylesheets>
