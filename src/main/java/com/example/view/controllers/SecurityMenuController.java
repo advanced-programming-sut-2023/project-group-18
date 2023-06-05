@@ -21,7 +21,7 @@ public class SecurityMenuController {
     @FXML
     private ChoiceBox securityChoiceBox;
 
-    public void submitQuestion(MouseEvent mouseEvent) throws IOException {
+    public void submitQuestion() throws IOException {
         if (securityAnswer.getText().equals("")) {
             securityQuestionError.setText(EMPTY_FIELD);
         } else if (securityChoiceBox.getSelectionModel().isEmpty()) {

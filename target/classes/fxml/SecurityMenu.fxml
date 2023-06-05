@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.view.controllers.SecurityMenuController"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <VBox prefWidth="1500" prefHeight="50" alignment="CENTER" styleClass="title">
+            <Label text="Security Menu" textAlignment="CENTER"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="choose a security question"/>
+            <ChoiceBox prefWidth="500" prefHeight="40" fx:id="securityChoiceBox">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="What is my father's name?"/>
+                        <String fx:value="What was my first pet's name?"/>
+                        <String fx:value="What is my mother's last name?"/>
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <HBox alignment="CENTER" spacing="10">
+                <TextField fx:id="securityAnswer"/>
+                <Label styleClass="errorLabel" fx:id="securityQuestionError"/>
+            </HBox>
+            <Button text="submit" onMouseClicked="#submitQuestion"/>
+        </VBox>
+    </center>
+
+    <stylesheets>
+        <URL value="@../css/MenuStyle.css"/>
+    </stylesheets>
+</BorderPane>

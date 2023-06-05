@@ -5,123 +5,87 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="Main Menu">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ProfileMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1008.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1015.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1017.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1278.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1292.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1371.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1380.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1449.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1468.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1481.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1600.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1617.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1840.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1866.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1934.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2011.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2063.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2199.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2243.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2262.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2532.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2652.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3090.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3213.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3354.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3448.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3570.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3584.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3609.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3697.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3747.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3845.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3853.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3985.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4167.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4238.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4344.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4362.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4475.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4478.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4483.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4835.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4862.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4896.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4954.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4955.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4974.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4995.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5043.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5062.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5138.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5187.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5278.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5493.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5633.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5649.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5671.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5716.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5843.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5934.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5966.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6161.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6171.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6200.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6340.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6448.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6525.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6685.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6830.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6850.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7082.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7271.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7523.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7608.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7679.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7687.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7816.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7941.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8005.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8038.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8055.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8230.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8233.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8396.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8440.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8623.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8628.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8756.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8782.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8805.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8916.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8957.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8985.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/9206.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/9494.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/9611.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/9929.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/9947.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/Popup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/LoginMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/LoginMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/CaptchaMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/CaptchaMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SecurityMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SecurityMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CaptchaMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CaptchaMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/gameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/loginMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/LoginMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/securityMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/SecurityMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/signupMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/SignupMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/SecurityMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/SecurityMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/SignupMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/SignupMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/Users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/DragContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/DragContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/PannableCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/PannableCanvas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SceneGestures$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SceneGestures$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SceneGestures$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SceneGestures$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SceneGestures$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SceneGestures$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SceneGestures.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SceneGestures.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/TradeMenuMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/TradeMenuMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/CapthaCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/CapthaCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Governance$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Governance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Governance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/KeepLocations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/KeepLocations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/MapSizes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/MapSizes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/PasswordRecoveryQuestions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/PasswordRecoveryQuestions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/PopularityFactors.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/PopularityFactors.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/RandomSlogan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/RandomSlogan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Trade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Trade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/assets/Asset.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/assets/Asset.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/assets/AssetType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/assets/AssetType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Barracks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Barracks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/BuildingType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/BuildingType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Category.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/DairyProducts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/DairyProducts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Direction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Direction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Farm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Farm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gunsmith.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gunsmith.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/IndustrialBuilding.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/IndustrialBuilding.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/OilSmelter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/OilSmelter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Processing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Processing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stair.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stair.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Storage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Storage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Storage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/StorageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/StorageType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Tower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Tower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Trap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Trap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Tree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Tree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/TreeType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/TreeType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Cell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Directions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Directions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/MapSizes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/MapSizes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Successor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Successor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Texture.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Texture.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/AttackTool.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/AttackTool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/AttackToolType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/AttackToolType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Engineer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Engineer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/LadderMan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/LadderMan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Soldier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Soldier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/SoldierType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/SoldierType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/State.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Tunneler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Tunneler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/UnitType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/UnitType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Worker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Worker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/LoginMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/LoginMenuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/loginMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/loginMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/images/Images.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/images/Images.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/music/Music.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/music/Music.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/signupMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/signupMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/json/Users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,18 +123,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Omidreza/IdeaProjects/AP/two&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/fraxea/Desktop/frAxeA/term2/AP/project/project-group18",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
