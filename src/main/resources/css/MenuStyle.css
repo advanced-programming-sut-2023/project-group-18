@@ -38,8 +38,10 @@
     -fx-font-weight: bold;
 }
 
-.label{
+.label {
     -fx-text-fill: rgb(228, 228, 190);
+    -fx-font-weight: 900;
+    -fx-effect: dropshadow(one-pass-box , black , 8 , 0.0 , 2 , 0);
 }
 
 .note{
@@ -62,9 +64,36 @@
     -fx-font-weight: bold;
     -fx-font-size: 18;
     -fx-text-fill: rgb(255, 64, 32);
+    -fx-effect: dropshadow(one-pass-box , black , 0 , 0.0 , 0 , 0);
 }
 
-.pop-up{
-    -fx-background-color: #74bfc7;
-    -fx-border-color: blue;
+.choice-box .context-menu {
+    -fx-background-color: rgb(110, 55, 27);
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: rgb(145, 70, 33);
+}
+
+.choice-box .menu-item > .label {
+    -fx-text-fill: white;
+}
+
+.choice-box .menu-item:focused > .label {
+    -fx-font-weight: bold;
+}
+
+.choice-box {
+  -fx-background-color: black;
+  -fx-mark-color: white;
+}
+
+.choice-box > .label {
+    -fx-text-fill: white;
+}
+
+.check-box {
+    -fx-text-fill: rgb(228, 228, 190);
+    -fx-font-weight: 900;
+    -fx-effect: dropshadow(one-pass-box , black , 8 , 0.0 , 2 , 0);
 }

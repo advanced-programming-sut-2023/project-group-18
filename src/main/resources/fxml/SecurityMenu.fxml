@@ -21,18 +21,18 @@
     <center>
         <VBox alignment="CENTER" spacing="20">
             <Label text="choose a security question"/>
+            <ChoiceBox prefWidth="500" prefHeight="40" fx:id="securityChoiceBox">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="What is my father's name?"/>
+                        <String fx:value="What was my first pet's name?"/>
+                        <String fx:value="What is my mother's last name?"/>
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
             <HBox alignment="CENTER" spacing="10">
-                <ChoiceBox prefWidth="100" prefHeight="40" fx:id="securityChoiceBox">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="What is my father's name?"/>
-                            <String fx:value="What was my first pet's name?"/>
-                            <String fx:value="What is my mother's last name?"/>
-                        </FXCollections>
-                    </items>
-                </ChoiceBox>
                 <TextField fx:id="securityAnswer"/>
-                <Label styleClass="errorLabel" prefWidth="200" fx:id="securityQuestionError"/>
+                <Label styleClass="errorLabel" fx:id="securityQuestionError"/>
             </HBox>
             <Button text="submit" onMouseClicked="#submitQuestion"/>
         </VBox>

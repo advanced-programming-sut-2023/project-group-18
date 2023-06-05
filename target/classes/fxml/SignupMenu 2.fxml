@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.view.controllers.SignupMenuController"
+            prefHeight="750" prefWidth="1500">
+
+    <top>
+        <VBox prefWidth="1500" prefHeight="50" alignment="CENTER" styleClass="title">
+            <Label text="Signup Menu" textAlignment="CENTER"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <HBox spacing="40" alignment="CENTER">
+                <Label text="Username" prefWidth="200"/>
+                <TextField fx:id="username" promptText="Username" prefWidth="400"/>
+                <Label styleClass="errorLabel" prefWidth="200" fx:id="usernameError"/>
+            </HBox>
+
+            <HBox spacing="40" alignment="CENTER">
+                <Label text="Password" prefWidth="200"/>
+                <PasswordField fx:id="password" promptText="Password" prefWidth="400"/>
+                <TextField text="password" promptText="Password" prefWidth="400" fx:id="passwordTextField"/>
+                <Label styleClass="errorLabel" prefWidth="200" fx:id="passwordError"/>
+            </HBox>
+
+            <HBox spacing="40" alignment="CENTER">
+                <CheckBox text="show password" onMouseClicked="#changeVisibility" fx:id="showPasswordCheckBox"/>
+                <Button text="random" onMouseClicked="#generateRandomPassword"/>
+            </HBox>
+
+            <HBox spacing="40" alignment="CENTER">
+                <Label text="Email" prefWidth="200"/>
+                <TextField fx:id="email" promptText="example@gmail.com" prefWidth="400"/>
+                <Label styleClass="errorLabel" prefWidth="200" fx:id="emailError"/>
+            </HBox>
+
+            <HBox spacing="40" alignment="CENTER">
+                <Label text="Nickname" prefWidth="200"/>
+                <TextField fx:id="nickname" promptText="Nickname" prefWidth="400"/>
+                <Label styleClass="errorLabel" prefWidth="200" fx:id="nicknameError"/>
+            </HBox>
+            <HBox spacing="40" alignment="CENTER">
+                <TextField promptText="slogan" fx:id="slogan" prefWidth="400"/>
+            </HBox>
+            <HBox spacing="40" alignment="CENTER">
+                <Button text="Random Slogan" onMouseClicked="#randomSlogan" fx:id="randomSloganButton"/>
+                <CheckBox text="Slogan" fx:id="showSloganCheckBox"/>
+                <Label styleClass="errorLabel" prefWidth="200" fx:id="sloganError"/>
+            </HBox>
+            <Button prefWidth="200" prefHeight="50" text="Submit" onMouseClicked="#submit"/>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets bottom="40"/>
+            </padding>
+            <Label text="Already have an account?" styleClass="note"/>
+            <Label text="login" styleClass="labelLink" onMouseClicked="#goLoginMenu"/>
+        </HBox>
+    </bottom>
+
+    <stylesheets>
+        <URL value="@../css/MenuStyle.css"/>
+    </stylesheets>
+</BorderPane>

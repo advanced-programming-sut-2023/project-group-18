@@ -30,40 +30,17 @@ public class CaptchaMenuController {
         captcha.setImage(captchaMethods.getCaptcha());
     }
 
-    public void setCaptcha(MouseEvent mouseEvent) {
+    public void setCaptcha() {
         captcha.setImage(captchaMethods.getCaptcha());
     }
 
-    public void submit(MouseEvent mouseEvent) {
+    public void submit() {
         if (!captchaAnswer.getText().matches("\\d+")) {
             captchaError.setText("Enter a number!");
-//            System.out.println("error");
         } else if (Integer.parseInt(captchaAnswer.getText()) != captchaMethods.getCaptchaAnswer()) {
-//            System.out.println("captcha isn't correct");
             captchaError.setText("captcha isn't correct");
         } else {
-            Popup popup = new Popup();
-            Label label = new Label("Successful");
-            label.setFont(new Font(20));
-            popup.getContent().add(label);
-            popup.show(Main.getStage());
-            new java.util.Timer().schedule(
-                    new java.util.TimerTask() {
-                        @Override
-                        public void run() {
-                            // Call another method after one second
-                            Platform.runLater(() -> {
-                                popup.hide();
-                                try {
-                                    Main.goToMenu("MainMenu");
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
-                            });
-                        }
-                    },
-                    1000
-            );
+            SignupMenuController.showLabeledPopup("Successful", "MainMenu");
         }
     }
 }

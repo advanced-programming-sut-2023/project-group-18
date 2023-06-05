@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.view.controllers.LoginMenuController"
+            prefHeight="750" prefWidth="1500" fx:id="borderPane">
+
+    <top>
+        <VBox prefWidth="1500" prefHeight="50" alignment="CENTER" styleClass="title">
+            <Label text="Login Menu" textAlignment="CENTER"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Label styleClass="errorLabel" prefWidth="300" fx:id="loginError"/>
+            <HBox spacing="20" alignment="CENTER">
+                <Label text="Username" prefWidth="200"/>
+                <TextField promptText="Username" prefWidth="400" fx:id="username"/>
+            </HBox>
+
+            <HBox spacing="20" alignment="CENTER">
+                <Label text="Password" prefWidth="200"/>
+                <PasswordField promptText="Password" prefWidth="400" fx:id="password"/>
+            </HBox>
+            <Button text="Login" prefWidth="200" prefHeight="50" onMouseClicked="#login"/>
+        </VBox>
+    </center>
+
+
+    <bottom>
+        <VBox alignment="CENTER" spacing="20">
+            <padding>
+                <Insets right="20" bottom="20"/>
+            </padding>
+            <Button prefWidth="200" prefHeight="50" text="Back" onMouseClicked="#back"/>
+        </VBox>
+    </bottom>
+
+
+    <stylesheets>
+        <URL value="@../css/MenuStyle.css"/>
+    </stylesheets>
+</BorderPane>

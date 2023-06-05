@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -25,9 +22,9 @@
                 <ImageView fx:id="captcha"/>
                 <Button text="want another captcha?" onMouseClicked="#setCaptcha"/>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" spacing="10">
+            <HBox alignment="CENTER" spacing="10">
                 <TextField fx:id="captchaAnswer"/>
-                <Label styleClass="errorLabel" prefWidth="200" fx:id="captchaError"/>
+                <Label styleClass="errorLabel" fx:id="captchaError"/>
             </HBox>
             <Button text="submit" onMouseClicked="#submit" prefWidth="200"/>
         </VBox>
