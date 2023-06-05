@@ -29,9 +29,9 @@
                 <Label text="Password" prefWidth="200"/>
                 <PasswordField fx:id="password" promptText="Password" prefWidth="400"/>
                 <TextField text="password" promptText="Password" prefWidth="400" fx:id="passwordTextField"/>
-                <Label styleClass="errorLabel" prefWidth="200" fx:id="passwordError"/>
                 <CheckBox text="show password" onMouseClicked="#changeVisibility" fx:id="showPasswordCheckBox"/>
                 <Button text="random" onMouseClicked="#generateRandomPassword"/>
+                <Label styleClass="errorLabel" prefWidth="200" fx:id="passwordError"/>
             </HBox>
 
             <HBox spacing="40" alignment="CENTER">
@@ -48,7 +48,8 @@
             <HBox spacing="40" alignment="CENTER">
                 <TextField promptText="slogan" fx:id="slogan" prefWidth="400"/>
                 <Button text="Random Slogan" onMouseClicked="#randomSlogan" fx:id="randomSloganButton"/>
-                <CheckBox text="Slogan" onMouseClicked="#changeSloganVisibility" fx:id="showSloganCheckBox"/>
+                <CheckBox text="Slogan" fx:id="showSloganCheckBox"/>
+                <Label styleClass="errorLabel" prefWidth="200" fx:id="sloganError"/>
             </HBox>
             <Button prefWidth="200" prefHeight="50" text="Submit" onMouseClicked="#submit"/>
         </VBox>

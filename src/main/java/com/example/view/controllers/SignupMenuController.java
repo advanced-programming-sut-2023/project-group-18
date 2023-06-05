@@ -1,15 +1,24 @@
 package com.example.view.controllers;
 
-import com.example.controller.SignupController;
+import com.example.controller.SecurityMethods;
+import com.example.controller.SignupMethods;
 import com.example.controller.responses.FieldResponses;
 import com.example.view.Main;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Font;
+import javafx.stage.Popup;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
+import java.util.TimerTask;
 
 public class SignupMenuController implements FieldResponses {
-    private final SignupController signupController = SignupController.getInstance();
+    private final SignupMethods signupMethods = SignupMethods.getInstance();
+    @FXML
+    private Label sloganError;
     @FXML
     private Button randomSloganButton;
     @FXML
@@ -53,30 +62,76 @@ public class SignupMenuController implements FieldResponses {
 
     private void addListeners() {
         username.textProperty().addListener((observable, oldValue, newValue) ->
-                usernameError.setText(signupController.getUsernameError(newValue))
+                usernameError.setText(signupMethods.getUsernameError(newValue))
         );
         password.textProperty().addListener((observable, oldValue, newValue) ->
-                passwordError.setText(signupController.getPasswordError(newValue))
+                passwordError.setText(signupMethods.getPasswordError(newValue))
         );
         email.textProperty().addListener((observable, oldValue, newValue) ->
-                emailError.setText(signupController.getEmailError(newValue))
+                emailError.setText(signupMethods.getEmailError(newValue))
         );
         nickname.textProperty().addListener((observable, oldValue, newValue) ->
                 nicknameError.setText(null)
         );
-        slogan.textProperty().addListener();
+        slogan.textProperty().addListener((observable, oldValue, newValue) ->
+                sloganError.setText(null)
+        );
     }
 
-    public void submit() {
-        if (username.getText() == null) usernameError.setText(EMPTY_FIELD);
-        else if (password.getText() == null) passwordError.setText(EMPTY_FIELD);
-        else if (email.getText() == null) emailError.setText(EMPTY_FIELD);
-        else if (nickname.getText() == null) nicknameError.setText(EMPTY_FIELD);
-        // TODO: else go next Menu
+    public void submit() throws IOException {
+        if (username.getText().equals("")) usernameError.setText(EMPTY_FIELD);
+        else if (password.getText().equals("")) passwordError.setText(EMPTY_FIELD);
+        else if (email.getText().equals("")) emailError.setText(EMPTY_FIELD);
+        else if (nickname.getText().equals("")) nicknameError.setText(EMPTY_FIELD);
+        else if (slogan.getText().equals("") && showSloganCheckBox.isSelected())
+            sloganError.setText(EMPTY_FIELD);
+        else {
+            SecurityMethods.getInstance().setTempUser(username.getText(), password.getText(),
+                    email.getText(), nickname.getText(), slogan.getText());
+            Popup popup = new Popup();
+            Label label = new Label("Successful");
+            label.setFont(new Font(20));
+            popup.getContent().add(label);
+            popup.show(Main.getStage());
+//            popup.setOnShown(windowEvent -> {
+//                try {
+//                    Main.getStage().wait(1000);
+//                    System.out.println("trying to wait");
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
+//            new java.util.Timer().schedule(new TimerTask() {
+//                                               @Override
+//                                               public void run() {
+//                                                   popup.hide();
+//                                                   System.out.println("testing");
+//                                               }
+//                }, 4000
+//            );
+//            popup.hide();
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            // Call another method after one second
+                            Platform.runLater(() -> {
+                                popup.hide();
+                                try {
+                                    Main.goToMenu("SecurityMenu");
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+                        }
+                    },
+                    1000
+            );
+        }
     }
 
     public void goLoginMenu() throws IOException {
-        Main.goToMenu("loginMenu");
+        Main.goToMenu("LoginMenu");
     }
 
     public void changeVisibility() {
@@ -85,10 +140,10 @@ public class SignupMenuController implements FieldResponses {
     }
 
     public void generateRandomPassword() {
-        passwordTextField.setText(SignupController.getInstance().generateRandomPassword());
+        passwordTextField.setText(SignupMethods.getInstance().generateRandomPassword());
     }
 
     public void randomSlogan() {
-        slogan.setText(signupController.getRandomSlogan());
+        slogan.setText(signupMethods.getRandomSlogan());
     }
 }

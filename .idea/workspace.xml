@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="Main Menu">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ProfileMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1015.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1017.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1278.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1292.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1371.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1380.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1449.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1468.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1481.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1600.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1617.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1840.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1866.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/1934.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2011.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2063.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2199.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2243.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2262.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2532.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/2652.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3090.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3213.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3354.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3448.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3570.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3584.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3609.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3697.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3747.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3845.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3853.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/3985.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4167.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4238.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4344.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4362.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4475.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4478.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4483.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4835.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4862.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4896.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4954.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4955.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4974.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/4995.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5043.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5062.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5138.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5144.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5187.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5278.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5493.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5633.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5649.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5671.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5716.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5843.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5934.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/5966.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6161.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6171.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6200.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6340.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6448.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6525.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6685.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6830.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/6850.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7082.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7271.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7523.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7608.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7679.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7687.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7816.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/7941.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8038.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8055.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8230.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8233.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8396.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8440.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8623.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8628.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8756.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8782.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8805.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8916.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8957.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/8985.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/9206.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/9494.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/9611.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/9929.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/captcha/9947.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/LoginMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/LoginMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CaptchaMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CaptchaMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/gameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/loginMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/LoginMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/securityMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/SecurityMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/signupMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/SignupMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/Users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/LoginMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/LoginMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/loginMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/loginMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/json/Users.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="new_Menus" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2QR3T8bkS02uWAvlog7BzFvoNq0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Omidreza/IdeaProjects/AP/two&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="tradeMenu" />
+      <created>1685302575628</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685302575628</updated>
+      <workItem from="1685302578417" duration="8012000" />
+      <workItem from="1685343278880" duration="12000" />
+      <workItem from="1685367005928" duration="4887000" />
+      <workItem from="1685437111415" duration="10349000" />
+      <workItem from="1685519946688" duration="3165000" />
+      <workItem from="1685526506935" duration="11000" />
+      <workItem from="1685526998168" duration="7716000" />
+      <workItem from="1685648124111" duration="1277000" />
+      <workItem from="1685706691121" duration="1018000" />
+      <workItem from="1685708022769" duration="6239000" />
+      <workItem from="1685716083539" duration="2436000" />
+      <workItem from="1685731115291" duration="11751000" />
+      <workItem from="1685809345327" duration="4576000" />
+      <workItem from="1685893029808" duration="7172000" />
+    </task>
+    <task id="LOCAL-00001" summary="tag">
+      <created>1685305307071</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685305307071</updated>
+    </task>
+    <task id="LOCAL-00002" summary="testing prompt text for unmasked password">
+      <created>1685310099246</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685310099246</updated>
+    </task>
+    <task id="LOCAL-00003" summary="textField passwordField style for password show try">
+      <created>1685311845919</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685311845919</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed show password hopefully">
+      <created>1685442820352</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685442820352</updated>
+    </task>
+    <task id="LOCAL-00005" summary="half done slogan">
+      <created>1685455932991</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685455932991</updated>
+    </task>
+    <task id="LOCAL-00006" summary="signup hopefully done">
+      <created>1685483238774</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685483238774</updated>
+    </task>
+    <task id="LOCAL-00007" summary="security question and captcha">
+      <created>1685713869397</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685713869397</updated>
+    </task>
+    <task id="LOCAL-00008" summary="a commit">
+      <created>1685731152351</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685731152351</updated>
+    </task>
+    <task id="LOCAL-00009" summary="login when answered security question">
+      <created>1685814050921</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685814050921</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Main Menu">
+      <created>1685814985857</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685814985857</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="tag" />
+    <MESSAGE value="testing prompt text for unmasked password" />
+    <MESSAGE value="textField passwordField style for password show try" />
+    <MESSAGE value="fixed show password hopefully" />
+    <MESSAGE value="half done slogan" />
+    <MESSAGE value="signup hopefully done" />
+    <MESSAGE value="security question and captcha" />
+    <MESSAGE value="a commit" />
+    <MESSAGE value="login when answered security question" />
+    <MESSAGE value="Main Menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Main Menu" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

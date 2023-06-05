@@ -6,16 +6,16 @@ import com.example.model.UsersData;
 
 import java.util.Scanner;
 
-public class SignupController implements SignupResponses, RandomSlogan {
-    private static SignupController controller;
+public class SignupMethods implements SignupResponses, RandomSlogan {
+    private static SignupMethods controller;
     private final UsersData usersData;
 
-    private SignupController() {
+    private SignupMethods() {
         usersData = UsersData.getUsersData();
     }
 
-    public static SignupController getInstance() {
-        return controller == null ? controller = new SignupController() : controller;
+    public static SignupMethods getInstance() {
+        return controller == null ? controller = new SignupMethods() : controller;
     }
 
 

@@ -1,8 +1,11 @@
 package com.example.view;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 
+import com.example.controller.CaptchaMethods;
 import com.example.model.UsersData;
 import com.example.view.images.Images;
 import com.example.view.music.Music;
@@ -21,8 +24,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
-        goToMenu("signupMenu");
-      Music.LOGIN_MENU.getMediaPlayer().play();
+        goToMenu("SignupMenu");
+//      Music.LOGIN_MENU.getMediaPlayer().play();
         stage.setScene(scene);
         stage.setTitle("Stronghold Crusader");
         closeApp();
