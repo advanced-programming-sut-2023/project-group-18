@@ -21,7 +21,7 @@
     <center>
         <VBox alignment="CENTER" spacing="20">
             <Label text="choose a security question"/>
-            <ChoiceBox prefWidth="500" prefHeight="40" fx:id="securityChoiceBox">
+            <ChoiceBox prefWidth="500" prefHeight="40" fx:id="securityChoiceBox" value="choose">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="What is my father's name?"/>

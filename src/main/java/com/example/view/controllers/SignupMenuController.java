@@ -108,14 +108,15 @@ public class SignupMenuController implements FieldResponses {
     }
 
     public void submit() {
-        if (haveError()) return;
+//        if (haveError()) return;
         if (username.getText().equals("")) usernameError.setText(EMPTY_FIELD);
         else if (password.getText().equals("")) passwordError.setText(EMPTY_FIELD);
         else if (email.getText().equals("")) emailError.setText(EMPTY_FIELD);
         else if (nickname.getText().equals("")) nicknameError.setText(EMPTY_FIELD);
         else if (slogan.getText().equals("") && showSloganCheckBox.isSelected())
             sloganError.setText(EMPTY_FIELD);
-        else {
+        else if (usernameError.getText() == null && (passwordError.getText() == null)
+                && (emailError.getText().equals("")) && (nicknameError.getText().equals("")) && (sloganError.getText().equals(""))) {
             SecurityMethods.getInstance().setTempUser(username.getText(), password.getText(),
                     email.getText(), nickname.getText(), slogan.getText());
             showLabeledPopup("Successful", "SecurityMenu");
