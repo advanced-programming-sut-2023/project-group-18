@@ -4,13 +4,21 @@ import com.example.controller.SecurityMethods;
 import com.example.controller.SignupMethods;
 import com.example.controller.responses.FieldResponses;
 import com.example.view.Main;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Font;
+import javafx.stage.Popup;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
+import java.util.TimerTask;
 
 public class SignupMenuController implements FieldResponses {
     private final SignupMethods signupMethods = SignupMethods.getInstance();
+    @FXML
+    private Label sloganLabel;
     @FXML
     private Label sloganError;
     @FXML
@@ -45,6 +53,8 @@ public class SignupMenuController implements FieldResponses {
     public void initialize() {
         slogan.managedProperty().bind(showSloganCheckBox.selectedProperty());
         slogan.visibleProperty().bind(showSloganCheckBox.selectedProperty());
+        sloganLabel.managedProperty().bind(showSloganCheckBox.selectedProperty());
+        sloganLabel.visibleProperty().bind(showSloganCheckBox.selectedProperty());
         randomSloganButton.managedProperty().bind(showSloganCheckBox.selectedProperty());
         randomSloganButton.visibleProperty().bind(showSloganCheckBox.selectedProperty());
 
@@ -52,6 +62,31 @@ public class SignupMenuController implements FieldResponses {
         passwordTextField.visibleProperty().bind(showPasswordCheckBox.selectedProperty());
         passwordTextField.textProperty().bindBidirectional(password.textProperty());
         addListeners();
+    }
+    
+    public static void showLabeledPopup(String labelText, String nextMenu) {
+        Popup popup = new Popup();
+        Label label = new Label(labelText);
+        String css = Main.class.getResource("/css/Popup.css").toExternalForm();
+        label.getStylesheets().add(css);
+        popup.getContent().add(label);
+        popup.show(Main.getStage());
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        Platform.runLater(() -> {
+                            popup.hide();
+                            try {
+                                Main.goToMenu(nextMenu);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        });
+                    }
+                },
+                1000
+        );
     }
 
     private void addListeners() {
@@ -72,7 +107,8 @@ public class SignupMenuController implements FieldResponses {
         );
     }
 
-    public void submit() throws IOException {
+    public void submit() {
+        if (haveError()) return;
         if (username.getText().equals("")) usernameError.setText(EMPTY_FIELD);
         else if (password.getText().equals("")) passwordError.setText(EMPTY_FIELD);
         else if (email.getText().equals("")) emailError.setText(EMPTY_FIELD);
@@ -82,12 +118,24 @@ public class SignupMenuController implements FieldResponses {
         else {
             SecurityMethods.getInstance().setTempUser(username.getText(), password.getText(),
                     email.getText(), nickname.getText(), slogan.getText());
-            Main.goToMenu("SecurityMenu");
+            showLabeledPopup("Successful", "SecurityMenu");
         }
+    }
+    
+    private boolean haveError() {
+        if (!isErrorOK(usernameError)) return true;
+        if (!isErrorOK(passwordError)) return true;
+        if (!isErrorOK(nicknameError)) return true;
+        if (!isErrorOK(emailError)) return true;
+        return !isErrorOK(sloganError);
+    }
+    
+    private boolean isErrorOK(Label label) {
+        return label.getText() == null || label.getText().isEmpty();
     }
 
     public void goLoginMenu() throws IOException {
-        Main.goToMenu("loginMenu");
+        Main.goToMenu("LoginMenu");
     }
 
     public void changeVisibility() {

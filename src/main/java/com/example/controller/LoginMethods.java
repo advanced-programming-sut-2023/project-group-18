@@ -17,4 +17,8 @@ public class LoginMethods {
     public boolean validLogin(String username, String password) {
         return doesUsernameExist(username) && usersData.isPasswordCorrect(username, password);
     }
+
+    public void login(String username) {
+        usersData.setLoggedInUser(usersData.getUserByUsername(username));
+    }
 }
