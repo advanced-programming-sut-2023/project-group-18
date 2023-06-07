@@ -13,14 +13,14 @@ import com.example.model.people.Unit;
 
 
 public class Cell implements ConsoleColors {
-    private final GameMapFake gameMap;
+    private final GameMap gameMap;
     private final ArrayList<Unit> units;
     private Building building;
     private Texture texture;
     private final int xCoordinate;
     private final int yCoordinate;
 
-    public Cell(int xCoordinate, int yCoordinate, GameMapFake gameMap) {
+    public Cell(int xCoordinate, int yCoordinate, GameMap gameMap) {
         this.gameMap = gameMap;
         units = new ArrayList<>();
         texture = Texture.getARondomTexture();
@@ -29,7 +29,7 @@ public class Cell implements ConsoleColors {
         this.yCoordinate = yCoordinate;
     }
 
-    public GameMapFake getGameMap() {
+    public GameMap getGameMap() {
         return gameMap;
     }
 

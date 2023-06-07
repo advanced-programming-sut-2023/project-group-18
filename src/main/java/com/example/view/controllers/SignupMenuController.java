@@ -108,15 +108,14 @@ public class SignupMenuController implements FieldResponses {
     }
 
     public void submit() {
-//        if (haveError()) return;
+        if (haveError()) return;
         if (username.getText().equals("")) usernameError.setText(EMPTY_FIELD);
         else if (password.getText().equals("")) passwordError.setText(EMPTY_FIELD);
         else if (email.getText().equals("")) emailError.setText(EMPTY_FIELD);
         else if (nickname.getText().equals("")) nicknameError.setText(EMPTY_FIELD);
         else if (slogan.getText().equals("") && showSloganCheckBox.isSelected())
             sloganError.setText(EMPTY_FIELD);
-        else if (usernameError.getText() == null && (passwordError.getText() == null)
-                && (emailError.getText().equals("")) && (nicknameError.getText().equals("")) && (sloganError.getText().equals(""))) {
+        else {
             SecurityMethods.getInstance().setTempUser(username.getText(), password.getText(),
                     email.getText(), nickname.getText(), slogan.getText());
             showLabeledPopup("Successful", "SecurityMenu");
@@ -126,7 +125,9 @@ public class SignupMenuController implements FieldResponses {
     private boolean haveError() {
         if (!isErrorOK(usernameError)) return true;
         if (!isErrorOK(passwordError)) return true;
-        return !isErrorOK(emailError);
+        if (!isErrorOK(nicknameError)) return true;
+        if (!isErrorOK(emailError)) return true;
+        return !isErrorOK(sloganError);
     }
     
     private boolean isErrorOK(Label label) {

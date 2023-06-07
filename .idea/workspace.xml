@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="start game" />
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="start game">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMapFake.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/MapGestures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/MapGestures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Cell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Soldier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Soldier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
