@@ -46,7 +46,11 @@ public class MapGestures {
             mouseAnchorY = event.getSceneY();
             translateAnchorX = gameMap.getTranslateX();
             translateAnchorY = gameMap.getTranslateY();
-            gameMap.setSelectedType(new Point2D(mouseAnchorX + translateAnchorX, mouseAnchorY + translateAnchorY));
+            gameMap.setSelectedType(new Point2D(mouseAnchorX, mouseAnchorY));
+            System.out.println("mouseAnchorX = " + mouseAnchorX);
+            System.out.println("mouseAnchorY = " + mouseAnchorY);
+            System.out.println("translateAnchorX = " + translateAnchorX);
+            System.out.println("translateAnchorY = " + translateAnchorY);
         }
 
     };

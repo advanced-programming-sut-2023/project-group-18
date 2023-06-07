@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class GameMap extends Pane {
-    private static final double TILE_LENGTH = 50.0d;
+    private static final double TILE_LENGTH = 8.0d;
     private final DoubleProperty scale;
     private final ArrayList<Tile> centers;
     private final int length;
@@ -64,16 +64,16 @@ public class GameMap extends Pane {
 
 
     private void initTiles() {
-        final double width = 200;
-        final double height = 200;
+        final double width = length * TILE_LENGTH / 2;
+        final double height = length * TILE_LENGTH / 2;
         Canvas canvas = new Canvas(width, height);
         canvas.setMouseTransparent(true);
         GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
         graphicsContext.setStroke(Color.GRAY);
         graphicsContext.setLineWidth(1);
         graphicsContext.setFill(Color.BLUE);
-        for (int yIndex = 0; yIndex < length; yIndex++) {
-            for (int xIndex = 0; xIndex < length; xIndex++) {
+        for (int yIndex = 0; yIndex < length / 3; yIndex++) {
+            for (int xIndex = 0; xIndex < length / 3; xIndex++) {
                 double x = (yIndex % 2) * TILE_LENGTH / 2 + TILE_LENGTH * xIndex;
                 double y = TILE_LENGTH * yIndex / 2;
                 centers.add(new Tile(x, y, Texture.GROUND));
@@ -85,22 +85,21 @@ public class GameMap extends Pane {
     }
 
     private void setInitScales() {
+        setMaxWidth(200);
+        setMaxHeight(200);
         scaleXProperty().bind(scale);
         scaleYProperty().bind(scale);
         setScale(3.0);
-        setTranslateX(100);
-        setTranslateY(100);
         addEventFilters();
     }
 
     // TODO: need to remove when replace image done
     private void makeDiamond(GraphicsContext graphicsContext, double x, double y) {
-        double[] xPoints = {x - TILE_LENGTH, x, x + TILE_LENGTH, x};
+        double[] xPoints = {x - TILE_LENGTH / 2, x, x + TILE_LENGTH / 2, x};
         double[] yPoints = {y, y + TILE_LENGTH / 2, y, y - TILE_LENGTH / 2};
         graphicsContext.fillPolygon(xPoints, yPoints, 4);
         graphicsContext.strokePolygon(xPoints, yPoints, 4);
-//        graphicsContext.rect(x, y, TILE_LENGTH, TILE_LENGTH);
-//        graphicsContext.strokeLine(100, 100, x, y);
+//        graphicsContext.strokeLine(x, y, xPoints[0], y);
         
     }
 
