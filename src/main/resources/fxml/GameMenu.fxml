@@ -7,12 +7,15 @@
 
 <?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.view.controllers.GameMenuController"
-            prefHeight="750" prefWidth="1500" fx:id="borderPane">
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.view.controllers.GameMenuController"
+           prefHeight="750" prefWidth="1500" fx:id="borderPane">
+    <top>
+        <Button text="fuck you" onMouseClicked="#initMap"/>
+    </top>
 
     <bottom>
-        <HBox spacing="10" alignment="CENTER" fx:id="bottom">
+        <HBox spacing="10" alignment="CENTER" fx:id="bottom" maxHeight="100">
             <padding>
                 <Insets bottom="40"/>
             </padding>

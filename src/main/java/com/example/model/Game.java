@@ -83,9 +83,9 @@ public class Game implements KeepLocations {
             }
     }
 
-    public void setGameMap(String size) {
-        gameMap = new GameMap(size, this);
-        if (gameMap.getMapSize() == 200) mapCoefficient = 1;
+    public void setGameMap(int length) {
+        gameMap = new GameMap(length, this);
+        if (length == 200) mapCoefficient = 1;
         else mapCoefficient = 2;
     }
 

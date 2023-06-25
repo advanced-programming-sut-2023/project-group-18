@@ -1,101 +1,131 @@
 package com.example.model.map;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.example.model.Game;
-import com.example.model.WriteInFile;
-import com.google.gson.Gson;
 
-public class GameMap implements WriteInFile, Successor {
-    private static final int LENGTH = 3;
-    private static final String line = "\n--------------------------------------------------------------------------------------------";
-    private final Game game;
-    private final int id;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+
+public class GameMap extends Pane {
+    private static final double TILE_LENGTH = 8.0d;
+    private final DoubleProperty scale;
+    private final ArrayList<Tile> centers;
     private final int length;
-    private final Cell[][] map;
+    private final Game game;
+    private Tile selectedTile;
 
-    public GameMap(String size, Game game) {
+    public GameMap(int length, Game game) {
+        this.scale = new SimpleDoubleProperty(1.0);
+        this.centers = new ArrayList<>();
+        this.length = length;
         this.game = game;
-        // id = getNextId();
-        // goToNextId();
-        id = 0;
-        length = MapSizes.getMapSize(size);
-        map = new Cell[length][length];
-        for (int yCoordinate = 0; yCoordinate < map.length; yCoordinate++)
-            for (int xCoordinate = 0; xCoordinate < map.length; xCoordinate++)
-                map[yCoordinate][xCoordinate] = new Cell(xCoordinate, yCoordinate, this);
-    }
-
-    public int getMapSize() {
-        return map.length;
+        setInitScales();
+        initTiles();
     }
 
     public Game getGame() {
         return game;
     }
 
-    public Cell getCellByLocation(int xCoordinate, int yCoordinate) {
-        if (!isInBounds(xCoordinate, yCoordinate)) return null;
-        return map[yCoordinate][xCoordinate];
+    public Tile getSelectedTile() {
+        return selectedTile;
     }
 
-    public boolean isInBounds(int xCoordinate, int yCoordinate) {
-        return 0 <= xCoordinate && 0 <= yCoordinate && yCoordinate < map.length && xCoordinate < map.length;
+    public void setSelectedType(Point2D location) {
+        this.selectedTile = findClosestTile(location);
+        System.out.println(selectedTile.getLocation());
     }
 
-    public String showMap(int xCoordinate, int yCoordinate) {
-        String result = line;
-        for (int i = yCoordinate - LENGTH; i <= yCoordinate + LENGTH; i++) {
-            for (int k = 0; k < 3; k++) {
-                result += "\n|";
-                for (int j = xCoordinate - 2 * LENGTH; j <= xCoordinate + 2 * LENGTH; j++)
-                    result += map[i][j].toString(k) + "|";
+    public Tile findClosestTile(Point2D location) {
+        return findClosestTile(location.getX(), location.getY());
+    }
+
+    private Tile getTileByIndex(int xIndex, int yIndex) {
+        return centers.get(yIndex * length + xIndex);
+    }
+
+    public Tile findClosestTile(double x, double y) {
+        int yIndex = (int) Math.round(y * 2 / TILE_LENGTH);
+        int xIndex = (int) Math.round((x - (yIndex % 2) * TILE_LENGTH / 2) / TILE_LENGTH);
+        return getTileByIndex(xIndex, yIndex);
+    }
+
+
+
+
+
+
+    private void initTiles() {
+        final double width = length * TILE_LENGTH / 2;
+        final double height = length * TILE_LENGTH / 2;
+        Canvas canvas = new Canvas(width, height);
+        canvas.setMouseTransparent(true);
+        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+        graphicsContext.setStroke(Color.GRAY);
+        graphicsContext.setLineWidth(1);
+        graphicsContext.setFill(Color.BLUE);
+        for (int yIndex = 0; yIndex < length / 3; yIndex++) {
+            for (int xIndex = 0; xIndex < length / 3; xIndex++) {
+                double x = (yIndex % 2) * TILE_LENGTH / 2 + TILE_LENGTH * xIndex;
+                double y = TILE_LENGTH * yIndex / 2;
+                centers.add(new Tile(x, y, Texture.GROUND));
+                makeDiamond(graphicsContext, x, y); // TODO: have to replace it with image
             }
-            result += line;
         }
-        return result;
+        getChildren().add(canvas);
+        canvas.toBack();
     }
 
-    public String showDetails(int xCoordinate, int yCoordinate) {
-        return map[yCoordinate][xCoordinate].showDetails();
+    private void setInitScales() {
+        setMaxWidth(200);
+        setMaxHeight(200);
+        scaleXProperty().bind(scale);
+        scaleYProperty().bind(scale);
+        setScale(3.0);
+        addEventFilters();
     }
 
-    public boolean areCoordinatesValid(int xCoordinate, int yCoordinate) {
-        return (xCoordinate - 2 * LENGTH) >= 0
-                && (xCoordinate + 2 * LENGTH) <= length
-                && (yCoordinate - LENGTH) >= 0
-                && (yCoordinate + LENGTH) <= length;
+    // TODO: need to remove when replace image done
+    private void makeDiamond(GraphicsContext graphicsContext, double x, double y) {
+        double[] xPoints = {x - TILE_LENGTH / 2, x, x + TILE_LENGTH / 2, x};
+        double[] yPoints = {y, y + TILE_LENGTH / 2, y, y - TILE_LENGTH / 2};
+        graphicsContext.fillPolygon(xPoints, yPoints, 4);
+        graphicsContext.strokePolygon(xPoints, yPoints, 4);
+//        graphicsContext.strokeLine(x, y, xPoints[0], y);
+        
     }
 
-    @Override
-    public void writeInFile() {
-        Gson gson = new Gson();
-        File main = new File("src", "main");
-        File resources = new File(main, "resources");
-        File maps = new File(resources, "maps");
-        File mapId = new File(maps, "map"+ id + ".json");
-        try (FileWriter fileWriter = new FileWriter(mapId)) {
-            fileWriter.write(gson.toJson(map));
-        } catch (IOException e) {
-            System.err.println("Can't write in file!!!");
-        }
+    private void addEventFilters() {
+        MapGestures mapGestures = new MapGestures(this);
+        addEventFilter(MouseEvent.MOUSE_PRESSED, mapGestures.getOnMousePressedEventHandler());
+        addEventFilter(MouseEvent.MOUSE_DRAGGED, mapGestures.getOnMouseDraggedEventHandler());
+        addEventFilter(ScrollEvent.ANY, mapGestures.getOnScrollEventHandler());
     }
 
-    public ArrayList<Cell> neighbourCells(Cell cell){
-        ArrayList<Cell> neighbourCells = new ArrayList<>();
-        int xCoordinate = cell.getxCoordinate();
-        int yCoordinate = cell.getyCoordinate();
-        for (int[] neighbour : SUCCESSORS){
-            int x = xCoordinate+neighbour[0];
-            int y = yCoordinate+neighbour[1];
-            Cell neighbourCell = game.getGameMap().getCellByLocation(x,y);
-            if (neighbourCell != null)
-                neighbourCells.add(neighbourCell);
-        }
-        return neighbourCells;
+    protected double getScale() {
+        return scale.get();
+    }
+
+    protected void setScale(double scale) {
+        this.scale.set(scale);
+    }
+
+    protected void setPivot(double x, double y) {
+        setTranslateX(getTranslateX() - x);
+        setTranslateY(getTranslateY() - y);
+    }
+
+    // TODO: need to remove
+    public Cell getCellByLocation(int xCoordinate, int yCoordinate) {
+        return null;
     }
 
 }
