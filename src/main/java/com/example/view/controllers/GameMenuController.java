@@ -21,7 +21,7 @@ public class GameMenuController {
 
     @FXML
     public void initialize() {
-        controller.getGame().setGameMap(200);
+        controller.getGame().setGameMap(100);
     }
     
     
