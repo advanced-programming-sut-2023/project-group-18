@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
+<?import javafx.scene.image.ImageView?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.view.controllers.ProfileMenuController"
@@ -19,7 +20,47 @@
     </top>
 
     <center>
+        <VBox spacing="10">
+            <HBox>
+                <Label text="change password" prefWidth="200"/>
+                <PasswordField promptText="new password" fx:id="newPassword" prefWidth="150"/>
+                <Button text="change" onMouseClicked="#changePassword"/>
+                <Label styleClass="errorLabel" prefWidth="400" fx:id="passwordError"/>
+            </HBox>
+            <HBox>
+                <Label text="change slogan" prefWidth="200"/>
+                <TextField promptText="new slogan" fx:id="newSlogan" prefWidth="150"/>
+                <Button text="change" onMouseClicked="#changeSlogan"/>
+                <Label styleClass="errorLabel" prefWidth="400" fx:id="sloganError"/>
+            </HBox>
+            <Button text="remove slogan" onMouseClicked="#removeSlogan"/>
+        </VBox>
     </center>
+
+    <left>
+        <VBox>
+            <HBox>
+                <Label text="Username" prefWidth="150"/>
+                <Label fx:id="username" prefWidth="200"/>
+            </HBox>
+            <HBox>
+                <Label text="Password" prefWidth="150"/>
+                <Label fx:id="password" prefWidth="200"/>
+            </HBox>
+            <HBox>
+                <Label text="Nickname" prefWidth="150"/>
+                <Label fx:id="nickname" prefWidth="200"/>
+            </HBox>
+            <HBox>
+                <Label text="email" prefWidth="150"/>
+                <Label fx:id="email" prefWidth="200"/>
+            </HBox>
+            <HBox>
+                <Label text="avatar" prefWidth="150"/>
+                <ImageView fx:id="avatar"/>
+            </HBox>
+        </VBox>
+    </left>
 
 
     <stylesheets>

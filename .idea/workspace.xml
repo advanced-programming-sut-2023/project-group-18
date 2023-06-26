@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="start game">
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/images/cursor 3.png" beforeDir="false" />
@@ -13,6 +14,52 @@
       <change beforePath="$PROJECT_DIR$/target/classes/json/stayLoggedInUserId 2.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/maps/nextId 2.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/music/happy_times 2.mp3" beforeDir="false" />
+=======
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="commit">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_20_ea_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_20_ea_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_20_ea_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_20_ea_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_20_ea_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_20_ea_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_20_ea_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_20_ea_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_20_ea_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_win_20_ea_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_25_2023_11_22_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_25_2023_11_22_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_5_2023_4_32_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_5_2023_4_32_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/Users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/CaptchaMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/CaptchaMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/LoginMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/LoginMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/TradeMenuMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/TradeMenuMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/OilSmelter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/OilSmelter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/TreeType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/TreeType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/State.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/CaptchaMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/CaptchaMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/LoginMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/LoginMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/MainMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SecurityMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SecurityMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/images/Images.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/images/Images.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/music/Music.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/music/Music.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+>>>>>>> a4f4dd47c0ec60996fc0674a096590f6c3e1740d
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +77,13 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="new_Menus" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -84,6 +134,8 @@
       <workItem from="1685731115291" duration="11751000" />
       <workItem from="1685809345327" duration="4576000" />
       <workItem from="1685893029808" duration="7172000" />
+      <workItem from="1687767847679" duration="537000" />
+      <workItem from="1687771205490" duration="5780000" />
     </task>
     <task id="LOCAL-00001" summary="tag">
       <created>1685305307071</created>

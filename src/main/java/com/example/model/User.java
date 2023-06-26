@@ -11,6 +11,7 @@ public class User implements PasswordRecoveryQuestions {
     private String email;
     private String slogan;
     private int highscore;
+    private String avatarPath = "";
     private final int recoveryQuestionNumber;
     private final String recoveryAnswer;
     private int score;
@@ -45,6 +46,9 @@ public class User implements PasswordRecoveryQuestions {
     public int getHighscore() {
         return highscore;
     }
+    public String getPassword() {
+        return password;
+    }
 
     public String getRecoveryQuestion() {
         return PASSWORD_RECOVERY_QUESTIONS[recoveryQuestionNumber];
@@ -76,6 +80,10 @@ public class User implements PasswordRecoveryQuestions {
 
     public int getScore() {
         return score;
+    }
+
+    public String getAvatarPath() {
+        return avatarPath;
     }
 
     public void setScore(int score) {
