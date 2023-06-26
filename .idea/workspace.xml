@@ -5,34 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="scoreboard half done">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/responses/ProfileMethods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ScoreboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/avatars/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/avatars/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/avatars/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/avatars/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/avatars/NicePng_april-fools-png_3487514.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/avatars/NicePng_steam-png-transparent_3322073.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/avatars/NicePng_tf2-soldier-png_3490964.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/avatars/imgbin_spartan-army-ancient-greece-soldier-battle-of-marathon-warrior-png.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/avatars/imgbin_spartan-army-ancient-greece-soldier-warrior-png.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/avatars/tmp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/Scoreboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/MainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ScoreboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ScoreboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Scoreboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Scoreboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/Users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/CapthaCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/CapthaCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/KeepLocations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/KeepLocations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/MapSizes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/MapSizes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/PasswordRecoveryQuestions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/PasswordRecoveryQuestions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/PopularityFactors.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/PopularityFactors.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/RandomSlogan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/RandomSlogan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/MainMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MainMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fxml/ProfileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/ProfileMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/json/Users.json" afterDir="false" />
     </list>
@@ -112,7 +99,7 @@
       <workItem from="1687767847679" duration="537000" />
       <workItem from="1687771205490" duration="13368000" />
       <workItem from="1687787586858" duration="85000" />
-      <workItem from="1687787676891" duration="4819000" />
+      <workItem from="1687787676891" duration="16918000" />
     </task>
     <task id="LOCAL-00001" summary="tag">
       <created>1685305307071</created>
@@ -198,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687777849709</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="scoreboard half done">
+      <created>1687800097605</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1687800097606</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +209,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="phase2" />
                       </list>
                     </value>
                   </entry>

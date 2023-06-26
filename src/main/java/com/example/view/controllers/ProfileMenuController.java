@@ -21,6 +21,14 @@ import static com.example.controller.responses.FieldResponses.EMPTY_FIELD;
 public class ProfileMenuController {
     private final UsersData usersData = UsersData.getUsersData();
     @FXML
+    private ImageView avatar4;
+    @FXML
+    private ImageView avatar3;
+    @FXML
+    private ImageView avatar2;
+    @FXML
+    private ImageView avatar1;
+    @FXML
     private PasswordField oldPassword;
     @FXML
     private TextField newSlogan;
@@ -42,6 +50,10 @@ public class ProfileMenuController {
 
     @FXML
     public void initialize() {
+        avatar1.setImage(new Image(ProfileMenuController.class.getResource("/avatars/1.png").toExternalForm()));
+        avatar2.setImage(new Image(ProfileMenuController.class.getResource("/avatars/2.png").toExternalForm()));
+        avatar3.setImage(new Image(ProfileMenuController.class.getResource("/avatars/3.png").toExternalForm()));
+        avatar4.setImage(new Image(ProfileMenuController.class.getResource("/avatars/4.png").toExternalForm()));
         username.setText(currentUser.getUsername());
         nickname.setText(currentUser.getNickname());
         email.setText(currentUser.getEmail());
@@ -64,12 +76,17 @@ public class ProfileMenuController {
             passwordError.setText("incorrect pass");
         } else {
             currentUser.setPassword(newPassword.getText());
+            newPassword.setText("");
+            oldPassword.setText("");
         }
     }
 
     public void changeSlogan(MouseEvent mouseEvent) {
         if (newSlogan.getText().equals("")) sloganError.setText(EMPTY_FIELD);
-        else currentUser.setSlogan(newSlogan.getText());
+        else {
+            currentUser.setSlogan(newSlogan.getText());
+            newSlogan.setText("");
+        }
     }
 
     public void removeSlogan(MouseEvent mouseEvent) {
@@ -80,7 +97,7 @@ public class ProfileMenuController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("."));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Jpg Files", "*.jpg"));
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Png Files", "*.png"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png"));
         File selectedFile = fileChooser.showOpenDialog(Main.getStage());
         usersData.getLoggedInUser().setAvatar(selectedFile);
         avatar.setImage(new Image(selectedFile.toURI().toString()));
@@ -88,5 +105,29 @@ public class ProfileMenuController {
 
     public void scoreboard(MouseEvent mouseEvent) throws IOException {
         Main.goToMenu("Scoreboard");
+    }
+
+    public void set1(MouseEvent mouseEvent) {
+        currentUser.setAvatar(new File(ProfileMenuController.class.getResource("/avatars/1.png").toExternalForm()));
+        avatar.setImage(new Image(ProfileMenuController.class.getResource("/avatars/1.png").toExternalForm()));
+    }
+
+    public void set2(MouseEvent mouseEvent) {
+        currentUser.setAvatar(new File(ProfileMenuController.class.getResource("/avatars/2.png").toExternalForm()));
+        avatar.setImage(new Image(ProfileMenuController.class.getResource("/avatars/2.png").toExternalForm()));
+    }
+
+    public void set3(MouseEvent mouseEvent) {
+        currentUser.setAvatar(new File(ProfileMenuController.class.getResource("/avatars/3.png").toExternalForm()));
+        avatar.setImage(new Image(ProfileMenuController.class.getResource("/avatars/3.png").toExternalForm()));
+    }
+
+    public void set4(MouseEvent mouseEvent) {
+        currentUser.setAvatar(new File(ProfileMenuController.class.getResource("/avatars/4.png").toExternalForm()));
+        avatar.setImage(new Image(ProfileMenuController.class.getResource("/avatars/4.png").toExternalForm()));
+    }
+
+    public void back(MouseEvent mouseEvent) throws IOException {
+        Main.goToMenu("MainMenu");
     }
 }
