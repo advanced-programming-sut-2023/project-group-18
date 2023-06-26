@@ -23,6 +23,7 @@
         <VBox spacing="10">
             <HBox>
                 <Label text="change password" prefWidth="200"/>
+                <PasswordField promptText="old password" fx:id="oldPassword" prefWidth="150"/>
                 <PasswordField promptText="new password" fx:id="newPassword" prefWidth="150"/>
                 <Button text="change" onMouseClicked="#changePassword"/>
                 <Label styleClass="errorLabel" prefWidth="400" fx:id="passwordError"/>
@@ -34,6 +35,8 @@
                 <Label styleClass="errorLabel" prefWidth="400" fx:id="sloganError"/>
             </HBox>
             <Button text="remove slogan" onMouseClicked="#removeSlogan"/>
+            <Button text="choose avatar" onMouseClicked="#chooseAvatar"/>
+            <Button text="scoreboard" onMouseClicked="#scoreboard"/>
         </VBox>
     </center>
 
@@ -42,10 +45,6 @@
             <HBox>
                 <Label text="Username" prefWidth="150"/>
                 <Label fx:id="username" prefWidth="200"/>
-            </HBox>
-            <HBox>
-                <Label text="Password" prefWidth="150"/>
-                <Label fx:id="password" prefWidth="200"/>
             </HBox>
             <HBox>
                 <Label text="Nickname" prefWidth="150"/>
@@ -57,7 +56,7 @@
             </HBox>
             <HBox>
                 <Label text="avatar" prefWidth="150"/>
-                <ImageView fx:id="avatar"/>
+                <ImageView fx:id="avatar" fitWidth="100" fitHeight="100"/>
             </HBox>
         </VBox>
     </left>
