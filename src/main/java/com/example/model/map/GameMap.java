@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.example.model.Game;
 import com.example.view.images.TextureImages;
 
+import javafx.animation.Animation;
+import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.input.MouseEvent;
@@ -13,6 +15,7 @@ import javafx.scene.layout.Pane;
 
 public class GameMap extends Pane {
     public static final double TILE_LENGTH = 10.0d;
+    private final Timeline timeline;
     private final DoubleProperty scale;
     private final ArrayList<Tile> centers;
     private final int length;
@@ -20,6 +23,9 @@ public class GameMap extends Pane {
     private Tile selectedTile;
 
     public GameMap(int length, Game game) {
+        this.timeline = new Timeline();
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
         this.scale = new SimpleDoubleProperty(1.0);
         this.centers = new ArrayList<>();
         this.length = length;
@@ -27,6 +33,10 @@ public class GameMap extends Pane {
         setInitScales();
         addEventFilters();
         initTiles();
+    }
+
+    public Timeline getTimeline() {
+        return timeline;
     }
 
     public Game getGame() {
@@ -47,6 +57,10 @@ public class GameMap extends Pane {
     public Tile findClosestTile(double x, double y) {
         int yIndex = (int) Math.round(y * 2 / TILE_LENGTH);
         int xIndex = (int) Math.round((x - (yIndex % 2) * TILE_LENGTH / 2) / TILE_LENGTH);
+        return getTileByIndex(xIndex, yIndex);
+    }
+
+    public Tile getTileByIndex(int xIndex, int yIndex) {
         return centers.get(yIndex * length + xIndex);
     }
 
@@ -75,9 +89,11 @@ public class GameMap extends Pane {
             for (int xIndex = 0; xIndex < length; xIndex++) {
                 double x = (yIndex % 2) * TILE_LENGTH / 2 + TILE_LENGTH * xIndex;
                 double y = TILE_LENGTH * yIndex / 2;
-                Tile tile = new Tile(x, y, TextureImages.GROUND, this);
+                Tile tile = new Tile(x, y, TextureImages.SEA, this);
                 centers.add(tile);
             }
+        new Tree(this, TreeType.PINE, 100, 100);
+        getTileByIndex(10, 20).selectTile();
     }
 
     private void addEventFilters() {
