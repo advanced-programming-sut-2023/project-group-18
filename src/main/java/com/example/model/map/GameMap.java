@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class GameMap extends Pane {
-    private static final double TILE_LENGTH = 8.0d;
+    public static final double TILE_LENGTH = 10.0d;
     private final DoubleProperty scale;
     private final ArrayList<Tile> centers;
     private final int length;
@@ -28,6 +28,7 @@ public class GameMap extends Pane {
         this.length = length;
         this.game = game;
         setInitScales();
+        addEventFilters();
         initTiles();
     }
 
@@ -39,23 +40,15 @@ public class GameMap extends Pane {
         return selectedTile;
     }
 
-    public void setSelectedType(Point2D location) {
-        this.selectedTile = findClosestTile(location);
-        System.out.println(selectedTile.getLocation());
-    }
-
-    public Tile findClosestTile(Point2D location) {
-        return findClosestTile(location.getX(), location.getY());
-    }
-
-    private Tile getTileByIndex(int xIndex, int yIndex) {
-        return centers.get(yIndex * length + xIndex);
+    public void setSelectedType(double x, double y) {
+        this.selectedTile = findClosestTile(x / getScale(), y / getScale());
+        selectedTile.clearRect();
     }
 
     public Tile findClosestTile(double x, double y) {
         int yIndex = (int) Math.round(y * 2 / TILE_LENGTH);
         int xIndex = (int) Math.round((x - (yIndex % 2) * TILE_LENGTH / 2) / TILE_LENGTH);
-        return getTileByIndex(xIndex, yIndex);
+        return centers.get(yIndex * length + xIndex);
     }
 
 
@@ -64,7 +57,7 @@ public class GameMap extends Pane {
 
 
     private void initTiles() {
-        final double width = length * TILE_LENGTH / 2;
+        final double width = length * TILE_LENGTH;
         final double height = length * TILE_LENGTH / 2;
         Canvas canvas = new Canvas(width, height);
         canvas.setMouseTransparent(true);
@@ -72,12 +65,13 @@ public class GameMap extends Pane {
         graphicsContext.setStroke(Color.GRAY);
         graphicsContext.setLineWidth(1);
         graphicsContext.setFill(Color.BLUE);
-        for (int yIndex = 0; yIndex < length / 3; yIndex++) {
-            for (int xIndex = 0; xIndex < length / 3; xIndex++) {
+        for (int yIndex = 0; yIndex < length; yIndex++) {
+            for (int xIndex = 0; xIndex < length; xIndex++) {
                 double x = (yIndex % 2) * TILE_LENGTH / 2 + TILE_LENGTH * xIndex;
                 double y = TILE_LENGTH * yIndex / 2;
-                centers.add(new Tile(x, y, Texture.GROUND));
-                makeDiamond(graphicsContext, x, y); // TODO: have to replace it with image
+                Tile tile = new Tile(x, y, Texture.GROUND, yIndex, xIndex, graphicsContext);
+                centers.add(tile);
+                tile.makeDiamond();
             }
         }
         getChildren().add(canvas);
@@ -90,18 +84,9 @@ public class GameMap extends Pane {
         scaleXProperty().bind(scale);
         scaleYProperty().bind(scale);
         setScale(3.0);
-        addEventFilters();
     }
 
-    // TODO: need to remove when replace image done
-    private void makeDiamond(GraphicsContext graphicsContext, double x, double y) {
-        double[] xPoints = {x - TILE_LENGTH / 2, x, x + TILE_LENGTH / 2, x};
-        double[] yPoints = {y, y + TILE_LENGTH / 2, y, y - TILE_LENGTH / 2};
-        graphicsContext.fillPolygon(xPoints, yPoints, 4);
-        graphicsContext.strokePolygon(xPoints, yPoints, 4);
-//        graphicsContext.strokeLine(x, y, xPoints[0], y);
-        
-    }
+
 
     private void addEventFilters() {
         MapGestures mapGestures = new MapGestures(this);
@@ -116,11 +101,6 @@ public class GameMap extends Pane {
 
     protected void setScale(double scale) {
         this.scale.set(scale);
-    }
-
-    protected void setPivot(double x, double y) {
-        setTranslateX(getTranslateX() - x);
-        setTranslateY(getTranslateY() - y);
     }
 
     // TODO: need to remove

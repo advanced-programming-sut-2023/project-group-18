@@ -4,151 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f288306d-0141-4ba9-ad2b-a92a921ee550" name="Changes" comment="signup hopefully done">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BarCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Ale.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Apple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Bow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Bread.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Cheese.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Crossbow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Flour.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Hops.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Iron.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Leather Armor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Mace.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Meat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Metal Armor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Pike.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Pitch.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Spear.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Stone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Swords.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Wheat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/assets/Wood.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/bakery.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/brewery.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons/CastleBuilding.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons/FarmBuilding.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons/FoodProcessing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons/IndustryBuilding.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons/TowerBuilding.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons/TownBuilding.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons/menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons/ٌWeaponBuilding.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/textures/desert_tile.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/textures/grass_tile.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/textures/sea_tile.jpg" afterDir="false" />
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="start game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BuildingType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMapFake.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/MapGestures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/MapGestures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Armourer.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/armourer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Armoury.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/armoury.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Barracks.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/barracks.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Blacksmith.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/blacksmith.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Cathedral.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/cathedral.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Church.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/church.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/CircleTower.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/circle tower.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/EngineersGuild.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/engineer guild.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Fletcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/fletcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/GateMain.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/big stone gatehouse.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/GateWood.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/small stone gatehouse.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/HopsFarm.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/hop farm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/HuntPost.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/hunt post.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Inn.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/inn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/IronMine.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/iron mine.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Keep5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/keep.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/LookoutTower.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/lookout tower.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/MercenaryPost.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/mercenary post.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/PerimeterTower.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/perimeter tower.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Poleturner.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/poleturner.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Quarry.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/quarry.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/SiegeTent.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/siege tent.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/SquareTower.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/square tower.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Stable.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/stable.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/TradePost.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/market.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/Turrut.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/turret.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/WheatFarm.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/wheat farm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/drawBridge.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/Drawbridge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/CaptchaMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/CaptchaMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/LoginMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/LoginMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/TradeMenuMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/TradeMenuMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/CapthaCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/CapthaCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/cursor 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/Users.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Governance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Governance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/KeepLocations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/KeepLocations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/MapSizes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/MapSizes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/PasswordRecoveryQuestions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/PasswordRecoveryQuestions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/PopularityFactors.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/PopularityFactors.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/RandomSlogan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/RandomSlogan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Trade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Trade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/assets/Asset.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/assets/Asset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/assets/AssetType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/assets/AssetType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Barracks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Barracks.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/BuildingType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/BuildingType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Category.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/DairyProducts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/DairyProducts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Direction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Direction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Farm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Farm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gunsmith.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gunsmith.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/IndustrialBuilding.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/IndustrialBuilding.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/OilSmelter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/OilSmelter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Processing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Processing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stair.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stair.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Storage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Storage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/StorageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/StorageType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Tower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Tower.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Trap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Trap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Tree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Tree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/TreeType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/TreeType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Wall.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Cell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Directions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Directions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/MapSizes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/MapSizes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Successor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Successor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Texture.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Texture.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/AttackTool.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/AttackTool.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/AttackToolType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/AttackToolType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Engineer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Engineer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/LadderMan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/LadderMan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Soldier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Soldier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/SoldierType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/SoldierType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/State.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Tunneler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Tunneler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/UnitType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/UnitType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Worker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Worker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/CaptchaMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/CaptchaMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/LoginMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/LoginMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/MainMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SecurityMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SecurityMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/images/Images.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/images/Images.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/music/Music.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/music/Music.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/gameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/gameMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/cursor 3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/cursor 4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/icon 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/json/Users 2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/json/stayLoggedInUserId 2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/maps/nextId 2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/music/happy_times 2.mp3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +35,6 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -192,23 +66,17 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/IdeaProjects/project-group-18/src/main/resources/images/buildings&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/fraxea/Desktop/frAxeA/term2/AP/project/project-group18&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\user\IdeaProjects\project-group-18\src\main\resources\images\buildings" />
-      <recent name="C:\Users\user\IdeaProjects\project-group-18\src\main\resources\images\icons" />
-    </key>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f288306d-0141-4ba9-ad2b-a92a921ee550" name="Changes" comment="signup hopefully done" />
+      <changelist id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="tradeMenu" />
       <created>1685302575628</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -224,9 +92,9 @@
       <workItem from="1685706691121" duration="1018000" />
       <workItem from="1685708022769" duration="6239000" />
       <workItem from="1685716083539" duration="2436000" />
-      <workItem from="1687689061399" duration="5724000" />
-      <workItem from="1687757891457" duration="10893000" />
-      <workItem from="1687872705518" duration="359000" />
+      <workItem from="1685731115291" duration="11751000" />
+      <workItem from="1685809345327" duration="4576000" />
+      <workItem from="1685893029808" duration="7172000" />
     </task>
     <task id="LOCAL-00001" summary="tag">
       <created>1685305307071</created>
@@ -277,7 +145,35 @@
       <option name="project" value="LOCAL" />
       <updated>1685713869397</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="a commit">
+      <created>1685731152351</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685731152351</updated>
+    </task>
+    <task id="LOCAL-00009" summary="login when answered security question">
+      <created>1685814050921</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685814050921</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Main Menu">
+      <created>1685814985857</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685814985857</updated>
+    </task>
+    <task id="LOCAL-00011" summary="start game">
+      <created>1685979967030</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685979967030</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +198,11 @@
     <MESSAGE value="half done slogan" />
     <MESSAGE value="signup hopefully done" />
     <MESSAGE value="security question and captcha" />
-    <option name="LAST_COMMIT_MESSAGE" value="security question and captcha" />
+    <MESSAGE value="a commit" />
+    <MESSAGE value="login when answered security question" />
+    <MESSAGE value="Main Menu" />
+    <MESSAGE value="start game" />
+    <option name="LAST_COMMIT_MESSAGE" value="start game" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

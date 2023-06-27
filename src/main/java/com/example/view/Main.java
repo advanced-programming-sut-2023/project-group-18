@@ -1,11 +1,14 @@
 package com.example.view;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.example.controller.CaptchaMethods;
+import com.example.model.User;
 import com.example.model.UsersData;
 import com.example.view.images.Images;
 import com.example.view.music.Music;
@@ -16,6 +19,8 @@ import javafx.geometry.Point2D;
 import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -25,7 +30,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
-        goToMenu("GameMenu");
+        goToMenu("SignupMenu");
 //        Music.LOGIN_MENU.getMediaPlayer().play();
         stage.setScene(scene);
         stage.setTitle("Stronghold Crusader");

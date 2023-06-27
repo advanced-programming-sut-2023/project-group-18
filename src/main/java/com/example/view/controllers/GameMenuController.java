@@ -34,7 +34,7 @@ public class GameMenuController {
     private String[] weaponBuilding = {"Blacksmith", "Armourer", "Fletcher"};
 
     public void initialize() {
-        controller.getGame().setGameMap(200);
+        controller.getGame().setGameMap(100);
     }
     
     

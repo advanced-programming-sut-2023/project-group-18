@@ -16,9 +16,14 @@
         <VBox prefWidth="1500" prefHeight="50" alignment="CENTER" styleClass="title">
             <Label text="Main Menu" textAlignment="CENTER"/>
         </VBox>
-        <Button text="Profile Menu" onMouseClicked="#profileMenu"/>
     </top>
 
+    <left>
+        <VBox>
+            <Button text="Profile Menu" onMouseClicked="#profileMenu"/>
+            <Button text="logout" onMouseClicked="#logout"/>
+        </VBox>
+    </left>
     <center>
         <Button text="START GAME" onMouseClicked="#startGame"/>
     </center>

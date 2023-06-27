@@ -1,5 +1,8 @@
 package com.example.model;
 
+import javafx.scene.image.ImageView;
+
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -11,6 +14,7 @@ public class User implements PasswordRecoveryQuestions {
     private String email;
     private String slogan;
     private int highscore;
+    private String avatarPath;
     private final int recoveryQuestionNumber;
     private final String recoveryAnswer;
     private int score;
@@ -24,6 +28,7 @@ public class User implements PasswordRecoveryQuestions {
         this.recoveryAnswer = SHA256Cryptographic(recoveryAnswer);
         this.highscore = 0;
         this.score = 0;
+        avatarPath = User.class.getResource("/avatars/1.png").toExternalForm();
     }
 
     public String getUsername() {
@@ -44,6 +49,9 @@ public class User implements PasswordRecoveryQuestions {
 
     public int getHighscore() {
         return highscore;
+    }
+    public String getPassword() {
+        return password;
     }
 
     public String getRecoveryQuestion() {
@@ -78,6 +86,15 @@ public class User implements PasswordRecoveryQuestions {
         return score;
     }
 
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
+    }
+
+    public String getAvatarPath() {
+        System.out.println(avatarPath);
+        return avatarPath;
+    }
+
     public void setScore(int score) {
         if (this.highscore < score)
             this.highscore = score;
@@ -107,5 +124,14 @@ public class User implements PasswordRecoveryQuestions {
         return null;
     }
 
+    public void setAvatar(File avatar) {
+        this.avatarPath = avatar.getPath();
+    }
 
+    public void setAvatar(ImageView avatar) {
+    }
+
+    public File getAvatar() {
+        return new File(avatarPath);
+    }
 }
