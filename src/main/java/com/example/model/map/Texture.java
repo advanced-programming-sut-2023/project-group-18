@@ -1,14 +1,32 @@
 package com.example.model.map;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import com.example.view.images.TextureImages;
 
-import com.example.model.ConsoleColors;
+import javafx.scene.image.Image;
 
-public enum Texture implements ConsoleColors {
-    GROUND ("ground", BLACK_BACKGROUND_BRIGHT, true),
+public class Texture {
+    private TextureImages textureImages;
+    private Image image;
+
+    public Texture(TextureImages textureImages) {
+        setTextureImages(textureImages);
+    }
+
+    public TextureImages getTextureImages() {
+        return textureImages;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setTextureImages(TextureImages textureImages) {
+        this.textureImages = textureImages;
+        this.image = textureImages.getRandomImage();
+    }
+
+
+    /*GROUND ("ground", BLACK_BACKGROUND_BRIGHT, true),
     GRAVEL ("gravel", YELLOW_BACKGROUND, true),
     SLAB ("slab", WHITE_BACKGROUND, false),
     STONE ("stone", RED_BACKGROUND_BRIGHT, true),
@@ -54,5 +72,5 @@ public enum Texture implements ConsoleColors {
     public boolean isReachable() {
         return isReachable;
     }
-
+*/
 }

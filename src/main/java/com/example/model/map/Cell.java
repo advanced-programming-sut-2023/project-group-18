@@ -23,8 +23,8 @@ public class Cell implements ConsoleColors {
     public Cell(int xCoordinate, int yCoordinate, GameMap gameMap) {
         this.gameMap = gameMap;
         units = new ArrayList<>();
-        texture = Texture.getARondomTexture();
-        if (texture.equals(Texture.OVERGROWN_GRASSLAND)) building = new Tree(this, TreeType.getRandomTreeType());
+        // texture = Texture.getARondomTexture();
+        // if (texture.equals(Texture.OVERGROWN_GRASSLAND)) building = new Tree(this, TreeType.getRandomTreeType());
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
     }
@@ -63,7 +63,7 @@ public class Cell implements ConsoleColors {
 
     public String showDetails() {
         String result = "Location: (" + xCoordinate + ", " + yCoordinate + ")";
-        result += "\nTexture: " + texture.name;
+        result += "\nTexture: " + texture.getTextureImages().getName();
         if (building != null) {
             result += "\n";
             if (!(building instanceof Tree)) result += "Building: ";
@@ -77,9 +77,9 @@ public class Cell implements ConsoleColors {
         return result;
     }
 
-    public boolean isHole(){
-        return this.texture.equals(Texture.HOLE);
-    }
+    // public boolean isHole(){
+    //     return this.texture.equals(Texture.HOLE);
+    // }
 
     public double calculatePythagorean(Cell cell) {
         return Math.sqrt(Math.pow(xCoordinate - cell.xCoordinate, 2) + Math.pow(yCoordinate - cell.yCoordinate, 2));
@@ -89,16 +89,6 @@ public class Cell implements ConsoleColors {
         this.units.add(unit);
     }
 
-    public String toString(int column) {
-        String letter;
-        if (column != 1) letter = " ";
-        else if (!units.isEmpty()) letter = "S";
-        else if (building == null) letter = " ";
-        else if (building.getBuildingType().equals(BuildingType.TREE)) letter = "T";
-        else if (building.getBuildingType().getCategory().equals(Category.TOWER)) letter = "W";
-        else letter = "B";
-        return texture.color + "  " + letter + "   " + RESET;
-    }
 
     public boolean hasEnemy(Governance governance){
         for (Unit unit : this.getUnits()){

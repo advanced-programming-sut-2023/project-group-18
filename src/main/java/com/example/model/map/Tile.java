@@ -4,45 +4,63 @@ import java.util.ArrayList;
 
 import com.example.model.buildings.Building;
 import com.example.model.people.Unit;
+import com.example.view.images.TextureImages;
 
-import javafx.geometry.Point2D;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 public class Tile {
-    private final int rowIndex;
-    private final int columnIndex;
-    private final Point2D location;
     private final ArrayList<Unit> units;
-    private final GraphicsContext graphicsContext;
+    private final GameMap gameMap;
+    private final ImageView imageView;
+    private final ArrayList<Line> lines;
     private Texture texture;
     private Building building;
 
-    protected Tile(double x, double y, Texture texture, int rowIndex, int columnIndex, GraphicsContext graphicsContext) {
-        this.location = new Point2D(x, y);
+    protected Tile(double x, double y, TextureImages textureImages, GameMap gameMap) {
+        this.texture = new Texture(textureImages);
         this.units = new ArrayList<>();
-        this.graphicsContext = graphicsContext;
-        this.texture = texture;
-        this.rowIndex = rowIndex;
-        this.columnIndex = columnIndex;
+        this.gameMap = gameMap;
+        this.imageView = makeImage(x, y);
+        this.lines = makeLines(x, y);
     }
 
-    // TODO: need to remove when replace image done
-    public void makeDiamond() {
-        double x = location.getX();
-        double y = location.getY();
-        double TILE_LENGTH = GameMap.TILE_LENGTH;
-        double[] xPoints = {x - TILE_LENGTH / 2, x, x + TILE_LENGTH / 2, x};
-        double[] yPoints = {y, y + TILE_LENGTH / 2, y, y - TILE_LENGTH / 2};
-        graphicsContext.fillPolygon(xPoints, yPoints, 4);
-        graphicsContext.strokePolygon(xPoints, yPoints, 4);
+    private ArrayList<Line> makeLines(double x, double y) {
+        ArrayList<Line> lines = new ArrayList<>();
+        final double a = GameMap.TILE_LENGTH / 2;
+        lines.add(makeASingleLine(x - a, y, x, y + a));
+        lines.add(makeASingleLine(x, y + a, x + a, y));
+        lines.add(makeASingleLine(x + a, y, x, y - a));
+        lines.add(makeASingleLine(x, y - a, x - a, y));
+        return lines;
     }
 
-    public void clearRect() {
-        graphicsContext.clearRect(location.getX() - 1, location.getY() - 1, 2, 2);
+    private Line makeASingleLine(double startX, double startY, double endX, double endY) {
+        Line line = new Line(startX, startY, endX, endY);
+        line.setStroke(Color.CYAN);
+        line.setStrokeWidth(1.0);
+        return line;
     }
 
-    public Point2D getLocation() {
-        return location;
+    private ImageView makeImage(double x, double y) {
+        ImageView imageView = new ImageView(texture.getImage());
+        imageView.setFitWidth(GameMap.TILE_LENGTH);
+        imageView.setFitHeight(GameMap.TILE_LENGTH);
+        gameMap.getChildren().add(imageView);
+        imageView.setLayoutX(x + GameMap.TILE_LENGTH / 2);
+        imageView.setLayoutY(y + GameMap.TILE_LENGTH / 2);
+        return imageView;
+    }
+
+    public void selectTile() {
+        for (Line line : lines)
+            gameMap.getChildren().add(line);
+    }
+
+    public void deselectTile() {
+        for (Line line : lines)
+            gameMap.getChildren().remove(line);
     }
 
     public ArrayList<Unit> getUnits() {
@@ -65,22 +83,9 @@ public class Tile {
         this.building = building;
     }
 
+    // TODO
     public String showDetails() {
-        // TODO
         return null;
-    }
-
-    public int getRowIndex() {
-        return rowIndex;
-    }
-
-    public int getColumnIndex() {
-        return columnIndex;
-    }
-
-    @Override
-    public String toString() {
-        return location.toString() + "\n<<<row: " + rowIndex + ">>> <<<column: " + columnIndex + ">>>";
     }
 
 }
