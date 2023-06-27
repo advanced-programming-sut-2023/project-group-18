@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import java.net.URL?>
-
-<?import javafx.geometry.Insets?>
-<BorderPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.example.view.controllers.GameMenuController"
-           prefHeight="750" prefWidth="1500" fx:id="borderPane">
+<BorderPane fx:id="borderPane" prefHeight="750" prefWidth="1500" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.view.controllers.GameMenuController">
     <top>
-        <Button text="fuck you" onMouseClicked="#initMap"/>
+        <Button onMouseClicked="#initMap" text="fuck you" />
     </top>
 
     <bottom>
-        <HBox spacing="10" alignment="CENTER" fx:id="bottom" maxHeight="100">
+
+        <VBox fx:id="bottom" alignment="CENTER" prefHeight="200.0" prefWidth="1500.0">
+            <Label prefHeight="88.0" prefWidth="72.0" text="Building View" />
+         <HBox fx:id="imagesHBox" minWidth="-Infinity" prefHeight="86.0" prefWidth="1500.0" spacing="10">
+            <opaqueInsets>
+               <Insets top="79.0" />
+            </opaqueInsets>
             <padding>
-                <Insets bottom="40"/>
+               <Insets left="350.0" right="200.0" />
             </padding>
-            <Label text="Building View"/>
-        </HBox>
+
+         </HBox>
+         <HBox fx:id="typesHBox" prefHeight="22.0" prefWidth="1500.0" />
+        </VBox>
     </bottom>
 
     <!-- <stylesheets>
