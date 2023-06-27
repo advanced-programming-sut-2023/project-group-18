@@ -22,7 +22,7 @@
             </padding>
 
          </HBox>
-         <HBox prefHeight="22.0" prefWidth="1500.0" />
+         <HBox fx:id="typesHBox" prefHeight="22.0" prefWidth="1500.0" />
         </VBox>
     </bottom>
 

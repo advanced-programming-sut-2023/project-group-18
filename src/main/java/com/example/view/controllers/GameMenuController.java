@@ -26,7 +26,7 @@ public class GameMenuController {
     @FXML
     private HBox typesHBox;
     private String[] castleBuildings = {"Armoury", "Barracks", "EngineersBuilding", "GateMain",};
-    private String[] towerBuilding = {"circleTower", "drawBridge",}
+    private String[] towerBuilding = {"circleTower", "drawBridge",};
     private String[] industryBuilding = {""};
     private String[] farmBuilding = {"AppleFarm"};
     private String[] foodProcessingBuilding = {""};
@@ -63,8 +63,8 @@ public class GameMenuController {
 //        imageView2.setFitHeight(80);
         //imagesHBox.initStyle(StageStyle.TRANSPARENT);
 //        imagesHBox.getChildren().addAll(imageView1, imageView2);
-        BuildingImage buildingImage = new BuildingImage(imagesHBox, "Barracks",80);
-        BuildingImage buildingImage1 = new BuildingImage(imagesHBox, "MercenaryPost",80);
+        BuildingImage buildingImage = new BuildingImage(imagesHBox, "barracks",80);
+        BuildingImage buildingImage1 = new BuildingImage(imagesHBox, "mercenary post",80);
 
         bottom.toFront();
         //bottom.setPrefHeight(300);

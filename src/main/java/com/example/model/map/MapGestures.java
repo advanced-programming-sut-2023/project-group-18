@@ -5,7 +5,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 
 public class MapGestures {
-    private static final double MAX_SCALE = 5.0d;
+    private static final double MAX_SCALE = 15.0d;
     private static final double MIN_SCALE = 2.0d;
     private static final double DELTA_SCALE = 1.05d;
     private static final double RESET_X = 420.0d;
