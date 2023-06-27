@@ -53,11 +53,11 @@ public class Soldier extends Unit {
     }
 
     public void digHole(Cell cell) {
-        cell.setTexture(Texture.HOLE);
+        // cell.setTexture(Texture.HOLE);
     }
 
     public void removeHole(Cell cell) {
-        cell.setTexture(Texture.GROUND);
+        // cell.setTexture(Texture.GROUND);
     }
 
     public void attack(Cell cell) {

@@ -3,12 +3,10 @@ package com.example.model.map;
 import java.util.ArrayList;
 
 import com.example.model.Game;
+import com.example.view.images.TextureImages;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.geometry.Point2D;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
@@ -41,8 +39,10 @@ public class GameMap extends Pane {
     }
 
     public void setSelectedType(double x, double y) {
-        this.selectedTile = findClosestTile(x / getScale(), y / getScale());
-        selectedTile.clearRect();
+        if (selectedTile != null)
+            selectedTile.deselectTile();
+        selectedTile = findClosestTile(x / getScale(), y / getScale());
+        selectedTile.selectTile();
     }
 
     public Tile findClosestTile(double x, double y) {
@@ -57,25 +57,14 @@ public class GameMap extends Pane {
 
 
     private void initTiles() {
-        final double width = length * TILE_LENGTH;
-        final double height = length * TILE_LENGTH / 2;
-        Canvas canvas = new Canvas(width, height);
-        canvas.setMouseTransparent(true);
-        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
-        graphicsContext.setStroke(Color.GRAY);
-        graphicsContext.setLineWidth(1);
-        graphicsContext.setFill(Color.BLUE);
         for (int yIndex = 0; yIndex < length; yIndex++) {
             for (int xIndex = 0; xIndex < length; xIndex++) {
                 double x = (yIndex % 2) * TILE_LENGTH / 2 + TILE_LENGTH * xIndex;
                 double y = TILE_LENGTH * yIndex / 2;
-                Tile tile = new Tile(x, y, Texture.GROUND, yIndex, xIndex, graphicsContext);
+                Tile tile = new Tile(x, y, TextureImages.GROUND, this);
                 centers.add(tile);
-                tile.makeDiamond();
             }
         }
-        getChildren().add(canvas);
-        canvas.toBack();
     }
 
     private void setInitScales() {

@@ -56,7 +56,7 @@ public class Game implements KeepLocations {
             int xCoordinate = COORDINATES[index][0] * mapCoefficient + random.nextInt(-2, 3);
             int yCoordinate = COORDINATES[index][1] * mapCoefficient + random.nextInt(-2, 3);
             Cell cell = gameMap.getCellByLocation(xCoordinate, yCoordinate);
-            initTexture(COORDINATES[index], random);
+            // initTexture(COORDINATES[index], random);
             governance.addBuilding(BuildingType.KEEP, cell);
             governance.setLord();
             Cell stockpileCell = gameMap.getCellByLocation(xCoordinate + 4, yCoordinate + 4);
@@ -64,24 +64,24 @@ public class Game implements KeepLocations {
         }
     }
 
-    private void initTexture(int[] center, Random random) {
-        for (int i = -RANGE; i < RANGE; i++)
-            for (int j = -RANGE; j < RANGE; j++) {
-                Cell cell = gameMap.getCellByLocation(center[0] * mapCoefficient + i, center[1] * mapCoefficient + j);
-                cell.setBuilding(null);
-                if (Math.abs(j) > RANGE / 2 || Math.abs(i) > RANGE / 2) {
-                    if (random.nextInt(4) == 0) cell.setTexture(Texture.LAWN);
-                    else if (random.nextInt(4) == 0) cell.setTexture(Texture.OVERGROWN_GRASSLAND);
-                    else if (random.nextInt(4) == 0) cell.setTexture(Texture.SLAB);
-                    else if (random.nextInt(4) == 0) cell.setTexture(Texture.IRON);
-                    else cell.setTexture(Texture.GROUND);
-                } else {
-                    if (random.nextInt(2) == 0) cell.setTexture(Texture.GROUND);
-                    else if (random.nextInt(3) == 0) cell.setTexture(Texture.GRAVEL);
-                    else cell.setTexture(Texture.RARE_GRASSLAND);
-                }
-            }
-    }
+    // private void initTexture(int[] center, Random random) {
+    //     for (int i = -RANGE; i < RANGE; i++)
+    //         for (int j = -RANGE; j < RANGE; j++) {
+    //             Cell cell = gameMap.getCellByLocation(center[0] * mapCoefficient + i, center[1] * mapCoefficient + j);
+    //             cell.setBuilding(null);
+    //             if (Math.abs(j) > RANGE / 2 || Math.abs(i) > RANGE / 2) {
+    //                 if (random.nextInt(4) == 0) cell.setTexture(Texture.LAWN);
+    //                 else if (random.nextInt(4) == 0) cell.setTexture(Texture.OVERGROWN_GRASSLAND);
+    //                 else if (random.nextInt(4) == 0) cell.setTexture(Texture.SLAB);
+    //                 else if (random.nextInt(4) == 0) cell.setTexture(Texture.IRON);
+    //                 else cell.setTexture(Texture.GROUND);
+    //             } else {
+    //                 if (random.nextInt(2) == 0) cell.setTexture(Texture.GROUND);
+    //                 else if (random.nextInt(3) == 0) cell.setTexture(Texture.GRAVEL);
+    //                 else cell.setTexture(Texture.RARE_GRASSLAND);
+    //             }
+    //         }
+    // }
 
     public void setGameMap(int length) {
         gameMap = new GameMap(length, this);
