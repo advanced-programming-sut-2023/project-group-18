@@ -57,7 +57,7 @@ public class MapGestures {
             mouseAnchorY = event.getSceneY();
             translateAnchorX = gameMap.getTranslateX();
             translateAnchorY = gameMap.getTranslateY();
-            gameMap.setSelectedType(mouseAnchorX - getResetX(), mouseAnchorY - getResetY());
+            gameMap.setSelectedTile(mouseAnchorX - getResetX(), mouseAnchorY - getResetY());
         }
     };
 
