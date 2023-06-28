@@ -7,15 +7,15 @@ import com.example.model.Governance;
 import com.example.model.assets.Asset;
 import com.example.model.map.Cell;
 import com.example.model.people.Unit;
-import com.example.model.map.Texture;
 import com.example.model.people.UnitType;
 import com.example.model.people.Worker;
+import com.example.view.images.TextureImages;
 
 public class Building implements ConsoleColors {
     private final BuildingType buildingType;
     protected final ArrayList<Worker> workers;
     protected final Governance governance;
-    protected final Texture groundType;
+    protected final TextureImages groundType;
     protected final int goldCost;
     protected final Asset resourceType;
     protected final int resourceCost;
@@ -52,7 +52,7 @@ public class Building implements ConsoleColors {
         return hitpoint;
     }
 
-    public Texture getGroundType() {
+    public TextureImages getGroundType() {
         return groundType;
     }
 
