@@ -4,19 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f288306d-0141-4ba9-ad2b-a92a921ee550" name="Changes" comment="Bottom Bar completed">
+    <list default="true" id="f288306d-0141-4ba9-ad2b-a92a921ee550" name="Changes" comment="add remainders">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/BuildingType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Cell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Texture.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Texture.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Soldier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Armourer.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Armourer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Barracks.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Barracks.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Blacksmith.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Blacksmith.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Church.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Church.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Drawbridge.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Drawbridge.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Fletcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Fletcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Inn.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Inn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Poleturner.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Poleturner.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Quarry.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Quarry.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Stable.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Stable.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +68,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="tradeMenu" />
+      <changelist id="f288306d-0141-4ba9-ad2b-a92a921ee550" name="Changes" comment="Bottom Bar completed" />
       <created>1685302575628</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -217,7 +216,8 @@
     <MESSAGE value="Main Menu" />
     <MESSAGE value="start game" />
     <MESSAGE value="Bottom Bar completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bottom Bar completed" />
+    <MESSAGE value="add remainders" />
+    <option name="LAST_COMMIT_MESSAGE" value="add remainders" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
