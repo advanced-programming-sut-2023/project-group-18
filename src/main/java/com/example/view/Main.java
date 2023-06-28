@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.example.controller.CaptchaMethods;
+import com.example.model.Game;
 import com.example.model.User;
 import com.example.model.UsersData;
 import com.example.view.images.Images;
@@ -60,7 +61,10 @@ public class Main extends Application {
     }
 
     private void closeApp() {
-        stage.setOnCloseRequest(event -> UsersData.getUsersData().writeUsersInFile());
+        stage.setOnCloseRequest(event -> {
+            UsersData.getUsersData().writeUsersInFile();
+            Game.getInstance().getGameMap().writeInFile();
+        });
     }
 
     private void setIcon() {

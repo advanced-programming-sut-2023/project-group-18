@@ -4,22 +4,25 @@ import java.util.ArrayList;
 
 import com.example.model.buildings.Building;
 import com.example.model.people.Unit;
-import com.example.view.images.TextureImages;
 
+import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 public class Tile {
+    private final Point2D point2d;
     private final ArrayList<Unit> units;
     private final GameMap gameMap;
     private final ImageView imageView;
     private final ArrayList<Line> lines;
     private Texture texture;
     private Building building;
+    private Tree tree;
 
-    protected Tile(double x, double y, TextureImages textureImages, GameMap gameMap) {
-        this.texture = new Texture(textureImages);
+    protected Tile(double x, double y, int symbol, GameMap gameMap) {
+        this.point2d = new Point2D(x, y);
+        this.texture = new Texture(symbol);
         this.units = new ArrayList<>();
         this.gameMap = gameMap;
         this.imageView = makeImage(x, y);
@@ -48,9 +51,21 @@ public class Tile {
         imageView.setFitWidth(GameMap.TILE_LENGTH);
         imageView.setFitHeight(GameMap.TILE_LENGTH);
         gameMap.getChildren().add(imageView);
-        imageView.setLayoutX(x + GameMap.TILE_LENGTH / 2);
-        imageView.setLayoutY(y + GameMap.TILE_LENGTH / 2);
+        imageView.setLayoutX(x - GameMap.TILE_LENGTH / 2);
+        imageView.setLayoutY(y - GameMap.TILE_LENGTH / 2);
         return imageView;
+    }
+
+    public Point2D getPoint2d() {
+        return point2d;
+    }
+
+    public Tree getTree() {
+        return tree;
+    }
+
+    public void setTree(Tree tree) {
+        this.tree = tree;
     }
 
     public void selectTile() {
@@ -77,10 +92,19 @@ public class Tile {
 
     public void setTexture(Texture texture) {
         this.texture = texture;
+        imageView.setImage(texture.getImage());
     }
 
     public void setBuilding(Building building) {
         this.building = building;
+    }
+
+    public byte[] getSymbol() {
+        byte[] result = new byte[2];
+        result[0] = texture.getTextureImages().getSymbol();
+        if (tree != null) result[1] = tree.getTreeType().getSymbol();
+        else result[1] = 0;
+        return result;
     }
 
     // TODO

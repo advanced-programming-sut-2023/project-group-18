@@ -7,17 +7,19 @@ import java.util.Random;
 import javafx.scene.image.Image;
 
 public enum TextureImages {
-    FARM ("farm"),
-    GROUND ("ground"),
-    IRON ("iron"),
-    SEA ("sea"),
-    SLAB ("slab");
+    GROUND ("Ground", 0),
+    FARM ("Farm", 1),
+    IRON ("Iron", 2),
+    WATER ("Water", 3),
+    SLAB ("Slab", 4);
 
     private final String name;
+    private final byte symbol;
     private final ArrayList<Image> images;
 
-    private TextureImages(String name) {
+    private TextureImages(String name, int symbol) {
         this.name = name;
+        this.symbol = (byte) symbol;
         images = new ArrayList<>();
         int index = -1;
         while (true) {
@@ -31,6 +33,10 @@ public enum TextureImages {
 
     public String getName() {
         return name;
+    }
+
+    public byte getSymbol() {
+        return symbol;
     }
 
     public Image getRandomImage() {

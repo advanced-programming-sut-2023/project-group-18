@@ -1,8 +1,18 @@
 package com.example.model.map;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import com.example.model.Game;
+import com.example.model.WriteInFile;
 import com.example.view.images.TextureImages;
 
 import javafx.animation.Animation;
@@ -13,14 +23,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 
-public class GameMap extends Pane {
+public class GameMap extends Pane implements WriteInFile {
     public static final double TILE_LENGTH = 10.0d;
     private final Timeline timeline;
     private final DoubleProperty scale;
     private final ArrayList<Tile> centers;
     private final int length;
     private final Game game;
-    private Tile selectedTile;
+    private final ArrayList<Tree> trees;
+    private final ArrayList<Tile> selectedTiles;
 
     public GameMap(int length, Game game) {
         this.timeline = new Timeline();
@@ -30,6 +41,8 @@ public class GameMap extends Pane {
         this.centers = new ArrayList<>();
         this.length = length;
         this.game = game;
+        this.trees = new ArrayList<>();
+        this.selectedTiles = new ArrayList<>();
         setInitScales();
         addEventFilters();
         initTiles();
@@ -43,25 +56,47 @@ public class GameMap extends Pane {
         return game;
     }
 
-    public Tile getSelectedTile() {
-        return selectedTile;
+    public ArrayList<Tree> getTrees() {
+        return trees;
     }
 
-    public void setSelectedTile(double x, double y) {
-        if (selectedTile != null)
+    public ArrayList<Tile> getSelectedTiles() {
+        return selectedTiles;
+    }
+
+    public void setSelectedTiles(double startX, double startY, double endX, double endY) {
+        for (Tile selectedTile : selectedTiles)
             selectedTile.deselectTile();
-        selectedTile = findClosestTile(x / getScale(), y / getScale());
-        selectedTile.selectTile();
+        selectedTiles.clear();
+        int startYIndex = getTileYIndex(startY);
+        int startXIndex = getTileXIndex(startX, startYIndex);
+        int endYIndex = getTileYIndex(endY);
+        int endXIndex = getTileXIndex(endX, endYIndex);
+        for (int yIndex = startYIndex; yIndex <= endYIndex; yIndex++) {
+            for (int xIndex = startXIndex; xIndex <= endXIndex; xIndex++) {
+                Tile selectedTile = getTileByIndex(xIndex, yIndex);
+                selectedTile.selectTile();
+                selectedTiles.add(selectedTile);
+            }
+        }
     }
 
     public Tile findClosestTile(double x, double y) {
-        int yIndex = (int) Math.round(y * 2 / TILE_LENGTH);
-        int xIndex = (int) Math.round((x - (yIndex % 2) * TILE_LENGTH / 2) / TILE_LENGTH);
+        int yIndex = getTileYIndex(y);
+        int xIndex = getTileXIndex(x, yIndex);
         return getTileByIndex(xIndex, yIndex);
     }
 
     public Tile getTileByIndex(int xIndex, int yIndex) {
         return centers.get(yIndex * length + xIndex);
+    }
+
+    public int getTileYIndex(double y) {
+        return (int) Math.round(y * 2 / TILE_LENGTH);
+    }
+
+    public int getTileXIndex(double x, int yIndex) {
+        return (int) Math.round((x - (yIndex % 2) * TILE_LENGTH / 2) / TILE_LENGTH);
     }
 
 
@@ -85,27 +120,85 @@ public class GameMap extends Pane {
     }
 
     private void initTiles() {
-        for (int yIndex = 0; yIndex < length; yIndex++)
-            for (int xIndex = 0; xIndex < length; xIndex++) {
-                double x = (yIndex % 2) * TILE_LENGTH / 2 + TILE_LENGTH * xIndex;
-                double y = TILE_LENGTH * yIndex / 2;
-                Tile tile = new Tile(x, y, TextureImages.SEA, this);
-                centers.add(tile);
+        URL url = getClass().getResource("/maps/defaultMap.bin");
+        try {
+            FileInputStream fileInputStream = new FileInputStream(new File(url.toURI()));
+            DataInputStream dataInputStream = new DataInputStream(fileInputStream);
+            for (int yIndex = 0; yIndex < length; yIndex++) {
+                for (int xIndex = 0; xIndex < length; xIndex++) {
+                    double x = (yIndex % 2) * TILE_LENGTH / 2 + TILE_LENGTH * xIndex;
+                    double y = TILE_LENGTH * yIndex / 2;
+                    Tile tile = new Tile(x, y, dataInputStream.readByte(), this);
+                    centers.add(tile);
+                    Tree.addTree(this, dataInputStream.readByte(), x, y);
+                }
             }
-        new Tree(this, TreeType.PINE, 100, 100);
-        getTileByIndex(10, 20).selectTile();
+            dataInputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void addEventFilters() {
         MapGestures mapGestures = new MapGestures(this);
         addEventFilter(MouseEvent.MOUSE_PRESSED, mapGestures.getOnMousePressedEventHandler());
         addEventFilter(MouseEvent.MOUSE_DRAGGED, mapGestures.getOnMouseDraggedEventHandler());
+        addEventFilter(MouseEvent.MOUSE_DRAGGED, mapGestures.getOnMouseMovedEventHandler());
         addEventFilter(ScrollEvent.ANY, mapGestures.getOnScrollEventHandler());
+    }
+
+    public void addShortcuts() {
+        this.getParent().setOnKeyPressed(key -> {
+            switch (key.getCode()) {
+                case G -> setTexture(TextureImages.GROUND);
+                case F -> setTexture(TextureImages.FARM);
+                case I -> setTexture(TextureImages.IRON);
+                case S -> setTexture(TextureImages.SLAB);
+                case W -> setTexture(TextureImages.WATER);
+                case T -> addTree();
+                default -> {}
+            }
+        });
+    }
+
+    private void setTexture(TextureImages textureImages) {
+        for (Tile selectedTile : selectedTiles) {
+            if (selectedTile.getTexture().getTextureImages().compareTo(textureImages) == 0) continue;
+            selectedTile.setTexture(new Texture(textureImages));
+            if (selectedTile.getTree() != null)
+                selectedTile.getTree().removeFromMap();
+        }
+    }
+
+    private void addTree() {
+        for (Tile selectedTile : selectedTiles) {
+            if (selectedTile.getTree() != null) continue;
+            Tree.addTree(this, selectedTile);
+        }
     }
 
     // TODO: need to remove
     public Cell getCellByLocation(int xCoordinate, int yCoordinate) {
         return null;
+    }
+
+    @Override
+    public void writeInFile() {
+        URL url = getClass().getResource("/maps/defaultMap.bin");
+        try {
+            DataOutputStream outputStream = new DataOutputStream(new FileOutputStream(new File(url.toURI())));
+            for (int yIndex = 0; yIndex < length; yIndex++)
+                for (int xIndex = 0; xIndex < length; xIndex++)
+                    outputStream.write(getTileByIndex(xIndex, yIndex).getSymbol());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
 }

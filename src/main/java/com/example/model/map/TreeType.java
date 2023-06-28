@@ -6,18 +6,20 @@ import java.util.Random;
 import javafx.scene.image.Image;
 
 public enum TreeType {
-    BIRCH ("birch", 9.5, 24),
-    CHESTNUT ("chestnut", 12.5, 22),
-    OAK ("oak", 9.5, 26.5),
-    PINE ("pine", 10, 29);
+    BIRCH ("Birch", 1, 9.5, 24),
+    CHESTNUT ("Chestnut", 2, 12.5, 22),
+    OAK ("Oak", 3, 9.5, 26.5),
+    PINE ("Pine",4, 10, 29);
 
     private final String name;
+    private final byte symbol;
     private final double xReset;
     private final double yReset;
     private final Image[] images;
 
-    private TreeType(String name, double xReset, double yReset) {
+    private TreeType(String name, int symbol, double xReset, double yReset) {
         this.name = name;
+        this.symbol = (byte) symbol;
         this.xReset = xReset;
         this.yReset = yReset;
         this.images = new Image[4];
@@ -29,8 +31,17 @@ public enum TreeType {
         return TreeType.values()[random.nextInt(TreeType.values().length)];
     }
 
+    public static TreeType getTreeTypeBySymbol(int symbol) {
+        if (symbol == 0) return null;
+        return TreeType.values()[symbol - 1];
+    }
+
     public String getName() {
         return name;
+    }
+
+    public byte getSymbol() {
+        return symbol;
     }
 
     public Image[] getImages() {
