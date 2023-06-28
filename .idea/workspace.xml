@@ -4,26 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="start game">
+    <list default="true" id="f288306d-0141-4ba9-ad2b-a92a921ee550" name="Changes" comment="start game">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/CastleBuilding.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/FarmBuilding.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/FoodProcessing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/IndustryBuilding.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/TowerBuilding.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/TownBuilding.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/WeaponBuilding.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/caged war dogs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/dairy products.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/food storage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/hovel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/ox tether.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/pitch rig.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/stair.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/stockpile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/wall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/wood cutter.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_25_2023_11_22_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_25_2023_11_22_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_5_2023_4_32_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_5_2023_4_32_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMapFake.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/MapGestures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/MapGestures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BarCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BarCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BuildingType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/cursor 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/Users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Cell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Soldier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Soldier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/AppleFarm.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/apple farm.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/OilSmelter.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/oil smelter.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/BuildingType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/BuildingType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/gameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/gameMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/json/Users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,18 +78,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/fraxea/Desktop/frAxeA/term2/AP/project/project-group18&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/user/IdeaProjects/project-group-18/src/main/resources/images/buildings",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\IdeaProjects\project-group-18\src\main\resources\images\buildings" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
