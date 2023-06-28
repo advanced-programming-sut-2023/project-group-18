@@ -122,15 +122,18 @@ public class GameMap extends Pane implements WriteInFile {
     private void initTiles() {
         URL url = getClass().getResource("/maps/defaultMap.bin");
         try {
-            FileInputStream fileInputStream = new FileInputStream(new File(url.toURI()));
+            File file = new File(url.toURI());
+            FileInputStream fileInputStream = new FileInputStream(file);
             DataInputStream dataInputStream = new DataInputStream(fileInputStream);
             for (int yIndex = 0; yIndex < length; yIndex++) {
                 for (int xIndex = 0; xIndex < length; xIndex++) {
                     double x = (yIndex % 2) * TILE_LENGTH / 2 + TILE_LENGTH * xIndex;
                     double y = TILE_LENGTH * yIndex / 2;
-                    Tile tile = new Tile(x, y, dataInputStream.readByte(), this);
+                    byte byt = file.length() == 0 ? 0 : dataInputStream.readByte();
+                    Tile tile = new Tile(x, y, byt, this);
                     centers.add(tile);
-                    Tree.addTree(this, dataInputStream.readByte(), x, y);
+                    byt = file.length() == 0 ? 0 : dataInputStream.readByte();
+                    Tree.addTree(this, byt, x, y);
                 }
             }
             dataInputStream.close();
