@@ -19,7 +19,7 @@ public class Game implements KeepLocations {
     private Unit selectedUnit;
     private int round;
     private int turn;
-    private int mapCoefficient;
+    private double mapCoefficient;
 
     private Game() {
         governances = new ArrayList<>();
@@ -35,36 +35,34 @@ public class Game implements KeepLocations {
         for (User user : users)
             governances.add(new Governance(user));
         setCurrentGovernance(governances.get(0));
-        // dropKeeps();
-        // for (Governance governance : governances) {
-        //     governance.addAssetToStorage(Asset.WOOD, 20);
-        //     governance.addAssetToStorage(Asset.STONE, 20);
-        //     governance.addAssetToStorage(Asset.IRON, 20);
-        //     governance.addAssetToStorage(Asset.WHEAT, 20);
-        // }
+        dropKeeps();
+        for (Governance governance : governances) {
+            governance.addAssetToStorage(Asset.WOOD, 20);
+            governance.addAssetToStorage(Asset.STONE, 20);
+            governance.addAssetToStorage(Asset.IRON, 20);
+            governance.addAssetToStorage(Asset.WHEAT, 20);
+        }
     }
 
-    // TODO: need to change
     private void dropKeeps() {
         Random random = new Random();
         int index = -1;
+        gameMap.setSelectedBuilding(BuildingType.STOCKPILE);
         for (Governance governance : governances) {
             index++;
-            int xCoordinate = COORDINATES[index][0] * mapCoefficient + random.nextInt(-2, 3);
-            int yCoordinate = COORDINATES[index][1] * mapCoefficient + random.nextInt(-2, 3);
-            Cell cell = gameMap.getCellByLocation(xCoordinate, yCoordinate);
-            // initTexture(COORDINATES[index], random);
-            governance.addBuilding(BuildingType.KEEP, cell);
+            double x = COORDINATES[index][0] * mapCoefficient * GameMap.TILE_LENGTH + random.nextInt(-2, 3);
+            double y = COORDINATES[index][1] * mapCoefficient * GameMap.TILE_LENGTH / 2 + random.nextInt(-2, 3);
+            System.out.println(mapCoefficient);
+            gameMap.setKeep(x, y, governance);
             governance.setLord();
-            Cell stockpileCell = gameMap.getCellByLocation(xCoordinate + 4, yCoordinate + 4);
-            governance.addBuilding(BuildingType.STOCKPILE, stockpileCell);
+            gameMap.dropBuilding(x + GameMap.TILE_LENGTH * 5, y + GameMap.TILE_LENGTH * 5);
         }
+        gameMap.setSelectedBuilding(null);
     }
 
     public void setGameMap(int length) {
         gameMap = new GameMap(length, this);
-        if (length == 100) mapCoefficient = 1;
-        else mapCoefficient = 2;
+        mapCoefficient = length / 200.0d;
     }
 
     public GameMap getGameMap() {

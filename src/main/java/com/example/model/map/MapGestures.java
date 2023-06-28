@@ -67,7 +67,7 @@ public class MapGestures {
             mouseAnchorY = event.getSceneY();
             translateAnchorX = gameMap.getTranslateX();
             translateAnchorY = gameMap.getTranslateY();
-            if (gameMap.getSelectedBuilding() != null) {
+            if (gameMap.getSelectedBuilding() != null && !event.isSecondaryButtonDown()) {
                 System.out.println(gameMap.getSelectedBuilding().getName());
                 double x = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
                 double y = ((mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
@@ -80,7 +80,7 @@ public class MapGestures {
     private EventHandler<MouseEvent> onMouseDraggedEventHandler = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
-            if (event.getButton().compareTo(MouseButton.PRIMARY) == 0)
+            if (!event.isSecondaryButtonDown())
                 return;
             final double xTranslate = translateAnchorX + event.getSceneX() - mouseAnchorX;
             final double yTranslate = translateAnchorY + event.getSceneY() - mouseAnchorY;

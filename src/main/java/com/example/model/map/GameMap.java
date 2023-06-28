@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import com.example.model.Game;
+import com.example.model.Governance;
 import com.example.model.WriteInFile;
 import com.example.model.buildings.Building;
 import com.example.model.buildings.BuildingType;
@@ -196,6 +197,16 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     }
 
 
+    public void setKeep(double x, double y, Governance governance) {
+        Building.dropBuilding(BuildingType.KEEP, governance, findClosestTile(x, y));
+        int yIndex = getTileYIndex(y);
+        int xIndex = getTileXIndex(x, yIndex);
+        for (Tile tile : getSuccessors(this, xIndex, yIndex)) {
+            tile.selectTile();
+        }
+    }
+
+
     @Override
     public Tile getTileByIndex(int xIndex, int yIndex) {
         return centers.get(yIndex * length + xIndex);
@@ -204,7 +215,6 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     @Override
     public void dropBuilding(double x, double y) {
         // if 1- have enough asset 2- can drop there
-        // findClosestTile(x, y).setBuilding(building);
         Building.dropBuilding(selectedBuilding, game.getCurrentGovernance(), findClosestTile(x, y));
         int yIndex = getTileYIndex(y);
         int xIndex = getTileXIndex(x, yIndex);
