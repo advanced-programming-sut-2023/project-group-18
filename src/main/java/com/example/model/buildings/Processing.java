@@ -2,15 +2,15 @@ package com.example.model.buildings;
 
 import com.example.model.Governance;
 import com.example.model.assets.Asset;
-import com.example.model.map.Cell;
+import com.example.model.map.Tile;
 
 public class Processing extends Building{
     private final Asset material;
     private final Asset product;
     private final int rate;
 
-    public Processing(BuildingType buildingType, Governance governance, Cell cell) {
-        super(buildingType, governance, cell);
+    public Processing(BuildingType buildingType, Governance governance, Tile tile) {
+        super(buildingType, governance, tile);
         this.material = buildingType.getResourceType();
         this.product = buildingType.getProductionAsset();
         this.rate = buildingType.getProductionRate();

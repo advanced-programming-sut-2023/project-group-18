@@ -1,13 +1,13 @@
 package com.example.model.buildings;
 
 import com.example.model.Governance;
-import com.example.model.map.Cell;
+import com.example.model.map.Tile;
 
-public class DairyProducts extends Farm{
+public class DairyProducts extends Farm {
     private int cowNumber;
 
-    public DairyProducts(BuildingType buildingType, Governance governance, Cell cell) {
-        super(buildingType, governance, cell);
+    public DairyProducts(BuildingType buildingType, Governance governance, Tile tile) {
+        super(buildingType, governance, tile);
         this.cowNumber = 4;
     }
 

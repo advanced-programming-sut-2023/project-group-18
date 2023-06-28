@@ -1,12 +1,12 @@
 package com.example.model.buildings;
 
 import com.example.model.Governance;
-import com.example.model.map.Cell;
+import com.example.model.map.Tile;
 import com.example.model.people.SoldierType;
 
 public class Barracks extends Building{
-    public Barracks(BuildingType buildingType, Governance governance, Cell cell) {
-        super(buildingType, governance, cell);
+    public Barracks(BuildingType buildingType, Governance governance, Tile tile) {
+        super(buildingType, governance, tile);
     }
 
     public boolean canMakeSoldier(SoldierType soldier){
@@ -18,7 +18,7 @@ public class Barracks extends Building{
     }
 
     public void makeSoldier(SoldierType soldier){
-        governance.addSoldier(this.cell,soldier);
+        // governance.addSoldier(this.cell,soldier);
         governance.removeAssetFromStorage(soldier.getWeapon(),1);
         governance.removeAssetFromStorage(soldier.getArmor(),1);
         governance.addGold(-soldier.getCost());

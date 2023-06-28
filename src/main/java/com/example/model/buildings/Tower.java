@@ -2,7 +2,7 @@ package com.example.model.buildings;
 
 import com.example.model.Governance;
 import com.example.model.assets.Asset;
-import com.example.model.map.Cell;
+import com.example.model.map.Tile;
 import com.example.model.people.Soldier;
 
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ public class Tower extends Building{
     private final ArrayList<Soldier> soldiers;
     private final boolean strong;
 
-    public Tower(BuildingType buildingType, Governance governance, Cell cell) {
-        super(buildingType, governance, cell);
+    public Tower(BuildingType buildingType, Governance governance, Tile tile) {
+        super(buildingType, governance, tile);
         this.fireRange = buildingType.getFireRange();
         this.defendRange = buildingType.getDefendRange();
         hasLadder = false;

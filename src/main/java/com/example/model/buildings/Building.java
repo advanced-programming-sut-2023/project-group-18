@@ -2,16 +2,17 @@ package com.example.model.buildings;
 
 import java.util.ArrayList;
 
-import com.example.model.ConsoleColors;
+import com.example.model.Game;
 import com.example.model.Governance;
 import com.example.model.assets.Asset;
-import com.example.model.map.Cell;
+import com.example.model.map.Successor;
+import com.example.model.map.Tile;
 import com.example.model.people.Unit;
 import com.example.model.people.UnitType;
 import com.example.model.people.Worker;
 import com.example.view.images.TextureImages;
 
-public class Building implements ConsoleColors {
+public class Building implements Successor {
     private final BuildingType buildingType;
     protected final ArrayList<Worker> workers;
     protected final Governance governance;
@@ -19,11 +20,11 @@ public class Building implements ConsoleColors {
     protected final int goldCost;
     protected final Asset resourceType;
     protected final int resourceCost;
-    protected final Cell cell;
+    protected final ArrayList<Tile> tiles;
     protected int hitpoint;
     protected final int width;
 
-    public Building(BuildingType buildingType, Governance governance, Cell cell) {
+    protected Building(BuildingType buildingType, Governance governance, Tile tile) {
         this.buildingType = buildingType;
         this.workers = new ArrayList<>();
         this.governance = governance;
@@ -32,17 +33,36 @@ public class Building implements ConsoleColors {
         this.goldCost = buildingType.getGoldCost();
         this.resourceType = buildingType.getResourceType();
         this.resourceCost = buildingType.getResourceCost();
-        this.cell = cell;
         this.width = buildingType.getWidth();
-        setCellBuilding();
+        this.tiles = new ArrayList<>();
+        addBuildingToTiles(tile);
+        // TODO: need to create town category
         if (buildingType.equals(BuildingType.CATHEDRAL) || buildingType.equals(BuildingType.CHURCH))
             governance.getPopularityFactors().addReligiousFactor(buildingType.getPopularityEffect());
+    }
+
+    public static void dropBuilding(BuildingType buildingType, Governance governance, Tile tile) {
+        switch (buildingType.getCategory()) {
+            case BARRACKS -> new Barracks(buildingType, governance, tile);
+            case DAIRY_PRODUCTS -> new Building(buildingType, governance, tile);
+            case FARM -> new Farm(buildingType, governance, tile);
+            case GATE -> new Gate(buildingType, governance, tile);
+            case GUNSMITH -> new Gunsmith(buildingType, governance, tile);
+            case INDUSTRIAL_BUILDING -> new IndustrialBuilding(buildingType, governance, tile);
+            case PROCESSING -> new Processing(buildingType, governance, tile);
+            case STABLE -> new Stable(buildingType, governance, tile);
+            case STAIR -> new Stair(buildingType, governance, tile);
+            case STORAGE -> new Storage(buildingType, governance, tile);
+            case TOWER -> new Tower(buildingType, governance, tile);
+            case TRAP -> new Trap(buildingType, governance, tile);
+            case WALL -> new Wall(buildingType, governance, tile);
+            default -> new Building(buildingType, governance, tile);
+        }
     }
 
     public BuildingType getBuildingType() {
         return buildingType;
     }
-
 
     public Governance getGovernance() {
         return governance;
@@ -56,8 +76,8 @@ public class Building implements ConsoleColors {
         return groundType;
     }
 
-    public Cell getCell() {
-        return cell;
+    public ArrayList<Tile> getTiles() {
+        return tiles;
     }
 
     public int getGoldCost() {
@@ -85,7 +105,7 @@ public class Building implements ConsoleColors {
     }
 
     public void addWorker(){
-        workers.add(new Worker(governance,UnitType.getUnitTypeByBuildingType(buildingType),cell));
+        // workers.add(new Worker(governance,UnitType.getUnitTypeByBuildingType(buildingType),tile));
     }
 
     public void updateWorkers(){
@@ -101,46 +121,39 @@ public class Building implements ConsoleColors {
 
     public void doDamage(int damage){
         if (this.hitpoint <= damage)
-            killBuilding();
+            removeBuildingFromTiles();
         else this.hitpoint -= damage;
     }
 
-    private void setCellBuilding() {
-        for (int i = -width + 1; i < width; i++)
-            for (int j = -width + 1; j < width; j++) {
-                int xCoordinate = cell.getxCoordinate() + i;
-                int yCoordinate = cell.getyCoordinate() + j;
-                Cell underCell = cell.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
-                underCell.setBuilding(this);
-            }
+    private void addBuildingToTiles(Tile centerTile) {
+        tiles.add(centerTile);
+        if (width > 1) tiles.addAll(getSuccessors(Game.getInstance().getGameMap(), centerTile));
+        for (Tile tile : tiles)
+            tile.setBuilding(this);
+        governance.getBuildings().add(this);
     }
 
-    private void killBuilding() {
-        for (int i = -width + 1; i < width; i++)
-            for (int j = -width + 1; j < width; j++) {
-                int xCoordinate = cell.getxCoordinate() + i;
-                int yCoordinate = cell.getyCoordinate() + j;
-                Cell underCell = cell.getGameMap().getCellByLocation(xCoordinate, yCoordinate);
-                underCell.setBuilding(null);
-            }
-        governance.removeBuilding(this);
+    private void removeBuildingFromTiles() {
+        for (Tile tile : tiles)
+            tile.setBuilding(null);
+        governance.getBuildings().remove(this);
     }
 
     public boolean isReachable() {
         return true;
     }
 
-    @Override
-    public String toString() {
-        String hitpoint;
-        if (this.hitpoint < buildingType.getHitpoint() / 3) hitpoint = RED_BOLD;
-        else if (this.hitpoint < buildingType.getHitpoint() * 2 / 3) hitpoint = YELLOW_BOLD;
-        else hitpoint = GREEN_BOLD;
-        hitpoint += this.hitpoint + RESET;
-        hitpoint += "/" + buildingType.getHitpoint();
-        final String owner = YELLOW_BOLD + governance.getOwner().getNickname() + RESET;
-        return buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
-    }
+    // @Override
+    // public String toString() {
+    //     String hitpoint;
+    //     if (this.hitpoint < buildingType.getHitpoint() / 3) hitpoint = RED_BOLD;
+    //     else if (this.hitpoint < buildingType.getHitpoint() * 2 / 3) hitpoint = YELLOW_BOLD;
+    //     else hitpoint = GREEN_BOLD;
+    //     hitpoint += this.hitpoint + RESET;
+    //     hitpoint += "/" + buildingType.getHitpoint();
+    //     final String owner = YELLOW_BOLD + governance.getOwner().getNickname() + RESET;
+    //     return buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
+    // }
 
     public void run(){
         //getMaterial

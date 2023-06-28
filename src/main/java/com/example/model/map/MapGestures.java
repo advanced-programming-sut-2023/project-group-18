@@ -1,9 +1,6 @@
 package com.example.model.map;
 
-import com.example.model.buildings.IndustrialBuilding;
-import com.google.gson.JsonElement;
 import javafx.event.EventHandler;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
@@ -65,13 +62,11 @@ public class MapGestures {
             mouseAnchorY = event.getSceneY();
             translateAnchorX = gameMap.getTranslateX();
             translateAnchorY = gameMap.getTranslateY();
-            if (gameMap.getSelectedBuilding() != null){
+            if (gameMap.getSelectedBuilding() != null) {
                 System.out.println(gameMap.getSelectedBuilding().getName());
-                switch (gameMap.getSelectedBuilding().getCategory()){
-                    case INDUSTRIAL_BUILDING -> {
-                        IndustrialBuilding industrialBuilding = new IndustrialBuilding()
-                    }
-                }
+                double x = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
+                double y = (mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
+                gameMap.dropBuilding(x, y);
                 gameMap.setSelectedBuilding(null);
             }
         }

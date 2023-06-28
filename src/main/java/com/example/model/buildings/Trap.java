@@ -1,7 +1,7 @@
 package com.example.model.buildings;
 
 import com.example.model.Governance;
-import com.example.model.map.Cell;
+import com.example.model.map.Tile;
 import com.example.model.people.Unit;
 
 import java.util.ArrayList;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Trap extends Building{
     private final int damage;
 
-    public Trap(BuildingType buildingType, Governance governance, Cell cell) {
-        super(buildingType, governance, cell);
+    public Trap(BuildingType buildingType, Governance governance, Tile tile) {
+        super(buildingType, governance, tile);
         this.damage = 1000;
     }
 
@@ -21,7 +21,7 @@ public class Trap extends Building{
 
     public void run(){
         ArrayList<Unit> enemyUnits = new ArrayList<>();
-        for (Unit unit : cell.getUnits()){
+        for (Unit unit : tiles.get(0).getUnits()){
             if (!unit.getGovernance().equals(governance))
                 enemyUnits.add(unit);
         }

@@ -215,7 +215,7 @@ public class Unit implements Successor, ConsoleColors {
         ArrayList<Tree> trees = unitCell.getGameMap().getGame().getTrees();
         while (!trees.isEmpty()) {
             Tree tree = findNearestTree(trees);
-            targetCell = tree.getCell();
+            targetCell = tree.getTile();
             trees.remove(tree);
             findPath();
             if (path.isEmpty()) continue;
@@ -226,9 +226,9 @@ public class Unit implements Successor, ConsoleColors {
 
     public Tree findNearestTree(ArrayList<Tree> trees) {
         Tree bestTree = trees.get(0);
-        double bestDistance = unitCell.calculatePythagorean(bestTree.getCell());
+        double bestDistance = unitCell.calculatePythagorean(bestTree.getTile());
         for (Tree tree : trees) {
-            double distance = unitCell.calculatePythagorean(tree.getCell());
+            double distance = unitCell.calculatePythagorean(tree.getTile());
             if (distance < bestDistance) {
                 bestDistance = distance;
                 bestTree = tree;

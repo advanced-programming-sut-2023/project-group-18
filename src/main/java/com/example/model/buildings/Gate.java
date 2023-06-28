@@ -1,18 +1,18 @@
 package com.example.model.buildings;
 
 import com.example.model.Governance;
-import com.example.model.map.Cell;
+import com.example.model.map.Tile;
 
 public class Gate extends Tower{
     private boolean isOpen;
     private boolean hasBridge;
-    private final Direction direction;
+    private Direction direction;
 
-    public Gate(BuildingType buildingType, Governance governance, Cell cell, Direction direction) {
-        super(buildingType, governance, cell);
+    public Gate(BuildingType buildingType, Governance governance, Tile tile) {
+        super(buildingType, governance, tile);
         this.isOpen = true;
         this.hasBridge = false;
-        this.direction = direction;
+        this.direction = Direction.LEFT;
     }
 
     public boolean isOpen() {

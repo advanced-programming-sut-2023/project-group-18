@@ -6,7 +6,6 @@ import java.util.HashMap;
 import com.example.model.assets.Asset;
 import com.example.model.assets.AssetType;
 import com.example.model.buildings.*;
-import com.example.model.map.Cell;
 import com.example.model.people.*;
 
 public class Governance {
@@ -260,38 +259,11 @@ public class Governance {
         addSpecificAsset(asset, -count);
     }
 
-    public boolean addBuilding(BuildingType buildingType, Cell cell) {
-        switch (buildingType.getCategory()){
-            case WALL -> buildings.add(new Wall(buildingType, this, cell));
-            case STAIR -> buildings.add(new Stair(buildingType, this, cell, Direction.DOWN));
-            case FARM -> buildings.add(new Farm(buildingType, this, cell));
-            case TRAP -> buildings.add(new Trap(buildingType, this, cell));
-            case GATE -> buildings.add(new Gate(buildingType, this, cell, Direction.DOWN));
-            case TOWER -> buildings.add(new Tower(buildingType, this, cell));
-            case STABLE -> buildings.add(new Stable(buildingType, this, cell));
-            case STORAGE -> buildings.add(new Storage(buildingType, this, cell));
-            case BARRACKS -> buildings.add(new Barracks(buildingType, this, cell));
-            case GUNSMITH -> buildings.add(new Gunsmith(buildingType, this, cell));
-            case PROCESSING -> buildings.add(new Processing(buildingType, this, cell));
-            case DAIRY_PRODUCTS -> buildings.add(new DairyProducts(buildingType, this, cell));
-            case INDUSTRIAL_BUILDING -> buildings.add(new IndustrialBuilding(buildingType, this, cell));
-            case BUILDING -> buildings.add(new Building(buildingType, this, cell));
-            default -> {
-                return false;
-            }
-        }
-        return true;
-    }
 
 
-
-    public void removeBuilding(Building building) {
-        buildings.remove(building);
-    }
-
-    public void addSoldier(Cell cell, SoldierType soldierType) {
-        soldiers.add(new Soldier(cell, this, soldierType));
-    }
+    // public void addSoldier(Cell cell, SoldierType soldierType) {
+    //     soldiers.add(new Soldier(cell, this, soldierType));
+    // }
 
     public int getKindsOfFoods() {
         int result = 0;
@@ -356,7 +328,7 @@ public class Governance {
     }
 
     protected void setLord() {
-        this.lord = new Unit(this, UnitType.LORD, buildings.get(0).getCell());
+        this.lord = new Unit(this, UnitType.LORD, buildings.get(0).getTile());
     }
 
     public void getTaxFromPeople(){

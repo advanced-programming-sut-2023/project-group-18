@@ -1,7 +1,7 @@
 package com.example.model.buildings;
 
 import com.example.model.Governance;
-import com.example.model.map.Cell;
+import com.example.model.map.Tile;
 import com.example.model.people.Soldier;
 
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ public class Wall extends Tower {
     private final ArrayList<Soldier> soldiers;
     private final ArrayList<Stair> stairs;
 
-    public Wall(BuildingType buildingType, Governance governance, Cell cell) {
-        super(buildingType, governance, cell);
+    public Wall(BuildingType buildingType, Governance governance, Tile tile) {
+        super(buildingType, governance, tile);
         this.height = buildingType.getHeight();
         this.hasShield = false;
         this.soldiersCapacity = 5;

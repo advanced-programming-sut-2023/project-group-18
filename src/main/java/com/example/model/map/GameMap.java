@@ -11,21 +11,24 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import com.example.model.BuildingImage;
 import com.example.model.Game;
 import com.example.model.WriteInFile;
+import com.example.model.buildings.Building;
 import com.example.model.buildings.BuildingType;
+import com.example.model.people.Unit;
+import com.example.model.people.UnitType;
 import com.example.view.images.TextureImages;
 
 import javafx.animation.Animation;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 
-public class GameMap extends Pane implements WriteInFile {
+public class GameMap extends Pane implements WriteInFile, MapInterface, Successor {
     public static final double TILE_LENGTH = 10.0d;
     private final Timeline timeline;
     private final DoubleProperty scale;
@@ -68,6 +71,14 @@ public class GameMap extends Pane implements WriteInFile {
         return selectedTiles;
     }
 
+    public BuildingType getSelectedBuilding() {
+        return selectedBuilding;
+    }
+
+    public void setSelectedBuilding(BuildingType selectedBuilding) {
+        this.selectedBuilding = selectedBuilding;
+    }
+
     public void setSelectedTiles(double startX, double startY, double endX, double endY) {
         for (Tile selectedTile : selectedTiles)
             selectedTile.deselectTile();
@@ -89,10 +100,6 @@ public class GameMap extends Pane implements WriteInFile {
         int yIndex = getTileYIndex(y);
         int xIndex = getTileXIndex(x, yIndex);
         return getTileByIndex(xIndex, yIndex);
-    }
-
-    public Tile getTileByIndex(int xIndex, int yIndex) {
-        return centers.get(yIndex * length + xIndex);
     }
 
     public int getTileYIndex(double y) {
@@ -188,9 +195,32 @@ public class GameMap extends Pane implements WriteInFile {
         }
     }
 
-    // TODO: need to remove
-    public Cell getCellByLocation(int xCoordinate, int yCoordinate) {
-        return null;
+
+    @Override
+    public Tile getTileByIndex(int xIndex, int yIndex) {
+        return centers.get(yIndex * length + xIndex);
+    }
+
+    @Override
+    public void dropBuilding(double x, double y) {
+        // if 1- have enough asset 2- can drop there
+        // findClosestTile(x, y).setBuilding(building);
+        Building.dropBuilding(selectedBuilding, game.getCurrentGovernance(), findClosestTile(x, y));
+        int yIndex = getTileYIndex(y);
+        int xIndex = getTileXIndex(x, yIndex);
+        for (Tile tile : getSuccessors(this, xIndex, yIndex)) {
+            tile.selectTile();
+        }
+    }
+
+    @Override
+    public void dropUnit(UnitType unitType) {
+        
+    }
+
+    @Override
+    public void move(Unit unit, Point2D start, Point2D dest) {
+
     }
 
     @Override
@@ -208,11 +238,4 @@ public class GameMap extends Pane implements WriteInFile {
         }
     }
 
-    public BuildingType getSelectedBuilding() {
-        return selectedBuilding;
-    }
-
-    public void setSelectedBuilding(BuildingType selectedBuilding) {
-        this.selectedBuilding = selectedBuilding;
-    }
 }

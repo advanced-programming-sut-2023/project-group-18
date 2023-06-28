@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.example.model.Governance;
 import com.example.model.assets.Asset;
 import com.example.model.assets.AssetType;
-import com.example.model.map.Cell;
+import com.example.model.map.Tile;
 
 public class Storage extends Building {
     private final AssetType type;
@@ -13,8 +13,8 @@ public class Storage extends Building {
     private final HashMap<Asset, Integer> products;
     private int currentCapacity;
 
-    public Storage(BuildingType buildingType, Governance governance, Cell cell) {
-        super(buildingType, governance, cell);
+    public Storage(BuildingType buildingType, Governance governance, Tile tile) {
+        super(buildingType, governance, tile);
         this.type = dropStorage(buildingType);
         products = Asset.getAllAssets(type);
         this.capacity = buildingType.getCapacity();
@@ -78,7 +78,7 @@ public class Storage extends Building {
         String result = " Storage: ";
         for (Asset asset : products.keySet())
             result += "\n" + asset.getName() + ": " + products.get(asset);
-        result += BLUE_BOLD + "\nTotal: " + currentCapacity + "/" + capacity + RESET;
+        result += "\nTotal: " + currentCapacity + "/" + capacity;
         return super.toString() + result;
     }
 
