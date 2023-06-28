@@ -1,6 +1,7 @@
 package com.example.model;
 
 import com.example.model.buildings.BarCategory;
+import com.example.model.buildings.BuildingType;
 import com.example.view.Main;
 import com.example.view.controllers.GameMenuController;
 import javafx.scene.image.Image;
@@ -15,7 +16,7 @@ public class BuildingImage {
     private ImageView imageView;
     private GameMenuController gameMenuController;
 
-    public BuildingImage(HBox imageHBox, String name, int size, GameMenuController gameMenuController) {
+    public BuildingImage(HBox imageHBox, String name, int size, GameMenuController gameMenuController, boolean type) {
         this.imageHBox = imageHBox;
         this.name = name;
         this.size = size;
@@ -24,12 +25,20 @@ public class BuildingImage {
         imageView = new ImageView(image);
         imageView.setFitHeight(size);
         imageView.setFitWidth(size);
-        if (size == 20){
+        if (type){
             imageHBox.getChildren().add(imageView);
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     gameMenuController.changeMenu(BarCategory.getBarCategoryByName(name));
+                }
+            });
+        }
+        else {
+            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    gameMenuController.setSelectedBuilding(BuildingType.getBuildingTypeByName(name));
                 }
             });
         }

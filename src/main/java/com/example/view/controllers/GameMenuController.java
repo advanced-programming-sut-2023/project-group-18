@@ -30,15 +30,9 @@ public class GameMenuController {
     private HBox imagesHBox;
     @FXML
     private HBox typesHBox;
+    private BuildingType selectedBuilding;
     public static List<List<BuildingImage>> listOfLists = new ArrayList<List<BuildingImage>>(7);
     public static BarCategory currentCategory = BarCategory.CASTLE;
-    private String[] castleBuildings = {"Armoury", "Barracks", "EngineersBuilding", "GateMain",};
-    private String[] towerBuilding = {"circleTower", "drawBridge",};
-    private String[] industryBuilding = {""};
-    private String[] farmBuilding = {"AppleFarm"};
-    private String[] foodProcessingBuilding = {""};
-    private String[] townBuilding = {"Cathedral", "Church", ""};
-    private String[] weaponBuilding = {"Blacksmith", "Armourer", "Fletcher"};
 
     public void initialize() {
         controller.getGame().setGameMap(100);
@@ -48,7 +42,7 @@ public class GameMenuController {
                 for (BuildingType buildingType : BuildingType.values()){
                     if (buildingType.getBarCategory().equals(barCategory)){
                         try {
-                            buildingImages.add(new BuildingImage(imagesHBox, buildingType.getName(), 80, this));
+                            buildingImages.add(new BuildingImage(imagesHBox, buildingType.getName(), 80, this, false));
                         }
                         catch (Exception e){
                             System.out.println(buildingType.getName());
@@ -86,25 +80,10 @@ public class GameMenuController {
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
                 backgroundSize);
-//        Image image1 = new Image(Main.class.getResourceAsStream("/images/buildings/barracks.png"));
-//        Image image2 = new Image(Main.class.getResourceAsStream("/images/buildings/mercenary post.png"));
-//        ImageView imageView1 = new ImageView(image1);
-//        ImageView imageView2 = new ImageView(image2);
-//        imageView1.setFitHeight(80);
-//        imageView1.setFitWidth(80);
-//        imageView2.setFitWidth(80);
-//        imageView2.setFitHeight(80);
-        //imagesHBox.initStyle(StageStyle.TRANSPARENT);
-//        imagesHBox.getChildren().addAll(imageView1, imageView2);
-//        for (BuildingType buildingType : BuildingType.values()){
-//            if (buildingType.getBarCategory().equals(BarCategory.CASTLE)){
-//
-//            }
-//        }
         ArrayList<BuildingImage> typeList = new ArrayList<>();
         for (BarCategory barCategory : BarCategory.values()){
             if (!barCategory.equals(BarCategory.NONE))
-                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this));
+                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true));
         }
         changeMenu(currentCategory);
 //        typeList.add(new BuildingImage(typesHBox, "CastleBuilding", 20));
@@ -144,5 +123,14 @@ public class GameMenuController {
                 }
             }
         }
+    }
+
+    public BuildingType getSelectedBuilding() {
+        return selectedBuilding;
+    }
+
+    public void setSelectedBuilding(BuildingType selectedBuilding) {
+        this.selectedBuilding = selectedBuilding;
+        controller.getGame().getGameMap().setSelectedBuilding(selectedBuilding);
     }
 }
