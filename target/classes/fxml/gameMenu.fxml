@@ -12,13 +12,13 @@
     <bottom>
 
         <VBox fx:id="bottom" alignment="CENTER" prefHeight="200.0" prefWidth="1500.0">
-            <Label prefHeight="88.0" prefWidth="72.0" text="Building View" />
+            <Label prefHeight="88.0" prefWidth="72.0" text="." />
          <HBox fx:id="imagesHBox" minWidth="-Infinity" prefHeight="86.0" prefWidth="1500.0" spacing="10">
             <opaqueInsets>
                <Insets top="79.0" />
             </opaqueInsets>
             <padding>
-               <Insets left="350.0" right="200.0" />
+               <Insets left="350.0" right="200.0"/>
             </padding>
 
          </HBox>
