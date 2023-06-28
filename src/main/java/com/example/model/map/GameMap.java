@@ -11,8 +11,10 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import com.example.model.BuildingImage;
 import com.example.model.Game;
 import com.example.model.WriteInFile;
+import com.example.model.buildings.BuildingType;
 import com.example.view.images.TextureImages;
 
 import javafx.animation.Animation;
@@ -32,6 +34,7 @@ public class GameMap extends Pane implements WriteInFile {
     private final Game game;
     private final ArrayList<Tree> trees;
     private final ArrayList<Tile> selectedTiles;
+    private BuildingType selectedBuilding;
 
     public GameMap(int length, Game game) {
         this.timeline = new Timeline();
@@ -46,6 +49,7 @@ public class GameMap extends Pane implements WriteInFile {
         setInitScales();
         addEventFilters();
         initTiles();
+        selectedBuilding = null;
     }
 
     public Timeline getTimeline() {
@@ -204,4 +208,11 @@ public class GameMap extends Pane implements WriteInFile {
         }
     }
 
+    public BuildingType getSelectedBuilding() {
+        return selectedBuilding;
+    }
+
+    public void setSelectedBuilding(BuildingType selectedBuilding) {
+        this.selectedBuilding = selectedBuilding;
+    }
 }
