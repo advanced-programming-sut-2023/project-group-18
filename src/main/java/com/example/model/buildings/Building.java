@@ -8,12 +8,14 @@ import com.example.model.assets.Asset;
 import com.example.model.map.Successor;
 import com.example.model.map.Tile;
 import com.example.model.people.Unit;
-import com.example.model.people.UnitType;
 import com.example.model.people.Worker;
 import com.example.view.images.TextureImages;
 
+import javafx.scene.image.ImageView;
+
 public class Building implements Successor {
     private final BuildingType buildingType;
+    private final ImageView imageView;
     protected final ArrayList<Worker> workers;
     protected final Governance governance;
     protected final TextureImages groundType;
@@ -35,6 +37,11 @@ public class Building implements Successor {
         this.resourceCost = buildingType.getResourceCost();
         this.width = buildingType.getWidth();
         this.tiles = new ArrayList<>();
+        this.imageView = new ImageView(buildingType.getImage());
+        this.imageView.setFitHeight(buildingType.getImageHeight());
+        this.imageView.setFitWidth(buildingType.getImageWidth());
+        this.imageView.setLayoutX(tile.getPoint2d().getX() - buildingType.getResetX());
+        this.imageView.setLayoutY(tile.getPoint2d().getY() - buildingType.getResetY());
         addBuildingToTiles(tile);
         // TODO: need to create town category
         if (buildingType.equals(BuildingType.CATHEDRAL) || buildingType.equals(BuildingType.CHURCH))
@@ -131,12 +138,14 @@ public class Building implements Successor {
         for (Tile tile : tiles)
             tile.setBuilding(this);
         governance.getBuildings().add(this);
+        centerTile.getGameMap().getChildren().add(imageView);
     }
 
     private void removeBuildingFromTiles() {
         for (Tile tile : tiles)
             tile.setBuilding(null);
         governance.getBuildings().remove(this);
+        tiles.get(0).getGameMap().getChildren().remove(imageView);
     }
 
     public boolean isReachable() {

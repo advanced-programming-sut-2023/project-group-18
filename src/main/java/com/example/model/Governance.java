@@ -328,7 +328,7 @@ public class Governance {
     }
 
     protected void setLord() {
-        this.lord = new Unit(this, UnitType.LORD, buildings.get(0).getTile());
+        // this.lord = new Unit(this, UnitType.LORD, buildings.get(0).getTile());
     }
 
     public void getTaxFromPeople(){

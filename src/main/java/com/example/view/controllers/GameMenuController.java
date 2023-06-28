@@ -3,19 +3,14 @@ package com.example.view.controllers;
 import com.example.controller.GameController;
 
 import com.example.model.BuildingImage;
+import com.example.model.User;
+import com.example.model.UsersData;
 import com.example.model.buildings.BarCategory;
 import com.example.model.buildings.BuildingType;
-import com.example.model.map.GameMap;
 import com.example.view.Main;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.TextBoundsType;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +31,11 @@ public class GameMenuController {
 
     public void initialize() {
         controller.getGame().setGameMap(100);
+        ArrayList<User> arrayList = new ArrayList<>();
+        arrayList.add(UsersData.getUsersData().getUserByUsername("user1"));
+        arrayList.add(UsersData.getUsersData().getUserByUsername("user2"));
+        arrayList.add(UsersData.getUsersData().getUserByUsername("user3"));
+        controller.getGame().makeNewGovernances(arrayList);
         for (BarCategory barCategory : BarCategory.values()){
             if (!barCategory.equals(BarCategory.NONE)){
                 ArrayList<BuildingImage> buildingImages = new ArrayList<>();

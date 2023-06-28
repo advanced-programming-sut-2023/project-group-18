@@ -56,6 +56,10 @@ public class Tile {
         return imageView;
     }
 
+    public GameMap getGameMap() {
+        return gameMap;
+    }
+
     public Point2D getPoint2d() {
         return point2d;
     }

@@ -4,13 +4,16 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.transform.Rotate;
 
 public class MapGestures {
-    private static final double MAX_SCALE = 15.0d;
-    private static final double MIN_SCALE = 1.0d;
+    private static final double MAX_SCALE = 10.0d;
+    private static final double MIN_SCALE = 2.0d;
     private static final double DELTA_SCALE = 1.05d;
     private static final double RESET_X = 420.0d;
     private static final double RESET_Y = 59.0d;
+    private static final double DEGREE = 60.0;
+    private static final double DEGREE_RADIANS = DEGREE * Math.PI / 180;
     private GameMap gameMap;
     private double mouseAnchorX;
     private double mouseAnchorY;
@@ -21,6 +24,8 @@ public class MapGestures {
         this.gameMap = gameMap;
         gameMap.setTranslateX(-RESET_X);
         gameMap.setTranslateY(-RESET_Y);
+        Rotate rotate = new Rotate(DEGREE, Rotate.X_AXIS);
+        gameMap.getTransforms().add(rotate);
     }
 
     private double getResetX() {
@@ -65,7 +70,7 @@ public class MapGestures {
             if (gameMap.getSelectedBuilding() != null) {
                 System.out.println(gameMap.getSelectedBuilding().getName());
                 double x = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
-                double y = (mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
+                double y = ((mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
                 gameMap.dropBuilding(x, y);
                 gameMap.setSelectedBuilding(null);
             }
@@ -93,9 +98,9 @@ public class MapGestures {
                 double mouseAnchorX2 = event.getSceneX();
                 double mouseAnchorY2 = event.getSceneY();
                 double startX = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
-                double startY = (mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
+                double startY = ((mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
                 double endX = (mouseAnchorX2 - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
-                double endY = (mouseAnchorY2 - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
+                double endY = ((mouseAnchorY2 - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
                 gameMap.setSelectedTiles(startX, startY, endX, endY);
             }
     };

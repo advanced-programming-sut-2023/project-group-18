@@ -34,13 +34,14 @@ public class Game implements KeepLocations {
     public void makeNewGovernances(ArrayList<User> users) {
         for (User user : users)
             governances.add(new Governance(user));
-        dropKeeps();
-        for (Governance governance : governances) {
-            governance.addAssetToStorage(Asset.WOOD, 20);
-            governance.addAssetToStorage(Asset.STONE, 20);
-            governance.addAssetToStorage(Asset.IRON, 20);
-            governance.addAssetToStorage(Asset.WHEAT, 20);
-        }
+        setCurrentGovernance(governances.get(0));
+        // dropKeeps();
+        // for (Governance governance : governances) {
+        //     governance.addAssetToStorage(Asset.WOOD, 20);
+        //     governance.addAssetToStorage(Asset.STONE, 20);
+        //     governance.addAssetToStorage(Asset.IRON, 20);
+        //     governance.addAssetToStorage(Asset.WHEAT, 20);
+        // }
     }
 
     // TODO: need to change
@@ -89,7 +90,7 @@ public class Game implements KeepLocations {
     
 
     public void addSoldier(Governance governance, SoldierType soldierType, int xCoordinate, int yCoordinate) {
-        governance.addSoldier(new Cell(xCoordinate, yCoordinate,this.gameMap), soldierType);
+        // governance.addSoldier(new Cell(xCoordinate, yCoordinate,this.gameMap), soldierType);
     }
 
     public void addNonMilitaryCharacters(Governance governance, int nonMilitaryCharacters) {
