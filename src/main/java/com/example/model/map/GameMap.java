@@ -3,16 +3,13 @@ package com.example.model.map;
 import java.util.ArrayList;
 
 import com.example.model.Game;
+import com.example.view.images.TextureImages;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.geometry.Point2D;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 
 public class GameMap extends Pane {
     public static final double TILE_LENGTH = 10.0d;
@@ -40,9 +37,11 @@ public class GameMap extends Pane {
         return selectedTile;
     }
 
-    public void setSelectedType(double x, double y) {
-        this.selectedTile = findClosestTile(x / getScale(), y / getScale());
-        selectedTile.clearRect();
+    public void setSelectedTile(double x, double y) {
+        if (selectedTile != null)
+            selectedTile.deselectTile();
+        selectedTile = findClosestTile(x / getScale(), y / getScale());
+        selectedTile.selectTile();
     }
 
     public Tile findClosestTile(double x, double y) {
@@ -52,31 +51,16 @@ public class GameMap extends Pane {
     }
 
 
-
-
-
-
-    private void initTiles() {
-        final double width = length * TILE_LENGTH;
-        final double height = length * TILE_LENGTH / 2;
-        Canvas canvas = new Canvas(width, height);
-        canvas.setMouseTransparent(true);
-        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
-        graphicsContext.setStroke(Color.GRAY);
-        graphicsContext.setLineWidth(1);
-        graphicsContext.setFill(Color.BLUE);
-        for (int yIndex = 0; yIndex < length; yIndex++) {
-            for (int xIndex = 0; xIndex < length; xIndex++) {
-                double x = (yIndex % 2) * TILE_LENGTH / 2 + TILE_LENGTH * xIndex;
-                double y = TILE_LENGTH * yIndex / 2;
-                Tile tile = new Tile(x, y, Texture.GROUND, yIndex, xIndex, graphicsContext);
-                centers.add(tile);
-                tile.makeDiamond();
-            }
-        }
-        getChildren().add(canvas);
-        canvas.toBack();
+    protected double getScale() {
+        return scale.get();
     }
+
+    protected void setScale(double scale) {
+        this.scale.set(scale);
+    }
+
+
+
 
     private void setInitScales() {
         setMaxWidth(200);
@@ -86,21 +70,21 @@ public class GameMap extends Pane {
         setScale(3.0);
     }
 
-
+    private void initTiles() {
+        for (int yIndex = 0; yIndex < length; yIndex++)
+            for (int xIndex = 0; xIndex < length; xIndex++) {
+                double x = (yIndex % 2) * TILE_LENGTH / 2 + TILE_LENGTH * xIndex;
+                double y = TILE_LENGTH * yIndex / 2;
+                Tile tile = new Tile(x, y, TextureImages.GROUND, this);
+                centers.add(tile);
+            }
+    }
 
     private void addEventFilters() {
         MapGestures mapGestures = new MapGestures(this);
         addEventFilter(MouseEvent.MOUSE_PRESSED, mapGestures.getOnMousePressedEventHandler());
         addEventFilter(MouseEvent.MOUSE_DRAGGED, mapGestures.getOnMouseDraggedEventHandler());
         addEventFilter(ScrollEvent.ANY, mapGestures.getOnScrollEventHandler());
-    }
-
-    protected double getScale() {
-        return scale.get();
-    }
-
-    protected void setScale(double scale) {
-        this.scale.set(scale);
     }
 
     // TODO: need to remove

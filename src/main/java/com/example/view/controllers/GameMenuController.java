@@ -68,7 +68,7 @@ public class GameMenuController {
         }
     }
 
-    
+
     
     public void initMap() {
         borderPane.setCenter(controller.getGame().getGameMap());
