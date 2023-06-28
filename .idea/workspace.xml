@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f288306d-0141-4ba9-ad2b-a92a921ee550" name="Changes" comment="add remainders">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Armourer.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Armourer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Barracks.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Barracks.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Blacksmith.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Blacksmith.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Church.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Church.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Drawbridge.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Drawbridge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Fletcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Fletcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Inn.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Inn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Poleturner.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Poleturner.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Quarry.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Quarry.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/buildings/Stable.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/buildings/Stable.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/maps/defaultMap.bin" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/maps/defaultMap.bin" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
