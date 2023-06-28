@@ -1,0 +1,180 @@
+Index: src/main/java/com/example/model/Buildings/Trap.java
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/Trap.java b/src/main/java/com/example/model/Buildings/Trap.java
+--- a/src/main/java/com/example/model/Buildings/Trap.java	
++++ b/src/main/java/com/example/model/Buildings/Trap.java	
+@@ -1,10 +1,14 @@
+ package com.example.model.Buildings;
+ 
++import com.example.model.Cell;
++import com.example.model.Governance;
++
+ public class Trap extends Building{
+     private final int damage;
+ 
+-    public Trap(String buildingType, Governance governance, Cell cell) {
++    public Trap(BuildingType buildingType, Governance governance, Cell cell) {
+         super(buildingType, governance, cell);
++        this.damage = 15;
+     }
+ 
+     public int getDamage() {
+Index: src/main/java/com/example/model/Buildings/FoodProcessing.java
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/FoodProcessing.java b/src/main/java/com/example/model/Buildings/FoodProcessing.java
+--- a/src/main/java/com/example/model/Buildings/FoodProcessing.java	
++++ b/src/main/java/com/example/model/Buildings/FoodProcessing.java	
+@@ -1,14 +1,19 @@
+ package com.example.model.Buildings;
+ 
++import com.example.model.Assets.Asset;
++import com.example.model.Cell;
++import com.example.model.Governance;
++
+ public class FoodProcessing extends Building{
+-    private final String type;
+-    private final String material;
+-    private final String product;
++    private final Asset material;
++    private final Asset product;
+     private final int rate;
+ 
+-    public FoodProcessing(String buildingType, Governance governance, Cell cell, String type) {
++    public FoodProcessing(BuildingType buildingType, Governance governance, Cell cell, String type) {
+         super(buildingType, governance, cell);
+-        this.type = type;
++        this.material = buildingType.getResourceType();
++        this.product = buildingType.getProductionAsset();
++        this.rate = buildingType.getProductionRate();
+     }
+ 
+     public void process(){
+Index: src/main/java/com/example/model/Buildings/Stable.java
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/Stable.java b/src/main/java/com/example/model/Buildings/Stable.java
+--- a/src/main/java/com/example/model/Buildings/Stable.java	
++++ b/src/main/java/com/example/model/Buildings/Stable.java	
+@@ -1,10 +1,13 @@
+ package com.example.model.Buildings;
+ 
++import com.example.model.Cell;
++import com.example.model.Governance;
++
+ public class Stable extends Building{
+     private final int horsesNumber;
+     private int remainingHorses;
+ 
+-    public Stable(String buildingType, Governance governance, Cell cell, int horsesNumber, int remainingHorses) {
++    public Stable(BuildingType buildingType, Governance governance, Cell cell, int horsesNumber, int remainingHorses) {
+         super(buildingType, governance, cell);
+         this.horsesNumber = horsesNumber;
+         this.remainingHorses = remainingHorses;
+Index: src/main/java/com/example/model/Buildings/Barracks.java
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/Barracks.java b/src/main/java/com/example/model/Buildings/Barracks.java
+--- a/src/main/java/com/example/model/Buildings/Barracks.java	
++++ b/src/main/java/com/example/model/Buildings/Barracks.java	
+@@ -1,7 +1,10 @@
+ package com.example.model.Buildings;
+ 
++import com.example.model.Cell;
++import com.example.model.Governance;
++
+ public class Barracks extends Building{
+-    public Barracks(String buildingType, Governance governance, Cell cell) {
++    public Barracks(BuildingType buildingType, Governance governance, Cell cell) {
+         super(buildingType, governance, cell);
+     }
+ 
+Index: src/main/java/com/example/model/Buildings/Farm.java
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/Farm.java b/src/main/java/com/example/model/Buildings/Farm.java
+--- a/src/main/java/com/example/model/Buildings/Farm.java	
++++ b/src/main/java/com/example/model/Buildings/Farm.java	
+@@ -1,22 +1,30 @@
+ package com.example.model.Buildings;
+-
++import com.example.model.Assets.Asset;
++import com.example.model.Cell;
++import com.example.model.Governance;
+ public class Farm extends Building{
+     private final int rate;
+-    private final String product;
++    private final Asset product;
+     private int workingPeople;
+ 
+-    public Farm(String buildingType, Governance governance, Cell cell) {
++    public Farm(BuildingType buildingType, Governance governance, Cell cell) {
+         super(buildingType, governance, cell);
++        rate = buildingType.getProductionRate();
++        product = buildingType.getProductionAsset();
++        workingPeople = buildingType.getWorkersNumber();
+     }
+ 
+     public int getRate() {
+         return rate;
+     }
+ 
+-    public String getProduct() {
++    public Asset getProduct() {
+         return product;
+     }
+ 
++    public int getWorkingPeople() {
++        return workingPeople;
++    }
+ 
+     public void produce(){
+         //Todo
+Index: src/main/java/com/example/model/Buildings/IndustrialBuilding.java
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/IndustrialBuilding.java b/src/main/java/com/example/model/Buildings/IndustrialBuilding.java
+--- a/src/main/java/com/example/model/Buildings/IndustrialBuilding.java	
++++ b/src/main/java/com/example/model/Buildings/IndustrialBuilding.java	
+@@ -1,17 +1,19 @@
+ package com.example.model.Buildings;
+ 
++import com.example.model.Cell;
++import com.example.model.Governance;
++
+ public class IndustrialBuilding extends Building{
+     private final int rate;
+     private final String type;
+     private final int capacity;
+     private final int remainingCapacity;
+ 
+-    public IndustrialBuilding(String buildingType, Governance governance, Cell cell, int rate, String type, int capacity, int remainingCapacity) {
++    public IndustrialBuilding(BuildingType buildingType, Governance governance, Cell cell) {
+         super(buildingType, governance, cell);
+-        this.rate = rate;
+-        this.type = type;
+-        this.capacity = capacity;
+-        this.remainingCapacity = remainingCapacity;
++        this.rate = buildingType.getProductionRate();
++        this.capacity = buildingType.getCapacity();
++        this.remainingCapacity = this.capacity;
+     }
+ 
+     public int getRate() {
+Index: src/main/java/com/example/model/Buildings/DairyProducts.java
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/DairyProducts.java b/src/main/java/com/example/model/Buildings/DairyProducts.java
+--- a/src/main/java/com/example/model/Buildings/DairyProducts.java	
++++ b/src/main/java/com/example/model/Buildings/DairyProducts.java	
+@@ -1,11 +1,14 @@
+ package com.example.model.Buildings;
+ 
++import com.example.model.Cell;
++import com.example.model.Governance;
++
+ public class DairyProducts extends Farm{
+     private int cowNumber;
+ 
+-    public DairyProducts(String buildingType, Governance governance, Cell cell, int cowNumber) {
++    public DairyProducts(BuildingType buildingType, Governance governance, Cell cell) {
+         super(buildingType, governance, cell);
+-        this.cowNumber = cowNumber;
++        this.cowNumber = 4;
+     }
+ 
+     private void addCow(){
