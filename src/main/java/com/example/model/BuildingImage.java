@@ -21,17 +21,17 @@ public class BuildingImage {
     private String where;
 
     public BuildingImage(HBox imageHBox, String name, int size, GameMenuController gameMenuController, boolean type
-    ,String where) {
+            , String where) {
         this.imageHBox = imageHBox;
         this.name = name;
         this.size = size;
         this.gameMenuController = gameMenuController;
         this.where = where;
-        Image image = new Image(Main.class.getResourceAsStream("/images/"+ where +"/" + name + ".png"));
+        Image image = new Image(Main.class.getResourceAsStream("/images/" + where + "/" + name + ".png"));
         imageView = new ImageView(image);
         imageView.setFitHeight(size);
         imageView.setFitWidth(size);
-        if (type && where.equals("buildings")){
+        if (type && where.equals("buildings")) {
             imageHBox.getChildren().add(imageView);
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -39,16 +39,14 @@ public class BuildingImage {
                     gameMenuController.changeMenu(BarCategory.getBarCategoryByName(name));
                 }
             });
-        }
-        else if (!type && where.equals("buildings")) {
+        } else if (!type && where.equals("buildings")) {
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     gameMenuController.setSelectedBuilding(BuildingType.getBuildingTypeByName(name));
                 }
             });
-        }
-        else if (type && where.equals("assets")){
+        } else if (type && where.equals("assets")) {
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
@@ -56,8 +54,7 @@ public class BuildingImage {
                     gameMenuController.changeShopAssetType(AssetType.getAssetTypeByName(name));
                 }
             });
-        }
-        else {
+        } else {
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
@@ -68,11 +65,11 @@ public class BuildingImage {
         //imageHBox.getChildren().add(imageView);
     }
 
-    public void addToHBox(){
+    public void addToHBox() {
         imageHBox.getChildren().add(imageView);
     }
 
-    public void removeOfHBox(){
+    public void removeOfHBox() {
         imageHBox.getChildren().remove(imageView);
     }
 
@@ -92,7 +89,7 @@ public class BuildingImage {
         return imageView;
     }
 
-    public void setSize(int size){
+    public void setSize(int size) {
         imageView.setFitHeight(size);
         imageView.setFitWidth(size);
     }

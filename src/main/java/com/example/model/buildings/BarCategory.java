@@ -19,8 +19,8 @@ public enum BarCategory {
         return name;
     }
 
-    public static BarCategory getBarCategoryByName(String name){
-        for (BarCategory barCategory : BarCategory.values()){
+    public static BarCategory getBarCategoryByName(String name) {
+        for (BarCategory barCategory : BarCategory.values()) {
             if (barCategory.getName().equals(name))
                 return barCategory;
         }

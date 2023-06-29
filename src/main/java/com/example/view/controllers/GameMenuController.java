@@ -7,7 +7,6 @@ import com.example.model.assets.Asset;
 import com.example.model.assets.AssetType;
 import com.example.model.buildings.BarCategory;
 import com.example.model.buildings.BuildingType;
-import com.example.model.map.GameMap;
 import com.example.view.Main;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -30,7 +30,7 @@ public class GameMenuController {
     private Pane pane;
     @FXML
     private BorderPane borderPane;
-    
+
     @FXML
     private VBox bottom;
     @FXML
@@ -42,22 +42,23 @@ public class GameMenuController {
     public static List<List<BuildingImage>> assetListOfLists = new ArrayList<>(3);
     public static BarCategory currentCategory = BarCategory.CASTLE;
     public Alert alert = new Alert(Alert.AlertType.NONE);
+
     public void initialize() {
+        Game.getInstance().setGameMenuController(this);
         controller.getGame().setGameMap(100);
         ArrayList<User> arrayList = new ArrayList<>();
         arrayList.add(UsersData.getUsersData().getUserByUsername("user1"));
         arrayList.add(UsersData.getUsersData().getUserByUsername("user2"));
         arrayList.add(UsersData.getUsersData().getUserByUsername("user3"));
         controller.getGame().makeNewGovernances(arrayList);
-        for (BarCategory barCategory : BarCategory.values()){
-            if (!barCategory.equals(BarCategory.NONE)){
+        for (BarCategory barCategory : BarCategory.values()) {
+            if (!barCategory.equals(BarCategory.NONE)) {
                 ArrayList<BuildingImage> buildingImages = new ArrayList<>();
-                for (BuildingType buildingType : BuildingType.values()){
-                    if (buildingType.getBarCategory().equals(barCategory)){
+                for (BuildingType buildingType : BuildingType.values()) {
+                    if (buildingType.getBarCategory().equals(barCategory)) {
                         try {
-                            buildingImages.add(new BuildingImage(imagesHBox, buildingType.getName(), 80, this, false,"buildings"));
-                        }
-                        catch (Exception e){
+                            buildingImages.add(new BuildingImage(imagesHBox, buildingType.getName(), 80, this, false, "buildings"));
+                        } catch (Exception e) {
                             System.out.println(buildingType.getName());
                             System.out.println(e.getMessage());
                         }
@@ -66,14 +67,13 @@ public class GameMenuController {
                 buildingListOfLists.add(buildingImages);
             }
         }
-        for (AssetType assetType : AssetType.values()){
+        for (AssetType assetType : AssetType.values()) {
             ArrayList<BuildingImage> assetImages = new ArrayList<>();
-            for (Asset asset : Asset.values()){
-                if (asset.getAssetType().equals(assetType)){
+            for (Asset asset : Asset.values()) {
+                if (asset.getAssetType().equals(assetType)) {
                     try {
-                        assetImages.add(new BuildingImage(imagesHBox, asset.getName(), 50, this, false,"assets"));
-                    }
-                    catch (Exception e){
+                        assetImages.add(new BuildingImage(imagesHBox, asset.getName(), 50, this, false, "assets"));
+                    } catch (Exception e) {
                         System.out.println(asset.getName());
                         System.out.println(e.getMessage());
                     }
@@ -81,16 +81,16 @@ public class GameMenuController {
             }
             assetListOfLists.add(assetImages);
         }
-        for (List<BuildingImage> buildingImages : buildingListOfLists){
-            if (buildingImages.size() > 6){
-                for (BuildingImage buildingImage : buildingImages){
+        for (List<BuildingImage> buildingImages : buildingListOfLists) {
+            if (buildingImages.size() > 6) {
+                for (BuildingImage buildingImage : buildingImages) {
                     buildingImage.setSize(45);
                 }
             }
         }
-        for (List<BuildingImage> buildingImages : assetListOfLists){
-            if (buildingImages.size() > 6){
-                for (BuildingImage buildingImage : buildingImages){
+        for (List<BuildingImage> buildingImages : assetListOfLists) {
+            if (buildingImages.size() > 6) {
+                for (BuildingImage buildingImage : buildingImages) {
                     buildingImage.setSize(40);
                 }
             }
@@ -98,7 +98,6 @@ public class GameMenuController {
     }
 
 
-    
     public void initMap() {
         borderPane.setCenter(controller.getGame().getGameMap());
         controller.getGame().getGameMap().addShortcuts();
@@ -117,19 +116,19 @@ public class GameMenuController {
                 backgroundSize);
         ArrayList<BuildingImage> typeList = new ArrayList<>();
         ArrayList<BuildingImage> shopImages = new ArrayList<>();
-        for (AssetType assetType : AssetType.values()){
+        for (AssetType assetType : AssetType.values()) {
             shopImages.add(new BuildingImage(typesHBox, assetType.getName(), 30, this, true, "assets"));
         }
-        for (BuildingImage assetType : shopImages){
+        for (BuildingImage assetType : shopImages) {
             assetType.addToHBox();
         }
 //        for (BarCategory barCategory : BarCategory.values()){
 //            if (!barCategory.equals(BarCategory.NONE))
 //                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true,"buildings"));
 //        }
-        for (BarCategory barCategory : BarCategory.values()){
+        for (BarCategory barCategory : BarCategory.values()) {
             if (!barCategory.equals(BarCategory.NONE))
-                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true,"buildings"));
+                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true, "buildings"));
         }
         changeMenu(currentCategory);
 
@@ -182,8 +181,7 @@ public class GameMenuController {
 
     public void changeMenu(BarCategory barCategory) {
         for (List<BuildingImage> buildingImages : buildingListOfLists) {
-            if (BuildingType.getBuildingTypeByName(
-                    buildingImages.get(0).getName()).getBarCategory().equals(barCategory)) {
+            if (BuildingType.getBuildingTypeByName(buildingImages.get(0).getName()).getBarCategory().equals(barCategory)) {
                 imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
                 for (BuildingImage buildingImage : buildingImages) {
                     imagesHBox.getChildren().add(buildingImage.getImageView());
@@ -191,19 +189,61 @@ public class GameMenuController {
             }
         }
     }
-    public void changeShopAssetType(AssetType assetType){
+
+    public void showKeepMenu() {
+        PopularityFactors popularityFactors = Game.getInstance().getCurrentGovernance().getPopularityFactors();
+        imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+        VBox vBox1 = new VBox();
+        vBox1.setSpacing(10);
+        VBox vBox2 = new VBox();
+        vBox2.setSpacing(10);
+
+        vBox1.getChildren().add(getPopularityNodes(popularityFactors.getFoodFactor(), "food"));
+        vBox1.getChildren().add(getPopularityNodes(popularityFactors.getTaxFactor(), "tax"));
+        vBox1.getChildren().add(getPopularityNodes(popularityFactors.getFearFactor(), "fear"));
+
+        vBox2.getChildren().add(getPopularityNodes(popularityFactors.getReligiousFactor(), "religion"));
+        vBox2.getChildren().add(getPopularityNodes(popularityFactors.getAleFactor(), "ale coverage"));
+
+        imagesHBox.getChildren().addAll(vBox1, vBox2);
+
+    }
+
+    private HBox getPopularityNodes(int factor, String factorName) {
+        ImageView imageView = new ImageView();
+        Label label = new Label(Integer.toString(factor));
+        label.setFont(new Font(15));
+        imageView.setFitHeight(20);
+        imageView.setFitWidth(20);
+        Label name = new Label(factorName);
+        if (factor < 0) {
+            label.setTextFill(Color.RED);
+            imageView.setImage(new Image(GameMenuController.class.getResource("/popularityFactors/1.jpg").toExternalForm()));
+        } else if (factor == 0) {
+            label.setTextFill(Color.YELLOW);
+            imageView.setImage(new Image(GameMenuController.class.getResource("/popularityFactors/2.jpg").toExternalForm()));
+        } else {
+            label.setTextFill(Color.GREEN);
+            imageView.setImage(new Image(GameMenuController.class.getResource("/popularityFactors/3.jpg").toExternalForm()));
+        }
+        HBox hBox = new HBox(label, imageView, name);
+        hBox.setSpacing(20);
+        return hBox;
+    }
+
+    public void changeShopAssetType(AssetType assetType) {
         System.out.println(assetType.getName());
-        for (List<BuildingImage> assetImages : assetListOfLists){
-            if (Asset.getAssetByName(assetImages.get(0).getName()).getAssetType().equals(assetType)){
+        for (List<BuildingImage> assetImages : assetListOfLists) {
+            if (Asset.getAssetByName(assetImages.get(0).getName()).getAssetType().equals(assetType)) {
                 imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
-                for (BuildingImage assetImage : assetImages){
+                for (BuildingImage assetImage : assetImages) {
                     assetImage.addToHBox();
                 }
             }
         }
     }
 
-    public void clickOnAsset(Asset asset){
+    public void clickOnAsset(Asset asset) {
         Governance governance = controller.getGame().getCurrentGovernance();
         int stock = governance.getAssetCount(asset);
         int buyPrice = asset.getBuyPrice() * 5;
@@ -213,20 +253,18 @@ public class GameMenuController {
         buyButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (governance.getGold() >= buyPrice){
-                    if (governance.canAddAssetToStorage(asset, 5)){
+                if (governance.getGold() >= buyPrice) {
+                    if (governance.canAddAssetToStorage(asset, 5)) {
                         governance.addAssetToStorage(asset, 5);
 //                        stockLabel.setText("Stock: " + governance.getAssetCount(asset));
                         alert.setAlertType(Alert.AlertType.CONFIRMATION);
                         alert.setContentText("You bought successfully!");
                         clickOnAsset(asset);
-                    }
-                    else {
+                    } else {
                         alert.setAlertType(Alert.AlertType.ERROR);
                         alert.setContentText("You haven't enough space");
                     }
-                }
-                else {
+                } else {
                     alert.setAlertType(Alert.AlertType.ERROR);
                     alert.setContentText("You haven't enough gold.");
                 }
@@ -237,13 +275,12 @@ public class GameMenuController {
         sellButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (governance.canRemoveAssetFromStorage(asset, 5)){
+                if (governance.canRemoveAssetFromStorage(asset, 5)) {
                     governance.removeAssetFromStorage(asset, 5);
                     alert.setAlertType(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("sold successfully");
                     alert.show();
-                }
-                else {
+                } else {
                     alert.setAlertType(Alert.AlertType.ERROR);
                     alert.setContentText("You haven't enough asset");
                     alert.show();
@@ -254,6 +291,7 @@ public class GameMenuController {
         typesHBox.getChildren().addAll(stockLabel, buyButton, sellButton);
 
     }
+
     public BuildingType getSelectedBuilding() {
         return selectedBuilding;
     }
@@ -263,8 +301,8 @@ public class GameMenuController {
         controller.getGame().getGameMap().setSelectedBuilding(selectedBuilding);
     }
 
-    public void cleanTypesHBox(){
-        for (int i = typesHBox.getChildren().size() - 1; i > 2; i--){
+    public void cleanTypesHBox() {
+        for (int i = typesHBox.getChildren().size() - 1; i > 2; i--) {
             typesHBox.getChildren().remove(i);
         }
     }

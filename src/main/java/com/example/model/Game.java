@@ -10,8 +10,10 @@ import com.example.model.buildings.BuildingType;
 import com.example.model.map.GameMap;
 import com.example.model.people.SoldierType;
 import com.example.model.people.Unit;
+import com.example.view.controllers.GameMenuController;
 
 public class Game implements KeepLocations {
+    private GameMenuController gameMenuController;
     private static Game instance;
     private GameMap gameMap;
     private final ArrayList<Governance> governances;
@@ -111,7 +113,8 @@ public class Game implements KeepLocations {
     public void selectBuilding(Building selectedBuilding) {
         this.selectedBuilding = selectedBuilding;
         if (buildingActionNeeded(selectedBuilding.getBuildingType())) {
-            System.out.println("testing game.java in select building that needs action");
+            if (selectedBuilding.getBuildingType().equals(BuildingType.KEEP))
+                gameMenuController.showKeepMenu();
         }
     }
 
@@ -136,4 +139,7 @@ public class Game implements KeepLocations {
                 || buildingType.equals(BuildingType.FLETCHER) || buildingType.equals(BuildingType.POLETURNER) || buildingType.equals(BuildingType.MERCENARY_POST));
     }
 
+    public void setGameMenuController(GameMenuController gameMenuController) {
+        this.gameMenuController = gameMenuController;
+    }
 }
