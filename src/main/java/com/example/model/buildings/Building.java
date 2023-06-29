@@ -163,6 +163,7 @@ public class Building implements Successor {
         popup.getContent().add(label);
         label.getStylesheets().add(Main.class.getResource("/css/Popup.css").toExternalForm());
         label.setPadding(new Insets(20, 10, 20, 10));
+
         imageView.setOnMouseEntered(event -> {
             label.setText(toString());
             popup.show(Main.getStage(), event.getSceneX() + 20, event.getSceneY());
@@ -171,6 +172,11 @@ public class Building implements Successor {
         imageView.setOnMouseExited(event -> {
             popup.hide();
         });
+
+        imageView.setOnMouseClicked(event -> {
+            Game.getInstance().selectBuilding(this);
+        });
+
 
     }
 

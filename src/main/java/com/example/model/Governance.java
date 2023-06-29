@@ -346,4 +346,8 @@ public class Governance {
     public ArrayList<Building> getBuildings() {
         return buildings;
     }
+
+    public int getPopulation() {
+        return nonMilitaryCharacters + workers.size();
+    }
 }

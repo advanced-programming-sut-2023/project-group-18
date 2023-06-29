@@ -116,11 +116,15 @@ public class GameMenuController {
                 backgroundSize);
         ArrayList<BuildingImage> typeList = new ArrayList<>();
         ArrayList<BuildingImage> shopImages = new ArrayList<>();
-//        for (AssetType assetType : AssetType.values()){
-//            shopImages.add(new BuildingImage(typesHBox, assetType.getName(), 30, this, true, "assets"));
-//        }
-//        for (BuildingImage assetType : shopImages){
-//            assetType.addToHBox();
+        for (AssetType assetType : AssetType.values()){
+            shopImages.add(new BuildingImage(typesHBox, assetType.getName(), 30, this, true, "assets"));
+        }
+        for (BuildingImage assetType : shopImages){
+            assetType.addToHBox();
+        }
+//        for (BarCategory barCategory : BarCategory.values()){
+//            if (!barCategory.equals(BarCategory.NONE))
+//                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true,"buildings"));
 //        }
         for (BarCategory barCategory : BarCategory.values()){
             if (!barCategory.equals(BarCategory.NONE))
@@ -149,18 +153,38 @@ public class GameMenuController {
         //BuildingImage buildingImage = new BuildingImage(imagesHBox, "Barracks",80);
         //BuildingImage buildingImage1 = new BuildingImage(imagesHBox, "mercenary post",80);
 
-        bottom.toFront();
+
+        setScribe(pane);
+        pane.toFront();
         //bottom.setPrefHeight(300);
         //bottom.setMinHeight(600);
 //        bottom.setStyle("-fx-background-color: green");
         bottom.setBackground(new Background(image));
     }
-    public void changeMenu(BarCategory barCategory){
-        for (List<BuildingImage> buildingImages : buildingListOfLists){
+
+    private void setScribe(Pane pane) {
+        Governance governance = Game.getInstance().getCurrentGovernance();
+        Text popularity = new Text(Integer.toString(governance.getPopularityFactors().getPopularity()));
+        popularity.setFont(new Font(15));
+
+        Text treasury = new Text(Integer.toString(governance.getGold()));
+        treasury.setFont(new Font(15));
+
+        Text population = new Text(Integer.toString(governance.getPopulation()));
+        population.setFont(new Font(15));
+        VBox vBox = new VBox(popularity, treasury, population);
+        vBox.setSpacing(2);
+        vBox.setLayoutX(890);
+        vBox.setLayoutY(109);
+        pane.getChildren().add(vBox);
+    }
+
+    public void changeMenu(BarCategory barCategory) {
+        for (List<BuildingImage> buildingImages : buildingListOfLists) {
             if (BuildingType.getBuildingTypeByName(
-                    buildingImages.get(0).getName()).getBarCategory().equals(barCategory)){
+                    buildingImages.get(0).getName()).getBarCategory().equals(barCategory)) {
                 imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
-                for (BuildingImage buildingImage : buildingImages){
+                for (BuildingImage buildingImage : buildingImages) {
                     imagesHBox.getChildren().add(buildingImage.getImageView());
                 }
             }
@@ -217,7 +241,6 @@ public class GameMenuController {
                     alert.setAlertType(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("sold successfully");
                     alert.show();
-                    clickOnAsset(asset);
                 }
                 else {
                     alert.setAlertType(Alert.AlertType.ERROR);
