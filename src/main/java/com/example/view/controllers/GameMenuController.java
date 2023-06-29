@@ -205,9 +205,10 @@ public class GameMenuController {
                     alert.setAlertType(Alert.AlertType.ERROR);
                     alert.setContentText("You haven't enough gold.");
                 }
+                alert.show();
             }
         });
-        Button sellButton = new Button("Sell: " + asset.getSellPrice() * 5);
+        Button sellButton = new Button("Sell: " + sellPrice);
         sellButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -216,6 +217,7 @@ public class GameMenuController {
                     alert.setAlertType(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("sold successfully");
                     alert.show();
+                    clickOnAsset(asset);
                 }
                 else {
                     alert.setAlertType(Alert.AlertType.ERROR);
