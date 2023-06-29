@@ -3,6 +3,7 @@ package com.example.model;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.example.controller.GameController;
 import com.example.model.assets.Asset;
 import com.example.model.buildings.Building;
 import com.example.model.buildings.BuildingType;
@@ -86,8 +87,6 @@ public class Game implements KeepLocations {
         return false;
     }
 
-    
-    
 
     public void addSoldier(Governance governance, SoldierType soldierType, int xCoordinate, int yCoordinate) {
         // governance.addSoldier(new Cell(xCoordinate, yCoordinate,this.gameMap), soldierType);
@@ -111,6 +110,9 @@ public class Game implements KeepLocations {
 
     public void selectBuilding(Building selectedBuilding) {
         this.selectedBuilding = selectedBuilding;
+        if (buildingActionNeeded(selectedBuilding.getBuildingType())) {
+            System.out.println("testing game.java in select building that needs action");
+        }
     }
 
     public Unit getSelectedUnit() {
@@ -122,8 +124,16 @@ public class Game implements KeepLocations {
             this.selectedUnit = selectedUnit;
     }
 
-    public void setCurrentGovernance(Governance governance){
+    public void setCurrentGovernance(Governance governance) {
         this.currentGovernance = governance;
+    }
+
+    public boolean buildingActionNeeded(BuildingType buildingType) {
+        return (buildingType.equals(BuildingType.KEEP) || buildingType.equals(BuildingType.MARKET) || buildingType.equals(BuildingType.WALL)
+                || buildingType.equals(BuildingType.SQUARE_TOWER) || buildingType.equals(BuildingType.LOOKOUT_TOWER) || buildingType.equals(BuildingType.PERIMETER_TOWER)
+                || buildingType.equals(BuildingType.CIRCLE_TOWER) || buildingType.equals(BuildingType.SMALL_STONE_GATEHOUSE)
+                || buildingType.equals(BuildingType.BIG_STONE_GATEHOUSE) || buildingType.equals(BuildingType.BARRACKS) || buildingType.equals(BuildingType.ARMOURER)
+                || buildingType.equals(BuildingType.FLETCHER) || buildingType.equals(BuildingType.POLETURNER) || buildingType.equals(BuildingType.MERCENARY_POST));
     }
 
 }

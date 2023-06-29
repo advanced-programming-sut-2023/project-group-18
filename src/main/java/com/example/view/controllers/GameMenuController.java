@@ -2,10 +2,7 @@ package com.example.view.controllers;
 
 import com.example.controller.GameController;
 
-import com.example.model.BuildingImage;
-import com.example.model.Governance;
-import com.example.model.User;
-import com.example.model.UsersData;
+import com.example.model.*;
 import com.example.model.assets.Asset;
 import com.example.model.assets.AssetType;
 import com.example.model.buildings.BarCategory;
@@ -21,12 +18,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameMenuController {
     private final GameController controller = GameController.getInstance();
+    @FXML
+    private Pane pane;
     @FXML
     private BorderPane borderPane;
     
@@ -37,8 +38,8 @@ public class GameMenuController {
     @FXML
     private HBox typesHBox;
     private BuildingType selectedBuilding;
-    public static List<List<BuildingImage>> buildingListOfLists = new ArrayList<List<BuildingImage>>(7);
-    public static List<List<BuildingImage>> assetListOfLists = new ArrayList<List<BuildingImage>>(3);
+    public static List<List<BuildingImage>> buildingListOfLists = new ArrayList<>(7);
+    public static List<List<BuildingImage>> assetListOfLists = new ArrayList<>(3);
     public static BarCategory currentCategory = BarCategory.CASTLE;
     public Alert alert = new Alert(Alert.AlertType.NONE);
     public void initialize() {
