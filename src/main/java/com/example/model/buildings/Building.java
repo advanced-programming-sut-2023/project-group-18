@@ -9,9 +9,13 @@ import com.example.model.map.Successor;
 import com.example.model.map.Tile;
 import com.example.model.people.Unit;
 import com.example.model.people.Worker;
+import com.example.view.Main;
 import com.example.view.images.TextureImages;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
+import javafx.stage.Popup;
 
 public class Building implements Successor {
     private final BuildingType buildingType;
@@ -38,10 +42,7 @@ public class Building implements Successor {
         this.width = buildingType.getWidth();
         this.tiles = new ArrayList<>();
         this.imageView = new ImageView(buildingType.getImage());
-        this.imageView.setFitHeight(buildingType.getImageHeight());
-        this.imageView.setFitWidth(buildingType.getImageWidth());
-        this.imageView.setLayoutX(tile.getPoint2d().getX() - buildingType.getResetX());
-        this.imageView.setLayoutY(tile.getPoint2d().getY() - buildingType.getResetY());
+        setImageViewOptions(tile);
         addBuildingToTiles(tile);
         // TODO: need to create town category
         if (buildingType.equals(BuildingType.CATHEDRAL) || buildingType.equals(BuildingType.CHURCH))
@@ -50,20 +51,20 @@ public class Building implements Successor {
 
     public static void dropBuilding(BuildingType buildingType, Governance governance, Tile tile) {
         switch (buildingType.getCategory()) {
-            case BARRACKS -> new Barracks(buildingType, governance, tile);
-            case DAIRY_PRODUCTS -> new Building(buildingType, governance, tile);
-            case FARM -> new Farm(buildingType, governance, tile);
-            case GATE -> new Gate(buildingType, governance, tile);
-            case GUNSMITH -> new Gunsmith(buildingType, governance, tile);
-            case INDUSTRIAL_BUILDING -> new IndustrialBuilding(buildingType, governance, tile);
-            case PROCESSING -> new Processing(buildingType, governance, tile);
-            case STABLE -> new Stable(buildingType, governance, tile);
-            case STAIR -> new Stair(buildingType, governance, tile);
-            case STORAGE -> new Storage(buildingType, governance, tile);
-            case TOWER -> new Tower(buildingType, governance, tile);
-            case TRAP -> new Trap(buildingType, governance, tile);
-            case WALL -> new Wall(buildingType, governance, tile);
-            default -> new Building(buildingType, governance, tile);
+            case BARRACKS -> new Barracks(buildingType, governance, tile).setTooltip();
+            case DAIRY_PRODUCTS -> new Building(buildingType, governance, tile).setTooltip();
+            case FARM -> new Farm(buildingType, governance, tile).setTooltip();
+            case GATE -> new Gate(buildingType, governance, tile).setTooltip();
+            case GUNSMITH -> new Gunsmith(buildingType, governance, tile).setTooltip();
+            case INDUSTRIAL_BUILDING -> new IndustrialBuilding(buildingType, governance, tile).setTooltip();
+            case PROCESSING -> new Processing(buildingType, governance, tile).setTooltip();
+            case STABLE -> new Stable(buildingType, governance, tile).setTooltip();
+            case STAIR -> new Stair(buildingType, governance, tile).setTooltip();
+            case STORAGE -> new Storage(buildingType, governance, tile).setTooltip();
+            case TOWER -> new Tower(buildingType, governance, tile).setTooltip();
+            case TRAP -> new Trap(buildingType, governance, tile).setTooltip();
+            case WALL -> new Wall(buildingType, governance, tile).setTooltip();
+            default -> new Building(buildingType, governance, tile).setTooltip();
         }
     }
 
@@ -148,21 +149,39 @@ public class Building implements Successor {
         tiles.get(0).getGameMap().getChildren().remove(imageView);
     }
 
+    private void setImageViewOptions(Tile tile) {
+        imageView.setFitHeight(buildingType.getImageHeight());
+        imageView.setFitWidth(buildingType.getImageWidth());
+        imageView.setLayoutX(tile.getPoint2d().getX() - buildingType.getResetX());
+        imageView.setLayoutY(tile.getPoint2d().getY() - buildingType.getResetY());
+    }
+
+    public void setTooltip() {
+        imageView.setOnMouseEntered(event -> {
+            // Tooltip tooltip = new Tooltip(toString());
+            // tooltip.setHeight(100);
+            // tooltip.setWidth(100);
+            // Tooltip.install(imageView.getParent(), tooltip);
+            // Popup popup = new Popup();
+            // Label label = new Label(toString());
+            // popup.getContent().add(label);
+            // System.out.println(Game.getInstance().getCurrentGovernance().getOwner().getNickname());
+            // popup.show(Main.getStage(), event.getSceneX(), event.getSceneY());
+        });
+    }
+
     public boolean isReachable() {
         return true;
     }
 
-    // @Override
-    // public String toString() {
-    //     String hitpoint;
-    //     if (this.hitpoint < buildingType.getHitpoint() / 3) hitpoint = RED_BOLD;
-    //     else if (this.hitpoint < buildingType.getHitpoint() * 2 / 3) hitpoint = YELLOW_BOLD;
-    //     else hitpoint = GREEN_BOLD;
-    //     hitpoint += this.hitpoint + RESET;
-    //     hitpoint += "/" + buildingType.getHitpoint();
-    //     final String owner = YELLOW_BOLD + governance.getOwner().getNickname() + RESET;
-    //     return buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
-    // }
+    @Override
+    public String toString() {
+        String hitpoint = "Building hitpoint: ";
+        hitpoint += this.hitpoint;
+        hitpoint += "/" + buildingType.getHitpoint();
+        final String owner = governance.getOwner().getUsername();
+        return buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
+    }
 
     public void run(){
         //getMaterial

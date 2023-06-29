@@ -25,6 +25,7 @@ import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
@@ -167,7 +168,7 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     }
 
     public void addShortcuts() {
-        this.getParent().setOnKeyPressed(key -> {
+        this.getScene().setOnKeyPressed(key -> {
             switch (key.getCode()) {
                 case G -> setTexture(TextureImages.GROUND);
                 case F -> setTexture(TextureImages.FARM);
@@ -181,7 +182,6 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     }
 
     private void setTexture(TextureImages textureImages) {
-        System.out.println("FUCks");
         for (Tile selectedTile : selectedTiles) {
             if (selectedTile.getTexture().getTextureImages().compareTo(textureImages) == 0) continue;
             selectedTile.setTexture(new Texture(textureImages));
