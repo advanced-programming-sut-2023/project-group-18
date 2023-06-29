@@ -143,7 +143,7 @@ public class Building implements Successor {
         centerTile.getGameMap().getChildren().add(imageView);
     }
 
-    private void removeBuildingFromTiles() {
+    public void removeBuildingFromTiles() {
         for (Tile tile : tiles)
             tile.setBuilding(null);
         governance.getBuildings().remove(this);

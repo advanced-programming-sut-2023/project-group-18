@@ -178,9 +178,15 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
                 case W -> setTexture(TextureImages.WATER);
                 case T -> addTree();
                 case B -> backToMap();
+                case D -> removeLastBuilding();
                 default -> {}
             }
         });
+    }
+
+    private void removeLastBuilding() {
+        int index = game.getCurrentGovernance().getBuildings().size() - 1;
+        game.getCurrentGovernance().getBuildings().get(index).removeBuildingFromTiles();
     }
 
     private void backToMap() {
@@ -209,9 +215,8 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
         Building.dropBuilding(BuildingType.KEEP, governance, findClosestTile(x, y));
         int yIndex = getTileYIndex(y);
         int xIndex = getTileXIndex(x, yIndex);
-        for (Tile tile : getSuccessors(this, xIndex, yIndex)) {
-            tile.selectTile();
-        }
+        // for (Tile tile : getSuccessors(this, xIndex, yIndex))
+        //     tile.selectTile();
     }
 
 
@@ -226,9 +231,8 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
         Building.dropBuilding(selectedBuilding, game.getCurrentGovernance(), findClosestTile(x, y));
         int yIndex = getTileYIndex(y);
         int xIndex = getTileXIndex(x, yIndex);
-        for (Tile tile : getSuccessors(this, xIndex, yIndex)) {
-            tile.selectTile();
-        }
+        // for (Tile tile : getSuccessors(this, xIndex, yIndex))
+        //     tile.selectTile();
     }
 
     @Override
