@@ -26,6 +26,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
@@ -176,9 +177,15 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
                 case S -> setTexture(TextureImages.SLAB);
                 case W -> setTexture(TextureImages.WATER);
                 case T -> addTree();
+                case B -> backToMap();
                 default -> {}
             }
         });
+    }
+
+    private void backToMap() {
+        setTranslateX(-MapGestures.RESET_X);
+        setTranslateY(-MapGestures.RESET_Y);
     }
 
     private void setTexture(TextureImages textureImages) {

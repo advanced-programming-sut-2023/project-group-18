@@ -48,7 +48,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(url);
         if (scene == null) scene = new Scene(root);
         else scene.setRoot(root);
-        scene.setCursor(new ImageCursor(Images.CURSOR.getImage()));
+        // scene.setCursor(new ImageCursor(Images.CURSOR.getImage()));
     }
 
     private void closeApp() {
