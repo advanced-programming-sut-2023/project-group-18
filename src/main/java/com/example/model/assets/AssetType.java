@@ -22,5 +22,12 @@ public enum AssetType {
     public StorageType getStorageType(){
         return this.storageType;
     }
+    public static AssetType getAssetTypeByName(String name){
+        for (AssetType assetType : AssetType.values()){
+            if (assetType.getName().equals(name))
+                return assetType;
+        }
+        return null;
+    }
 
 }

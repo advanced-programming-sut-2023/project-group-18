@@ -13,7 +13,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/MapSizes.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/NeedsId.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/Building.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BuildingType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/GameMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/map/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/map/Node.java" afterDir="false" />
@@ -30,7 +29,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ScoreboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ScoreboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SecurityMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SecurityMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/Popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/Popup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/TunnelEntrance.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/images/buildings/food storage.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/buildings/food storage.png" afterDir="false" />
