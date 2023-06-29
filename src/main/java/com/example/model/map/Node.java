@@ -2,12 +2,12 @@ package com.example.model.map;
 
 public class Node {
     private final Node parent;
-    private final Cell cell;
+    private final Tile tile;
     private double total, heuristic, given;
 
-    public Node(Node parent, Cell cell, Cell target) {
+    public Node(Node parent, Tile tile, Tile target) {
         this.parent = parent;
-        this.cell = cell;
+        this.tile = tile;
         given = calculateGiven();
         heuristic = calculateHeuristic(target);
         total = given + heuristic;
@@ -21,8 +21,8 @@ public class Node {
         return parent;
     }
 
-    public Cell getCell() {
-        return cell;
+    public Tile getTile() {
+        return tile;
     }
 
     private double calculateGiven() {
@@ -30,13 +30,13 @@ public class Node {
         return parent.given + 1;
     }
 
-    private double calculateHeuristic(Cell target) {
-        return cell.calculatePythagorean(target);
+    private double calculateHeuristic(Tile target) {
+        return tile.getPoint2d().distance(target.getPoint2d());
     }
 
     @Override
     public boolean equals(Object obj) {
-        return ((Node) obj).cell.equals(this.cell);
+        return ((Node) obj).tile.equals(this.tile);
     }
 
     @Override

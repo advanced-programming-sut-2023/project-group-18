@@ -47,14 +47,16 @@ public class Game implements KeepLocations {
     private void dropKeeps() {
         Random random = new Random();
         int index = -1;
-        gameMap.setSelectedBuilding(BuildingType.STOCKPILE);
         for (Governance governance : governances) {
             index++;
             double x = COORDINATES[index][0] * mapCoefficient * GameMap.TILE_LENGTH + random.nextInt(-2, 3);
             double y = COORDINATES[index][1] * mapCoefficient * GameMap.TILE_LENGTH / 2 + random.nextInt(-2, 3);
-            System.out.println(mapCoefficient);
             gameMap.setKeep(x, y, governance);
+            currentGovernance = governance;
+            gameMap.setSelectedBuilding(BuildingType.FIRE);
+            gameMap.dropBuilding(x - GameMap.TILE_LENGTH * 5, y + GameMap.TILE_LENGTH * 5);
             governance.setLord();
+            gameMap.setSelectedBuilding(BuildingType.STOCKPILE);
             gameMap.dropBuilding(x + GameMap.TILE_LENGTH * 5, y + GameMap.TILE_LENGTH * 5);
         }
         gameMap.setSelectedBuilding(null);

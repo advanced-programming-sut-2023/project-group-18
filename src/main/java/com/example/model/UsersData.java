@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import com.google.gson.Gson;
 
-public class UsersData {
+public class UsersData implements WriteInFile {
     private static UsersData usersData;
     private final ArrayList<User> users;
     private User loggedInUser;
@@ -71,21 +71,6 @@ public class UsersData {
         }
     }
 
-    public void writeUsersInFile() {
-        Gson gson = new Gson();
-        File main = new File("src", "main");
-        File resources = new File(main, "resources");
-        File json = new File(resources, "json");
-        File users = new File(json, "Users.json");
-        try {
-            FileWriter fileWriter = new FileWriter(users);
-            fileWriter.write(gson.toJson(this.users));
-            fileWriter.close();
-        } catch (IOException e) {
-            System.err.println("Can't write in file!!!");
-        }
-    }
-
     public void addUser(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         users.add(new User(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer));
     }
@@ -132,4 +117,21 @@ public class UsersData {
     public ArrayList<User> getUsers() {
         return users;
     }
+
+    @Override
+    public void writeInFile() {
+        Gson gson = new Gson();
+        File main = new File("src", "main");
+        File resources = new File(main, "resources");
+        File json = new File(resources, "json");
+        File users = new File(json, "Users.json");
+        try {
+            FileWriter fileWriter = new FileWriter(users);
+            fileWriter.write(gson.toJson(this.users));
+            fileWriter.close();
+        } catch (IOException e) {
+            System.err.println("Can't write in file!!!");
+        }
+    }
+
 }

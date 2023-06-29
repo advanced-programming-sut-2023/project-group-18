@@ -4,9 +4,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import java.net.URL?>
 <BorderPane fx:id="borderPane" prefHeight="750" prefWidth="1500" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.view.controllers.GameMenuController">
     <top>
-        <Button onMouseClicked="#initMap" text="fuck you" />
+        <VBox prefWidth="1500" prefHeight="50" alignment="CENTER">
+            <Label text="FUCK YOU" textAlignment="CENTER" onMouseClicked="#initMap"/>
+        </VBox>
     </top>
 
     <bottom>
@@ -29,7 +32,7 @@
         </VBox>
     </bottom>
 
-    <!-- <stylesheets>
-        <URL value="@../css/MenuStyle.css"/>
-    </stylesheets> -->
+<!--    <stylesheets>-->
+<!--        <URL value="@../css/GameStyle.css"/>-->
+<!--    </stylesheets>-->
 </BorderPane>

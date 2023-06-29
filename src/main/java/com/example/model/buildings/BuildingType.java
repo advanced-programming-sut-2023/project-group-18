@@ -85,7 +85,7 @@ public enum BuildingType {
     STOCKPILE("stockpile",0,null,0,0, TextureImages.GROUND,50,
             100,0,0,0, 0,0,0,0,
             0,null,null,2,Category.STORAGE
-            , 50, BarCategory.INDUSTRIAL, 30, 60, 15, 40),
+            , 50, BarCategory.INDUSTRIAL, 30, 30, 15, 15),
     WOOD_CUTTER("wood cutter",0,Asset.WOOD,3,1, TextureImages.GROUND,20,0,
             0,0,0, 10,0,0,0,
             0,null,Asset.WOOD,1, Category.INDUSTRIAL_BUILDING
@@ -177,7 +177,10 @@ public enum BuildingType {
             null,null,1, Category.WALL, 30, BarCategory.TOWER, 30, 40, 0, 0),
     STAIR("stair",0,Asset.STONE,5, 0,TextureImages.GROUND,100,0,0,
             0, 0,0,0,20,10,10,
-            null,null,1, Category.STAIR, 30, BarCategory.TOWER, 30, 40, 0, 0)
+            null,null,1, Category.STAIR, 30, BarCategory.TOWER, 30, 40, 0, 0),
+    FIRE("fire",0,Asset.STONE,5, 0,TextureImages.GROUND,100,0,0,
+            0, 0,0,0,20,10,10,
+            null,null,1, Category.BUILDING, 30, BarCategory.NONE, 40, 40, 20, 20)
     ;
     private final Image image;
     private final int workersNumber;

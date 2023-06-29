@@ -3,15 +3,11 @@ package com.example.view.controllers;
 import com.example.controller.LoginMethods;
 import com.example.view.Main;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Font;
-import javafx.stage.Popup;
-import javafx.util.Duration;
 
 import java.io.IOException;
 

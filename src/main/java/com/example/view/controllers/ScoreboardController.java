@@ -13,7 +13,6 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class ScoreboardController {
     private static final int PLAYERS_PER_PAGE = 100;

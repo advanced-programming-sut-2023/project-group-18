@@ -181,6 +181,7 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     }
 
     private void setTexture(TextureImages textureImages) {
+        System.out.println("FUCks");
         for (Tile selectedTile : selectedTiles) {
             if (selectedTile.getTexture().getTextureImages().compareTo(textureImages) == 0) continue;
             selectedTile.setTexture(new Texture(textureImages));

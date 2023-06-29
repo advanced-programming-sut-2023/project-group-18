@@ -5,15 +5,11 @@ import com.example.controller.SignupMethods;
 import com.example.controller.responses.FieldResponses;
 import com.example.view.Main;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.text.Font;
 import javafx.stage.Popup;
-import javafx.stage.WindowEvent;
 
 import java.io.IOException;
-import java.util.TimerTask;
 
 public class SignupMenuController implements FieldResponses {
     private final SignupMethods signupMethods = SignupMethods.getInstance();

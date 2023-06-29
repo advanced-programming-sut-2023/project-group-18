@@ -3,33 +3,32 @@ package com.example.model.people;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import com.example.model.ConsoleColors;
 import com.example.model.Governance;
 import com.example.model.buildings.Building;
-import com.example.model.buildings.Tree;
-import com.example.model.map.Cell;
+import com.example.model.map.Tile;
+import com.example.model.map.Tree;
 import com.example.model.map.Node;
 import com.example.model.map.Successor;
 
-public class Unit implements Successor, ConsoleColors {
+public class Unit implements Successor {
     protected final Governance governance;
     private final UnitType unitType;
-    protected Cell unitCell;
+    protected Tile unitTile;
     private boolean isFree;
     private Building place;
     private int hitpoint;
     protected int speed;
-    protected Cell targetCell;
-    private Cell patrolCell;
-    protected LinkedList<Cell> path;
+    protected Tile targetTile;
+    private Tile patrolTile;
+    protected LinkedList<Tile> path;
     private final boolean controllable;
     protected State state;
 
-    public Unit(Governance governance, UnitType unitType, Cell unitCell) {
+    public Unit(Governance governance, UnitType unitType, Tile unitTile) {
         this.governance = governance;
         this.unitType = unitType;
-        this.unitCell = unitCell;
-        unitCell.addUnit(this);
+        this.unitTile = unitTile;
+        unitTile.getUnits().add(this);
         this.isFree = true;
         hitpoint = unitType.getMaxHitpoint();
         speed = unitType.getMaxSpeed();
@@ -45,8 +44,8 @@ public class Unit implements Successor, ConsoleColors {
         return unitType;
     }
 
-    public Cell getUnitCell() {
-        return unitCell;
+    public Tile getUnitTile() {
+        return unitTile;
     }
 
     public boolean isFree() {
@@ -65,16 +64,16 @@ public class Unit implements Successor, ConsoleColors {
         return speed;
     }
 
-    public Cell getTargetCell() {
-        return targetCell;
+    public Tile getTargetTile() {
+        return targetTile;
     }
 
     public State getState() {
         return state;
     }
 
-    public void setUnitCell(Cell unitCell) {
-        this.unitCell = unitCell;
+    public void setUnitTile(Tile unitTile) {
+        this.unitTile = unitTile;
     }
 
     public void setFree(boolean free) {
@@ -85,16 +84,16 @@ public class Unit implements Successor, ConsoleColors {
         this.place = place;
     }
 
-    public void setTargetCell(Cell targetCell) {
-        this.targetCell = targetCell;
+    public void setTargetTile(Tile targetTile) {
+        this.targetTile = targetTile;
     }
 
-    public Cell getPatrolCell() {
-        return patrolCell;
+    public Tile getPatrolTile() {
+        return patrolTile;
     }
 
-    public void setPatrolCell(Cell patrolCell) {
-        this.patrolCell = patrolCell;
+    public void setPatrolTile(Tile patrolTile) {
+        this.patrolTile = patrolTile;
     }
 
     public void setState(State state) {
@@ -115,19 +114,19 @@ public class Unit implements Successor, ConsoleColors {
         speed = unitType.getMaxSpeed();
     }
 
-    public void moveOneCell(Cell cell) {
-        unitCell.getUnits().remove(this);
-        unitCell = cell;
-        unitCell.getUnits().add(this);
+    public void moveOneTile(Tile tile) {
+        unitTile.getUnits().remove(this);
+        unitTile = tile;
+        unitTile.getUnits().add(this);
     }
 
-    public boolean canGoCell(Cell cell) {
-        return cell.getBuilding() == null;
+    public boolean canGoTile(Tile tile) {
+        return tile.getBuilding() == null;
     }
 
     public void movePath() {
         while (speed > 0 && !path.isEmpty()) {
-            moveOneCell(path.getFirst());
+            moveOneTile(path.getFirst());
             path.removeFirst();
             speed--;
         }
@@ -137,7 +136,7 @@ public class Unit implements Successor, ConsoleColors {
         Node node = findNode();
         path = new LinkedList<>();
         while (node != null) {
-            path.addFirst(targetCell);
+            path.addFirst(targetTile);
             node = node.getParent();
         }
     }
@@ -145,22 +144,20 @@ public class Unit implements Successor, ConsoleColors {
     private Node findNode() {
         final ArrayList<Node> openList = new ArrayList<>();
         final ArrayList<Node> closedList = new ArrayList<>();
-        openList.add(new Node(null, unitCell, targetCell));
+        openList.add(new Node(null, unitTile, targetTile));
         while (!openList.isEmpty()) {
             System.out.println(openList.get(0).toString() + " size === " + openList.size());
             Node node = findLeastTotalNode(openList);
-            System.out.println(node.toString());
-            System.out.println(node.getCell().getxCoordinate() + " , " + node.getCell().getyCoordinate());
-            System.out.println(openList.remove(node));
-            ;
+            int yIndex = node.getTile().getGameMap().getTileYIndex(node.getTile().getPoint2d().getX());
+            int xIndex = node.getTile().getGameMap().getTileXIndex(node.getTile().getPoint2d().getY(), yIndex);
             l:
-            for (int[] successor : SUCCESSORS) {
-                int x = node.getCell().getxCoordinate() + successor[0];
-                int y = node.getCell().getxCoordinate() + successor[1];
-                Cell cell = unitCell.getGameMap().getCellByLocation(x, y);
-                if (cell == null) continue l;
-                if (!canGoCell(cell)) continue l;
-                Node neighbor = new Node(node, cell, targetCell);
+            for (int[] successor : SUCCESSORS[yIndex % 2]) {
+                int xIndex2 = xIndex + successor[0];
+                int yIndex2 = yIndex + successor[1];
+                Tile tile = unitTile.getGameMap().getTileByIndex(xIndex2, yIndex2);
+                if (tile == null) continue l;
+                if (!canGoTile(tile)) continue l;
+                Node neighbor = new Node(node, tile, targetTile);
                 if (isDone(neighbor)) return neighbor;
                 if (betterChoiseInList(neighbor, openList)) continue l;
                 if (betterChoiseInList(neighbor, closedList)) continue l;
@@ -172,7 +169,7 @@ public class Unit implements Successor, ConsoleColors {
     }
 
     private boolean isDone(Node neighbor) {
-        return neighbor.getCell().equals(targetCell);
+        return neighbor.getTile().equals(targetTile);
     }
 
     private Node findLeastTotalNode(ArrayList<Node> nodeList) {
@@ -192,7 +189,7 @@ public class Unit implements Successor, ConsoleColors {
         return false;
     }
 
-    public LinkedList<Cell> getPath() {
+    public LinkedList<Tile> getPath() {
         return path;
     }
 
@@ -202,20 +199,20 @@ public class Unit implements Successor, ConsoleColors {
 
     public void patrol(){
         movePath();
-        Cell cell = this.patrolCell;
-        if (this.unitCell.equals(this.targetCell)){
-            this.patrolCell = this.targetCell;
-            this.targetCell = cell;
+        Tile tile = this.patrolTile;
+        if (this.unitTile.equals(this.targetTile)){
+            this.patrolTile = this.targetTile;
+            this.targetTile = tile;
             findPath();
             patrol();
         }
     }
 
     public boolean findNearestTree() {
-        ArrayList<Tree> trees = unitCell.getGameMap().getGame().getTrees();
+        ArrayList<Tree> trees = unitTile.getGameMap().getTrees();
         while (!trees.isEmpty()) {
             Tree tree = findNearestTree(trees);
-            targetCell = tree.getTile();
+            targetTile = unitTile.getGameMap().findClosestTile(tree.getPoint2d().getX(), tree.getPoint2d().getY());
             trees.remove(tree);
             findPath();
             if (path.isEmpty()) continue;
@@ -226,9 +223,9 @@ public class Unit implements Successor, ConsoleColors {
 
     public Tree findNearestTree(ArrayList<Tree> trees) {
         Tree bestTree = trees.get(0);
-        double bestDistance = unitCell.calculatePythagorean(bestTree.getTile());
+        double bestDistance = unitTile.getPoint2d().distance(bestTree.getPoint2d());
         for (Tree tree : trees) {
-            double distance = unitCell.calculatePythagorean(tree.getTile());
+            double distance = unitTile.getPoint2d().distance(tree.getPoint2d());
             if (distance < bestDistance) {
                 bestDistance = distance;
                 bestTree = tree;
@@ -247,16 +244,16 @@ public class Unit implements Successor, ConsoleColors {
         
     }
 
-    @Override
-    public String toString() {
-        String hitpoint;
-        if (this.hitpoint < unitType.getMaxHitpoint() / 3) hitpoint = RED_BOLD;
-        else if (this.hitpoint < unitType.getMaxHitpoint() * 2 / 3) hitpoint = YELLOW_BOLD;
-        else hitpoint = GREEN_BOLD;
-        hitpoint += this.hitpoint + RESET;
-        hitpoint += "/" + unitType.getMaxHitpoint();
-        String owner = BLUE_BOLD + governance.getOwner().getNickname() + RESET;
-        return unitType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
-    }
+    // @Override
+    // public String toString() {
+    //     String hitpoint;
+    //     if (this.hitpoint < unitType.getMaxHitpoint() / 3) hitpoint = RED_BOLD;
+    //     else if (this.hitpoint < unitType.getMaxHitpoint() * 2 / 3) hitpoint = YELLOW_BOLD;
+    //     else hitpoint = GREEN_BOLD;
+    //     hitpoint += this.hitpoint + RESET;
+    //     hitpoint += "/" + unitType.getMaxHitpoint();
+    //     String owner = BLUE_BOLD + governance.getOwner().getNickname() + RESET;
+    //     return unitType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
+    // }
 
 }
