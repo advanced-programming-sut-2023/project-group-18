@@ -116,17 +116,17 @@ public class GameMenuController {
                 backgroundSize);
         ArrayList<BuildingImage> typeList = new ArrayList<>();
         ArrayList<BuildingImage> shopImages = new ArrayList<>();
-        for (AssetType assetType : AssetType.values()){
-            shopImages.add(new BuildingImage(typesHBox, assetType.getName(), 30, this, true, "assets"));
-        }
-        for (BuildingImage assetType : shopImages){
-            assetType.addToHBox();
-        }
-//        for (BarCategory barCategory : BarCategory.values()){
-//            if (!barCategory.equals(BarCategory.NONE))
-//                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true,"buildings"));
+//        for (AssetType assetType : AssetType.values()){
+//            shopImages.add(new BuildingImage(typesHBox, assetType.getName(), 30, this, true, "assets"));
 //        }
-//        changeMenu(currentCategory);
+//        for (BuildingImage assetType : shopImages){
+//            assetType.addToHBox();
+//        }
+        for (BarCategory barCategory : BarCategory.values()){
+            if (!barCategory.equals(BarCategory.NONE))
+                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true,"buildings"));
+        }
+        changeMenu(currentCategory);
 
 //        typeList.add(new BuildingImage(typesHBox, "CastleBuilding", 20));
 //        typeList.add(new BuildingImage(typesHBox, "FarmBuilding", 20));
@@ -205,6 +205,7 @@ public class GameMenuController {
                     alert.setAlertType(Alert.AlertType.ERROR);
                     alert.setContentText("You haven't enough gold.");
                 }
+                alert.show();
             }
         });
         Button sellButton = new Button("Sell: " + asset.getSellPrice() * 5);
@@ -216,6 +217,7 @@ public class GameMenuController {
                     alert.setAlertType(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("sold successfully");
                     alert.show();
+                    clickOnAsset(asset);
                 }
                 else {
                     alert.setAlertType(Alert.AlertType.ERROR);
