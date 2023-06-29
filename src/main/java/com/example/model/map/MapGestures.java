@@ -10,8 +10,8 @@ public class MapGestures {
     private static final double MAX_SCALE = 15.0d;
     private static final double MIN_SCALE = 3.0d;
     private static final double DELTA_SCALE = 1.05d;
-    private static final double RESET_X = 420.0d;
-    private static final double RESET_Y = 59.0d;
+    protected static final double RESET_X = 420.0d;
+    protected static final double RESET_Y = 59.0d;
     private static final double DEGREE = 60.0;
     private static final double DEGREE_RADIANS = DEGREE * Math.PI / 180;
     private GameMap gameMap;
@@ -84,7 +84,7 @@ public class MapGestures {
                 return;
             final double xTranslate = translateAnchorX + event.getSceneX() - mouseAnchorX;
             final double yTranslate = translateAnchorY + event.getSceneY() - mouseAnchorY;
-            if (xTranslate > -RESET_X|| yTranslate > -RESET_Y) return; // TODO drag down
+            // if (xTranslate > -RESET_X|| yTranslate > -RESET_Y) return; // TODO drag down
             gameMap.setTranslateX(xTranslate);
             gameMap.setTranslateY(yTranslate);
             event.consume();

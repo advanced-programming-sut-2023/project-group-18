@@ -12,6 +12,7 @@ import com.example.model.people.Worker;
 import com.example.view.Main;
 import com.example.view.images.TextureImages;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
@@ -142,7 +143,7 @@ public class Building implements Successor {
         centerTile.getGameMap().getChildren().add(imageView);
     }
 
-    private void removeBuildingFromTiles() {
+    public void removeBuildingFromTiles() {
         for (Tile tile : tiles)
             tile.setBuilding(null);
         governance.getBuildings().remove(this);
@@ -157,17 +158,20 @@ public class Building implements Successor {
     }
 
     public void setTooltip() {
+        Popup popup = new Popup();
+        Label label = new Label();
+        popup.getContent().add(label);
+        label.getStylesheets().add(Main.class.getResource("/css/Popup.css").toExternalForm());
+        label.setPadding(new Insets(20, 10, 20, 10));
         imageView.setOnMouseEntered(event -> {
-            // Tooltip tooltip = new Tooltip(toString());
-            // tooltip.setHeight(100);
-            // tooltip.setWidth(100);
-            // Tooltip.install(imageView.getParent(), tooltip);
-            // Popup popup = new Popup();
-            // Label label = new Label(toString());
-            // popup.getContent().add(label);
-            // System.out.println(Game.getInstance().getCurrentGovernance().getOwner().getNickname());
-            // popup.show(Main.getStage(), event.getSceneX(), event.getSceneY());
+            label.setText(toString());
+            popup.show(Main.getStage(), event.getSceneX() + 20, event.getSceneY());
         });
+
+        imageView.setOnMouseExited(event -> {
+            popup.hide();
+        });
+
     }
 
     public boolean isReachable() {
