@@ -9,7 +9,7 @@ public enum UnitType {
         ARCHER_BOW ("Archer Bow", BuildingType.MERCENARY_POST, 30, 100, 70.0d, 80.0, 30),
         SLAVE ("Slave", BuildingType.MERCENARY_POST, 40, 50, 70.0d, 8.0, 10),
         SLINGER ("Slinger", BuildingType.MERCENARY_POST, 30, 100, 70.0d, 80.0, 300),
-        ASSASSIN ("Assassin", BuildingType.MERCENARY_POST, 350, 200, 100.0d, 8.0, 50),
+        ASSASSIN ("Assassin", BuildingType.MERCENARY_POST, 50, 200, 100.0d, 8.0, 50),
         HORSE_ARCHERS ("Horse Archers", BuildingType.MERCENARY_POST, 30, 300, 120.0d, 80.0, 20),
         ARABIAN_SWORDSMEN ("Arabian Swordsmen", BuildingType.MERCENARY_POST, 30, 150, 30.0d, 80.0, 40),
 

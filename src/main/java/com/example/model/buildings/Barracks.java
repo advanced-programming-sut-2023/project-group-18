@@ -29,15 +29,21 @@ public class Barracks extends Building{
         governance.removeRemainingCharacter();
         int yIndex = tiles.get(0).getGameMap().getTileYIndex(tiles.get(0).getPoint2d().getY());
         int xIndex = tiles.get(0).getGameMap().getTileXIndex(tiles.get(0).getPoint2d().getX(), goldCost);
+        System.out.println("before");
+        System.out.println(xIndex);
+        System.out.println(yIndex);
         xIndex = getIndex(xIndex);
         yIndex = getIndex(yIndex);
+        System.out.println("after");
+        System.out.println(xIndex);
+        System.out.println(yIndex);
         governance.getUnits().add(new Unit(governance, unitType, tiles.get(0).getGameMap().getTileByIndex(xIndex, yIndex)));
     }
     
     private int getIndex(int index) {
         Random random = new Random();
-        index += random.nextInt(2, 5);
-        if (random.nextBoolean()) index *= -1;
+        int ratio = random.nextBoolean() ? 1 : -1;
+        index += random.nextInt(2, 5) * ratio;
         return index < 0 ? 0 : index;
     }
 

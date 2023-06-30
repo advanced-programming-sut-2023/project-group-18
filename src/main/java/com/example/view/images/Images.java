@@ -7,6 +7,8 @@ import javafx.scene.image.Image;
 public enum Images {
     ICON ("icon"),
     CURSOR ("cursor"),
+    EXCLAMATION ("exclamation"),
+    DAMAGE ("damage")
     ;
 
     private final Image image;

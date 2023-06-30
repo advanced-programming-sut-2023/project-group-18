@@ -75,7 +75,8 @@ public class Tile {
 
     public void selectTile() {
         for (Line line : lines)
-            gameMap.getChildren().add(line);
+            if (!gameMap.getChildren().contains(line))
+                gameMap.getChildren().add(line);
     }
 
     public void deselectTile() {
@@ -119,8 +120,8 @@ public class Tile {
 
     public boolean hasEnemy(Governance governance) {
         for (Unit unit : units)
-            if (!unit.getGovernance().equals(governance)) return true;
-        return building.getGovernance() != null && !building.getGovernance().equals(governance);
+            if (unit.getGovernance().equals(governance)) return true;
+        return (building != null) && (building.getGovernance() != null && !building.getGovernance().equals(governance));
     }
 
 }
