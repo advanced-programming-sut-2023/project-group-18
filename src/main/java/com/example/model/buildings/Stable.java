@@ -32,4 +32,9 @@ public class Stable extends Building{
     public void removeHorse(){
         remainingHorses --;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nHorses: " + remainingHorses + "/" + horsesNumber;
+    }
 }

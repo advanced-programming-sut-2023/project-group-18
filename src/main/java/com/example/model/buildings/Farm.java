@@ -26,4 +26,10 @@ public class Farm extends Building{
     public void produce(){
         governance.addAssetToStorage(product,rate);
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nRate: " + rate + "\nProduct: " + product.getName();
+    }
+
 }
