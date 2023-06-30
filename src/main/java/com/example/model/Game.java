@@ -110,16 +110,16 @@ public class Game implements KeepLocations {
 
     public void selectBuilding(Building selectedBuilding) {
         this.selectedBuilding = selectedBuilding;
-        if (buildingActionNeeded(selectedBuilding.getBuildingType())) {
-            if (selectedBuilding.getBuildingType().equals(BuildingType.KEEP))
-                gameMenuController.showKeepMenu();
-            else if (selectedBuilding.getBuildingType().getCategory().equals(Category.TOWER) || selectedBuilding.getBuildingType().getCategory().equals(Category.WALL)) {
-                gameMenuController.repairMenu(selectedBuilding);
-            } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.GATE)) {
-                gameMenuController.gateMenu(selectedBuilding);
-            } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.BARRACKS)) {
-                gameMenuController.barracksMenu(selectedBuilding);
-            }
+        if (selectedBuilding.getBuildingType().equals(BuildingType.KEEP))
+            gameMenuController.showKeepMenu();
+        else if (selectedBuilding.getBuildingType().getCategory().equals(Category.TOWER) || selectedBuilding.getBuildingType().getCategory().equals(Category.WALL)) {
+            gameMenuController.repairMenu(selectedBuilding);
+        } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.GATE)) {
+            gameMenuController.gateMenu(selectedBuilding);
+        } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.BARRACKS)) {
+            gameMenuController.barracksMenu(selectedBuilding);
+        } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.GUNSMITH)) {
+            gameMenuController.gunsmithMenu(selectedBuilding);
         }
     }
 
@@ -133,14 +133,6 @@ public class Game implements KeepLocations {
 
     public void setCurrentGovernance(Governance governance) {
         this.currentGovernance = governance;
-    }
-
-    public boolean buildingActionNeeded(BuildingType buildingType) {
-        return (buildingType.equals(BuildingType.KEEP) || buildingType.equals(BuildingType.MARKET) || buildingType.equals(BuildingType.WALL)
-                || buildingType.equals(BuildingType.SQUARE_TOWER) || buildingType.equals(BuildingType.LOOKOUT_TOWER) || buildingType.equals(BuildingType.PERIMETER_TOWER)
-                || buildingType.equals(BuildingType.CIRCLE_TOWER) || buildingType.equals(BuildingType.SMALL_STONE_GATEHOUSE)
-                || buildingType.equals(BuildingType.BIG_STONE_GATEHOUSE) || buildingType.equals(BuildingType.BARRACKS) || buildingType.equals(BuildingType.ARMOURER)
-                || buildingType.equals(BuildingType.FLETCHER) || buildingType.equals(BuildingType.POLETURNER) || buildingType.equals(BuildingType.MERCENARY_POST));
     }
 
     public void setGameMenuController(GameMenuController gameMenuController) {

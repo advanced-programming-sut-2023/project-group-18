@@ -374,4 +374,9 @@ public class GameMenuController {
             imagesHBox.getChildren().add(imageView);
         }
     }
+
+    public void gunsmithMenu(Building selectedBuilding) {
+        imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+
+    }
 }
