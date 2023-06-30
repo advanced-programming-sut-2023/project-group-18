@@ -54,4 +54,7 @@ public class Gunsmith extends Building {
         return super.toString() + "\nWeapon: " + weapon.getName() + "\nRate: " + rate;
     }
 
+    public Asset getWeapon() {
+        return weapon;
+    }
 }
