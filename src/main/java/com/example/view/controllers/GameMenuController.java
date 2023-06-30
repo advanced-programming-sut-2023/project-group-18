@@ -377,6 +377,21 @@ public class GameMenuController {
 
     public void gunsmithMenu(Building selectedBuilding) {
         imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
-
+        Gunsmith gunsmith = (Gunsmith) selectedBuilding;
+        Asset weapon = gunsmith.getWeapon();
+        ImageView imageView = new ImageView(new Image(GameMenuController.class.
+                getResource("/images/assets/" + weapon.getName() + "/.png").toExternalForm()));
+        Label error = new Label("can't make this weapon");
+        error.setFont(new Font(20));
+        error.setTextFill(Color.RED);
+        error.setVisible(false);
+        imageView.setOnMouseClicked(mouseEvent -> {
+            if (gunsmith.canMakeWeapon()) {
+                gunsmith.makeWeapon();
+                error.setVisible(false);
+            } else {
+                error.setVisible(true);
+            }
+        });
     }
 }
