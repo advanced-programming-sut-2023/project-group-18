@@ -9,6 +9,7 @@ import com.example.model.buildings.BuildingType;
 import com.example.model.map.GameMap;
 import com.example.model.people.SoldierType;
 import com.example.model.people.Unit;
+import com.example.model.people.UnitType;
 
 public class Game implements KeepLocations {
     private static Game instance;
@@ -89,10 +90,6 @@ public class Game implements KeepLocations {
     
     
 
-    public void addSoldier(Governance governance, SoldierType soldierType, int xCoordinate, int yCoordinate) {
-        // governance.addSoldier(new Cell(xCoordinate, yCoordinate,this.gameMap), soldierType);
-    }
-
     public void addNonMilitaryCharacters(Governance governance, int nonMilitaryCharacters) {
         governance.addNonMilitaryCharacters(nonMilitaryCharacters);
     }
@@ -118,8 +115,7 @@ public class Game implements KeepLocations {
     }
 
     public void selectUnit(Unit selectedUnit) {
-        if (selectedUnit.isControllable())
-            this.selectedUnit = selectedUnit;
+        this.selectedUnit = selectedUnit;
     }
 
     public void setCurrentGovernance(Governance governance){

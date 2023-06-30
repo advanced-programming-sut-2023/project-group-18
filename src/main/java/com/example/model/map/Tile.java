@@ -2,6 +2,7 @@ package com.example.model.map;
 
 import java.util.ArrayList;
 
+import com.example.model.Governance;
 import com.example.model.buildings.Building;
 import com.example.model.people.Unit;
 
@@ -114,6 +115,12 @@ public class Tile {
     // TODO
     public String showDetails() {
         return null;
+    }
+
+    public boolean hasEnemy(Governance governance) {
+        for (Unit unit : units)
+            if (!unit.getGovernance().equals(governance)) return true;
+        return building.getGovernance() != null && !building.getGovernance().equals(governance);
     }
 
 }

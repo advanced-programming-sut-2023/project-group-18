@@ -3,6 +3,7 @@ package com.example.model.people;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.example.model.Game;
 import com.example.model.Governance;
 import com.example.model.map.Tile;
 import com.example.view.images.TextureImages;
@@ -16,10 +17,11 @@ import javafx.util.Duration;
 import com.example.model.map.Node;
 import com.example.model.map.Successor;
 
-public class Unit implements Successor, MoveInteface {
+public class Unit implements Successor, MoveInteface, AttackInterface {
     protected final Governance governance;
     private final UnitType unitType;
     private final ImageView imageView;
+    private final double duration;
     protected Tile unitTile;
     protected Tile targetTile;
     protected LinkedList<Tile> path;
@@ -31,10 +33,19 @@ public class Unit implements Successor, MoveInteface {
         this.governance = governance;
         this.unitType = unitType;
         this.unitTile = unitTile;
+        this.duration = 200 / unitType.getSpeed();
         unitTile.getUnits().add(this);
         imageView = new ImageView(unitType.getType().getStanding());
         imageView.setFitHeight(20);
         imageView.setFitWidth(20);
+        Game.getInstance().getGameMap().getChildren().add(imageView);
+        addToolTip();
+    }
+
+    private void addToolTip() {
+        imageView.setOnMouseClicked(event -> {
+            unitTile.getGameMap().getGame().selectUnit(this);
+        });
     }
 
     public Governance getGovernance() {
@@ -134,68 +145,88 @@ public class Unit implements Successor, MoveInteface {
         return false;
     }
 
-
-    public void gotDamage(int damage){
-        if (this.hitpoint < damage)
-            this.hitpoint = 0;
-        else this.hitpoint -= damage;
+    private Tile isEnemyOverHear() {
+        int yIndex = unitTile.getGameMap().getTileYIndex(unitTile.getPoint2d().getY());
+        int xIndex = unitTile.getGameMap().getTileXIndex(unitTile.getPoint2d().getX(), yIndex);
+        for (int yIndex2 = yIndex - 3; yIndex2 < yIndex + 3; yIndex2++)
+            for (int xIndex2 = xIndex - 3; xIndex2 < xIndex + 3; xIndex2++) {
+                Tile tile = unitTile.getGameMap().getTileByIndex(xIndex2, yIndex2);
+                if (tile.hasEnemy(governance)) return tile;
+            }
+        return null;
     }
 
-    public void attack(int x, int y) {
-        
+
+    public void gotDamage(int damage){
+        if (this.hitpoint <= damage) {
+            Game.getInstance().getGameMap().getChildren().remove(imageView);
+            governance.getUnits().remove(this);
+            unitTile.getUnits().remove(this);
+        } else this.hitpoint -= damage;
+    }
+
+    private void moveOneTile(Tile tile) {
+        unitTile = tile;
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(duration), imageView);
+        final double x = tile.getPoint2d().getX();
+        final double y = tile.getPoint2d().getY();
+        transition.setToX(x);
+        transition.setToY(y);
+        transition.play();
+    }
+
+    private void changeMoveImage() {
+        Timeline innerTimeline = new Timeline(new KeyFrame(Duration.seconds(duration / 4), event -> {
+            imageView.setImage(unitType.getType().getMove()[imageIndex]);
+            imageIndex = (imageIndex + 1) % 4;
+        }));
+        innerTimeline.setCycleCount(4);
+        innerTimeline.play();
+    }
+
+    @Override
+    public void attack(double x, double y) {
+        // targetTile = unitTile.getGameMap().findClosestTile(x, y);
+        // findPath();
+        // final int size = path.size();
+        // index = 0;
+        // Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(duration), event -> {
+        //     Tile tile2 = path.get(index);
+        //     index++;
+        //     moveOneTile(tile2);
+        //     if ((tile2 = isEnemyOverHear()) != null) {
+        //         path.clear();
+        //         attack(tile2.getPoint2d().getX(), tile2.getPoint2d().getY());
+        //     }
+        //     changeMoveImage();
+        // }));
+        // timeline.setCycleCount(size);
+        // timeline.play();
+        // timeline.setOnFinished(event -> {
+            
+        // });
     }
 
     @Override
     public void move(Tile tile) {
         targetTile = tile;
         findPath();
-        final int size = path.size();
-        final double duration = 200 / unitType.getSpeed();
-        index = 0;
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(duration), event -> {
-            Tile tile2 = path.get(index);
-            final double x = tile2.getPoint2d().getX();
-            final double y = tile2.getPoint2d().getY();
-            index = (index + 1) % size;
-
-            TranslateTransition transition = new TranslateTransition(Duration.seconds(duration), imageView);
-            transition.setToX(x);
-            transition.setToY(y);
-            
-            Timeline innerTimeline = new Timeline(new KeyFrame(Duration.seconds(duration / 4), event2 -> {
-                imageView.setImage(unitType.getType().getMove()[imageIndex]);
-                imageIndex = (imageIndex + 1) % 4;
-            }));
-            innerTimeline.setCycleCount(4);
-            innerTimeline.play();
-            transition.play();
-        }));
-        timeline.setCycleCount(size);
-        timeline.play();
+        move(path);
     }
 
     @Override
     public void move(LinkedList<Tile> tiles) {
         final int size = tiles.size();
-        final double duration = 200 / unitType.getSpeed();
         index = 0;
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(duration), event -> {
-            Tile tile = path.get(index);
-            final double x = tile.getPoint2d().getX();
-            final double y = tile.getPoint2d().getY();
-            index = (index + 1) % size;
-
-            TranslateTransition transition = new TranslateTransition(Duration.seconds(duration), imageView);
-            transition.setToX(x);
-            transition.setToY(y);
-            
-            Timeline innerTimeline = new Timeline(new KeyFrame(Duration.seconds(duration / 4), event2 -> {
-                imageView.setImage(unitType.getType().getMove()[imageIndex]);
-                imageIndex = (imageIndex + 1) % 4;
-            }));
-            innerTimeline.setCycleCount(4);
-            innerTimeline.play();
-            transition.play();
+            Tile tile2 = tiles.get(index);
+            index++;
+            moveOneTile(tile2);
+            // if ((tile2 = isEnemyOverHear()) != null) {
+            //     tiles.clear();
+            //     attack(tile2.getPoint2d().getX(), tile2.getPoint2d().getY());
+            // }
+            changeMoveImage();
         }));
         timeline.setCycleCount(size);
         timeline.play();
