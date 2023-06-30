@@ -6,12 +6,16 @@ import java.util.LinkedList;
 import com.example.model.Game;
 import com.example.model.Governance;
 import com.example.model.map.Tile;
+import com.example.view.Main;
 import com.example.view.images.TextureImages;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.stage.Popup;
 import javafx.util.Duration;
 
 import com.example.model.map.Node;
@@ -43,6 +47,21 @@ public class Unit implements Successor, MoveInteface, AttackInterface {
     }
 
     private void addToolTip() {
+        Popup popup = new Popup();
+        Label label = new Label();
+        popup.getContent().add(label);
+        label.getStylesheets().add(Main.class.getResource("/css/Popup.css").toExternalForm());
+        label.setPadding(new Insets(20, 10, 20, 10));
+
+        imageView.setOnMouseEntered(event -> {
+            label.setText(toString());
+            popup.show(Main.getStage(), event.getSceneX() + 20, event.getSceneY());
+        });
+
+        imageView.setOnMouseExited(event -> {
+            popup.hide();
+        });
+
         imageView.setOnMouseClicked(event -> {
             unitTile.getGameMap().getGame().selectUnit(this);
         });
@@ -232,16 +251,12 @@ public class Unit implements Successor, MoveInteface, AttackInterface {
         timeline.play();
     }
 
-    // @Override
-    // public String toString() {
-    //     String hitpoint;
-    //     if (this.hitpoint < unitType.getMaxHitpoint() / 3) hitpoint = RED_BOLD;
-    //     else if (this.hitpoint < unitType.getMaxHitpoint() * 2 / 3) hitpoint = YELLOW_BOLD;
-    //     else hitpoint = GREEN_BOLD;
-    //     hitpoint += this.hitpoint + RESET;
-    //     hitpoint += "/" + unitType.getMaxHitpoint();
-    //     String owner = BLUE_BOLD + governance.getOwner().getNickname() + RESET;
-    //     return unitType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
-    // }
+    @Override
+    public String toString() {
+        String hitpoint = this.hitpoint + "/" + unitType.getMaxHitpoint();
+        String owner = governance.getOwner().getNickname();
+        String details = unitType.toString();
+        return unitType.getType().getName() + " [" + hitpoint + "] \"" + owner + "\"\n" + details;
+    }
 
 }

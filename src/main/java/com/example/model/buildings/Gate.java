@@ -45,4 +45,9 @@ public class Gate extends Tower{
         return hasLadder || isOpen;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "\nCurrent state: " + (isOpen ? "open" : "close");
+    }
+
 }

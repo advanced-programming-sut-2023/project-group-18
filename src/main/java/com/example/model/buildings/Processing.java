@@ -35,4 +35,10 @@ public class Processing extends Building{
         }
         else governance.getPopularityFactors().addAleCoverage(-0.5);
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nMaterial: " + material + "\nRate: " + rate + "\nProduct: " + product.getName();
+    }
+
 }

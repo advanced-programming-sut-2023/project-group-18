@@ -44,4 +44,9 @@ public class Gunsmith extends Building {
         makeWeapon();
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "\nWeapon: " + weapon.getName();
+    }
+
 }

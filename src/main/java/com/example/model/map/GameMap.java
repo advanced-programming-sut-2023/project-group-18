@@ -25,6 +25,9 @@ import javafx.animation.Animation;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DataFormat;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
@@ -189,11 +192,32 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
                 case W -> setTexture(TextureImages.WATER);
                 case T -> addTree();
                 case B -> backToMap();
-                case D -> removeLastBuilding();
+                case Z -> removeLastBuilding();
                 case M -> conditionalMove();
+                case D -> removeSelectedBuilding();
+                case C -> copyToClipboard();
+                case V -> pastFromClipboard();
                 default -> {}
             }
         });
+    }
+
+    private void pastFromClipboard() {
+        String name = (String) Clipboard.getSystemClipboard().getContent(DataFormat.PLAIN_TEXT);
+        setSelectedBuilding(BuildingType.getBuildingTypeByName(name));
+        dropBuilding(selectedTiles.get(0).getPoint2d().getX(), selectedTiles.get(0).getPoint2d().getY());
+        setSelectedBuilding(null);
+    }
+
+    private void copyToClipboard() {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(game.getSelectedBuilding().getBuildingType().getName());
+        clipboard.setContent(content);
+    }
+
+    private void removeSelectedBuilding() {
+        game.getSelectedBuilding().removeBuildingFromTiles();
     }
 
     private void conditionalMove() {

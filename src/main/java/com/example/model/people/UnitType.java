@@ -74,4 +74,11 @@ public enum UnitType {
             return type;
         }
 
+        @Override
+        public String toString() {
+            return "Damage: " + damage
+                + "\nSpeed: " + speed
+                + "\nRange: " + range
+                + "\nCost: " + cost;
+        }
 }

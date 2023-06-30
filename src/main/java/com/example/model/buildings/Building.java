@@ -19,7 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Popup;
 
 public class Building implements Successor {
-    private final BuildingType buildingType;
+    protected final BuildingType buildingType;
     private final ImageView imageView;
     protected final ArrayList<Worker> workers;
     protected final Governance governance;
@@ -30,6 +30,8 @@ public class Building implements Successor {
     protected final ArrayList<Tile> tiles;
     protected int hitpoint;
     protected final int width;
+    protected int population;
+    protected int worker;
 
     protected Building(BuildingType buildingType, Governance governance, Tile tile) {
         this.buildingType = buildingType;
@@ -45,7 +47,6 @@ public class Building implements Successor {
         this.imageView = new ImageView(buildingType.getImage());
         setImageViewOptions(tile);
         addBuildingToTiles(tile);
-        // TODO: need to create town category
         if (buildingType.equals(BuildingType.CATHEDRAL) || buildingType.equals(BuildingType.CHURCH))
             governance.getPopularityFactors().addReligiousFactor(buildingType.getPopularityEffect());
     }
@@ -186,18 +187,12 @@ public class Building implements Successor {
 
     @Override
     public String toString() {
-        String hitpoint = "Building hitpoint: ";
-        hitpoint += this.hitpoint;
-        hitpoint += "/" + buildingType.getHitpoint();
+        final String hitpoint =  this.hitpoint + "/" + buildingType.getHitpoint();
         final String owner = governance.getOwner().getUsername();
-        String out = buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
-        if (buildingType.getCategory().equals(Category.GATE)) {
-            Gate gate = (Gate) this;
-            if (gate.isOpen())
-                out = out + "\ncurrent state: open";
-            else out = out + "\ncurrent state: close";
-        }
-        return out;
+        String result = "\n";
+        if (buildingType.getPopulationEffect() > 0) result += "Population: " + population + "/" + buildingType.getPopulationEffect();
+        if (buildingType.getWorkersNumber() > 0) result += "Workers: " + worker + "/" + buildingType.getWorkersNumber();
+        return buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"" + result;
     }
 
     public void run(){
