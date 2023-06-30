@@ -1,5 +1,7 @@
 package com.example.model.people;
 
+import java.util.ArrayList;
+
 import com.example.model.assets.Asset;
 import com.example.model.buildings.BuildingType;
 
@@ -31,6 +33,13 @@ public enum UnitType {
                 this.range = range;
                 this.cost = cost;
                 this.assets = assets;
+        }
+
+        public static ArrayList<UnitType> getUnitTypesByBuildingType(BuildingType buildingType) {
+            ArrayList<UnitType> arrayList = new ArrayList<>();
+            for (UnitType unitType : UnitType.values())
+                if (unitType.buildingType.equals(buildingType)) arrayList.add(unitType);
+            return arrayList;
         }
 
         public Asset[] getAssets() {
