@@ -5,8 +5,7 @@ import com.example.controller.GameController;
 import com.example.model.*;
 import com.example.model.assets.Asset;
 import com.example.model.assets.AssetType;
-import com.example.model.buildings.BarCategory;
-import com.example.model.buildings.BuildingType;
+import com.example.model.buildings.*;
 import com.example.view.Main;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,10 +13,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Popup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +38,13 @@ public class GameMenuController {
     @FXML
     private HBox typesHBox;
     private BuildingType selectedBuilding;
-    public static List<List<BuildingImage>> buildingListOfLists = new ArrayList<List<BuildingImage>>(7);
-    public static List<List<BuildingImage>> assetListOfLists = new ArrayList<List<BuildingImage>>(3);
+    public static List<List<BuildingImage>> buildingListOfLists = new ArrayList<>(7);
+    public static List<List<BuildingImage>> assetListOfLists = new ArrayList<>(3);
     public static BarCategory currentCategory = BarCategory.CASTLE;
     public Alert alert = new Alert(Alert.AlertType.NONE);
 
     public void initialize() {
+        Game.getInstance().setGameMenuController(this);
         controller.getGame().setGameMap(100);
         ArrayList<User> arrayList = new ArrayList<>();
         arrayList.add(UsersData.getUsersData().getUserByUsername("user1"));
@@ -123,7 +126,11 @@ public class GameMenuController {
 //            if (!barCategory.equals(BarCategory.NONE))
 //                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true,"buildings"));
 //        }
-//        changeMenu(currentCategory);
+        for (BarCategory barCategory : BarCategory.values()) {
+            if (!barCategory.equals(BarCategory.NONE))
+                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true, "buildings"));
+        }
+        changeMenu(currentCategory);
 
 //        typeList.add(new BuildingImage(typesHBox, "CastleBuilding", 20));
 //        typeList.add(new BuildingImage(typesHBox, "FarmBuilding", 20));
@@ -174,14 +181,54 @@ public class GameMenuController {
 
     public void changeMenu(BarCategory barCategory) {
         for (List<BuildingImage> buildingImages : buildingListOfLists) {
-            if (BuildingType.getBuildingTypeByName(
-                    buildingImages.get(0).getName()).getBarCategory().equals(barCategory)) {
+            if (BuildingType.getBuildingTypeByName(buildingImages.get(0).getName()).getBarCategory().equals(barCategory)) {
                 imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
                 for (BuildingImage buildingImage : buildingImages) {
                     imagesHBox.getChildren().add(buildingImage.getImageView());
                 }
             }
         }
+    }
+
+    public void showKeepMenu() {
+        PopularityFactors popularityFactors = Game.getInstance().getCurrentGovernance().getPopularityFactors();
+        imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+        VBox vBox1 = new VBox();
+        vBox1.setSpacing(10);
+        VBox vBox2 = new VBox();
+        vBox2.setSpacing(10);
+
+        vBox1.getChildren().add(getPopularityNodes(popularityFactors.getFoodFactor(), "food"));
+        vBox1.getChildren().add(getPopularityNodes(popularityFactors.getTaxFactor(), "tax"));
+        vBox1.getChildren().add(getPopularityNodes(popularityFactors.getFearFactor(), "fear"));
+
+        vBox2.getChildren().add(getPopularityNodes(popularityFactors.getReligiousFactor(), "religion"));
+        vBox2.getChildren().add(getPopularityNodes(popularityFactors.getAleFactor(), "ale coverage"));
+
+        imagesHBox.getChildren().addAll(vBox1, vBox2);
+
+    }
+
+    private HBox getPopularityNodes(int factor, String factorName) {
+        ImageView imageView = new ImageView();
+        Label label = new Label(Integer.toString(factor));
+        label.setFont(new Font(15));
+        imageView.setFitHeight(20);
+        imageView.setFitWidth(20);
+        Label name = new Label(factorName);
+        if (factor < 0) {
+            label.setTextFill(Color.RED);
+            imageView.setImage(new Image(GameMenuController.class.getResource("/popularityFactors/1.jpg").toExternalForm()));
+        } else if (factor == 0) {
+            label.setTextFill(Color.YELLOW);
+            imageView.setImage(new Image(GameMenuController.class.getResource("/popularityFactors/2.jpg").toExternalForm()));
+        } else {
+            label.setTextFill(Color.GREEN);
+            imageView.setImage(new Image(GameMenuController.class.getResource("/popularityFactors/3.jpg").toExternalForm()));
+        }
+        HBox hBox = new HBox(label, imageView, name);
+        hBox.setSpacing(20);
+        return hBox;
     }
 
     public void changeShopAssetType(AssetType assetType) {
@@ -224,7 +271,7 @@ public class GameMenuController {
                 alert.show();
             }
         });
-        Button sellButton = new Button("Sell: " + sellPrice);
+        Button sellButton = new Button("Sell: " + asset.getSellPrice() * 5);
         sellButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -233,9 +280,7 @@ public class GameMenuController {
                     alert.setAlertType(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("sold successfully");
                     alert.show();
-                    clickOnAsset(asset);
-                }
-                else {
+                } else {
                     alert.setAlertType(Alert.AlertType.ERROR);
                     alert.setContentText("You haven't enough asset");
                     alert.show();
@@ -260,5 +305,49 @@ public class GameMenuController {
         for (int i = typesHBox.getChildren().size() - 1; i > 2; i--) {
             typesHBox.getChildren().remove(i);
         }
+    }
+
+    public void repairMenu(Building selectedBuilding) {
+        imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+        Tower tower = (Tower) selectedBuilding;
+        int hitpoint = selectedBuilding.getHitpoint();
+        int maxHitpoint = selectedBuilding.getBuildingType().getHitpoint();
+        Label label = new Label("hitpoint/max hitpoint");
+        label.setFont(new Font(20));
+        Label hp = new Label(hitpoint + "/" + maxHitpoint);
+        hp.setFont(new Font(20));
+        Button button = new Button("repair");
+        button.setMinWidth(70);
+        Label repair = new Label();
+        repair.setFont(new Font(20));
+        repair.setVisible(false);
+        button.setOnMouseClicked(mouseEvent -> {
+            if (tower.canRepair()) {
+                tower.repair();
+                repair.setTextFill(Color.GREEN);
+                repair.setText("repaired successfully");
+                repair.setVisible(true);
+            }
+            else {
+                repair.setTextFill(Color.RED);
+                repair.setText("can't repair");
+                repair.setVisible(true);
+            }
+        });
+        imagesHBox.getChildren().addAll(label, hp, button, repair);
+    }
+
+    public void gateMenu(Building selectedBuilding) {
+        imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+        Gate gate = (Gate) selectedBuilding;
+        Button open = new Button("open");
+        open.setMinWidth(100);
+        open.setMinHeight(30);
+        open.setOnMouseClicked(mouseEvent -> gate.open());
+        Button close = new Button("close");
+        close.setMinWidth(100);
+        close.setMinHeight(30);
+        close.setOnMouseClicked(mouseEvent -> gate.close());
+        imagesHBox.getChildren().addAll(open, close);
     }
 }

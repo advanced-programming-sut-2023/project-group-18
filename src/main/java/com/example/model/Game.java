@@ -3,15 +3,19 @@ package com.example.model;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.example.controller.GameController;
 import com.example.model.assets.Asset;
 import com.example.model.buildings.Building;
 import com.example.model.buildings.BuildingType;
+import com.example.model.buildings.Category;
 import com.example.model.map.GameMap;
 import com.example.model.people.SoldierType;
 import com.example.model.people.Unit;
 import com.example.model.people.UnitType;
+import com.example.view.controllers.GameMenuController;
 
 public class Game implements KeepLocations {
+    private GameMenuController gameMenuController;
     private static Game instance;
     private GameMap gameMap;
     private final ArrayList<Governance> governances;
@@ -87,8 +91,6 @@ public class Game implements KeepLocations {
         return false;
     }
 
-    
-    
 
     public void addNonMilitaryCharacters(Governance governance, int nonMilitaryCharacters) {
         governance.addNonMilitaryCharacters(nonMilitaryCharacters);
@@ -108,6 +110,19 @@ public class Game implements KeepLocations {
 
     public void selectBuilding(Building selectedBuilding) {
         this.selectedBuilding = selectedBuilding;
+        if (buildingActionNeeded(selectedBuilding.getBuildingType())) {
+            if (selectedBuilding.getBuildingType().equals(BuildingType.KEEP))
+                gameMenuController.showKeepMenu();
+//            else if (selectedBuilding.getBuildingType().equals(BuildingType.WALL) || selectedBuilding.getBuildingType().equals(BuildingType.CIRCLE_TOWER)
+//            || selectedBuilding.getBuildingType().equals(BuildingType.PERIMETER_TOWER) || selectedBuilding.getBuildingType().equals(BuildingType.LOOKOUT_TOWER)
+//            || selectedBuilding.getBuildingType().equals(BuildingType.SQUARE_TOWER)) {
+            else if (selectedBuilding.getBuildingType().getCategory().equals(Category.TOWER) || selectedBuilding.getBuildingType().getCategory().equals(Category.WALL)) {
+                gameMenuController.repairMenu(selectedBuilding);
+            } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.GATE)) {
+                gameMenuController.gateMenu(selectedBuilding);
+            }
+//            }
+        }
     }
 
     public Unit getSelectedUnit() {
@@ -118,8 +133,19 @@ public class Game implements KeepLocations {
         this.selectedUnit = selectedUnit;
     }
 
-    public void setCurrentGovernance(Governance governance){
+    public void setCurrentGovernance(Governance governance) {
         this.currentGovernance = governance;
     }
 
+    public boolean buildingActionNeeded(BuildingType buildingType) {
+        return (buildingType.equals(BuildingType.KEEP) || buildingType.equals(BuildingType.MARKET) || buildingType.equals(BuildingType.WALL)
+                || buildingType.equals(BuildingType.SQUARE_TOWER) || buildingType.equals(BuildingType.LOOKOUT_TOWER) || buildingType.equals(BuildingType.PERIMETER_TOWER)
+                || buildingType.equals(BuildingType.CIRCLE_TOWER) || buildingType.equals(BuildingType.SMALL_STONE_GATEHOUSE)
+                || buildingType.equals(BuildingType.BIG_STONE_GATEHOUSE) || buildingType.equals(BuildingType.BARRACKS) || buildingType.equals(BuildingType.ARMOURER)
+                || buildingType.equals(BuildingType.FLETCHER) || buildingType.equals(BuildingType.POLETURNER) || buildingType.equals(BuildingType.MERCENARY_POST));
+    }
+
+    public void setGameMenuController(GameMenuController gameMenuController) {
+        this.gameMenuController = gameMenuController;
+    }
 }

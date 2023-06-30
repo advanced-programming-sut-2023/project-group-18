@@ -134,4 +134,15 @@ public class PopularityFactors {
         setAleCoverage(this.aleCoverage + aleCoverage);
     }
 
+    public int getFearFactor() {
+        return fearFactor;
+    }
+
+    public int getTaxFactor() {
+        return taxFactor;
+    }
+
+    public int getFoodFactor() {
+        return foodFactor;
+    }
 }
