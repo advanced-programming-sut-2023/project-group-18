@@ -6,6 +6,7 @@ import com.example.model.*;
 import com.example.model.assets.Asset;
 import com.example.model.assets.AssetType;
 import com.example.model.buildings.*;
+import com.example.model.people.UnitType;
 import com.example.view.Main;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -349,5 +350,28 @@ public class GameMenuController {
         close.setMinHeight(30);
         close.setOnMouseClicked(mouseEvent -> gate.close());
         imagesHBox.getChildren().addAll(open, close);
+    }
+
+    public void barracksMenu(Building selectedBuilding) {
+        imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+        Barracks barracks = (Barracks) selectedBuilding;
+        ArrayList<UnitType> unitTypes = UnitType.getUnitTypesByBuildingType(selectedBuilding.getBuildingType());
+        Label error = new Label();
+        error.setFont(new Font(20));
+        error.setTextFill(Color.RED);
+        error.setVisible(false);
+        for (UnitType unitType : unitTypes) {
+            ImageView imageView = new ImageView(unitType.getType().getIcon());
+            imageView.setOnMouseClicked(mouseEvent -> {
+                if (barracks.canMakeSoldier(unitType)) {
+                    barracks.makeUnit(unitType);
+                    error.setVisible(false);
+                } else {
+                    error.setText("can't make " + unitType.name());
+                    error.setVisible(true);
+                }
+            });
+            imagesHBox.getChildren().add(imageView);
+        }
     }
 }

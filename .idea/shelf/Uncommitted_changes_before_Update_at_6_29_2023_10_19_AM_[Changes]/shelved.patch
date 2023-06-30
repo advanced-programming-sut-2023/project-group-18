@@ -1,0 +1,190 @@
+Index: src/main/resources/fxml/GameMenu.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.geometry.*?>\r\n<?import javafx.scene.control.*?>\r\n<?import javafx.scene.layout.*?>\r\n\r\n<BorderPane fx:id=\"borderPane\" prefHeight=\"750\" prefWidth=\"1500\" xmlns=\"http://javafx.com/javafx/17.0.2-ea\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.view.controllers.GameMenuController\">\r\n    <top>\r\n        <Button onMouseClicked=\"#initMap\" text=\"fuck you\" />\r\n    </top>\r\n\r\n    <bottom>\r\n\r\n        <VBox fx:id=\"bottom\" alignment=\"CENTER\" prefHeight=\"200.0\" prefWidth=\"1500.0\">\r\n            <Label prefHeight=\"88.0\" prefWidth=\"72.0\" text=\".\" />\r\n         <HBox fx:id=\"imagesHBox\" minWidth=\"-Infinity\" prefHeight=\"86.0\" prefWidth=\"1500.0\" spacing=\"10\">\r\n            <opaqueInsets>\r\n               <Insets top=\"79.0\" />\r\n            </opaqueInsets>\r\n            <padding>\r\n               <Insets left=\"350.0\" right=\"200.0\"/>\r\n            </padding>\r\n\r\n         </HBox>\r\n         <HBox fx:id=\"typesHBox\" prefHeight=\"22.0\" prefWidth=\"1500.0\" spacing=\"20\">\r\n            <padding>\r\n               <Insets left=\"350.0\" right=\"200.0\" />\r\n            </padding></HBox>\r\n        </VBox>\r\n    </bottom>\r\n\r\n    <!-- <stylesheets>\r\n        <URL value=\"@../css/MenuStyle.css\"/>\r\n    </stylesheets> -->\r\n</BorderPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/fxml/GameMenu.fxml b/src/main/resources/fxml/GameMenu.fxml
+--- a/src/main/resources/fxml/GameMenu.fxml	(revision 7f00d05503d284443c7f50af3b03dbc99b07d5ec)
++++ b/src/main/resources/fxml/GameMenu.fxml	(date 1688020917394)
+@@ -4,28 +4,29 @@
+ <?import javafx.scene.control.*?>
+ <?import javafx.scene.layout.*?>
+ 
+-<BorderPane fx:id="borderPane" prefHeight="750" prefWidth="1500" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.view.controllers.GameMenuController">
++<BorderPane fx:id="borderPane" prefHeight="750" prefWidth="1500" xmlns="http://javafx.com/javafx/17.0.2-ea"
++            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.view.controllers.GameMenuController">
+     <top>
+-        <Button onMouseClicked="#initMap" text="fuck you" />
++        <Button onMouseClicked="#initMap" text="fuck you"/>
+     </top>
+ 
+     <bottom>
+ 
+         <VBox fx:id="bottom" alignment="CENTER" prefHeight="200.0" prefWidth="1500.0">
+-            <Label prefHeight="88.0" prefWidth="72.0" text="." />
+-         <HBox fx:id="imagesHBox" minWidth="-Infinity" prefHeight="86.0" prefWidth="1500.0" spacing="10">
+-            <opaqueInsets>
+-               <Insets top="79.0" />
+-            </opaqueInsets>
+-            <padding>
+-               <Insets left="350.0" right="200.0"/>
+-            </padding>
+-
+-         </HBox>
+-         <HBox fx:id="typesHBox" prefHeight="22.0" prefWidth="1500.0" spacing="20">
+-            <padding>
+-               <Insets left="350.0" right="200.0" />
+-            </padding></HBox>
++            <Label prefHeight="88.0" prefWidth="72.0" text="."/>
++            <HBox fx:id="imagesHBox" minWidth="-Infinity" prefHeight="86.0" prefWidth="1500.0" spacing="10">
++                <opaqueInsets>
++                    <Insets top="79.0"/>
++                </opaqueInsets>
++                <padding>
++                    <Insets left="350.0" right="200.0"/>
++                </padding>
++            </HBox>
++            <HBox fx:id="typesHBox" prefHeight="22.0" prefWidth="1500.0" spacing="20">
++                <padding>
++                    <Insets left="350.0" right="200.0"/>
++                </padding>
++            </HBox>
+         </VBox>
+     </bottom>
+ 
+Index: src/main/java/com/example/view/controllers/GameMenuController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.view.controllers;\r\n\r\nimport com.example.controller.GameController;\r\n\r\nimport com.example.model.BuildingImage;\r\nimport com.example.model.User;\r\nimport com.example.model.UsersData;\r\nimport com.example.model.buildings.BarCategory;\r\nimport com.example.model.buildings.BuildingType;\r\nimport com.example.view.Main;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.layout.*;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class GameMenuController {\r\n    private final GameController controller = GameController.getInstance();\r\n    @FXML\r\n    private BorderPane borderPane;\r\n    \r\n    @FXML\r\n    private VBox bottom;\r\n    @FXML\r\n    private HBox imagesHBox;\r\n    @FXML\r\n    private HBox typesHBox;\r\n    private BuildingType selectedBuilding;\r\n    public static List<List<BuildingImage>> listOfLists = new ArrayList<List<BuildingImage>>(7);\r\n    public static BarCategory currentCategory = BarCategory.CASTLE;\r\n\r\n    public void initialize() {\r\n        controller.getGame().setGameMap(100);\r\n        ArrayList<User> arrayList = new ArrayList<>();\r\n        arrayList.add(UsersData.getUsersData().getUserByUsername(\"user1\"));\r\n        arrayList.add(UsersData.getUsersData().getUserByUsername(\"user2\"));\r\n        arrayList.add(UsersData.getUsersData().getUserByUsername(\"user3\"));\r\n        controller.getGame().makeNewGovernances(arrayList);\r\n        for (BarCategory barCategory : BarCategory.values()){\r\n            if (!barCategory.equals(BarCategory.NONE)){\r\n                ArrayList<BuildingImage> buildingImages = new ArrayList<>();\r\n                for (BuildingType buildingType : BuildingType.values()){\r\n                    if (buildingType.getBarCategory().equals(barCategory)){\r\n                        try {\r\n                            buildingImages.add(new BuildingImage(imagesHBox, buildingType.getName(), 80, this, false));\r\n                        }\r\n                        catch (Exception e){\r\n                            System.out.println(buildingType.getName());\r\n                            System.out.println(e.getMessage());\r\n                        }\r\n                    }\r\n                }\r\n                listOfLists.add(buildingImages);\r\n            }\r\n        }\r\n        for (List<BuildingImage> buildingImages : listOfLists){\r\n            if (buildingImages.size() > 6){\r\n                for (BuildingImage buildingImage : buildingImages){\r\n                    buildingImage.setSize(45);\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n    \r\n    public void initMap() {\r\n        borderPane.setCenter(controller.getGame().getGameMap());\r\n        controller.getGame().getGameMap().addShortcuts();\r\n        //bottom.setBackground(new Background(new BackgroundFill(Color.GREEN)));\r\n        //bottom.setStyle(\"-fx-background-color: Green;\");\r\n        BackgroundSize backgroundSize = new BackgroundSize(1.00,\r\n                1.00,\r\n                true,\r\n                true,\r\n                false,\r\n                false);\r\n        BackgroundImage image = new BackgroundImage(new Image(Main.class.getResourceAsStream(\"/images/icons/menu.png\")),\r\n                BackgroundRepeat.NO_REPEAT,\r\n                BackgroundRepeat.NO_REPEAT,\r\n                BackgroundPosition.CENTER,\r\n                backgroundSize);\r\n        ArrayList<BuildingImage> typeList = new ArrayList<>();\r\n        for (BarCategory barCategory : BarCategory.values()){\r\n            if (!barCategory.equals(BarCategory.NONE))\r\n                typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true));\r\n        }\r\n        changeMenu(currentCategory);\r\n//        typeList.add(new BuildingImage(typesHBox, \"CastleBuilding\", 20));\r\n//        typeList.add(new BuildingImage(typesHBox, \"FarmBuilding\", 20));\r\n//        typeList.add(new BuildingImage(typesHBox, \"FoodProcessing\", 20));\r\n//        typeList.add(new BuildingImage(typesHBox, \"IndustryBuilding\", 20));\r\n//        typeList.add(new BuildingImage(typesHBox, \"TowerBuilding\", 20));\r\n//        typeList.add(new BuildingImage(typesHBox, \"TowerBuilding\", 20));\r\n//        typeList.add(new BuildingImage(typesHBox, \"WeaponBuilding\", 20));\r\n//        for (BuildingType buildingType : BuildingType.values()){\r\n//            if (buildingType.getBarCategory().equals(currentCategory)){\r\n//                try {\r\n//                    castleImages.add(new BuildingImage(imagesHBox, buildingType.getName(), 80));\r\n//                }\r\n//                catch (Exception e){\r\n//                    System.out.println(buildingType.getName());\r\n//                    System.out.println(e.getMessage());\r\n//                }\r\n//            }\r\n//        }\r\n        //BuildingImage buildingImage = new BuildingImage(imagesHBox, \"Barracks\",80);\r\n        //BuildingImage buildingImage1 = new BuildingImage(imagesHBox, \"mercenary post\",80);\r\n\r\n        bottom.toFront();\r\n        //bottom.setPrefHeight(300);\r\n        //bottom.setMinHeight(600);\r\n//        bottom.setStyle(\"-fx-background-color: green\");\r\n        bottom.setBackground(new Background(image));\r\n    }\r\n    public void changeMenu(BarCategory barCategory){\r\n        for (List<BuildingImage> buildingImages : listOfLists){\r\n            if (BuildingType.getBuildingTypeByName(\r\n                    buildingImages.get(0).getName()).getBarCategory().equals(barCategory)){\r\n                imagesHBox.getChildren().removeAll(imagesHBox.getChildren());\r\n                for (BuildingImage buildingImage : buildingImages){\r\n                    imagesHBox.getChildren().add(buildingImage.getImageView());\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    public BuildingType getSelectedBuilding() {\r\n        return selectedBuilding;\r\n    }\r\n\r\n    public void setSelectedBuilding(BuildingType selectedBuilding) {\r\n        this.selectedBuilding = selectedBuilding;\r\n        controller.getGame().getGameMap().setSelectedBuilding(selectedBuilding);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/view/controllers/GameMenuController.java b/src/main/java/com/example/view/controllers/GameMenuController.java
+--- a/src/main/java/com/example/view/controllers/GameMenuController.java	(revision 7f00d05503d284443c7f50af3b03dbc99b07d5ec)
++++ b/src/main/java/com/example/view/controllers/GameMenuController.java	(date 1687986306661)
+@@ -11,6 +11,7 @@
+ import javafx.fxml.FXML;
+ import javafx.scene.image.Image;
+ import javafx.scene.layout.*;
++
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+@@ -18,7 +19,7 @@
+     private final GameController controller = GameController.getInstance();
+     @FXML
+     private BorderPane borderPane;
+-    
++
+     @FXML
+     private VBox bottom;
+     @FXML
+@@ -36,15 +37,14 @@
+         arrayList.add(UsersData.getUsersData().getUserByUsername("user2"));
+         arrayList.add(UsersData.getUsersData().getUserByUsername("user3"));
+         controller.getGame().makeNewGovernances(arrayList);
+-        for (BarCategory barCategory : BarCategory.values()){
+-            if (!barCategory.equals(BarCategory.NONE)){
++        for (BarCategory barCategory : BarCategory.values()) {
++            if (!barCategory.equals(BarCategory.NONE)) {
+                 ArrayList<BuildingImage> buildingImages = new ArrayList<>();
+-                for (BuildingType buildingType : BuildingType.values()){
+-                    if (buildingType.getBarCategory().equals(barCategory)){
++                for (BuildingType buildingType : BuildingType.values()) {
++                    if (buildingType.getBarCategory().equals(barCategory)) {
+                         try {
+                             buildingImages.add(new BuildingImage(imagesHBox, buildingType.getName(), 80, this, false));
+-                        }
+-                        catch (Exception e){
++                        } catch (Exception e) {
+                             System.out.println(buildingType.getName());
+                             System.out.println(e.getMessage());
+                         }
+@@ -53,9 +53,9 @@
+                 listOfLists.add(buildingImages);
+             }
+         }
+-        for (List<BuildingImage> buildingImages : listOfLists){
+-            if (buildingImages.size() > 6){
+-                for (BuildingImage buildingImage : buildingImages){
++        for (List<BuildingImage> buildingImages : listOfLists) {
++            if (buildingImages.size() > 6) {
++                for (BuildingImage buildingImage : buildingImages) {
+                     buildingImage.setSize(45);
+                 }
+             }
+@@ -63,7 +63,6 @@
+     }
+ 
+ 
+-    
+     public void initMap() {
+         borderPane.setCenter(controller.getGame().getGameMap());
+         controller.getGame().getGameMap().addShortcuts();
+@@ -81,7 +80,7 @@
+                 BackgroundPosition.CENTER,
+                 backgroundSize);
+         ArrayList<BuildingImage> typeList = new ArrayList<>();
+-        for (BarCategory barCategory : BarCategory.values()){
++        for (BarCategory barCategory : BarCategory.values()) {
+             if (!barCategory.equals(BarCategory.NONE))
+                 typeList.add(new BuildingImage(typesHBox, barCategory.getName(), 20, this, true));
+         }
+@@ -113,12 +112,13 @@
+ //        bottom.setStyle("-fx-background-color: green");
+         bottom.setBackground(new Background(image));
+     }
+-    public void changeMenu(BarCategory barCategory){
+-        for (List<BuildingImage> buildingImages : listOfLists){
++
++    public void changeMenu(BarCategory barCategory) {
++        for (List<BuildingImage> buildingImages : listOfLists) {
+             if (BuildingType.getBuildingTypeByName(
+-                    buildingImages.get(0).getName()).getBarCategory().equals(barCategory)){
++                    buildingImages.get(0).getName()).getBarCategory().equals(barCategory)) {
+                 imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+-                for (BuildingImage buildingImage : buildingImages){
++                for (BuildingImage buildingImage : buildingImages) {
+                     imagesHBox.getChildren().add(buildingImage.getImageView());
+                 }
+             }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f288306d-0141-4ba9-ad2b-a92a921ee550\" name=\"Changes\" comment=\"add remainders\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/model/buildings/Building.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/model/buildings/Building.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/maps/defaultMap.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/maps/defaultMap.bin\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"new_Menus\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2QR3T8bkS02uWAvlog7BzFvoNq0\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;/Users/fraxea/Desktop/frAxeA/term2/AP/project/project-group18&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f288306d-0141-4ba9-ad2b-a92a921ee550\" name=\"Changes\" comment=\"Bottom Bar completed\" />\r\n      <created>1685302575628</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1685302575628</updated>\r\n      <workItem from=\"1685302578417\" duration=\"8012000\" />\r\n      <workItem from=\"1685343278880\" duration=\"12000\" />\r\n      <workItem from=\"1685367005928\" duration=\"4887000\" />\r\n      <workItem from=\"1685437111415\" duration=\"10349000\" />\r\n      <workItem from=\"1685519946688\" duration=\"3165000\" />\r\n      <workItem from=\"1685526506935\" duration=\"11000\" />\r\n      <workItem from=\"1685526998168\" duration=\"7716000\" />\r\n      <workItem from=\"1685648124111\" duration=\"1277000\" />\r\n      <workItem from=\"1685706691121\" duration=\"1018000\" />\r\n      <workItem from=\"1685708022769\" duration=\"6239000\" />\r\n      <workItem from=\"1685716083539\" duration=\"2436000\" />\r\n      <workItem from=\"1685731115291\" duration=\"11751000\" />\r\n      <workItem from=\"1685809345327\" duration=\"4576000\" />\r\n      <workItem from=\"1685893029808\" duration=\"7172000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"tag\">\r\n      <created>1685305307071</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685305307071</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"testing prompt text for unmasked password\">\r\n      <created>1685310099246</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685310099246</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"textField passwordField style for password show try\">\r\n      <created>1685311845919</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685311845919</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"fixed show password hopefully\">\r\n      <created>1685442820352</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685442820352</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"half done slogan\">\r\n      <created>1685455932991</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685455932991</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"signup hopefully done\">\r\n      <created>1685483238774</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685483238774</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"security question and captcha\">\r\n      <created>1685713869397</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685713869397</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"a commit\">\r\n      <created>1685731152351</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685731152351</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"login when answered security question\">\r\n      <created>1685814050921</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685814050921</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Main Menu\">\r\n      <created>1685814985857</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685814985857</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"start game\">\r\n      <created>1685979967030</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1685979967030</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Bottom Bar completed\">\r\n      <created>1687941767024</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687941767024</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Bottom Bar completed\">\r\n      <created>1687941976394</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687941976394</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Bottom Bar completed\">\r\n      <created>1687942155173</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687942155173</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"15\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"tag\" />\r\n    <MESSAGE value=\"testing prompt text for unmasked password\" />\r\n    <MESSAGE value=\"textField passwordField style for password show try\" />\r\n    <MESSAGE value=\"fixed show password hopefully\" />\r\n    <MESSAGE value=\"half done slogan\" />\r\n    <MESSAGE value=\"signup hopefully done\" />\r\n    <MESSAGE value=\"security question and captcha\" />\r\n    <MESSAGE value=\"a commit\" />\r\n    <MESSAGE value=\"login when answered security question\" />\r\n    <MESSAGE value=\"Main Menu\" />\r\n    <MESSAGE value=\"start game\" />\r\n    <MESSAGE value=\"Bottom Bar completed\" />\r\n    <MESSAGE value=\"add remainders\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"add remainders\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/project_group_18$LoginMenuTest.ic\" NAME=\"LoginMenuTest Coverage Results\" MODIFIED=\"1683974377815\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7f00d05503d284443c7f50af3b03dbc99b07d5ec)
++++ b/.idea/workspace.xml	(date 1688021127687)
+@@ -5,12 +5,14 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="f288306d-0141-4ba9-ad2b-a92a921ee550" name="Changes" comment="add remainders">
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/Building.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_31_2023_7_05_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_31_2023_7_05_PM__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_1.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_6_2023_3_28_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_6_2023_3_28_AM__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_6_2023_3_28_AM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_6_2023_3_28_AM__Changes_1.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/maps/defaultMap.bin" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/maps/defaultMap.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/GameMenu.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -82,6 +84,7 @@
+       <workItem from="1685731115291" duration="11751000" />
+       <workItem from="1685809345327" duration="4576000" />
+       <workItem from="1685893029808" duration="7172000" />
++      <workItem from="1688020455140" duration="669000" />
+     </task>
+     <task id="LOCAL-00001" summary="tag">
+       <created>1685305307071</created>
