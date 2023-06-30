@@ -11,8 +11,7 @@ import com.example.model.people.*;
 public class Governance {
     private final User owner;
     private final ArrayList<Building> buildings;
-    private final ArrayList<Soldier> soldiers;
-    private final ArrayList<Worker> workers;
+    private final ArrayList<Unit> units;
     private final HashMap<AssetType, HashMap<Asset, Integer>> assets;
     private final PopularityFactors popularityFactors;
     private int gold;
@@ -28,8 +27,7 @@ public class Governance {
     public Governance(User owner) {
         this.owner = owner;
         buildings = new ArrayList<>();
-        soldiers = new ArrayList<>();
-        workers = new ArrayList<>();
+        units = new ArrayList<>();
         assets = Asset.getAllAssets();
         popularityFactors = new PopularityFactors(this);
         gold = 100;
@@ -58,8 +56,8 @@ public class Governance {
         return nonMilitaryCharacters;
     }
 
-    public ArrayList<Soldier> getSoldiers() {
-        return soldiers;
+    public ArrayList<Unit> getUnits() {
+        return units;
     }
 
     public HashMap<AssetType, HashMap<Asset, Integer>> getAssets() {
@@ -307,20 +305,20 @@ public class Governance {
 
 
     private void addPopulation() {
-        nonMilitaryCharacters += (getFoodCount() - workers.size()) / 2;
+        // nonMilitaryCharacters += (getFoodCount() - workers.size()) / 2;
     }
 
     private void peopleEat() {
-        int haveToEat = nonMilitaryCharacters + workers.size();
-        for (Asset asset : assets.get(AssetType.FOOD).keySet()) {
-            int count = assets.get(AssetType.FOOD).get(asset);
-            if (haveToEat <= count) {
-                removeAssetFromStorage(asset, haveToEat);
-                return;
-            }
-            removeAssetFromStorage(asset, count);
-            haveToEat -= count;
-        }
+        // int haveToEat = nonMilitaryCharacters + workers.size();
+        // for (Asset asset : assets.get(AssetType.FOOD).keySet()) {
+        //     int count = assets.get(AssetType.FOOD).get(asset);
+        //     if (haveToEat <= count) {
+        //         removeAssetFromStorage(asset, haveToEat);
+        //         return;
+        //     }
+        //     removeAssetFromStorage(asset, count);
+        //     haveToEat -= count;
+        // }
     }
 
     public Unit getLord() {
@@ -332,9 +330,9 @@ public class Governance {
     }
 
     public void getTaxFromPeople(){
-        int population = this.nonMilitaryCharacters + this.workers.size();
-        double taxRate = popularityFactors.getTaxCoefficient();
-        this.addGold((int)(population * taxRate));
+        // int population = this.nonMilitaryCharacters + this.workers.size();
+        // double taxRate = popularityFactors.getTaxCoefficient();
+        // this.addGold((int)(population * taxRate));
     }
 
     public void run() {
@@ -348,6 +346,6 @@ public class Governance {
     }
 
     public int getPopulation() {
-        return nonMilitaryCharacters + workers.size();
+        return nonMilitaryCharacters;
     }
 }

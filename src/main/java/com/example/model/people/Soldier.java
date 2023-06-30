@@ -23,7 +23,7 @@ public class Soldier extends Unit {
         this.damage = soldierType.getAttackPower() * (20 + governance.getFearRate());
         this.isAttack = false;
         this.hitpoint = soldierType.getHitpoint();
-        governance.getSoldiers().add(this);
+        governance.getUnits().add(this);
     }
 
     public SoldierType getSoldierType() {
@@ -89,16 +89,15 @@ public class Soldier extends Unit {
     }
 
     public void attack() {
-        while (speed > 0 && !path.isEmpty()) {
-            if (isInRange()) {
-                attack(targetTile);
-                break;
-            }
-            moveOneTile(path.getFirst());
-            path.removeFirst();
-            speed--;
-        }
-
+        // while (speed > 0 && !path.isEmpty()) {
+        //     if (isInRange()) {
+        //         attack(targetTile);
+        //         break;
+        //     }
+        //     moveOneTile(path.getFirst());
+        //     path.removeFirst();
+        //     speed--;
+        // }
     }
 
     public boolean findNearestEnemyInBuilding(int range) {
@@ -108,7 +107,7 @@ public class Soldier extends Unit {
         while (!governances.isEmpty()) {
             Governance targetGovernance = governances.get(index % governances.size());
             governances.remove(targetGovernance);
-            ArrayList<Unit> units = new ArrayList<>(targetGovernance.getSoldiers());
+            ArrayList<Unit> units = new ArrayList<>(targetGovernance.getUnits());
             Unit unit = findNearestEnemy(units);
             if (unit.getUnitTile().getPoint2d().distance(unitTile.getPoint2d()) > range) continue;
             targetTile = unit.getUnitTile();
@@ -124,7 +123,7 @@ public class Soldier extends Unit {
         while (!governances.isEmpty()) {
             Governance targetGovernance = governances.get(index % governances.size());
             governances.remove(targetGovernance);
-            ArrayList<Unit> units = new ArrayList<>(targetGovernance.getSoldiers());
+            ArrayList<Unit> units = new ArrayList<>(targetGovernance.getUnits());
             while (!units.isEmpty()) {
                 Unit unit = findNearestEnemy(units);
                 targetTile = unit.getUnitTile();
@@ -162,7 +161,7 @@ public class Soldier extends Unit {
         } else if (targetTile != null) {
             System.out.println("heyyy");
             findPath();
-            movePath();
+            // movePath();
         }
         System.out.println("hoouosij");
 
