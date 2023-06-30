@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -159,6 +160,7 @@ public class GameMenuController {
 
 
         setScribe(pane);
+        setBrief(pane);
         pane.toFront();
         //bottom.setPrefHeight(300);
         //bottom.setMinHeight(600);
@@ -166,12 +168,31 @@ public class GameMenuController {
         bottom.setBackground(new Background(image));
     }
 
+    private void setBrief(Pane pane) {
+        Button button = new Button("Brief");
+        button.setLayoutX(800);
+        button.setLayoutY(165);
+        pane.getChildren().add(button);
+        HBox hBox = new HBox();
+        hBox.setSpacing(15);
+        Label governance = new Label("Governances: ");
+        governance.setFont(new Font(20));
+        governance.setTextFill(Color.GREEN);
+        button.setOnMouseClicked(mouseEvent -> {
+            imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+            hBox.getChildren().removeAll(hBox.getChildren());
+            hBox.getChildren().add(governance);
+            for (Governance governance1 : Game.getInstance().getGovernances()) {
+                Label label = new Label(governance1.getOwner().getNickname());
+                label.setFont(new Font(20));
+                hBox.getChildren().add(label);
+            }
+            imagesHBox.getChildren().add(hBox);
+        });
+    }
+
     private void setScribe(Pane pane) {
-        Governance governance = Game.getInstance().getCurrentGovernance();
         popularity = new Text();
-//        popularity.textProperty().addListener((observable, oldValue, newValue) ->
-//                popularity.setText(signupMethods.getUsernameError(newValue))
-//        );
         popularity.setFont(new Font(15));
 
         treasury = new Text();
@@ -184,12 +205,7 @@ public class GameMenuController {
         vBox.setSpacing(2);
         vBox.setLayoutX(890);
         vBox.setLayoutY(109);
-        vBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                updateScribe();
-            }
-        });
+        vBox.setOnMouseClicked(mouseEvent -> updateScribe());
         pane.getChildren().add(vBox);
     }
 
@@ -215,9 +231,9 @@ public class GameMenuController {
         PopularityFactors popularityFactors = Game.getInstance().getCurrentGovernance().getPopularityFactors();
         imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
         VBox vBox1 = new VBox();
-        vBox1.setSpacing(10);
+        vBox1.setSpacing(9);
         VBox vBox2 = new VBox();
-        vBox2.setSpacing(10);
+        vBox2.setSpacing(9);
 
         vBox1.getChildren().add(getPopularityNodes(popularityFactors.getFoodFactor(), "food"));
         vBox1.getChildren().add(getPopularityNodes(popularityFactors.getTaxFactor(), "tax"));
@@ -226,17 +242,90 @@ public class GameMenuController {
         vBox2.getChildren().add(getPopularityNodes(popularityFactors.getReligiousFactor(), "religion"));
         vBox2.getChildren().add(getPopularityNodes(popularityFactors.getAleFactor(), "ale coverage"));
 
-        imagesHBox.getChildren().addAll(vBox1, vBox2);
+        Button button = new Button("Popularity Rate Panel");
+        button.setOnMouseClicked(mouseEvent -> popularityPanel());
 
+        imagesHBox.getChildren().addAll(vBox1, vBox2, button);
+
+    }
+
+    private void popularityPanel() {
+        PopularityFactors popularityFactors = Game.getInstance().getCurrentGovernance().getPopularityFactors();
+        imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+        Label fearLabel = new Label("Fear Rate: ");
+        fearLabel.setFont(new Font(20));
+        TextField fearText = new TextField();
+        fearText.setPromptText("fear rate");
+        Button fearButton = new Button("set");
+        fearButton.setOnMouseClicked(mouseEvent -> {
+            if (fearText.getText().matches("\\d+")) {
+                int fear = Integer.parseInt(fearText.getText());
+                popularityFactors.setFearRate(fear);
+            }
+        });
+
+        Label taxLabel = new Label("Tax Rate: ");
+        taxLabel.setFont(new Font(20));
+        TextField taxText = new TextField();
+        taxText.setPromptText("tax rate");
+        Button taxButton = new Button("set");
+        Label taxError = new Label("can't set this tax");
+        taxError.setFont(new Font(20));
+        taxError.setTextFill(Color.RED);
+        taxError.setVisible(false);
+        taxButton.setOnMouseClicked(mouseEvent -> {
+            if (taxText.getText().matches("\\d+")) {
+                int tax = Integer.parseInt(taxText.getText());
+                if (popularityFactors.canSetTaxRate(tax)) {
+                    popularityFactors.setTaxRate(tax);
+                    taxError.setVisible(false);
+                } else {
+                    taxError.setVisible(true);
+                }
+            }
+        });
+
+        Label foodLabel = new Label("Food Rate: ");
+        foodLabel.setFont(new Font(20));
+        TextField foodText = new TextField();
+        foodText.setPromptText("food rate");
+        Button foodButton = new Button("set");
+        Label foodError = new Label("can't set this food rate");
+        foodError.setFont(new Font(20));
+        foodError.setTextFill(Color.RED);
+        foodError.setVisible(false);
+        foodButton.setOnMouseClicked(mouseEvent -> {
+            if (foodText.getText().matches("\\d+")) {
+                int food = Integer.parseInt(foodText.getText());
+                if (popularityFactors.canSetFoodRate(food)) {
+                    popularityFactors.setFoodRate(food);
+                    foodError.setVisible(false);
+                } else {
+                    foodError.setVisible(true);
+                }
+            }
+        });
+
+        HBox hBox1 = new HBox(fearLabel, fearText, fearButton);
+        hBox1.setSpacing(15);
+
+        HBox hBox2 = new HBox(taxLabel, taxText, taxButton, taxError);
+        hBox2.setSpacing(15);
+
+        HBox hBox3 = new HBox(foodLabel, foodText, foodButton, foodError);
+        hBox3.setSpacing(15);
+        VBox vBox = new VBox(hBox1, hBox2, hBox3);
+        imagesHBox.getChildren().add(vBox);
     }
 
     private HBox getPopularityNodes(int factor, String factorName) {
         ImageView imageView = new ImageView();
         Label label = new Label(Integer.toString(factor));
-        label.setFont(new Font(15));
+        label.setFont(new Font(16));
         imageView.setFitHeight(20);
         imageView.setFitWidth(20);
         Label name = new Label(factorName);
+        name.setFont(new Font(16));
         if (factor < 0) {
             label.setTextFill(Color.RED);
             imageView.setImage(new Image(GameMenuController.class.getResource("/popularityFactors/1.jpg").toExternalForm()));
@@ -348,8 +437,7 @@ public class GameMenuController {
                 repair.setTextFill(Color.GREEN);
                 repair.setText("repaired successfully");
                 repair.setVisible(true);
-            }
-            else {
+            } else {
                 repair.setTextFill(Color.RED);
                 repair.setText("can't repair");
                 repair.setVisible(true);
