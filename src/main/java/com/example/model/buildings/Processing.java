@@ -38,7 +38,11 @@ public class Processing extends Building{
 
     @Override
     public String toString() {
-        return super.toString() + "\nMaterial: " + material + "\nRate: " + rate + "\nProduct: " + product.getName();
+        String result = "\n";
+        if (material != null) result += "Material: " + material.getName();
+        result += "\nRate: " + rate;
+        if (product != null) result += "\nProduct: " + product.getName();
+        return super.toString() + result;
     }
 
 }

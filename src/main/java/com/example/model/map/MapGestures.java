@@ -72,12 +72,14 @@ public class MapGestures {
             mouseAnchorY = event.getSceneY();
             translateAnchorX = gameMap.getTranslateX();
             translateAnchorY = gameMap.getTranslateY();
-            if (gameMap.getSelectedBuilding() != null && !event.isSecondaryButtonDown()) {
-                System.out.println(gameMap.getSelectedBuilding().getName());
-                double x = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
-                double y = ((mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
+            if (event.isSecondaryButtonDown()) return;
+            double x = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
+            double y = ((mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
+            if (gameMap.getSelectedBuilding() != null) {
                 gameMap.dropBuilding(x, y);
                 gameMap.setSelectedBuilding(null);
+            } else if (gameMap.getGame().getSelectedUnit() != null) {
+                gameMap.move(gameMap.getGame().getSelectedUnit(), x, y);
             }
         }
     };

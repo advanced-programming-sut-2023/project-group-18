@@ -29,7 +29,9 @@ public class Farm extends Building{
 
     @Override
     public String toString() {
-        return super.toString() + "\nRate: " + rate + "\nProduct: " + product.getName();
+        String result = "\nRate: " + rate;
+        if (product != null) result += "\nProduct: " + product.getName();
+        return super.toString() + result;
     }
 
 }

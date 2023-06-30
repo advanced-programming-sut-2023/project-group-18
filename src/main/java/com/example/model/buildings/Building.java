@@ -163,6 +163,7 @@ public class Building implements Successor {
 
         imageView.setOnMouseClicked(event -> {
             Game.getInstance().selectBuilding(this);
+            Game.getInstance().selectUnit(null);
         });
 
 
@@ -174,12 +175,12 @@ public class Building implements Successor {
 
     @Override
     public String toString() {
-        final String hitpoint =  this.hitpoint + "/" + buildingType.getHitpoint();
-        final String owner = governance.getOwner().getUsername();
+        final String hitpoint = "\nHitpoint: " + this.hitpoint + "/" + buildingType.getHitpoint();
+        final String owner = "\nOwner: " + governance.getOwner().getUsername();
         String result = "\n";
         if (buildingType.getPopulationEffect() > 0) result += "Population: " + population + "/" + buildingType.getPopulationEffect();
         if (buildingType.getWorkersNumber() > 0) result += "Workers: " + worker + "/" + buildingType.getWorkersNumber();
-        return buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"" + result;
+        return buildingType.getName() + hitpoint + owner + result;
     }
 
     public void run(){

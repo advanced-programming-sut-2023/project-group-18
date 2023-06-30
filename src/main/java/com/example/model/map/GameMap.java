@@ -102,8 +102,6 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
                 selectedTiles.add(selectedTile);
             }
         }
-        if (game.getSelectedUnit() != null && !selectedTiles.isEmpty())
-            game.getSelectedUnit().move(selectedTiles.get(0));
     }
 
     public Tile findClosestTile(double x, double y) {
@@ -197,9 +195,20 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
                 case D -> removeSelectedBuilding();
                 case C -> copyToClipboard();
                 case V -> pastFromClipboard();
+                case Q -> deselectUnits();
+                case A -> attackUnit();
                 default -> {}
             }
         });
+    }
+
+    private void attackUnit() {
+        if (game.getSelectedUnit() != null) 
+            game.getSelectedUnit().attack();
+    }
+
+    private void deselectUnits() {
+        game.selectUnit(null);
     }
 
     private void pastFromClipboard() {
@@ -221,14 +230,14 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     }
 
     private void conditionalMove() {
+        if (game.getSelectedUnit() == null) return;
+        conditionalMove = !conditionalMove;
         for (Tile selectedTile : selectedTiles)
             selectedTile.deselectTile();
         selectedTiles.clear();
-        conditionalMove = !conditionalMove;
-        if (!path.isEmpty()) game.getSelectedUnit().move(new LinkedList<>(path));
-        // for (Tile tile : path)
-        //     tile.deselectTile();
-        // path.clear();
+        if (!path.isEmpty()) game.getSelectedUnit().move(path);
+        for (Tile tile : path)
+            tile.deselectTile();
     }
 
     private void removeLastBuilding() {
