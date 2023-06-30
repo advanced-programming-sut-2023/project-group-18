@@ -3,37 +3,49 @@ package com.example.model.people;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.example.model.Game;
 import com.example.model.Governance;
-import com.example.model.buildings.Building;
 import com.example.model.map.Tile;
-import com.example.model.map.Tree;
+import com.example.view.images.TextureImages;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+
 import com.example.model.map.Node;
 import com.example.model.map.Successor;
 
-public class Unit implements Successor {
+public class Unit implements Successor, MoveInteface, AttackInterface {
     protected final Governance governance;
     private final UnitType unitType;
+    private final ImageView imageView;
+    private final double duration;
     protected Tile unitTile;
-    private boolean isFree;
-    private Building place;
-    private int hitpoint;
-    protected int speed;
     protected Tile targetTile;
-    private Tile patrolTile;
     protected LinkedList<Tile> path;
-    private final boolean controllable;
-    protected State state;
+    private int hitpoint;
+    private int index;
+    private int imageIndex;
 
     public Unit(Governance governance, UnitType unitType, Tile unitTile) {
         this.governance = governance;
         this.unitType = unitType;
         this.unitTile = unitTile;
+        this.duration = 200 / unitType.getSpeed();
         unitTile.getUnits().add(this);
-        this.isFree = true;
-        hitpoint = unitType.getMaxHitpoint();
-        speed = unitType.getMaxSpeed();
-        this.controllable = unitType.isControllable();
-        this.state = State.STANDING;
+        imageView = new ImageView(unitType.getType().getStanding());
+        imageView.setFitHeight(20);
+        imageView.setFitWidth(20);
+        Game.getInstance().getGameMap().getChildren().add(imageView);
+        addToolTip();
+    }
+
+    private void addToolTip() {
+        imageView.setOnMouseClicked(event -> {
+            unitTile.getGameMap().getGame().selectUnit(this);
+        });
     }
 
     public Governance getGovernance() {
@@ -48,56 +60,20 @@ public class Unit implements Successor {
         return unitTile;
     }
 
-    public boolean isFree() {
-        return isFree;
-    }
-
-    public Building getPlace() {
-        return place;
-    }
-
     public int getHitpoint() {
         return hitpoint;
     }
-
-    public int getSpeed() {
-        return speed;
-    }
-
+    
     public Tile getTargetTile() {
         return targetTile;
-    }
-
-    public State getState() {
-        return state;
     }
 
     public void setUnitTile(Tile unitTile) {
         this.unitTile = unitTile;
     }
 
-    public void setFree(boolean free) {
-        isFree = free;
-    }
-
-    public void setPlace(Building place) {
-        this.place = place;
-    }
-
     public void setTargetTile(Tile targetTile) {
         this.targetTile = targetTile;
-    }
-
-    public Tile getPatrolTile() {
-        return patrolTile;
-    }
-
-    public void setPatrolTile(Tile patrolTile) {
-        this.patrolTile = patrolTile;
-    }
-
-    public void setState(State state) {
-        this.state = state;
     }
 
     public boolean addHitpoint(int hitpoint) {
@@ -106,33 +82,13 @@ public class Unit implements Successor {
         return hitpoint > 0;
     }
 
-    public void reduceSpeed(int speed) {
-        this.speed -= speed;
-    }
-
-    public void resetSpeed() {
-        speed = unitType.getMaxSpeed();
-    }
-
-    public void moveOneTile(Tile tile) {
-        unitTile.getUnits().remove(this);
-        unitTile = tile;
-        unitTile.getUnits().add(this);
-    }
-
     public boolean canGoTile(Tile tile) {
-        return tile.getBuilding() == null;
+        return tile.getBuilding() == null || tile.getTexture().getTextureImages().equals(TextureImages.FARM)
+            || tile.getTexture().getTextureImages().equals(TextureImages.GROUND);
     }
 
-    public void movePath() {
-        while (speed > 0 && !path.isEmpty()) {
-            moveOneTile(path.getFirst());
-            path.removeFirst();
-            speed--;
-        }
-    }
 
-    public void findPath() {
+    protected void findPath() {
         Node node = findNode();
         path = new LinkedList<>();
         while (node != null) {
@@ -146,7 +102,7 @@ public class Unit implements Successor {
         final ArrayList<Node> closedList = new ArrayList<>();
         openList.add(new Node(null, unitTile, targetTile));
         while (!openList.isEmpty()) {
-            System.out.println(openList.get(0).toString() + " size === " + openList.size());
+            System.out.println(openList.get(0).toString() + " size === " + openList.size()); // TODO: need to remove
             Node node = findLeastTotalNode(openList);
             int yIndex = node.getTile().getGameMap().getTileYIndex(node.getTile().getPoint2d().getX());
             int xIndex = node.getTile().getGameMap().getTileXIndex(node.getTile().getPoint2d().getY(), yIndex);
@@ -174,7 +130,7 @@ public class Unit implements Successor {
 
     private Node findLeastTotalNode(ArrayList<Node> nodeList) {
         Node bestNode = null;
-        double leastTotal = 100000000000000.0;
+        double leastTotal = 100000000000000.0d;
         for (Node node : nodeList)
             if (node.getTotal() < leastTotal) {
                 leastTotal = node.getTotal();
@@ -189,59 +145,91 @@ public class Unit implements Successor {
         return false;
     }
 
-    public LinkedList<Tile> getPath() {
-        return path;
-    }
-
-    public boolean isControllable() {
-        return controllable;
-    }
-
-    public void patrol(){
-        movePath();
-        Tile tile = this.patrolTile;
-        if (this.unitTile.equals(this.targetTile)){
-            this.patrolTile = this.targetTile;
-            this.targetTile = tile;
-            findPath();
-            patrol();
-        }
-    }
-
-    public boolean findNearestTree() {
-        ArrayList<Tree> trees = unitTile.getGameMap().getTrees();
-        while (!trees.isEmpty()) {
-            Tree tree = findNearestTree(trees);
-            targetTile = unitTile.getGameMap().findClosestTile(tree.getPoint2d().getX(), tree.getPoint2d().getY());
-            trees.remove(tree);
-            findPath();
-            if (path.isEmpty()) continue;
-            return true;
-        }
-        return false;
-    }
-
-    public Tree findNearestTree(ArrayList<Tree> trees) {
-        Tree bestTree = trees.get(0);
-        double bestDistance = unitTile.getPoint2d().distance(bestTree.getPoint2d());
-        for (Tree tree : trees) {
-            double distance = unitTile.getPoint2d().distance(tree.getPoint2d());
-            if (distance < bestDistance) {
-                bestDistance = distance;
-                bestTree = tree;
+    private Tile isEnemyOverHear() {
+        int yIndex = unitTile.getGameMap().getTileYIndex(unitTile.getPoint2d().getY());
+        int xIndex = unitTile.getGameMap().getTileXIndex(unitTile.getPoint2d().getX(), yIndex);
+        for (int yIndex2 = yIndex - 3; yIndex2 < yIndex + 3; yIndex2++)
+            for (int xIndex2 = xIndex - 3; xIndex2 < xIndex + 3; xIndex2++) {
+                Tile tile = unitTile.getGameMap().getTileByIndex(xIndex2, yIndex2);
+                if (tile.hasEnemy(governance)) return tile;
             }
-        }
-        return bestTree;
+        return null;
     }
 
-    public void doDamage(int damage){
-        if (this.hitpoint < damage)
-            this.hitpoint = 0;
-        else this.hitpoint -= damage;
+
+    public void gotDamage(int damage){
+        if (this.hitpoint <= damage) {
+            Game.getInstance().getGameMap().getChildren().remove(imageView);
+            governance.getUnits().remove(this);
+            unitTile.getUnits().remove(this);
+        } else this.hitpoint -= damage;
     }
 
-    public void attack(int x, int y) {
-        
+    private void moveOneTile(Tile tile) {
+        unitTile = tile;
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(duration), imageView);
+        final double x = tile.getPoint2d().getX();
+        final double y = tile.getPoint2d().getY();
+        transition.setToX(x);
+        transition.setToY(y);
+        transition.play();
+    }
+
+    private void changeMoveImage() {
+        Timeline innerTimeline = new Timeline(new KeyFrame(Duration.seconds(duration / 4), event -> {
+            imageView.setImage(unitType.getType().getMove()[imageIndex]);
+            imageIndex = (imageIndex + 1) % 4;
+        }));
+        innerTimeline.setCycleCount(4);
+        innerTimeline.play();
+    }
+
+    @Override
+    public void attack(double x, double y) {
+        // targetTile = unitTile.getGameMap().findClosestTile(x, y);
+        // findPath();
+        // final int size = path.size();
+        // index = 0;
+        // Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(duration), event -> {
+        //     Tile tile2 = path.get(index);
+        //     index++;
+        //     moveOneTile(tile2);
+        //     if ((tile2 = isEnemyOverHear()) != null) {
+        //         path.clear();
+        //         attack(tile2.getPoint2d().getX(), tile2.getPoint2d().getY());
+        //     }
+        //     changeMoveImage();
+        // }));
+        // timeline.setCycleCount(size);
+        // timeline.play();
+        // timeline.setOnFinished(event -> {
+            
+        // });
+    }
+
+    @Override
+    public void move(Tile tile) {
+        targetTile = tile;
+        findPath();
+        move(path);
+    }
+
+    @Override
+    public void move(LinkedList<Tile> tiles) {
+        final int size = tiles.size();
+        index = 0;
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(duration), event -> {
+            Tile tile2 = tiles.get(index);
+            index++;
+            moveOneTile(tile2);
+            // if ((tile2 = isEnemyOverHear()) != null) {
+            //     tiles.clear();
+            //     attack(tile2.getPoint2d().getX(), tile2.getPoint2d().getY());
+            // }
+            changeMoveImage();
+        }));
+        timeline.setCycleCount(size);
+        timeline.play();
     }
 
     // @Override

@@ -25,25 +25,7 @@ public enum SoldierType {
     LADDERMEN("Laddermen", 0, 2,4,12, 0, null,
             null,null,false,false, BuildingType.ENGINEER_GUILD, 30),
     ENGINEER("Engineer", 0, 2,3,12, 0, null,
-            null,null,false,true, BuildingType.ENGINEER_GUILD, 30),
-    BLACK_MONK("Black Monk", 3, 4,2,20, 1, Asset.STAFF,
-            null,null,false,false, BuildingType.CATHEDRAL, 50),
-    ARCHER_BOW("Archer Bow", 2, 3,4,70, 40, Asset.BOW,
-            null,null,false,true, BuildingType.MERCENARY_POST, 50),
-    SLAVE("Slave", 1, 0,1,12, 1, Asset.TORCH, null,
-            null,false,true, BuildingType.MERCENARY_POST,20),
-    SLINGER("Slinger", 2, 2,4,12, 10, Asset.SLING,
-            null,null,false,false, BuildingType.MERCENARY_POST, 30),
-    ASSASSIN("Assassin", 3, 4,3,12, 1, Asset.SCIMITAR,
-            null,null,false,false, BuildingType.MERCENARY_POST,150),
-    HORSE_ARCHERS("Horse Archers", 2,4 ,5,12, 50, Asset.ARABIAN_BOW,
-            null,"Arabian",false,false, BuildingType.MERCENARY_POST, 100),
-    ARABIAN_SWORDSMEN("Arabian Swordsmen", 5, 0,5,80, 10, Asset.SCIMITAR
-            ,Asset.ARABIAN_METAL_ARMOR,null,false,false, BuildingType.MERCENARY_POST,
-            200),
-    FIRE_THROWER("Fire Thrower", 4, 3,5,100, 10, Asset.GREEK_FIRE,
-            null,null,false,false, BuildingType.MERCENARY_POST,30);
-    //Todo (add all types of soldiers)
+            null,null,false,true, BuildingType.ENGINEER_GUILD, 30)
     ;
     private final String type;
     private final int attackPower;
