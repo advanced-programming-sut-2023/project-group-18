@@ -54,6 +54,7 @@
                 <Label styleClass="errorLabel" prefWidth="400" fx:id="sloganError"/>
             </HBox>
             <HBox spacing="40" alignment="CENTER">
+                <Button text="popular slogan" onMouseClicked="#popularSlogan" fx:id="popularSloganButton"/>
                 <Button text="Random Slogan" onMouseClicked="#randomSlogan" fx:id="randomSloganButton"/>
                 <CheckBox text="Slogan" fx:id="showSloganCheckBox"/>
             </HBox>

@@ -4,9 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="barracks2">
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="commit before debugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/Gunsmith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/Gunsmith.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/SignupMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/SignupMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/SignupMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/SignupMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/SignupMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/Users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Governance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Governance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/PopularityFactors.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/PopularityFactors.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Trade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Trade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Barracks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Barracks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/DairyProducts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/DairyProducts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Farm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Farm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gunsmith.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Gunsmith.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/IndustrialBuilding.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/IndustrialBuilding.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/OilSmelter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/OilSmelter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Processing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Processing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stair.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Stair.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Storage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Storage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Tower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Tower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Trap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Trap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/Successor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/Successor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/SoldierType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/SoldierType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/UnitType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/UnitType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/json/Users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/maps/defaultMap.bin" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/maps/defaultMap.bin" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688135814942</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="commit before debugs">
+      <created>1688142688062</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1688142688062</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +290,8 @@
     <MESSAGE value="keepMenu" />
     <MESSAGE value="barracks" />
     <MESSAGE value="barracks2" />
-    <option name="LAST_COMMIT_MESSAGE" value="barracks2" />
+    <MESSAGE value="commit before debugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit before debugs" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
