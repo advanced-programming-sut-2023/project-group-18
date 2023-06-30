@@ -21,6 +21,10 @@ import static com.example.controller.responses.FieldResponses.EMPTY_FIELD;
 public class ProfileMenuController {
     private final UsersData usersData = UsersData.getUsersData();
     @FXML
+    private Label sloganText;
+    @FXML
+    private Label slogan;
+    @FXML
     private ImageView avatar4;
     @FXML
     private ImageView avatar3;
@@ -57,6 +61,11 @@ public class ProfileMenuController {
         username.setText(currentUser.getUsername());
         nickname.setText(currentUser.getNickname());
         email.setText(currentUser.getEmail());
+        if (currentUser.getSlogan() == null) {
+            slogan.setVisible(false);
+            sloganText.setVisible(false);
+        }
+        slogan.setText(currentUser.getSlogan());
         avatar.setImage(new Image(currentUser.getAvatarPath()));
         addListeners();
     }

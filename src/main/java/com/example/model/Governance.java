@@ -7,6 +7,7 @@ import com.example.model.assets.Asset;
 import com.example.model.assets.AssetType;
 import com.example.model.buildings.*;
 import com.example.model.people.*;
+import com.example.view.controllers.GameMenuController;
 
 public class Governance {
     private final User owner;

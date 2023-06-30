@@ -2,8 +2,10 @@ package com.example.controller;
 
 import com.example.controller.responses.SignupResponses;
 import com.example.model.RandomSlogan;
+import com.example.model.User;
 import com.example.model.UsersData;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SignupMethods implements SignupResponses, RandomSlogan {
@@ -74,7 +76,7 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
         int index = random.nextInt(10);
         return RandomSlogan.RANDOM_SLOGANS[index];
     }
-    
+
     public String getUsernameError(String username) {
         if (!isUsernameValid(username)) return USERNAME_INVALID;
         if (doesUsernameExist(username)) return USERNAME_EXIST;
@@ -101,4 +103,33 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
         return null;
     }
 
+    public String getPopularSlogan() {
+        boolean flag = false;
+        ArrayList<User> users = UsersData.getUsersData().getUsers();
+        ArrayList<String> slogans = new ArrayList<>();
+        ArrayList<Integer> occurrences = new ArrayList<>();
+        for (User user : users) {
+            for (int i = 0; i < slogans.size(); i++) {
+                if (slogans.get(i).equals(user.getSlogan())) {
+                    occurrences.set(i, occurrences.get(i) + 1);
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
+                slogans.add(user.getSlogan());
+                occurrences.add(1);
+            }
+            flag = false;
+        }
+        int max = 0;
+        int maxIndex = 0;
+        for (int i = 0; i < occurrences.size(); i++) {
+            if (occurrences.get(i) > max) {
+                max = occurrences.get(i);
+                maxIndex = i;
+            }
+        }
+        return slogans.get(maxIndex);
+    }
 }

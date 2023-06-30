@@ -43,6 +43,9 @@ public class GameMenuController {
     public static List<List<BuildingImage>> assetListOfLists = new ArrayList<>(3);
     public static BarCategory currentCategory = BarCategory.CASTLE;
     public Alert alert = new Alert(Alert.AlertType.NONE);
+    private Text popularity;
+    private Text treasury;
+    private Text population;
 
     public void initialize() {
         Game.getInstance().setGameMenuController(this);
@@ -165,19 +168,36 @@ public class GameMenuController {
 
     private void setScribe(Pane pane) {
         Governance governance = Game.getInstance().getCurrentGovernance();
-        Text popularity = new Text(Integer.toString(governance.getPopularityFactors().getPopularity()));
+        popularity = new Text();
+//        popularity.textProperty().addListener((observable, oldValue, newValue) ->
+//                popularity.setText(signupMethods.getUsernameError(newValue))
+//        );
         popularity.setFont(new Font(15));
 
-        Text treasury = new Text(Integer.toString(governance.getGold()));
+        treasury = new Text();
         treasury.setFont(new Font(15));
 
-        Text population = new Text(Integer.toString(governance.getPopulation()));
+        population = new Text();
         population.setFont(new Font(15));
+        updateScribe();
         VBox vBox = new VBox(popularity, treasury, population);
         vBox.setSpacing(2);
         vBox.setLayoutX(890);
         vBox.setLayoutY(109);
+        vBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                updateScribe();
+            }
+        });
         pane.getChildren().add(vBox);
+    }
+
+    private void updateScribe() {
+        Governance governance = Game.getInstance().getCurrentGovernance();
+        popularity.setText(Integer.toString(governance.getPopularityFactors().getPopularity()));
+        treasury.setText(Integer.toString(governance.getGold()));
+        population.setText(Integer.toString(governance.getPopulation()));
     }
 
     public void changeMenu(BarCategory barCategory) {
