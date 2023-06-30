@@ -18,9 +18,9 @@ public class UnitImages {
         move = new Image[4];
         attack = new Image[2];
         for (int i = 1; i < 5; i++)
-            move[i] = new Image(Main.class.getResource("/images/units/" + name + "/move" + i + ".png").toExternalForm());
+            move[i - 1] = new Image(Main.class.getResource("/images/units/" + name + "/move" + i + ".png").toExternalForm());
         for (int i = 1; i < 3; i++)
-            attack[i] = new Image(Main.class.getResource("/images/units/" + name + "/attack" + i + ".png").toExternalForm());
+            attack[i - 1] = new Image(Main.class.getResource("/images/units/" + name + "/attack" + i + ".png").toExternalForm());
     }
 
     public String getName() {
