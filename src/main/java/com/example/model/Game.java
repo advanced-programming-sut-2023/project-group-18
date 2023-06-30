@@ -116,9 +116,6 @@ public class Game implements KeepLocations {
         if (buildingActionNeeded(selectedBuilding.getBuildingType())) {
             if (selectedBuilding.getBuildingType().equals(BuildingType.KEEP))
                 gameMenuController.showKeepMenu();
-//            else if (selectedBuilding.getBuildingType().equals(BuildingType.WALL) || selectedBuilding.getBuildingType().equals(BuildingType.CIRCLE_TOWER)
-//            || selectedBuilding.getBuildingType().equals(BuildingType.PERIMETER_TOWER) || selectedBuilding.getBuildingType().equals(BuildingType.LOOKOUT_TOWER)
-//            || selectedBuilding.getBuildingType().equals(BuildingType.SQUARE_TOWER)) {
             else if (selectedBuilding.getBuildingType().getCategory().equals(Category.TOWER) || selectedBuilding.getBuildingType().getCategory().equals(Category.WALL)) {
                 gameMenuController.repairMenu(selectedBuilding);
             } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.GATE)) {
