@@ -8,7 +8,6 @@ import com.example.model.assets.Asset;
 import com.example.model.map.Successor;
 import com.example.model.map.Tile;
 import com.example.model.people.Unit;
-import com.example.model.people.Worker;
 import com.example.view.Main;
 import com.example.view.images.TextureImages;
 
@@ -21,7 +20,6 @@ import javafx.stage.Popup;
 public class Building implements Successor {
     protected final BuildingType buildingType;
     private final ImageView imageView;
-    protected final ArrayList<Worker> workers;
     protected final Governance governance;
     protected final TextureImages groundType;
     protected final int goldCost;
@@ -35,7 +33,6 @@ public class Building implements Successor {
 
     protected Building(BuildingType buildingType, Governance governance, Tile tile) {
         this.buildingType = buildingType;
-        this.workers = new ArrayList<>();
         this.governance = governance;
         this.hitpoint = buildingType.getHitpoint();
         this.groundType = buildingType.getGroundType();
@@ -102,12 +99,8 @@ public class Building implements Successor {
         return resourceCost;
     }
 
-    public ArrayList<Worker> getWorkers() {
-        return workers;
-    }
-
     public int getWorkersNumber(){
-        return this.workers.size();
+        return worker;
     }
 
     public void setHitpoint(int hitpoint){
@@ -118,12 +111,6 @@ public class Building implements Successor {
         // workers.add(new Worker(governance,UnitType.getUnitTypeByBuildingType(buildingType),tile));
     }
 
-    public void updateWorkers(){
-        for (Unit unit : this.workers){
-            if (unit.getHitpoint() == 0)
-                workers.remove(unit);
-        }
-    }
 
     public boolean canWork(){
         return this.getWorkersNumber() == this.getBuildingType().getWorkersNumber();
@@ -199,22 +186,6 @@ public class Building implements Successor {
         //getMaterial
         if (!this.canWork())
             return;
-        for (Worker worker : workers){
-            if (worker.isFree()){
-                if (worker.getMaterial() != null){
-                    worker.setFree(false);
-                    if (governance.canRemoveAssetFromStorage(worker.getMaterial(),1)){
-
-                    }
-                }
-                else if (worker.getProduct() != null){
-                    worker.setFree(false);
-                    if (governance.canAddAssetToStorage(worker.getProduct(),worker.getProductCount())){
-
-                    }
-                }
-            }
-        }
     }
 
 }

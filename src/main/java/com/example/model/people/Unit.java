@@ -37,13 +37,16 @@ public class Unit implements Successor, MoveInteface, AttackInterface {
         this.governance = governance;
         this.unitType = unitType;
         this.unitTile = unitTile;
-        this.duration = 200 / unitType.getSpeed();
+        this.duration = 100 / unitType.getSpeed();
         unitTile.getUnits().add(this);
         imageView = new ImageView(unitType.getType().getStanding());
         imageView.setFitHeight(20);
         imageView.setFitWidth(20);
         Game.getInstance().getGameMap().getChildren().add(imageView);
+        unitTile.selectTile();
         addToolTip();
+        imageView.setLayoutX(unitTile.getPoint2d().getX());
+        imageView.setLayoutY(unitTile.getPoint2d().getY());
     }
 
     private void addToolTip() {
@@ -189,9 +192,15 @@ public class Unit implements Successor, MoveInteface, AttackInterface {
         TranslateTransition transition = new TranslateTransition(Duration.seconds(duration), imageView);
         final double x = tile.getPoint2d().getX();
         final double y = tile.getPoint2d().getY();
-        transition.setToX(x);
-        transition.setToY(y);
+        System.out.println("x=" + x + "y=" + y);
+        transition.setByX(x);
+        transition.setByY(y);
+        transition.setCycleCount(1);
         transition.play();
+        // Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(duration), event -> {
+
+        // }));
+
     }
 
     private void changeMoveImage() {
@@ -237,7 +246,10 @@ public class Unit implements Successor, MoveInteface, AttackInterface {
     public void move(LinkedList<Tile> tiles) {
         final int size = tiles.size();
         index = 0;
+        System.out.println(tiles.size());
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(duration), event -> {
+            System.out.println(index);
+            System.out.println(tiles.size());
             Tile tile2 = tiles.get(index);
             index++;
             moveOneTile(tile2);
@@ -246,9 +258,15 @@ public class Unit implements Successor, MoveInteface, AttackInterface {
             //     attack(tile2.getPoint2d().getX(), tile2.getPoint2d().getY());
             // }
             changeMoveImage();
+            try {
+                wait(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }));
         timeline.setCycleCount(size);
         timeline.play();
+        timeline.setOnFinished(event -> System.out.println("FUCK YOU"));
     }
 
     @Override

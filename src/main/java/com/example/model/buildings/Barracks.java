@@ -14,11 +14,11 @@ public class Barracks extends Building{
     }
 
     public boolean canMakeSoldier(UnitType unitType) {
-        if (governance.getRemainingNonMilitary() == 0) return false;
-        if (governance.getGold() < unitType.getCost()) return false;
-        for (Asset asset : unitType.getAssets())
-            if (governance.canRemoveAssetFromStorage(asset,1))
-                return false;
+        // if (governance.getRemainingNonMilitary() == 0) return false;
+        // if (governance.getGold() < unitType.getCost()) return false;
+        // for (Asset asset : unitType.getAssets())
+        //     if (governance.canRemoveAssetFromStorage(asset,1))
+        //         return false;
         return true;
     }
 

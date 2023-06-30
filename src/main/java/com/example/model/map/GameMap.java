@@ -131,7 +131,7 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
 
     protected void addToPath(double x, double y) {
         Tile tile = findClosestTile(x, y);
-        if (path.getLast().equals(tile)) return;
+        if (path.contains(tile)) return;
         path.addLast(tile);
         tile.selectTile();
     }
@@ -225,10 +225,10 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
             selectedTile.deselectTile();
         selectedTiles.clear();
         conditionalMove = !conditionalMove;
-        if (!path.isEmpty()) game.getSelectedUnit().move(path);
-        for (Tile tile : path)
-            tile.deselectTile();
-        path.clear();
+        if (!path.isEmpty()) game.getSelectedUnit().move(new LinkedList<>(path));
+        // for (Tile tile : path)
+        //     tile.deselectTile();
+        // path.clear();
     }
 
     private void removeLastBuilding() {

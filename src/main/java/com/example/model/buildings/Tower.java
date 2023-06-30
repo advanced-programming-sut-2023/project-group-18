@@ -3,7 +3,6 @@ package com.example.model.buildings;
 import com.example.model.Governance;
 import com.example.model.assets.Asset;
 import com.example.model.map.Tile;
-import com.example.model.people.Soldier;
 
 import java.util.ArrayList;
 
@@ -12,7 +11,6 @@ public class Tower extends Building {
     private final int defendRange;
     private final int soldiersCapacity;
     protected boolean hasLadder;
-    private final ArrayList<Soldier> soldiers;
     private final boolean strong;
 
     public Tower(BuildingType buildingType, Governance governance, Tile tile) {
@@ -21,7 +19,6 @@ public class Tower extends Building {
         this.defendRange = buildingType.getDefendRange();
         hasLadder = false;
         soldiersCapacity = buildingType.getSoldiersCapacity();
-        soldiers = new ArrayList<>();
         if (buildingType.equals(BuildingType.CIRCLE_TOWER) || buildingType.equals(BuildingType.SQUARE_TOWER))
             strong = true;
         else strong = false;
@@ -51,21 +48,6 @@ public class Tower extends Building {
         this.hasLadder = false;
     }
 
-    public ArrayList<Soldier> getSoldiers() {
-        return soldiers;
-    }
-
-    public int soldiersCount() {
-        return this.soldiers.size();
-    }
-
-    public void addSoldier(Soldier soldier) {
-        this.soldiers.add(soldier);
-    }
-
-    public void removeSoldier(Soldier soldier) {
-        this.soldiers.remove(soldier);
-    }
 
     public boolean isStrong() {
         return strong;
