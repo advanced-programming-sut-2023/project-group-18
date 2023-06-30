@@ -22,15 +22,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        ArrayList<Integer> integers = new ArrayList<>();
-        integers.add(10);
-        integers.add(1);
-        integers.add(5);
-        integers.set(2, integers.get(2) + 3);
-        System.out.println(integers.get(2));
-
         Main.stage = stage;
-        goToMenu("SignupMenu");
+        goToMenu("GameMenu");
 //        Music.LOGIN_MENU.getMediaPlayer().play();
         stage.setScene(scene);
         stage.setTitle("Stronghold Crusader");
