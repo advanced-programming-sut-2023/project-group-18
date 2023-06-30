@@ -190,7 +190,14 @@ public class Building implements Successor {
         hitpoint += this.hitpoint;
         hitpoint += "/" + buildingType.getHitpoint();
         final String owner = governance.getOwner().getUsername();
-        return buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
+        String out = buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
+        if (buildingType.getCategory().equals(Category.GATE)) {
+            Gate gate = (Gate) this;
+            if (gate.isOpen())
+                out = out + "\ncurrent state: open";
+            else out = out + "\ncurrent state: close";
+        }
+        return out;
     }
 
     public void run(){

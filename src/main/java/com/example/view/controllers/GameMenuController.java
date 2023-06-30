@@ -5,8 +5,7 @@ import com.example.controller.GameController;
 import com.example.model.*;
 import com.example.model.assets.Asset;
 import com.example.model.assets.AssetType;
-import com.example.model.buildings.BarCategory;
-import com.example.model.buildings.BuildingType;
+import com.example.model.buildings.*;
 import com.example.view.Main;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,6 +19,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Popup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -305,5 +305,49 @@ public class GameMenuController {
         for (int i = typesHBox.getChildren().size() - 1; i > 2; i--) {
             typesHBox.getChildren().remove(i);
         }
+    }
+
+    public void repairMenu(Building selectedBuilding) {
+        imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+        Tower tower = (Tower) selectedBuilding;
+        int hitpoint = selectedBuilding.getHitpoint();
+        int maxHitpoint = selectedBuilding.getBuildingType().getHitpoint();
+        Label label = new Label("hitpoint/max hitpoint");
+        label.setFont(new Font(20));
+        Label hp = new Label(hitpoint + "/" + maxHitpoint);
+        hp.setFont(new Font(20));
+        Button button = new Button("repair");
+        button.setMinWidth(70);
+        Label repair = new Label();
+        repair.setFont(new Font(20));
+        repair.setVisible(false);
+        button.setOnMouseClicked(mouseEvent -> {
+            if (tower.canRepair()) {
+                tower.repair();
+                repair.setTextFill(Color.GREEN);
+                repair.setText("repaired successfully");
+                repair.setVisible(true);
+            }
+            else {
+                repair.setTextFill(Color.RED);
+                repair.setText("can't repair");
+                repair.setVisible(true);
+            }
+        });
+        imagesHBox.getChildren().addAll(label, hp, button, repair);
+    }
+
+    public void gateMenu(Building selectedBuilding) {
+        imagesHBox.getChildren().removeAll(imagesHBox.getChildren());
+        Gate gate = (Gate) selectedBuilding;
+        Button open = new Button("open");
+        open.setMinWidth(100);
+        open.setMinHeight(30);
+        open.setOnMouseClicked(mouseEvent -> gate.open());
+        Button close = new Button("close");
+        close.setMinWidth(100);
+        close.setMinHeight(30);
+        close.setOnMouseClicked(mouseEvent -> gate.close());
+        imagesHBox.getChildren().addAll(open, close);
     }
 }
