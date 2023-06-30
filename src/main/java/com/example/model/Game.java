@@ -117,8 +117,9 @@ public class Game implements KeepLocations {
                 gameMenuController.repairMenu(selectedBuilding);
             } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.GATE)) {
                 gameMenuController.gateMenu(selectedBuilding);
+            } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.BARRACKS)) {
+                gameMenuController.barracksMenu(selectedBuilding);
             }
-//            }
         }
     }
 
