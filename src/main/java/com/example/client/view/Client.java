@@ -1,8 +1,17 @@
 package com.example.client.view;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.net.Socket;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
 
+import com.example.client.controller.NetworkController;
 import com.example.server.model.Game;
 import com.example.server.model.UsersData;
 import com.example.client.view.images.Images;
@@ -20,7 +29,7 @@ public class Client extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Client.stage = stage;
-        goToMenu("GameMenu  ");
+        goToMenu("GameMenu");
 //        Music.LOGIN_MENU.getMediaPlayer().play();
         stage.setScene(scene);
         stage.setTitle("Stronghold Crusader");
@@ -30,7 +39,10 @@ public class Client extends Application {
     }
 
     public static void main(String[] args) {
+        NetworkController networkController = NetworkController.getInstance();
+        networkController.initializeNetwork();
         launch();
+        networkController.terminateNetwork();
     }
 
     public static Stage getStage() {

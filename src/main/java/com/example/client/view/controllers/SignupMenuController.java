@@ -7,7 +7,6 @@ import com.example.server.controller.responses.FieldResponses;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Popup;
 
 import java.io.IOException;
@@ -152,7 +151,7 @@ public class SignupMenuController implements FieldResponses {
         slogan.setText(signupMethods.getRandomSlogan());
     }
 
-    public void popularSlogan(MouseEvent mouseEvent) {
+    public void popularSlogan() {
         slogan.setText(signupMethods.getPopularSlogan());
     }
 }
