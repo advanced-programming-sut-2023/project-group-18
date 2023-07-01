@@ -1,9 +1,15 @@
 package com.example.client.view.controllers;
 
+import com.example.client.model.BuildingImage;
+import com.example.client.model.Game;
+import com.example.client.model.Governance;
+import com.example.client.model.PopularityFactors;
+import com.example.client.model.User;
+import com.example.client.model.UsersData;
 import com.example.client.view.Client;
 import com.example.server.controller.GameController;
 
-import com.example.model.*;
+import com.example.client.model.*;
 import com.example.server.model.*;
 import com.example.server.model.assets.Asset;
 import com.example.server.model.assets.AssetType;

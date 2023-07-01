@@ -6,7 +6,7 @@
 
 <?import java.net.URL?>
 <BorderPane fx:id="borderPane" prefHeight="750" prefWidth="1500" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.view.controllers.GameMenuController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.view.controllers.GameMenuController">
     <top>
         <VBox prefWidth="1500" prefHeight="50" alignment="CENTER">
             <Label text="FUCK YOU" textAlignment="CENTER" onMouseClicked="#initMap"/>
