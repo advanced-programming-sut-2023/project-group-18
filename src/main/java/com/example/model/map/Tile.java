@@ -113,11 +113,6 @@ public class Tile {
         return result;
     }
 
-    // TODO
-    public String showDetails() {
-        return null;
-    }
-
     public boolean hasEnemy(Governance governance) {
         for (Unit unit : units)
             if (unit.getGovernance().equals(governance)) return true;

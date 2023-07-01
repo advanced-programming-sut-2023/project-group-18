@@ -4,7 +4,7 @@ import com.example.model.Governance;
 import com.example.model.assets.Asset;
 import com.example.model.map.Tile;
 
-public class Farm extends Building{
+public class Farm extends Building {
     private final int rate;
     private final Asset product;
 
@@ -22,8 +22,8 @@ public class Farm extends Building{
         return product;
     }
 
-
-    public void produce(){
+    // TODO: bring to GameController
+    public void produce() {
         governance.addAssetToStorage(product,rate);
     }
 

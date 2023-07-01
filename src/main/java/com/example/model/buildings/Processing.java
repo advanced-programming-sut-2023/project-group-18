@@ -16,6 +16,7 @@ public class Processing extends Building{
         this.rate = buildingType.getProductionRate();
     }
 
+    // TODO: bring to GameController
     @Override
     public boolean canWork(){
         if (super.canWork())
@@ -23,13 +24,15 @@ public class Processing extends Building{
         return false;
     }
 
+    // TODO: bring to GameController
     public void produce(){
         governance.addAssetToStorage(product,rate);
         governance.removeAssetFromStorage(material,rate);
     }
 
-    public void run(){
-        if (this.canWork()){
+    // TODO: bring to GameController
+    public void run() {
+        if (this.canWork()) {
             produce();
             governance.getPopularityFactors().addAleCoverage(0.5);
         }

@@ -18,6 +18,7 @@ public class User implements PasswordRecoveryQuestions {
     private final int recoveryQuestionNumber;
     private final String recoveryAnswer;
     private int score;
+
     protected User(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         this.username = username;
         setPassword(password);
@@ -50,6 +51,7 @@ public class User implements PasswordRecoveryQuestions {
     public int getHighscore() {
         return highscore;
     }
+    
     public String getPassword() {
         return password;
     }
@@ -134,4 +136,5 @@ public class User implements PasswordRecoveryQuestions {
     public File getAvatar() {
         return new File(avatarPath);
     }
+
 }

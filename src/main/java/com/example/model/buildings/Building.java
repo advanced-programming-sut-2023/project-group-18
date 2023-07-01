@@ -4,50 +4,33 @@ import java.util.ArrayList;
 
 import com.example.model.Game;
 import com.example.model.Governance;
-import com.example.model.assets.Asset;
 import com.example.model.map.Successor;
 import com.example.model.map.Tile;
-import com.example.model.people.Unit;
 import com.example.view.Main;
-import com.example.view.images.TextureImages;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.stage.Popup;
 
-public class Building implements Successor {
+public class Building implements Successor, Runnable {
     protected final BuildingType buildingType;
-    private final ImageView imageView;
     protected final Governance governance;
-    protected final TextureImages groundType;
-    protected final int goldCost;
-    protected final Asset resourceType;
-    protected final int resourceCost;
+    protected final ImageView imageView;
     protected final ArrayList<Tile> tiles;
     protected int hitpoint;
-    protected final int width;
-    protected int population;
     protected int worker;
+    protected int population;
 
     protected Building(BuildingType buildingType, Governance governance, Tile tile) {
         this.buildingType = buildingType;
         this.governance = governance;
-        this.hitpoint = buildingType.getHitpoint();
-        this.groundType = buildingType.getGroundType();
-        this.goldCost = buildingType.getGoldCost();
-        this.resourceType = buildingType.getResourceType();
-        this.resourceCost = buildingType.getResourceCost();
-        this.width = buildingType.getWidth();
-        this.tiles = new ArrayList<>();
         this.imageView = new ImageView(buildingType.getImage());
-        setImageViewOptions(tile);
-        addBuildingToTiles(tile);
-        if (buildingType.equals(BuildingType.CATHEDRAL) || buildingType.equals(BuildingType.CHURCH))
-            governance.getPopularityFactors().addReligiousFactor(buildingType.getPopularityEffect());
+        this.tiles = new ArrayList<>();
+        this.hitpoint = buildingType.getHitpoint();
     }
 
+    // TODO: bring to GameController
     public static void dropBuilding(BuildingType buildingType, Governance governance, Tile tile) {
         switch (buildingType.getCategory()) {
             case BARRACKS -> new Barracks(buildingType, governance, tile).setTooltip();
@@ -75,62 +58,62 @@ public class Building implements Successor {
         return governance;
     }
 
-    public int getHitpoint() {
-        return hitpoint;
-    }
-
-    public TextureImages getGroundType() {
-        return groundType;
+    public ImageView getImageView() {
+        return imageView;
     }
 
     public ArrayList<Tile> getTiles() {
         return tiles;
     }
 
-    public int getGoldCost() {
-        return goldCost;
+    public int getHitpoint() {
+        return hitpoint;
     }
 
-    public Asset getResourceType() {
-        return resourceType;
-    }
-
-    public int getResourceCost() {
-        return resourceCost;
-    }
-
-    public int getWorkersNumber(){
+    public int getWorker() {
         return worker;
     }
 
-    public void setHitpoint(int hitpoint){
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setHitpoint(int hitpoint) {
         this.hitpoint = hitpoint;
     }
 
-    public void addWorker(){
-        // workers.add(new Worker(governance,UnitType.getUnitTypeByBuildingType(buildingType),tile));
+    public void setWorker(int worker) {
+        this.worker = worker;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
     }
 
 
-    public boolean canWork(){
-        return this.getWorkersNumber() == this.getBuildingType().getWorkersNumber();
+    // TODO: bring to GameController
+    public boolean canWork() {
+        return this.getWorker() == this.getBuildingType().getWorkersNumber();
     }
 
-    public void doDamage(int damage){
+    // TODO: bring to GameController
+    public void doDamage(int damage) {
         if (this.hitpoint <= damage)
             removeBuildingFromTiles();
         else this.hitpoint -= damage;
     }
-
+    
+    // TODO: bring to GameController
     private void addBuildingToTiles(Tile centerTile) {
         tiles.add(centerTile);
-        if (width > 1) tiles.addAll(getSuccessors(Game.getInstance().getGameMap(), centerTile));
+        if (buildingType.getWidth() > 1) tiles.addAll(getSuccessors(Game.getInstance().getGameMap(), centerTile));
         for (Tile tile : tiles)
             tile.setBuilding(this);
         governance.getBuildings().add(this);
         centerTile.getGameMap().getChildren().add(imageView);
     }
-
+    
+    // TODO: bring to GameController
     public void removeBuildingFromTiles() {
         for (Tile tile : tiles)
             tile.setBuilding(null);
@@ -138,6 +121,7 @@ public class Building implements Successor {
         tiles.get(0).getGameMap().getChildren().remove(imageView);
     }
 
+    // TODO: bring to GameController
     private void setImageViewOptions(Tile tile) {
         imageView.setFitHeight(buildingType.getImageHeight());
         imageView.setFitWidth(buildingType.getImageWidth());
@@ -145,6 +129,7 @@ public class Building implements Successor {
         imageView.setLayoutY(tile.getPoint2d().getY() - buildingType.getResetY());
     }
 
+    // TODO: bring to GameController
     public void setTooltip() {
         Popup popup = new Popup();
         Label label = new Label();
@@ -169,10 +154,6 @@ public class Building implements Successor {
 
     }
 
-    public boolean isReachable() {
-        return true;
-    }
-
     @Override
     public String toString() {
         final String hitpoint = "\nHitpoint: " + this.hitpoint + "/" + buildingType.getHitpoint();
@@ -183,7 +164,8 @@ public class Building implements Successor {
         return buildingType.getName() + hitpoint + owner + result;
     }
 
-    public void run(){
+    @Override
+    public void run() {
         //getMaterial
         if (!this.canWork())
             return;

@@ -50,7 +50,7 @@ public class PopularityFactors {
         final int currentFoodRate = this.foodRate;
         setFoodRate(foodRate);
         boolean result;
-        result = governance.getFoodCount() >= governance.getNonMilitaryCharacters() * foodCoefficient;
+        result = governance.getFoodCount() >= governance.getPopulation() * foodCoefficient;
         setFoodRate(currentFoodRate);
         return result;
     }
@@ -74,7 +74,7 @@ public class PopularityFactors {
         final int currentTaxRate = this.taxRate;
         setTaxRate(taxRate);
         boolean result;
-        result = governance.getGold() - governance.getNonMilitaryCharacters() * taxCoefficient >= 0;
+        result = governance.getGold() - governance.getPopulation() * taxCoefficient >= 0;
         setTaxRate(currentTaxRate);
         return result;
     }

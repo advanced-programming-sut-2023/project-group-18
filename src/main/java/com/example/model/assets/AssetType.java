@@ -1,33 +1,40 @@
 package com.example.model.assets;
 
-import com.example.model.buildings.StorageType;
+import com.example.model.buildings.BuildingType;
 
 public enum AssetType {
-    FOOD ("Food",StorageType.GRANARY),
-    WEAPON ("Weapon", StorageType.ARMOURY),
-    RESOURCE ("Resource", StorageType.STOCKPILE);
+    FOOD ("Food", BuildingType.FOOD_STORAGE),
+    WEAPON ("Weapon", BuildingType.ARMOURY),
+    RESOURCE ("Resource", BuildingType.STOCKPILE);
 
     private final String name;
-    private final StorageType storageType;
+    private final BuildingType buildingType;
 
-    AssetType(String name, StorageType storageType) {
+    private AssetType(String name, BuildingType buildingType) {
         this.name = name;
-        this.storageType = storageType;
+        this.buildingType = buildingType;
+    }
+
+    public static AssetType getAssetTypeByName(String name){
+        for (AssetType assetType : AssetType.values())
+            if (assetType.name.equals(name))
+                return assetType;
+        return null;
+    }
+
+    public static AssetType getAssetTypeByBuildingType(BuildingType buildingType) {
+        for (AssetType assetType : AssetType.values())
+            if (assetType.buildingType.equals(buildingType))
+                return assetType;
+        return null;
     }
 
     public String getName() {
         return name;
     }
 
-    public StorageType getStorageType(){
-        return this.storageType;
-    }
-    public static AssetType getAssetTypeByName(String name){
-        for (AssetType assetType : AssetType.values()){
-            if (assetType.getName().equals(name))
-                return assetType;
-        }
-        return null;
+    public BuildingType getBuildingType() {
+        return buildingType;
     }
 
 }

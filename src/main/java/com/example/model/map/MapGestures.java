@@ -75,9 +75,9 @@ public class MapGestures {
             if (event.isSecondaryButtonDown()) return;
             double x = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
             double y = ((mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
-            if (gameMap.getSelectedBuilding() != null) {
+            if (gameMap.getSelectedBuildingType() != null) {
                 gameMap.dropBuilding(x, y);
-                gameMap.setSelectedBuilding(null);
+                gameMap.setSelectedBuildingType(null);
             } else if (gameMap.getGame().getSelectedUnit() != null) {
                 gameMap.move(gameMap.getGame().getSelectedUnit(), x, y);
             }

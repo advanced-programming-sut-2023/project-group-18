@@ -5,9 +5,9 @@ import java.util.HashMap;
 
 import com.example.model.assets.Asset;
 import com.example.model.assets.AssetType;
-import com.example.model.buildings.*;
-import com.example.model.people.*;
-import com.example.view.controllers.GameMenuController;
+import com.example.model.buildings.Building;
+import com.example.model.buildings.Storage;
+import com.example.model.people.Unit;
 
 public class Governance {
     private final User owner;
@@ -15,15 +15,14 @@ public class Governance {
     private final ArrayList<Unit> units;
     private final HashMap<AssetType, HashMap<Asset, Integer>> assets;
     private final PopularityFactors popularityFactors;
-    private int gold;
-    private int nonMilitaryCharacters;
-    private int remainingNonMilitary;
     private final ArrayList<Trade> tradeList;
     private final ArrayList<Trade> requestList;
     private final ArrayList<Trade> tradeHistory;
     private final ArrayList<Trade> tradeNotifications;
-    private int soldiersCreatedInTurn;
-    private Unit lord;
+    private int gold;
+    private int population;
+    private Building selectedBuilding;
+    private Unit selectedUnit;
 
     public Governance(User owner) {
         this.owner = owner;
@@ -31,30 +30,16 @@ public class Governance {
         units = new ArrayList<>();
         assets = Asset.getAllAssets();
         popularityFactors = new PopularityFactors(this);
-        gold = 100;
-        nonMilitaryCharacters = 10;
-        this.remainingNonMilitary = 0;
         tradeList = new ArrayList<>();
         requestList = new ArrayList<>();
         tradeHistory = new ArrayList<>();
         tradeNotifications = new ArrayList<>();
-        soldiersCreatedInTurn = 0;
+        gold = 100;
+        population = 50;
     }
 
     public User getOwner() {
         return owner;
-    }
-
-    public PopularityFactors getPopularityFactors() {
-        return popularityFactors;
-    }
-
-    public int getGold() {
-        return gold;
-    }
-
-    public int getNonMilitaryCharacters() {
-        return nonMilitaryCharacters;
     }
 
     public ArrayList<Unit> getUnits() {
@@ -63,6 +48,14 @@ public class Governance {
 
     public HashMap<AssetType, HashMap<Asset, Integer>> getAssets() {
         return assets;
+    }
+
+    public ArrayList<Building> getBuildings() {
+        return buildings;
+    }
+
+    public PopularityFactors getPopularityFactors() {
+        return popularityFactors;
     }
 
     protected ArrayList<Trade> getTradeList() {
@@ -81,37 +74,66 @@ public class Governance {
         return tradeNotifications;
     }
 
-    public void addNonMilitaryCharacters(int nonMilitaryCharacters) {
-        this.nonMilitaryCharacters += nonMilitaryCharacters;
+    public int getGold() {
+        return gold;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public Building getSelectedBuilding() {
+        return selectedBuilding;
+    }
+
+    public Unit getSelectedUnit() {
+        return selectedUnit;
     }
 
     public void addGold(int gold) {
         this.gold += gold;
     }
 
+    public void addPopulation(int population) {
+        this.population += population;
+    }
 
+    public void setSelectedBuilding(Building selectedBuilding) {
+        this.selectedBuilding = selectedBuilding;
+    }
+
+    public void setSelectedUnit(Unit selectedUnit) {
+        this.selectedUnit = selectedUnit;
+    }
+
+    // TODO: move to GameController
     public boolean canAcceptTrade(int id) {
         Trade trade = Trade.getTradebyId(id, tradeList);
         if (trade == null) return false;
         return trade.getPrice() <= gold;
     }
 
+    // TODO: move to GameController
     public void acceptTrade(int id, String meesage) {
         Trade.getTradebyId(id, tradeList).acceptTrade(meesage);
     }
 
+    // TODO: move to GameController
     public void rejectTrade(int id, String message) {
         Trade.getTradebyId(id, tradeList).rejectTrade(message);
     }
 
+    // TODO: move to GameController
     public void cancelTrade(int id) {
         Trade.getTradebyId(id, requestList).cancelTrade();
     }
 
+    // TODO: move to GameController
     public void requestTrade(Governance accepter, Asset resourceType, int resourceAmount, int price, String message) {
         new Trade(this, accepter, resourceType, resourceAmount, price, message);
     }
 
+    // TODO: move to GameController
     public String showNotifications() {
         String result = "Trade Notifications: ";
         int index = 0;
@@ -121,6 +143,7 @@ public class Governance {
         return result;
     }
 
+    // TODO: move to GameController
     public String showTradeList() {
         String result = "Trade List: ";
         int index = 0;
@@ -129,6 +152,7 @@ public class Governance {
         return result;
     }
 
+    // TODO: move to GameController
     public String showRequestList() {
         String result = "Requst List: ";
         int index = 0;
@@ -137,6 +161,7 @@ public class Governance {
         return result;
     }
 
+    // TODO: move to GameController
     public String showTradeHistory() {
         String result = "Trade History: ";
         int index = 0;
@@ -146,16 +171,19 @@ public class Governance {
     }
 
 
+    // TODO: move to GameController
     public void buyItem(Asset asset, int count) {
         gold -= count * asset.getBuyPrice();
         addAssetToStorage(asset, count);
     }
 
+    // TODO: move to GameController
     public void sellItem(Asset asset, int count) {
         gold += count * asset.getSellPrice();
         removeAssetFromStorage(asset, count);
     }
 
+    // TODO: move to GameController
     public String showPriceList() {
         String result = "Items:";
         for (AssetType assetType : assets.keySet()) {
@@ -167,6 +195,7 @@ public class Governance {
     }
 
 
+    // TODO: move to GameController
     public String showPopularityFactors() {
         return "Food rate: " + popularityFactors.getFoodRate()
             + "\nKinds of foods: " + getKindsOfFoods()
@@ -177,10 +206,12 @@ public class Governance {
             + "\nAle coverage: " + popularityFactors.getAleCoverage();
     }
 
+    // TODO: move to GameController
     public int showPopularity() {
         return popularityFactors.getPopularity();
     }
 
+    // TODO: move to GameController
     public String showFoodList() {
         return "Apple: " + assets.get(AssetType.FOOD).get(Asset.APPLE)
             + "\nMeat: " + assets.get(AssetType.FOOD).get(Asset.MEAT)
@@ -188,22 +219,26 @@ public class Governance {
             + "\nBread" + assets.get(AssetType.FOOD).get(Asset.BREAD);
     }
 
+    // TODO: move to GameController
     public void setFearRate(int fearRate) {
         popularityFactors.setFearRate(fearRate);
     }
 
+    // TODO: move to GameController
     public int getFearRate() {
         return popularityFactors.getFearRate();
     }
 
 
 
+    // TODO: move to GameController
     public void addSpecificAsset(Asset asset, int count) {
         if (asset == null) return;
         int governanceCount = assets.get(asset.getAssetType()).get(asset);
         assets.get(asset.getAssetType()).put(asset, governanceCount + count);
     }
 
+    // TODO: move to GameController
     public boolean canRemoveAssetFromStorage(Asset asset, int count) {
         if (asset == null) return true;
         int canRemove = 0;
@@ -218,6 +253,7 @@ public class Governance {
         return false;
     }
 
+    // TODO: move to GameController
     public boolean canAddAssetToStorage(Asset asset, int count) {
         if (asset == null) return true;
         for (Building building : buildings) {
@@ -230,6 +266,7 @@ public class Governance {
         return false;
     }
 
+    // TODO: move to GameController
     public void addAssetToStorage(Asset asset, int count) {
         if (asset == null) return;
         for (Building building : buildings) {
@@ -244,6 +281,7 @@ public class Governance {
         addSpecificAsset(asset, count);
     }
 
+    // TODO: move to GameController
     public void removeAssetFromStorage(Asset asset, int count) {
         if (asset == null) return;
         for (Building building : buildings) {
@@ -259,11 +297,7 @@ public class Governance {
     }
 
 
-
-    // public void addSoldier(Cell cell, SoldierType soldierType) {
-    //     soldiers.add(new Soldier(cell, this, soldierType));
-    // }
-
+    // TODO: move to GameController
     public int getKindsOfFoods() {
         int result = 0;
         for (Asset food : assets.get(AssetType.FOOD).keySet())
@@ -271,6 +305,7 @@ public class Governance {
         return result;
     }
 
+    // TODO: move to GameController
     public int getFoodCount() {
         int result = 0;
         for (Asset food : assets.get(AssetType.FOOD).keySet())
@@ -278,37 +313,15 @@ public class Governance {
         return result;
     }
 
+    // TODO: move to GameController
     public int getAssetCount(Asset asset) {
         if (asset == null)
             return 0;
         return assets.get(asset.getAssetType()).get(asset);
     }
 
-    public int getRemainingNonMilitary(){
-        return remainingNonMilitary;
-    }
 
-    public void updateRemainingNonMilitary(){
-        this.remainingNonMilitary = this.nonMilitaryCharacters;
-    }
-
-    public void removeRemainingCharacter(){
-        this.remainingNonMilitary --;
-    }
-
-    public int getSoldiersCreatedInTurn() {
-        return soldiersCreatedInTurn;
-    }
-
-    public void createSoldier(int count){
-        this.soldiersCreatedInTurn += count;
-    }
-
-
-    private void addPopulation() {
-        // nonMilitaryCharacters += (getFoodCount() - workers.size()) / 2;
-    }
-
+    // TODO: move to GameController
     private void peopleEat() {
         // int haveToEat = nonMilitaryCharacters + workers.size();
         // for (Asset asset : assets.get(AssetType.FOOD).keySet()) {
@@ -322,31 +335,19 @@ public class Governance {
         // }
     }
 
-    public Unit getLord() {
-        return lord;
-    }
-
-    protected void setLord() {
-        // this.lord = new Unit(this, UnitType.LORD, buildings.get(0).getTile());
-    }
-
+    // TODO: move to GameController
     public void getTaxFromPeople(){
         // int population = this.nonMilitaryCharacters + this.workers.size();
         // double taxRate = popularityFactors.getTaxCoefficient();
         // this.addGold((int)(population * taxRate));
     }
 
+    // TODO: move to GameController
     public void run() {
         getTaxFromPeople();
-        addPopulation();
+        // addPopulation();
         peopleEat();
     }
 
-    public ArrayList<Building> getBuildings() {
-        return buildings;
-    }
 
-    public int getPopulation() {
-        return nonMilitaryCharacters;
-    }
 }

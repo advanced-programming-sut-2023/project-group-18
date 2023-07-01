@@ -8,11 +8,13 @@ import com.example.model.map.Tile;
 import com.example.model.people.Unit;
 import com.example.model.people.UnitType;
 
+// need to remove this class
 public class Barracks extends Building{
     public Barracks(BuildingType buildingType, Governance governance, Tile tile) {
         super(buildingType, governance, tile);
     }
 
+    // TODO: bring to GameController
     public boolean canMakeSoldier(UnitType unitType) {
         // if (governance.getRemainingNonMilitary() == 0) return false;
         // if (governance.getGold() < unitType.getCost()) return false;
@@ -22,13 +24,14 @@ public class Barracks extends Building{
         return true;
     }
 
+    // TODO: bring to GameController
     public void makeUnit(UnitType unitType) {
         for (Asset asset : unitType.getAssets())
             governance.removeAssetFromStorage(asset,1);
         governance.addGold(-unitType.getCost());
         governance.removeRemainingCharacter();
         int yIndex = tiles.get(0).getGameMap().getTileYIndex(tiles.get(0).getPoint2d().getY());
-        int xIndex = tiles.get(0).getGameMap().getTileXIndex(tiles.get(0).getPoint2d().getX(), goldCost);
+        int xIndex = tiles.get(0).getGameMap().getTileXIndex(tiles.get(0).getPoint2d().getX(), yIndex);
         System.out.println("before");
         System.out.println(xIndex);
         System.out.println(yIndex);
@@ -40,6 +43,7 @@ public class Barracks extends Building{
         governance.getUnits().add(new Unit(governance, unitType, tiles.get(0).getGameMap().getTileByIndex(xIndex, yIndex)));
     }
     
+    // TODO: bring to GameController
     private int getIndex(int index) {
         Random random = new Random();
         int ratio = random.nextBoolean() ? 1 : -1;
@@ -47,8 +51,4 @@ public class Barracks extends Building{
         return index < 0 ? 0 : index;
     }
 
-    @Override
-    public boolean isReachable() {
-        return false;
-    }
 }

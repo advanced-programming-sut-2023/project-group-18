@@ -17,16 +17,12 @@ public class BuildingImage {
     private String name;
     private int size;
     private ImageView imageView;
-    private GameMenuController gameMenuController;
-    private String where;
 
     public BuildingImage(HBox imageHBox, String name, int size, GameMenuController gameMenuController, boolean type
             , String where) {
         this.imageHBox = imageHBox;
         this.name = name;
         this.size = size;
-        this.gameMenuController = gameMenuController;
-        this.where = where;
         Image image = new Image(Main.class.getResourceAsStream("/images/" + where + "/" + name + ".png"));
         imageView = new ImageView(image);
         imageView.setFitHeight(size);
@@ -62,7 +58,6 @@ public class BuildingImage {
                 }
             });
         }
-        //imageHBox.getChildren().add(imageView);
     }
 
     public void addToHBox() {

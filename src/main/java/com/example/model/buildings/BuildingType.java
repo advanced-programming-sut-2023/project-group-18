@@ -95,11 +95,11 @@ public enum BuildingType {
             null,null,2,Category.BUILDING, 100, BarCategory.TOWN, 30, 60, 15, 40),
     CHURCH("church",250,null,0,0, TextureImages.GROUND,100,0,
             0,2,0, 0,0,0,0,
-            0,null,null,3,Category.BUILDING
+            0,null,null,3,Category.TOWN
             ,200, BarCategory.TOWN, 30, 75, 15, 50),
     CATHEDRAL("cathedral",1000,null,0,0, TextureImages.GROUND,120,
             0,0,2,0, 0,0,0,0,
-            0,null,null,4,Category.BARRACKS
+            0,null,null,4,Category.TOWN
             , 400, BarCategory.TOWN, 60, 90, 30, 50),
     ARMOURER("armourer",100,Asset.WOOD,20,1, TextureImages.GROUND,50,0,
             0,0,0, 2,2,0,0,0,
@@ -170,7 +170,7 @@ public enum BuildingType {
             ,100, BarCategory.FOOD, 40, 75, 20, 60),
     KEEP("keep",0,Asset.STONE,0, 0,TextureImages.GROUND,100,0,0,
             0, 8,0,0,20,10,35,
-            null,null,2, Category.BUILDING,
+            null,null,2, Category.TOWN,
             1000000, BarCategory.NONE, 40, 60, 20, 45),
     WALL("wall",0,Asset.STONE,1, 0,TextureImages.GROUND,100,0,0,
             0, 0,0,0,20,10,4,

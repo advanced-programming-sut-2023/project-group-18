@@ -5,7 +5,7 @@ import com.example.model.assets.Asset;
 import com.example.model.map.Tile;
 
 public class Gunsmith extends Building {
-    private Asset weapon;
+    private final Asset weapon;
     private final Asset resource;
     private final int rate;
 
@@ -15,38 +15,16 @@ public class Gunsmith extends Building {
         this.resource = buildingType.getResourceType();
         this.rate = buildingType.getProductionRate();
     }
-    @Override
-    public boolean canWork(){
-        return governance.canRemoveAssetFromStorage(this.getBuildingType().getResourceType(),rate) && super.canWork();
-    }
 
+    // TODO: bring to GameController
     public boolean canMakeWeapon() {
         return governance.canRemoveAssetFromStorage(resource, rate);
     }
 
-    public void makeWeapon(){
+    // TODO: bring to GameController
+    public void makeWeapon() {
         governance.removeAssetFromStorage(resource,rate);
         governance.addSpecificAsset(weapon,rate);
-    }
-
-    public void changeMode(){
-        this.weapon = BuildingType.getAnotherWeapon(this.getBuildingType(), weapon);
-    }
-
-    public void run(){
-        if (this.weapon.equals(Asset.LEATHER_ARMOR)){
-            for (Building building : governance.getBuildings()){
-                if (building.getBuildingType().equals(BuildingType.DAIRY_PRODUCTS)){
-                    DairyProducts dairyProducts = (DairyProducts) building;
-                    if (dairyProducts.canUseCow()){
-                        dairyProducts.useCow();
-                        governance.addSpecificAsset(weapon,rate);
-                        return;
-                    }
-                }
-            }
-        }
-        makeWeapon();
     }
 
     @Override

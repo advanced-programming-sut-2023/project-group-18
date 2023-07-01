@@ -184,7 +184,7 @@ public class GameMenuController {
             hBox.getChildren().add(governance);
             for (Governance governance1 : Game.getInstance().getGovernances()) {
                 Label label = new Label(governance1.getOwner().getNickname());
-                label.setFont(new Font(20));
+                // label.setFont(new Font(20));
                 hBox.getChildren().add(label);
             }
             imagesHBox.getChildren().add(hBox);
@@ -408,7 +408,7 @@ public class GameMenuController {
 
     public void setSelectedBuilding(BuildingType selectedBuilding) {
         this.selectedBuilding = selectedBuilding;
-        controller.getGame().getGameMap().setSelectedBuilding(selectedBuilding);
+        controller.getGame().getGameMap().setSelectedBuildingType(selectedBuilding);
     }
 
     public void cleanTypesHBox() {

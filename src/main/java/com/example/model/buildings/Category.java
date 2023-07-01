@@ -12,6 +12,7 @@ public enum Category {
     STABLE,
     STAIR,
     STORAGE,
+    TOWN,
     TOWER,
     TRAP,
     WALL;
