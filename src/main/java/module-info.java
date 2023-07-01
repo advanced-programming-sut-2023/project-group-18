@@ -5,8 +5,8 @@ module com.example {
     requires javafx.media;
     
     
-    opens com.example.view to javafx.fxml;
-    opens com.example.view.controllers to javafx.fxml;
-    opens com.example.model to com.google.gson;
-    exports com.example.view;
+    opens com.example.client.view to javafx.fxml;
+    opens com.example.client.view.controllers to javafx.fxml;
+    opens com.example.server.model to com.google.gson;
+    exports com.example.client.view;
 }
