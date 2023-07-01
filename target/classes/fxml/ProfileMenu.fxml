@@ -60,6 +60,10 @@
                 <Label text="avatar" prefWidth="150"/>
                 <ImageView fx:id="avatar" fitWidth="100" fitHeight="100"/>
             </HBox>
+            <HBox>
+                <Label text="Slogan" prefWidth="150" fx:id="sloganText"/>
+                <Label fx:id="slogan" prefWidth="200"/>
+            </HBox>
         </VBox>
     </left>
 

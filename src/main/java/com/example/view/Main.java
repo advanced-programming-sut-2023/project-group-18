@@ -2,6 +2,7 @@ package com.example.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import com.example.model.Game;
 import com.example.model.UsersData;
@@ -22,7 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
-        goToMenu("GameMenu");
+        goToMenu("GameMenu  ");
 //        Music.LOGIN_MENU.getMediaPlayer().play();
         stage.setScene(scene);
         stage.setTitle("Stronghold Crusader");
@@ -54,7 +55,8 @@ public class Main extends Application {
     private void closeApp() {
         stage.setOnCloseRequest(event -> {
             UsersData.getUsersData().writeInFile();
-            Game.getInstance().getGameMap().writeInFile();
+            if (Game.getInstance().getGameMap() != null)
+                Game.getInstance().getGameMap().writeInFile();
         });
     }
 

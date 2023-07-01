@@ -184,7 +184,7 @@ public enum BuildingType {
     ;
     private final Image image;
     private final int workersNumber;
-    private int hitpoint;
+    private final int hitpoint;
     private final TextureImages groundType;
     private final int goldCost;
     private final Asset resourceType;
@@ -333,7 +333,7 @@ public enum BuildingType {
 
     public static BuildingType getBuildingTypeByName(String name) {
         for (BuildingType buildingType : BuildingType.values())
-            if (buildingType.getName().equals(name))
+            if (buildingType.getName() ==name)
                 return buildingType;
         return null;
     }

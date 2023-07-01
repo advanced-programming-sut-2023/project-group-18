@@ -19,6 +19,11 @@ public class Gunsmith extends Building {
     public boolean canWork(){
         return governance.canRemoveAssetFromStorage(this.getBuildingType().getResourceType(),rate) && super.canWork();
     }
+
+    public boolean canMakeWeapon() {
+        return governance.canRemoveAssetFromStorage(resource, rate);
+    }
+
     public void makeWeapon(){
         governance.removeAssetFromStorage(resource,rate);
         governance.addSpecificAsset(weapon,rate);
@@ -44,4 +49,12 @@ public class Gunsmith extends Building {
         makeWeapon();
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "\nWeapon: " + weapon.getName() + "\nRate: " + rate;
+    }
+
+    public Asset getWeapon() {
+        return weapon;
+    }
 }

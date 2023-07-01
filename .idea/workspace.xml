@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="building selection">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/popularityFactors/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/popularityFactors/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/popularityFactors/3.jpg" afterDir="false" />
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="update scriber">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/BuildingImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/PopularityFactors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/PopularityFactors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BarCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/buildings/BarCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/PopularityFactors.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/PopularityFactors.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,10 +25,13 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="a774dd71c3ba45c5b555eabb5899272f09e1a620" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -69,7 +63,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f288306d-0141-4ba9-ad2b-a92a921ee550" name="Changes" comment="Bottom Bar completed" />
+      <changelist id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="keepMenu" />
       <created>1685302575628</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -88,6 +82,7 @@
       <workItem from="1685731115291" duration="11751000" />
       <workItem from="1685809345327" duration="4576000" />
       <workItem from="1685893029808" duration="7172000" />
+      <workItem from="1688115104849" duration="7840000" />
     </task>
     <task id="LOCAL-00001" summary="tag">
       <created>1685305307071</created>
@@ -194,7 +189,56 @@
       <option name="project" value="LOCAL" />
       <updated>1688063366380</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="keepMenu">
+      <created>1688073371947</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1688073371947</updated>
+    </task>
+    <task id="LOCAL-00017" summary="barracks">
+      <created>1688134712574</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1688134712574</updated>
+    </task>
+    <task id="LOCAL-00018" summary="barracks2">
+      <created>1688135814942</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1688135814942</updated>
+    </task>
+    <task id="LOCAL-00019" summary="commit before debugs">
+      <created>1688142688062</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1688142688062</updated>
+    </task>
+    <task id="LOCAL-00020" summary="popular slogan">
+      <created>1688146961687</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1688146961687</updated>
+    </task>
+    <task id="LOCAL-00021" summary="popular slogan2">
+      <created>1688147935208</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1688147935208</updated>
+    </task>
+    <task id="LOCAL-00022" summary="update scriber">
+      <created>1688153751103</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1688153751103</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +270,14 @@
     <MESSAGE value="Bottom Bar completed" />
     <MESSAGE value="add remainders" />
     <MESSAGE value="building selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="building selection" />
+    <MESSAGE value="keepMenu" />
+    <MESSAGE value="barracks" />
+    <MESSAGE value="barracks2" />
+    <MESSAGE value="commit before debugs" />
+    <MESSAGE value="popular slogan" />
+    <MESSAGE value="popular slogan2" />
+    <MESSAGE value="update scriber" />
+    <option name="LAST_COMMIT_MESSAGE" value="update scriber" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -7,12 +7,15 @@ import com.example.view.Main;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Popup;
 
 import java.io.IOException;
 
 public class SignupMenuController implements FieldResponses {
     private final SignupMethods signupMethods = SignupMethods.getInstance();
+    @FXML
+    private Button popularSloganButton;
     @FXML
     private Label sloganLabel;
     @FXML
@@ -53,6 +56,8 @@ public class SignupMenuController implements FieldResponses {
         sloganLabel.visibleProperty().bind(showSloganCheckBox.selectedProperty());
         randomSloganButton.managedProperty().bind(showSloganCheckBox.selectedProperty());
         randomSloganButton.visibleProperty().bind(showSloganCheckBox.selectedProperty());
+        popularSloganButton.managedProperty().bind(showSloganCheckBox.selectedProperty());
+        popularSloganButton.visibleProperty().bind(showSloganCheckBox.selectedProperty());
 
         passwordTextField.managedProperty().bind(showPasswordCheckBox.selectedProperty());
         passwordTextField.visibleProperty().bind(showPasswordCheckBox.selectedProperty());
@@ -145,5 +150,9 @@ public class SignupMenuController implements FieldResponses {
 
     public void randomSlogan() {
         slogan.setText(signupMethods.getRandomSlogan());
+    }
+
+    public void popularSlogan(MouseEvent mouseEvent) {
+        slogan.setText(signupMethods.getPopularSlogan());
     }
 }

@@ -29,7 +29,7 @@ public class Trap extends Building{
             return;
         if (this.getHitpoint() != 0){
             for (Unit unit : enemyUnits){
-                unit.doDamage(damage);
+                unit.gotDamage(damage);
             }
             this.setHitpoint(0);
         }

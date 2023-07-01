@@ -8,7 +8,6 @@ import com.example.model.assets.Asset;
 import com.example.model.map.Successor;
 import com.example.model.map.Tile;
 import com.example.model.people.Unit;
-import com.example.model.people.Worker;
 import com.example.view.Main;
 import com.example.view.images.TextureImages;
 
@@ -19,9 +18,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Popup;
 
 public class Building implements Successor {
-    private final BuildingType buildingType;
+    protected final BuildingType buildingType;
     private final ImageView imageView;
-    protected final ArrayList<Worker> workers;
     protected final Governance governance;
     protected final TextureImages groundType;
     protected final int goldCost;
@@ -30,10 +28,11 @@ public class Building implements Successor {
     protected final ArrayList<Tile> tiles;
     protected int hitpoint;
     protected final int width;
+    protected int population;
+    protected int worker;
 
     protected Building(BuildingType buildingType, Governance governance, Tile tile) {
         this.buildingType = buildingType;
-        this.workers = new ArrayList<>();
         this.governance = governance;
         this.hitpoint = buildingType.getHitpoint();
         this.groundType = buildingType.getGroundType();
@@ -45,7 +44,6 @@ public class Building implements Successor {
         this.imageView = new ImageView(buildingType.getImage());
         setImageViewOptions(tile);
         addBuildingToTiles(tile);
-        // TODO: need to create town category
         if (buildingType.equals(BuildingType.CATHEDRAL) || buildingType.equals(BuildingType.CHURCH))
             governance.getPopularityFactors().addReligiousFactor(buildingType.getPopularityEffect());
     }
@@ -101,12 +99,8 @@ public class Building implements Successor {
         return resourceCost;
     }
 
-    public ArrayList<Worker> getWorkers() {
-        return workers;
-    }
-
     public int getWorkersNumber(){
-        return this.workers.size();
+        return worker;
     }
 
     public void setHitpoint(int hitpoint){
@@ -117,12 +111,6 @@ public class Building implements Successor {
         // workers.add(new Worker(governance,UnitType.getUnitTypeByBuildingType(buildingType),tile));
     }
 
-    public void updateWorkers(){
-        for (Unit unit : this.workers){
-            if (unit.getHitpoint() == 0)
-                workers.remove(unit);
-        }
-    }
 
     public boolean canWork(){
         return this.getWorkersNumber() == this.getBuildingType().getWorkersNumber();
@@ -175,6 +163,7 @@ public class Building implements Successor {
 
         imageView.setOnMouseClicked(event -> {
             Game.getInstance().selectBuilding(this);
+            Game.getInstance().selectUnit(null);
         });
 
 
@@ -186,33 +175,18 @@ public class Building implements Successor {
 
     @Override
     public String toString() {
-        String hitpoint = "Building hitpoint: ";
-        hitpoint += this.hitpoint;
-        hitpoint += "/" + buildingType.getHitpoint();
-        final String owner = governance.getOwner().getUsername();
-        return buildingType.getName() + " [" + hitpoint + "] \"" + owner + "\"";
+        final String hitpoint = "\nHitpoint: " + this.hitpoint + "/" + buildingType.getHitpoint();
+        final String owner = "\nOwner: " + governance.getOwner().getUsername();
+        String result = "\n";
+        if (buildingType.getPopulationEffect() > 0) result += "Population: " + population + "/" + buildingType.getPopulationEffect();
+        if (buildingType.getWorkersNumber() > 0) result += "Workers: " + worker + "/" + buildingType.getWorkersNumber();
+        return buildingType.getName() + hitpoint + owner + result;
     }
 
     public void run(){
         //getMaterial
         if (!this.canWork())
             return;
-        for (Worker worker : workers){
-            if (worker.isFree()){
-                if (worker.getMaterial() != null){
-                    worker.setFree(false);
-                    if (governance.canRemoveAssetFromStorage(worker.getMaterial(),1)){
-
-                    }
-                }
-                else if (worker.getProduct() != null){
-                    worker.setFree(false);
-                    if (governance.canAddAssetToStorage(worker.getProduct(),worker.getProductCount())){
-
-                    }
-                }
-            }
-        }
     }
 
 }

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import com.example.model.Game;
 import com.example.model.Governance;
@@ -24,9 +25,9 @@ import javafx.animation.Animation;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.geometry.Point2D;
-import javafx.scene.control.Tooltip;
-import javafx.scene.input.KeyCode;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DataFormat;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
@@ -40,7 +41,9 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     private final Game game;
     private final ArrayList<Tree> trees;
     private final ArrayList<Tile> selectedTiles;
+    private final LinkedList<Tile> path;
     private BuildingType selectedBuilding;
+    protected boolean conditionalMove;
 
     public GameMap(int length, Game game) {
         this.timeline = new Timeline();
@@ -52,10 +55,12 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
         this.game = game;
         this.trees = new ArrayList<>();
         this.selectedTiles = new ArrayList<>();
+        this.path = new LinkedList<>();
         setInitScales();
         addEventFilters();
         initTiles();
         selectedBuilding = null;
+        conditionalMove = false;
     }
 
     public Timeline getTimeline() {
@@ -122,6 +127,12 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
         this.scale.set(scale);
     }
 
+    protected void addToPath(double x, double y) {
+        Tile tile = findClosestTile(x, y);
+        if (path.contains(tile)) return;
+        path.addLast(tile);
+        tile.selectTile();
+    }
 
 
 
@@ -165,6 +176,7 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
         addEventFilter(MouseEvent.MOUSE_PRESSED, mapGestures.getOnMousePressedEventHandler());
         addEventFilter(MouseEvent.MOUSE_DRAGGED, mapGestures.getOnMouseDraggedEventHandler());
         addEventFilter(MouseEvent.MOUSE_DRAGGED, mapGestures.getOnMouseMovedEventHandler());
+        addEventFilter(MouseEvent.MOUSE_DRAGGED, mapGestures.getOnMouseConditionalMoveEventHandler());
         addEventFilter(ScrollEvent.ANY, mapGestures.getOnScrollEventHandler());
     }
 
@@ -178,10 +190,54 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
                 case W -> setTexture(TextureImages.WATER);
                 case T -> addTree();
                 case B -> backToMap();
-                case D -> removeLastBuilding();
+                case Z -> removeLastBuilding();
+                case M -> conditionalMove();
+                case D -> removeSelectedBuilding();
+                case C -> copyToClipboard();
+                case V -> pastFromClipboard();
+                case Q -> deselectUnits();
+                case A -> attackUnit();
                 default -> {}
             }
         });
+    }
+
+    private void attackUnit() {
+        if (game.getSelectedUnit() != null) 
+            game.getSelectedUnit().attack();
+    }
+
+    private void deselectUnits() {
+        game.selectUnit(null);
+    }
+
+    private void pastFromClipboard() {
+        String name = (String) Clipboard.getSystemClipboard().getContent(DataFormat.PLAIN_TEXT);
+        setSelectedBuilding(BuildingType.getBuildingTypeByName(name));
+        dropBuilding(selectedTiles.get(0).getPoint2d().getX(), selectedTiles.get(0).getPoint2d().getY());
+        setSelectedBuilding(null);
+    }
+
+    private void copyToClipboard() {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(game.getSelectedBuilding().getBuildingType().getName());
+        clipboard.setContent(content);
+    }
+
+    private void removeSelectedBuilding() {
+        game.getSelectedBuilding().removeBuildingFromTiles();
+    }
+
+    private void conditionalMove() {
+        if (game.getSelectedUnit() == null) return;
+        conditionalMove = !conditionalMove;
+        for (Tile selectedTile : selectedTiles)
+            selectedTile.deselectTile();
+        selectedTiles.clear();
+        if (!path.isEmpty()) game.getSelectedUnit().move(path);
+        for (Tile tile : path)
+            tile.deselectTile();
     }
 
     private void removeLastBuilding() {
@@ -213,10 +269,6 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
 
     public void setKeep(double x, double y, Governance governance) {
         Building.dropBuilding(BuildingType.KEEP, governance, findClosestTile(x, y));
-        int yIndex = getTileYIndex(y);
-        int xIndex = getTileXIndex(x, yIndex);
-        // for (Tile tile : getSuccessors(this, xIndex, yIndex))
-        //     tile.selectTile();
     }
 
 
@@ -229,8 +281,8 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     public void dropBuilding(double x, double y) {
         // if 1- have enough asset 2- can drop there
         Building.dropBuilding(selectedBuilding, game.getCurrentGovernance(), findClosestTile(x, y));
-        int yIndex = getTileYIndex(y);
-        int xIndex = getTileXIndex(x, yIndex);
+        // int yIndex = getTileYIndex(y);
+        // int xIndex = getTileXIndex(x, yIndex);
         // for (Tile tile : getSuccessors(this, xIndex, yIndex))
         //     tile.selectTile();
     }
@@ -241,8 +293,8 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     }
 
     @Override
-    public void move(Unit unit, Point2D start, Point2D dest) {
-
+    public void move(Unit unit, double x, double y) {
+        unit.move(findClosestTile(x, y));
     }
 
     @Override

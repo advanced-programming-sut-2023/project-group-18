@@ -2,7 +2,6 @@ package com.example.model.buildings;
 
 import com.example.model.Governance;
 import com.example.model.map.Tile;
-import com.example.model.people.Soldier;
 
 import java.util.ArrayList;
 
@@ -10,7 +9,6 @@ public class Wall extends Tower {
     private final int height;
     private boolean hasShield;
     private final int soldiersCapacity;
-    private final ArrayList<Soldier> soldiers;
     private final ArrayList<Stair> stairs;
 
     public Wall(BuildingType buildingType, Governance governance, Tile tile) {
@@ -18,7 +16,6 @@ public class Wall extends Tower {
         this.height = buildingType.getHeight();
         this.hasShield = false;
         this.soldiersCapacity = 5;
-        this.soldiers = new ArrayList<>();
         this.stairs = new ArrayList<>();
     }
 
@@ -32,10 +29,6 @@ public class Wall extends Tower {
 
     public int getSoldiersCapacity() {
         return soldiersCapacity;
-    }
-
-    public ArrayList<Soldier> getSoldiers() {
-        return soldiers;
     }
 
     public void setHasShield(boolean hasShield) {

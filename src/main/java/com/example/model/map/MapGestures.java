@@ -1,6 +1,7 @@
 package com.example.model.map;
 
 import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
@@ -48,6 +49,10 @@ public class MapGestures {
         return onMousePressedEventHandler;
     }
 
+    protected EventHandler<MouseEvent> getOnMouseConditionalMoveEventHandler() {
+        return onMouseConditionalMoveEventHandler;
+    }
+
     protected EventHandler<MouseEvent> getOnMouseDraggedEventHandler() {
         return onMouseDraggedEventHandler;
     }
@@ -67,13 +72,29 @@ public class MapGestures {
             mouseAnchorY = event.getSceneY();
             translateAnchorX = gameMap.getTranslateX();
             translateAnchorY = gameMap.getTranslateY();
-            if (gameMap.getSelectedBuilding() != null && !event.isSecondaryButtonDown()) {
-                System.out.println(gameMap.getSelectedBuilding().getName());
-                double x = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
-                double y = ((mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
+            if (event.isSecondaryButtonDown()) return;
+            double x = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
+            double y = ((mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
+            if (gameMap.getSelectedBuilding() != null) {
                 gameMap.dropBuilding(x, y);
                 gameMap.setSelectedBuilding(null);
+            } else if (gameMap.getGame().getSelectedUnit() != null) {
+                gameMap.move(gameMap.getGame().getSelectedUnit(), x, y);
             }
+        }
+    };
+
+    private EventHandler<MouseEvent> onMouseConditionalMoveEventHandler = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            if (event.isSecondaryButtonDown() || !gameMap.conditionalMove)
+                return;
+            double mouseAnchorX2 = event.getSceneX();
+            double mouseAnchorY2 = event.getSceneY();
+            double x = (mouseAnchorX2 - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
+            double y = ((mouseAnchorY2 - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
+            gameMap.addToPath(x, y);
+            event.consume();
         }
     };
 
@@ -84,7 +105,6 @@ public class MapGestures {
                 return;
             final double xTranslate = translateAnchorX + event.getSceneX() - mouseAnchorX;
             final double yTranslate = translateAnchorY + event.getSceneY() - mouseAnchorY;
-            // if (xTranslate > -RESET_X|| yTranslate > -RESET_Y) return; // TODO drag down
             gameMap.setTranslateX(xTranslate);
             gameMap.setTranslateY(yTranslate);
             event.consume();
@@ -94,16 +114,16 @@ public class MapGestures {
     private EventHandler<MouseEvent> onMouseMovedEventHandler = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
-            if (event.getButton().compareTo(MouseButton.PRIMARY) != 0)
+            if (event.isSecondaryButtonDown() || gameMap.conditionalMove)
                 return;
-                double mouseAnchorX2 = event.getSceneX();
-                double mouseAnchorY2 = event.getSceneY();
-                double startX = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
-                double startY = ((mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
-                double endX = (mouseAnchorX2 - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
-                double endY = ((mouseAnchorY2 - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
-                gameMap.setSelectedTiles(startX, startY, endX, endY);
-            }
+            double mouseAnchorX2 = event.getSceneX();
+            double mouseAnchorY2 = event.getSceneY();
+            double startX = (mouseAnchorX - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
+            double startY = ((mouseAnchorY - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
+            double endX = (mouseAnchorX2 - getResetX()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2;
+            double endY = ((mouseAnchorY2 - getResetY()) / gameMap.getScale() - GameMap.TILE_LENGTH / 2) / Math.cos(DEGREE_RADIANS);
+            gameMap.setSelectedTiles(startX, startY, endX, endY);
+        }
     };
 
     private EventHandler<ScrollEvent> onScrollEventHandler = new EventHandler<ScrollEvent>() {
