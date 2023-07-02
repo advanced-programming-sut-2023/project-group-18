@@ -2,20 +2,31 @@ package com.example.model;
 
 import com.google.gson.Gson;
 import jakarta.xml.bind.*;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+@XmlRootElement
 public class Request {
+    @XmlElement
     private String controllerName;
+    @XmlElement
     private String methodName;
+    @XmlElement
     private ArrayList<String> arguments;
+    @XmlElement
+    private ArrayList<Class> classes;
+    public Request() {
+    }
 
     public Request(String controllerName, String methodName, Object... arguments) {
         this.controllerName = controllerName;
         this.methodName = methodName;
+        classes = new ArrayList<>();
         String[] objects = new String[arguments.length];
         for (int i = 0; i < arguments.length; i++) {
             StringWriter stringWriter = new StringWriter();
@@ -27,6 +38,7 @@ public class Request {
                 throw new RuntimeException(e);
             }
             objects[i] = stringWriter.toString();
+            classes.add(arguments[i].getClass());
         }
         this.arguments = new ArrayList<>(Arrays.asList(objects));
     }
@@ -64,5 +76,9 @@ public class Request {
 
     public String getControllerName() {
         return controllerName;
+    }
+
+    public ArrayList<Class> getClasses() {
+        return classes;
     }
 }

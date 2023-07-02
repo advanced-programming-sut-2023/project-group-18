@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.controller.responses.SignupResponses;
 import com.example.model.RandomSlogan;
+import com.example.model.Request;
 import com.example.model.User;
 import com.example.model.UsersData;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SignupMethods implements SignupResponses, RandomSlogan {
+    private final NetworkController networkController = NetworkController.getInstance();
     private static SignupMethods controller;
     private final UsersData usersData;
 
@@ -60,8 +62,9 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
     }
 
     // TODO: need to use server
-    private boolean doesUsernameExist(String username) {
-        return usersData.getUserByUsername(username) != null;
+    public boolean doesUsernameExist(String username) {
+        return (boolean) networkController.transferData(new Request("LoginController", "doesUsernameExist", username));
+//        return usersData.getUserByUsername(username) != null;
     }
 
     // TODO: need to use server

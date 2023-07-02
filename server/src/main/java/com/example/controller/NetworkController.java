@@ -1,14 +1,12 @@
 package com.example.controller;
 
-import com.example.controller.GameController;
 import com.example.model.Request;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
@@ -62,12 +60,15 @@ public class NetworkController {
         }
     }
 
-    private String process(String json) {
-        Request request = Request.fromXml(json);
-        Object controller = GameController.getInstance();
+    private String process(String xml) {
+        Request request = Request.fromXml(xml);
+        System.out.println("controller name: " + request.getControllerName());
+        System.out.println("request method name: " + request.getMethodName());
+        Object controller = LoginController.getInstance();
         Method method = null;
-        Method[] methods = GameController.class.getDeclaredMethods();
+        Method[] methods = LoginController.class.getDeclaredMethods();
         for (Method method1 : methods) {
+            System.out.println("method in method array: " + method1.getName());
             if (method1.getName().equals(request.getMethodName())) {
                 method = method1;
                 break;
@@ -75,22 +76,39 @@ public class NetworkController {
         }
         ArrayList<String> argumentArrayList = request.getArguments();
         Object[] arguments = new Object[argumentArrayList.size()];
-        for (String argument : argumentArrayList) {
+        System.out.println("argumentArrayList size: " + argumentArrayList.size());
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(request.getClasses().get(0));
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            StringReader stringReader = new StringReader(argumentArrayList.get(0));
+            String test = (String) unmarshaller.unmarshal(stringReader);
+            System.out.println("test is: " + test);
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
+        for (int i = 0; i < argumentArrayList.size(); i++) {
+            System.out.println("xml argument: " + argumentArrayList.get(i));
+            System.out.println("class: " + request.getClasses().get(i));
             try {
-                JAXBContext jaxbContext = JAXBContext.newInstance();
+                JAXBContext jaxbContext = JAXBContext.newInstance(request.getClasses().get(i));
                 Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+                StringReader stringReader = new StringReader(argumentArrayList.get(i));
+                arguments[i] = unmarshaller.unmarshal(stringReader);
             } catch (JAXBException e) {
                 throw new RuntimeException(e);
             }
         }
         try {
+//            boolean access = method.canAccess();
+            method.setAccessible(true);
             Object result = method.invoke(controller, arguments);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+            method.setAccessible(false);
+            StringWriter stringWriter = new StringWriter();
+            JAXBContext.newInstance().createMarshaller().marshal(result, stringWriter);
+            return stringWriter.toString();
+        } catch (IllegalAccessException | InvocationTargetException | JAXBException e) {
             throw new RuntimeException(e);
         }
-        GameController gameController = GameController.getInstance();
-//        Object object = method.invoke();
-        return "good night";
     }
 
     public synchronized int getId() {
