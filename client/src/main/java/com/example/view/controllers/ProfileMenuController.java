@@ -1,6 +1,8 @@
 package com.example.view.controllers;
 
+import com.example.controller.NetworkController;
 import com.example.controller.SignupMethods;
+import com.example.model.Request;
 import com.example.model.User;
 import com.example.model.UsersData;
 import com.example.view.Main;
@@ -19,6 +21,7 @@ import java.io.IOException;
 import static com.example.controller.responses.FieldResponses.EMPTY_FIELD;
 
 public class ProfileMenuController {
+    private final NetworkController networkController = NetworkController.getInstance();
     private final UsersData usersData = UsersData.getUsersData();
     @FXML
     private Label sloganText;
@@ -138,5 +141,7 @@ public class ProfileMenuController {
 
     public void back(MouseEvent mouseEvent) throws IOException {
         Main.goToMenu("MainMenu");
+        // TODO: need to use server
+        networkController.transferData(new Request("LoginController", "writeUsersInFile"));
     }
 }

@@ -145,7 +145,7 @@ public class SignupMenuController implements FieldResponses {
     }
 
     public void generateRandomPassword() {
-        passwordTextField.setText(SignupMethods.getInstance().generateRandomPassword());
+        passwordTextField.setText(signupMethods.generateRandomPassword());
     }
 
     public void randomSlogan() {

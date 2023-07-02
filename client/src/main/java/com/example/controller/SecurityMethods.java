@@ -1,7 +1,6 @@
 package com.example.controller;
 
-import com.example.model.User;
-import com.example.model.UsersData;
+import com.example.model.Request;
 
 public class SecurityMethods {
     private String tempUsername;
@@ -9,8 +8,13 @@ public class SecurityMethods {
     private String tempEmail;
     private String tempNickname;
     private String tempSlogan;
-    private final UsersData usersData = UsersData.getUsersData();
     private static SecurityMethods securityMethods;
+    private final NetworkController networkController;
+
+    private SecurityMethods() {
+        networkController = NetworkController.getInstance();
+    }
+
     public static SecurityMethods getInstance() {
         return securityMethods == null ? securityMethods = new SecurityMethods() : securityMethods;
     }
@@ -43,12 +47,16 @@ public class SecurityMethods {
         return tempSlogan;
     }
 
+    // TODO: need to use server
     public void addUser(int securityQuestionNumber, String securityAnswer) {
-        usersData.addUser(tempUsername, tempPassword, tempNickname, tempEmail,
-                tempSlogan, securityQuestionNumber, securityAnswer);
+        networkController.transferData(new Request("LoginController", "addUser",
+                tempUsername, tempPassword, tempNickname, tempEmail,
+                tempSlogan, securityQuestionNumber, securityAnswer));
+        
     }
 
+    // TODO: need to use server
     public void login() {
-        usersData.setLoggedInUser(usersData.getUserByUsername(tempUsername));
+        networkController.transferData(new Request("LoginController", "login", tempUsername));
     }
 }

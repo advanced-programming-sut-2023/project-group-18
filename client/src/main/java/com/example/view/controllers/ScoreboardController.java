@@ -29,6 +29,8 @@ public class ScoreboardController {
 
     @FXML
     public void initialize() {
+        // TODO: need to use server
+        // getScoreboard(pageNumber)
         users = (ArrayList<User>) usersData.getUsers().clone();
         users.sort((user1, user2) -> -Integer.compare(user1.getHighscore(), user2.getHighscore()));
         updatePlayerLabels(0);

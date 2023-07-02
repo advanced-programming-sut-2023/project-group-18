@@ -1,6 +1,6 @@
 package com.example.view.controllers;
 
-import com.example.controller.LoginMethods;
+import com.example.controller.LoginController;
 import com.example.view.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import static com.example.controller.responses.FieldResponses.EMPTY_FIELD;
 
 public class LoginMenuController {
-    private final LoginMethods loginMethods = LoginMethods.getInstance();
+    private final LoginController loginMethods = LoginController.getInstance();
     @FXML
     private Label loginError;
     @FXML

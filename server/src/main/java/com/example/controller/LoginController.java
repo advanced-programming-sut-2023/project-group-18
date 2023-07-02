@@ -2,12 +2,12 @@ package com.example.controller;
 
 import com.example.model.UsersData;
 
-public class LoginMethods {
+public class LoginController {
     private final UsersData usersData = UsersData.getUsersData();
-    private static LoginMethods loginMethods;
+    private static LoginController loginController;
 
-    public static LoginMethods getInstance() {
-        return loginMethods == null ? loginMethods = new LoginMethods() : loginMethods;
+    public static LoginController getInstance() {
+        return loginController == null ? loginController = new LoginController() : loginController;
     }
 
     private boolean doesUsernameExist(String username) {

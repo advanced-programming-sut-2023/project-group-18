@@ -59,10 +59,12 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
         return true;
     }
 
+    // TODO: need to use server
     private boolean doesUsernameExist(String username) {
         return usersData.getUserByUsername(username) != null;
     }
 
+    // TODO: need to use server
     private boolean doesEmailExist(String email) {
         return usersData.doesEmailExist(email);
     }
@@ -103,6 +105,7 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
         return null;
     }
 
+    // TODO: need to use server
     public String getPopularSlogan() {
         boolean flag = false;
         ArrayList<User> users = UsersData.getUsersData().getUsers();

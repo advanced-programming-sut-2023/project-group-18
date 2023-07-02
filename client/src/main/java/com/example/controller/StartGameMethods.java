@@ -12,6 +12,7 @@ public class StartGameMethods {
     }
     private final UsersData usersData = UsersData.getUsersData();
 
+    // TODO: need to use server
     public boolean checkStartPlayers(ArrayList<TextField> usernames) {
         for (TextField textField : usernames)
             if (usersData.getUserByUsername(textField.getText()) == null ||
