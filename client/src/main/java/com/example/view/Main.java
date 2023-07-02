@@ -1,17 +1,23 @@
 package com.example.view;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.net.Socket;
 import java.net.URL;
-import java.util.ArrayList;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
 
+import com.example.controller.NetworkController;
 import com.example.model.Game;
 import com.example.model.UsersData;
 import com.example.view.images.Images;
-import com.example.view.music.Music;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -23,7 +29,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
-        goToMenu("GameMenu");
+        goToMenu("SignupMenu");
 //        Music.LOGIN_MENU.getMediaPlayer().play();
         stage.setScene(scene);
         stage.setTitle("Stronghold Crusader");
@@ -33,7 +39,10 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        NetworkController networkController = NetworkController.getInstance();
+        networkController.initializeNetwork();
         launch();
+        networkController.terminateNetwork();
     }
 
     public static Stage getStage() {
@@ -66,15 +75,3 @@ public class Main extends Application {
     }
 
 }
-/* main method for PHASE 1
-Scanner scanner = new Scanner(System.in);
-UsersData usersData = UsersData.getUsersData();
-if (usersData.getStayLoggedInUser() == null) {
-    LoginMenu loginMenu = LoginMenu.getInstance();
-    loginMenu.run(scanner);
-} else {
-    usersData.setLoggedInUser(usersData.getStayLoggedInUser());
-    ProfileMenu profileMenu = ProfileMenu.getInstance();
-    profileMenu.run(scanner);
-}
-UsersData.getUsersData().writeUsersInFile(); */

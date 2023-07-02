@@ -3,6 +3,7 @@ module com.example {
     requires javafx.fxml;
     requires com.google.gson;
     requires javafx.media;
+    requires jakarta.xml.bind;
     
     
     opens com.example.view to javafx.fxml;

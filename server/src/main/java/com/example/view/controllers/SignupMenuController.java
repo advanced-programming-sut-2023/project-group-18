@@ -78,11 +78,7 @@ public class SignupMenuController implements FieldResponses {
                     public void run() {
                         Platform.runLater(() -> {
                             popup.hide();
-                            try {
-                                Main.goToMenu(nextMenu);
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
+                            Main.goToMenu(nextMenu);
                         });
                     }
                 },
