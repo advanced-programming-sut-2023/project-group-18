@@ -1,7 +1,0 @@
-.label{
-    -fx-background-image: url(../images/popup_background.png);
-    -fx-background-size: cover;
-    -fx-font-size: 20px;
-    -fx-border-color: rgb(100, 16, 16);
-    -fx-border-width: 5px;
-}
