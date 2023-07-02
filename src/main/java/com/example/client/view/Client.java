@@ -12,8 +12,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 import com.example.client.controller.NetworkController;
-import com.example.server.model.Game;
-import com.example.server.model.UsersData;
+import com.example.client.model.Game;
+import com.example.client.model.UsersData;
 import com.example.client.view.images.Images;
 
 import javafx.application.Application;
@@ -29,7 +29,7 @@ public class Client extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Client.stage = stage;
-        goToMenu("GameMenu");
+        goToMenu("SignupMenu");
 //        Music.LOGIN_MENU.getMediaPlayer().play();
         stage.setScene(scene);
         stage.setTitle("Stronghold Crusader");

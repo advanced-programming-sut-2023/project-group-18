@@ -1,9 +1,9 @@
 package com.example.client.view.controllers;
 
 import com.example.client.view.Client;
-import com.example.server.controller.SecurityMethods;
-import com.example.server.controller.SignupMethods;
-import com.example.server.controller.responses.FieldResponses;
+import com.example.client.controller.SecurityMethods;
+import com.example.client.controller.SignupMethods;
+import com.example.client.controller.responses.FieldResponses;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

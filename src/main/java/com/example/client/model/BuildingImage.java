@@ -32,16 +32,20 @@ public class BuildingImage {
         imageView.setFitWidth(size);
         if (type && where.equals("buildings")) {
             imageHBox.getChildren().add(imageView);
-            imageView.setOnMouseClicked(mouseEvent -> gameMenuController.changeMenu(BarCategory.getBarCategoryByName(name)));
+//            TODO: OMID
+//            imageView.setOnMouseClicked(mouseEvent -> gameMenuController.changeMenu(BarCategory.getBarCategoryByName(name)));
         } else if (!type && where.equals("buildings")) {
-            imageView.setOnMouseClicked(mouseEvent -> gameMenuController.setSelectedBuilding(BuildingType.getBuildingTypeByName(name)));
+//            TODO: OMID
+//            imageView.setOnMouseClicked(mouseEvent -> gameMenuController.setSelectedBuilding(BuildingType.getBuildingTypeByName(name)));
         } else if (type && where.equals("assets")) {
             imageView.setOnMouseClicked(mouseEvent -> {
                 gameMenuController.cleanTypesHBox();
-                gameMenuController.changeShopAssetType(AssetType.getAssetTypeByName(name));
+//                TODO: OMID
+//                gameMenuController.changeShopAssetType(AssetType.getAssetTypeByName(name));
             });
         } else {
-            imageView.setOnMouseClicked(mouseEvent -> gameMenuController.clickOnAsset(Asset.getAssetByName(name)));
+//            TODO: OMID
+//            imageView.setOnMouseClicked(mouseEvent -> gameMenuController.clickOnAsset(Asset.getAssetByName(name)));
         }
         //imageHBox.getChildren().add(imageView);
     }

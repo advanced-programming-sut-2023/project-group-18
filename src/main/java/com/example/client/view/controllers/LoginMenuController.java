@@ -1,7 +1,7 @@
 package com.example.client.view.controllers;
 
 import com.example.client.view.Client;
-import com.example.server.controller.LoginMethods;
+import com.example.client.controller.LoginMethods;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;

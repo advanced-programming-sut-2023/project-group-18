@@ -1,7 +1,7 @@
 package com.example.server.controller;
 
-import com.example.client.controller.GameController;
-import com.example.client.model.Request;
+import com.example.server.controller.GameController;
+import com.example.server.model.Request;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;

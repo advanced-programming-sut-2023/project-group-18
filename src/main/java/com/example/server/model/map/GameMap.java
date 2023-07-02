@@ -19,7 +19,6 @@ import com.example.server.model.buildings.Building;
 import com.example.server.model.buildings.BuildingType;
 import com.example.server.model.people.Unit;
 import com.example.server.model.people.UnitType;
-import com.example.client.view.images.TextureImages;
 
 import javafx.animation.Animation;
 import javafx.animation.Timeline;
@@ -183,11 +182,12 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     public void addShortcuts() {
         this.getScene().setOnKeyPressed(key -> {
             switch (key.getCode()) {
-                case G -> setTexture(TextureImages.GROUND);
-                case F -> setTexture(TextureImages.FARM);
-                case I -> setTexture(TextureImages.IRON);
-                case S -> setTexture(TextureImages.SLAB);
-                case W -> setTexture(TextureImages.WATER);
+//                TODO: OMID
+//                case G -> setTexture(TextureImages.GROUND);
+//                case F -> setTexture(TextureImages.FARM);
+//                case I -> setTexture(TextureImages.IRON);
+//                case S -> setTexture(TextureImages.SLAB);
+//                case W -> setTexture(TextureImages.WATER);
                 case T -> addTree();
                 case B -> backToMap();
                 case Z -> removeLastBuilding();
@@ -250,14 +250,15 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
         setTranslateY(-MapGestures.RESET_Y);
     }
 
-    private void setTexture(TextureImages textureImages) {
-        for (Tile selectedTile : selectedTiles) {
-            if (selectedTile.getTexture().getTextureImages().compareTo(textureImages) == 0) continue;
-            selectedTile.setTexture(new Texture(textureImages));
-            if (selectedTile.getTree() != null)
-                selectedTile.getTree().removeFromMap();
-        }
-    }
+//    TODO: OMID
+//    private void setTexture(TextureImages textureImages) {
+//        for (Tile selectedTile : selectedTiles) {
+//            if (selectedTile.getTexture().getTextureImages().compareTo(textureImages) == 0) continue;
+//            selectedTile.setTexture(new Texture(textureImages));
+//            if (selectedTile.getTree() != null)
+//                selectedTile.getTree().removeFromMap();
+//        }
+//    }
 
     private void addTree() {
         for (Tile selectedTile : selectedTiles) {
@@ -267,9 +268,10 @@ public class GameMap extends Pane implements WriteInFile, MapInterface, Successo
     }
 
 
-    public void setKeep(double x, double y, Governance governance) {
-        Building.dropBuilding(BuildingType.KEEP, governance, findClosestTile(x, y));
-    }
+//    TODO: OMID
+//    public void setKeep(double x, double y, Governance governance) {
+//        Building.dropBuilding(BuildingType.KEEP, governance, findClosestTile(x, y));
+//    }
 
 
     @Override

@@ -1,8 +1,7 @@
 package com.example.server.model.buildings;
 
+import com.example.server.model.TextureImages;
 import com.example.server.model.assets.Asset;
-import com.example.client.view.Client;
-import com.example.client.view.images.TextureImages;
 
 import javafx.scene.image.Image;
 
@@ -182,7 +181,7 @@ public enum BuildingType {
             0, 0,0,0,20,10,10,
             null,null,1, Category.BUILDING, 30, BarCategory.NONE, 40, 40, 20, 20)
     ;
-    private final Image image;
+//    private final Image image;
     private final int workersNumber;
     private final int hitpoint;
     private final TextureImages groundType;
@@ -237,16 +236,17 @@ public enum BuildingType {
         this.category = category;
         this.hitpoint = hitpoint;
         this.barCategory = barCategory;
-        this.image = new Image(Client.class.getResource("/images/buildings/" + name + ".png").toExternalForm());
+//        TODO: OMID
+//        this.image = new Image(Client.class.getResource("/images/buildings/" + name + ".png").toExternalForm());
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
         this.resetX = resetX;
         this.resetY = resetY;
     }
-
-    public Image getImage() {
-        return image;
-    }
+//     TODO: OMID
+//    public Image getImage() {
+//        return image;
+//    }
 
     public int getWorkersNumber() {
         return workersNumber;

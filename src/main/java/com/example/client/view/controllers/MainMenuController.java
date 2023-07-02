@@ -1,7 +1,7 @@
 package com.example.client.view.controllers;
 
 import com.example.client.view.Client;
-import com.example.server.model.UsersData;
+import com.example.client.model.UsersData;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;

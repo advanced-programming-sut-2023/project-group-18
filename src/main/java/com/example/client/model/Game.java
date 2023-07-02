@@ -109,15 +109,16 @@ public class Game implements KeepLocations {
         this.selectedBuilding = selectedBuilding;
         if (selectedBuilding.getBuildingType().equals(BuildingType.KEEP))
             gameMenuController.showKeepMenu();
-        else if (selectedBuilding.getBuildingType().getCategory().equals(Category.TOWER) || selectedBuilding.getBuildingType().getCategory().equals(Category.WALL)) {
-            gameMenuController.repairMenu(selectedBuilding);
-        } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.GATE)) {
-            gameMenuController.gateMenu(selectedBuilding);
-        } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.BARRACKS)) {
-            gameMenuController.barracksMenu(selectedBuilding);
-        } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.GUNSMITH)) {
-            gameMenuController.gunsmithMenu(selectedBuilding);
-        }
+//        TODO: OMID
+//        else if (selectedBuilding.getBuildingType().getCategory().equals(Category.TOWER) || selectedBuilding.getBuildingType().getCategory().equals(Category.WALL)) {
+//            gameMenuController.repairMenu(selectedBuilding);
+//        } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.GATE)) {
+//            gameMenuController.gateMenu(selectedBuilding);
+//        } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.BARRACKS)) {
+//            gameMenuController.barracksMenu(selectedBuilding);
+//        } else if (selectedBuilding.getBuildingType().getCategory().equals(Category.GUNSMITH)) {
+//            gameMenuController.gunsmithMenu(selectedBuilding);
+//        }
     }
 
     public Unit getSelectedUnit() {

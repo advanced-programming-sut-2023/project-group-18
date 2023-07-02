@@ -25,10 +25,6 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
         return username.matches("\\w+");
     }
 
-    public void register(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
-        usersData.addUser(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer);
-    }
-
     public String generateRandomPassword() {
         java.util.Random random = new java.util.Random();
         int length = random.nextInt(6, 9);

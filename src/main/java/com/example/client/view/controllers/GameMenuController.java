@@ -4,18 +4,13 @@ import com.example.client.model.BuildingImage;
 import com.example.client.model.Game;
 import com.example.client.model.Governance;
 import com.example.client.model.PopularityFactors;
-import com.example.client.model.User;
-import com.example.client.model.UsersData;
 import com.example.client.view.Client;
-import com.example.server.controller.GameController;
+import com.example.client.controller.GameController;
 
-import com.example.client.model.*;
-import com.example.server.model.*;
-import com.example.server.model.assets.Asset;
-import com.example.server.model.assets.AssetType;
-import com.example.server.model.buildings.*;
-import com.example.server.model.people.UnitType;
-import javafx.event.EventHandler;
+import com.example.client.model.assets.Asset;
+import com.example.client.model.assets.AssetType;
+import com.example.client.model.buildings.*;
+import com.example.client.model.people.UnitType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -23,7 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -57,11 +51,12 @@ public class GameMenuController {
     public void initialize() {
         Game.getInstance().setGameMenuController(this);
         controller.getGame().setGameMap(100);
-        ArrayList<User> arrayList = new ArrayList<>();
-        arrayList.add(UsersData.getUsersData().getUserByUsername("user1"));
-        arrayList.add(UsersData.getUsersData().getUserByUsername("user2"));
-        arrayList.add(UsersData.getUsersData().getUserByUsername("user3"));
-        controller.getGame().makeNewGovernances(arrayList);
+//        TODO: omid
+//        ArrayList<User> arrayList = new ArrayList<>();
+//        arrayList.add(UsersData.getUsersData().getUserByUsername("user1"));
+//        arrayList.add(UsersData.getUsersData().getUserByUsername("user2"));
+//        arrayList.add(UsersData.getUsersData().getUserByUsername("user3"));
+//        controller.getGame().makeNewGovernances(arrayList);
         for (BarCategory barCategory : BarCategory.values()) {
             if (!barCategory.equals(BarCategory.NONE)) {
                 ArrayList<BuildingImage> buildingImages = new ArrayList<>();
@@ -359,54 +354,55 @@ public class GameMenuController {
         }
     }
 
-    public void clickOnAsset(Asset asset) {
-        Governance governance = controller.getGame().getCurrentGovernance();
-        int stock = governance.getAssetCount(asset);
-        int buyPrice = asset.getBuyPrice() * 5;
-        int sellPrice = asset.getSellPrice() * 5;
-        Label stockLabel = new Label("Stock: " + stock);
-        Button buyButton = new Button("Buy: " + buyPrice);
-        buyButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if (governance.getGold() >= buyPrice) {
-                    if (governance.canAddAssetToStorage(asset, 5)) {
-                        governance.addAssetToStorage(asset, 5);
-//                        stockLabel.setText("Stock: " + governance.getAssetCount(asset));
-                        alert.setAlertType(Alert.AlertType.CONFIRMATION);
-                        alert.setContentText("You bought successfully!");
-                        clickOnAsset(asset);
-                    } else {
-                        alert.setAlertType(Alert.AlertType.ERROR);
-                        alert.setContentText("You haven't enough space");
-                    }
-                } else {
-                    alert.setAlertType(Alert.AlertType.ERROR);
-                    alert.setContentText("You haven't enough gold.");
-                }
-                alert.show();
-            }
-        });
-        Button sellButton = new Button("Sell: " + asset.getSellPrice() * 5);
-        sellButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if (governance.canRemoveAssetFromStorage(asset, 5)) {
-                    governance.removeAssetFromStorage(asset, 5);
-                    alert.setAlertType(Alert.AlertType.CONFIRMATION);
-                    alert.setContentText("sold successfully");
-                    alert.show();
-                } else {
-                    alert.setAlertType(Alert.AlertType.ERROR);
-                    alert.setContentText("You haven't enough asset");
-                    alert.show();
-                }
-            }
-        });
-        cleanTypesHBox();
-        typesHBox.getChildren().addAll(stockLabel, buyButton, sellButton);
-
-    }
+//    TODO: omid
+//    public void clickOnAsset(Asset asset) {
+//        Governance governance = controller.getGame().getCurrentGovernance();
+//        int stock = governance.getAssetCount(asset);
+//        int buyPrice = asset.getBuyPrice() * 5;
+//        int sellPrice = asset.getSellPrice() * 5;
+//        Label stockLabel = new Label("Stock: " + stock);
+//        Button buyButton = new Button("Buy: " + buyPrice);
+//        buyButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent mouseEvent) {
+//                if (governance.getGold() >= buyPrice) {
+//                    if (governance.canAddAssetToStorage(asset, 5)) {
+//                        governance.addAssetToStorage(asset, 5);
+////                        stockLabel.setText("Stock: " + governance.getAssetCount(asset));
+//                        alert.setAlertType(Alert.AlertType.CONFIRMATION);
+//                        alert.setContentText("You bought successfully!");
+//                        clickOnAsset(asset);
+//                    } else {
+//                        alert.setAlertType(Alert.AlertType.ERROR);
+//                        alert.setContentText("You haven't enough space");
+//                    }
+//                } else {
+//                    alert.setAlertType(Alert.AlertType.ERROR);
+//                    alert.setContentText("You haven't enough gold.");
+//                }
+//                alert.show();
+//            }
+//        });
+//        Button sellButton = new Button("Sell: " + asset.getSellPrice() * 5);
+//        sellButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent mouseEvent) {
+//                if (governance.canRemoveAssetFromStorage(asset, 5)) {
+//                    governance.removeAssetFromStorage(asset, 5);
+//                    alert.setAlertType(Alert.AlertType.CONFIRMATION);
+//                    alert.setContentText("sold successfully");
+//                    alert.show();
+//                } else {
+//                    alert.setAlertType(Alert.AlertType.ERROR);
+//                    alert.setContentText("You haven't enough asset");
+//                    alert.show();
+//                }
+//            }
+//        });
+//        cleanTypesHBox();
+//        typesHBox.getChildren().addAll(stockLabel, buyButton, sellButton);
+//
+//    }
 
     public BuildingType getSelectedBuilding() {
         return selectedBuilding;

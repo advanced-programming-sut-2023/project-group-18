@@ -1,6 +1,6 @@
 package com.example.client.view.controllers;
 
-import com.example.server.controller.CaptchaMethods;
+import com.example.client.controller.CaptchaMethods;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

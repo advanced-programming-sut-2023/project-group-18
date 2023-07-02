@@ -1,6 +1,6 @@
 package com.example.client.controller;
 
-import com.example.server.model.UsersData;
+import com.example.client.model.UsersData;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;

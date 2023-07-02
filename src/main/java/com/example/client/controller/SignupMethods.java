@@ -1,9 +1,9 @@
 package com.example.client.controller;
 
 import com.example.client.controller.responses.SignupResponses;
-import com.example.server.model.RandomSlogan;
-import com.example.server.model.User;
-import com.example.server.model.UsersData;
+import com.example.client.model.RandomSlogan;
+import com.example.client.model.User;
+import com.example.client.model.UsersData;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,10 +23,6 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
 
     private boolean isUsernameValid(String username) {
         return username.matches("\\w+");
-    }
-
-    public void register(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
-        usersData.addUser(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer);
     }
 
     public String generateRandomPassword() {

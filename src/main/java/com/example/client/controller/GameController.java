@@ -1,6 +1,6 @@
 package com.example.client.controller;
 
-import com.example.server.model.Game;
+import com.example.client.model.Game;
 
 public class GameController {
     private static GameController controller;

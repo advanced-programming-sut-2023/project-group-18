@@ -1,7 +1,7 @@
 package com.example.client.view.controllers;
 
 import com.example.client.view.Client;
-import com.example.server.controller.StartGameMethods;
+import com.example.client.controller.StartGameMethods;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;

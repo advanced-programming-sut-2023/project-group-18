@@ -1,8 +1,8 @@
 package com.example.client.view.controllers;
 
 import com.example.client.view.Client;
-import com.example.server.model.User;
-import com.example.server.model.UsersData;
+import com.example.client.model.User;
+import com.example.client.model.UsersData;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

@@ -1,7 +1,7 @@
 package com.example.client.view.controllers;
 
 import com.example.client.view.Client;
-import com.example.server.controller.SecurityMethods;
+import com.example.client.controller.SecurityMethods;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;

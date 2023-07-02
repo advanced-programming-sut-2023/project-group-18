@@ -58,7 +58,8 @@ public class BuildingImage {
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    gameMenuController.clickOnAsset(Asset.getAssetByName(name));
+//                    TODO: OMID
+//                    gameMenuController.clickOnAsset(Asset.getAssetByName(name));
                 }
             });
         }
