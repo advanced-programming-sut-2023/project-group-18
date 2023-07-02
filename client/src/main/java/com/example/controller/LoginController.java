@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.model.BooleanWrapper;
 import com.example.model.Request;
 
 public class LoginController {
@@ -25,5 +26,9 @@ public class LoginController {
     public void login(String username) {
         networkController.transferData(new Request("LoginController", "login",
                 username));
+    }
+    public BooleanWrapper doesUsernameExist(String username) {
+        return (BooleanWrapper) networkController.transferData(new Request("LoginController", "doesUsernameExist", username));
+//        return usersData.getUserByUsername(username) != null;
     }
 }

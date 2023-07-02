@@ -3,6 +3,7 @@ package com.example.view;
 import java.io.IOException;
 import java.net.URL;
 
+import com.example.controller.LoginController;
 import com.example.controller.NetworkController;
 import com.example.controller.SignupMethods;
 import com.example.model.Game;
@@ -35,9 +36,9 @@ public class Main extends Application {
         NetworkController networkController = NetworkController.getInstance();
         networkController.initializeNetwork();
 //        System.out.println(SignupMethods.getInstance().doesUsernameExist("user"));
-        SignupMethods.getInstance().doesUsernameExist("user");
+        System.out.println(LoginController.getInstance().doesUsernameExist("user").isValue());
 //        launch();
-        networkController.terminateNetwork();
+//        networkController.terminateNetwork();
     }
 
     public static Stage getStage() {

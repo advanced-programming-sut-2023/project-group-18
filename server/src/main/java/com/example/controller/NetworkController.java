@@ -3,8 +3,6 @@ package com.example.controller;
 import com.example.model.Request;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
-import jakarta.xml.bind.Unmarshaller;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -62,11 +60,11 @@ public class NetworkController {
 
     private String process(String xml) {
         Request request = Request.fromXml(xml);
-        System.out.println("controller name: " + request.getControllerName());
+        System.out.println("controller name: " + request.getController());
         System.out.println("request method name: " + request.getMethodName());
-        Object controller = LoginController.getInstance();
+        Object controller = request.getController();
         Method method = null;
-        Method[] methods = LoginController.class.getDeclaredMethods();
+        Method[] methods = controller.getClass().getDeclaredMethods();
         for (Method method1 : methods) {
             System.out.println("method in method array: " + method1.getName());
             if (method1.getName().equals(request.getMethodName())) {
@@ -74,37 +72,40 @@ public class NetworkController {
                 break;
             }
         }
-        ArrayList<String> argumentArrayList = request.getArguments();
+        ArrayList<Object> argumentArrayList = request.getArguments();
+        System.out.println("argument in networkController " + argumentArrayList.get(0));
         Object[] arguments = new Object[argumentArrayList.size()];
+        arguments = argumentArrayList.toArray();
         System.out.println("argumentArrayList size: " + argumentArrayList.size());
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(request.getClasses().get(0));
-            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            StringReader stringReader = new StringReader(argumentArrayList.get(0));
-            String test = (String) unmarshaller.unmarshal(stringReader);
-            System.out.println("test is: " + test);
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
-        }
-        for (int i = 0; i < argumentArrayList.size(); i++) {
-            System.out.println("xml argument: " + argumentArrayList.get(i));
-            System.out.println("class: " + request.getClasses().get(i));
-            try {
-                JAXBContext jaxbContext = JAXBContext.newInstance(request.getClasses().get(i));
-                Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-                StringReader stringReader = new StringReader(argumentArrayList.get(i));
-                arguments[i] = unmarshaller.unmarshal(stringReader);
-            } catch (JAXBException e) {
-                throw new RuntimeException(e);
-            }
-        }
+//        try {
+//            JAXBContext jaxbContext = JAXBContext.newInstance(request.getClasses().get(0));
+//            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+//            StringReader stringReader = new StringReader(argumentArrayList.get(0));
+//            String test = (String) unmarshaller.unmarshal(stringReader);
+//            System.out.println("test is: " + test);
+//        } catch (JAXBException e) {
+//            throw new RuntimeException(e);
+//        }
+//        for (int i = 0; i < argumentArrayList.size(); i++) {
+//            System.out.println("xml argument: " + argumentArrayList.get(i));
+//            System.out.println("class: " + request.getClasses().get(i));
+//            try {
+//                JAXBContext jaxbContext = JAXBContext.newInstance(request.getClasses().get(i));
+//                Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+//                StringReader stringReader = new StringReader(argumentArrayList.get(i));
+//                arguments[i] = unmarshaller.unmarshal(stringReader);
+//            } catch (JAXBException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
         try {
 //            boolean access = method.canAccess();
             method.setAccessible(true);
+            System.out.println(arguments[0]);
             Object result = method.invoke(controller, arguments);
             method.setAccessible(false);
             StringWriter stringWriter = new StringWriter();
-            JAXBContext.newInstance().createMarshaller().marshal(result, stringWriter);
+            JAXBContext.newInstance(method.getReturnType()).createMarshaller().marshal(result, stringWriter);
             return stringWriter.toString();
         } catch (IllegalAccessException | InvocationTargetException | JAXBException e) {
             throw new RuntimeException(e);

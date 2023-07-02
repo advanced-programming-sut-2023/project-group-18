@@ -17,38 +17,33 @@ public class Request {
     @XmlElement
     private String methodName;
     @XmlElement
-    private ArrayList<String> arguments;
-    @XmlElement
-    private ArrayList<Class> classes;
+    private ArrayList<Object> arguments;
     public Request() {
-
     }
 
     public Request(String controllerName, String methodName, Object... arguments) {
         this.controllerName = controllerName;
         this.methodName = methodName;
-        classes = new ArrayList<>();
-        String[] objects = new String[arguments.length];
-        for (int i = 0; i < arguments.length; i++) {
-            StringWriter stringWriter = new StringWriter();
-            try {
-                System.out.println(Request.class);
-                JAXBContext jaxbContext = JAXBContext.newInstance(Request.class);
-                Marshaller marshaller = jaxbContext.createMarshaller();
-                marshaller.marshal(this, stringWriter);
-            } catch (JAXBException e) {
-                throw new RuntimeException(e);
-            }
-            objects[i] = stringWriter.toString();
-            classes.add(arguments[i].getClass());
-        }
-        this.arguments = new ArrayList<>(Arrays.asList(objects));
+//        String[] objects = new String[arguments.length];
+//        for (int i = 0; i < arguments.length; i++) {
+//            StringWriter stringWriter = new StringWriter();
+//            try {
+//                JAXBContext jaxbContext = JAXBContext.newInstance(this.getClass());
+//                Marshaller marshaller = jaxbContext.createMarshaller();
+//                marshaller.marshal(this, stringWriter);
+//            } catch (JAXBException e) {
+//                throw new RuntimeException(e);
+//            }
+//            objects[i] = stringWriter.toString();
+//        }
+        this.arguments = new ArrayList<>(Arrays.asList(arguments));
     }
 
     public String toXml() {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(this.getClass());
             Marshaller marshaller = jaxbContext.createMarshaller();
+
             StringWriter stringWriter = new StringWriter();
             marshaller.marshal(this, stringWriter);
             return stringWriter.toString();
@@ -71,7 +66,7 @@ public class Request {
         return this.methodName;
     }
 
-    public ArrayList<String> getArguments() {
+    public ArrayList<Object> getArguments() {
         return this.arguments;
     }
 
@@ -79,7 +74,7 @@ public class Request {
         return controllerName;
     }
 
-    public ArrayList<Class> getClasses() {
-        return classes;
-    }
+//    public ArrayList<Class> getClasses() {
+//        return classes;
+//    }
 }
