@@ -1,0 +1,154 @@
+Index: src/main/java/com/example/model/Buildings/Storage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/Storage.java b/src/main/java/com/example/model/Buildings/Storage.java
+--- a/src/main/java/com/example/model/Buildings/Storage.java	
++++ b/src/main/java/com/example/model/Buildings/Storage.java	
+@@ -14,11 +14,11 @@
+     private final HashMap<Asset, Integer> products;
+     private int currentCapacity;
+ 
+-    public Storage(String buildingType, Governance governance, Cell cell, AssetType type, int capacity) {
++    public Storage(BuildingType buildingType, Governance governance, Cell cell, AssetType type) {
+         super(buildingType, governance, cell);
+         products = Asset.getAllAssets(type);
+         this.type = type;
+-        this.capacity = capacity;
++        this.capacity = buildingType.getCapacity();
+     }
+ 
+     public AssetType getType() {
+Index: src/main/java/com/example/model/Buildings/Armory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/Armory.java b/src/main/java/com/example/model/Buildings/Armory.java
+--- a/src/main/java/com/example/model/Buildings/Armory.java	
++++ b/src/main/java/com/example/model/Buildings/Armory.java	
+@@ -1,26 +1,43 @@
+ package com.example.model.Buildings;
+ 
+ import com.example.model.Assets.Asset;
++import com.example.model.Cell;
++import com.example.model.Governance;
+ 
+ import java.util.ArrayList;
+ import java.util.HashMap;
+ 
+ public class Armory extends Building{
+-    private final String weapon;
+-    private final ArrayList<String> resources;
++    private final Asset weapon;
++    private final Asset resource;
+     private final int rate;
+ 
+-    public Armory(BuildingType buildingType, G governance, Cell cell, String weapon) {
++    public Armory(BuildingType buildingType, Governance governance, Cell cell) {
+         super(buildingType, governance, cell);
+-        this.weapon = weapon;
++        this.weapon = buildingType.getProductionAsset();
++        this.resource = buildingType.getResourceType();
++        this.rate = buildingType.getProductionRate();
++    }
++
++    public Asset getWeapon() {
++        return weapon;
+     }
+-    public void canMakeWeapon(String weapon){
+-        if ()
++
++    public Asset getResource() {
++        return resource;
++    }
++
++    public int getRate() {
++        return rate;
++    }
++
++    public boolean canMakeWeapon(Asset weapon){
++        return governance.canRemoveAssetFromStorage(weapon,1);
+     }
+     public void makeWeapon(String weapon){
+         Asset weaponAsset = Asset.getAssetByName(weapon);
+         governance.addGold(- weaponAsset.getPrice());
+-        governance.removeAssetFromStorage();
++        governance.removeAssetFromStorage(resource,1);
+         governance.addSpecificAsset(weaponAsset,1);
+     }
+ }
+Index: src/main/java/com/example/model/Buildings/Tower.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/Tower.java b/src/main/java/com/example/model/Buildings/Tower.java
+--- a/src/main/java/com/example/model/Buildings/Tower.java	
++++ b/src/main/java/com/example/model/Buildings/Tower.java	
+@@ -23,7 +23,6 @@
+         soldiersCapacity = buildingType.getSoldiersCapacity();
+         soldiers = new ArrayList<>();
+         strong = true;
+-        canDeployEquipment = true;
+     }
+ 
+     public int getFireRange() {
+@@ -68,9 +67,6 @@
+         return strong;
+     }
+ 
+-    public boolean canDeployEquipment() {
+-        return canDeployEquipment;
+-    }
+     public boolean canRepair(){
+         Asset asset = Asset.STONE;
+         int stoneNeeded = this.getBuildingType().getHitpoint() - this.hitpoint;
+Index: src/main/java/com/example/model/Buildings/StorageType.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/StorageType.java b/src/main/java/com/example/model/Buildings/StorageType.java
+--- a/src/main/java/com/example/model/Buildings/StorageType.java	
++++ b/src/main/java/com/example/model/Buildings/StorageType.java	
+@@ -1,5 +1,5 @@
+ package com.example.model.Buildings;
+ 
+ public enum StorageType {
+-    
++    private final BuildingType
+ }
+Index: src/main/java/com/example/model/Buildings/Building.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/model/Buildings/Building.java b/src/main/java/com/example/model/Buildings/Building.java
+--- a/src/main/java/com/example/model/Buildings/Building.java	
++++ b/src/main/java/com/example/model/Buildings/Building.java	
+@@ -5,12 +5,13 @@
+ import com.example.model.Cell;
+ import com.example.model.Governance;
+ import com.example.model.Assets.Asset;
++import com.example.model.Texture;
+ 
+ public class Building {
+     private final BuildingType buildingType;
+     protected final int workersNumber;
+     protected final Governance governance;
+-    protected final String groundType;
++    protected final Texture groundType;
+     protected final int goldCost;
+     protected final Asset resourceType;
+     protected final int resourceCost;
+@@ -45,7 +46,7 @@
+         return hitpoint;
+     }
+ 
+-    public String getGroundType() {
++    public Texture getGroundType() {
+         return groundType;
+     }
+ 

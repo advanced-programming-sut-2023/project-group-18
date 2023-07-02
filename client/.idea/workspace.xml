@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="update scriber">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_12_53_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_12_53_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_1_2023_10_33_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_1_2023_10_33_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Governance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Governance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Barracks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Barracks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Building.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Farm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Farm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Processing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/buildings/Processing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/map/GameMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/Unit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/people/UnitType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/people/UnitType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/SignupMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/images/Images.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/images/Images.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="a774dd71c3ba45c5b555eabb5899272f09e1a620" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/resources/fxml/ProfileMenu.fxml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2QR3T8bkS02uWAvlog7BzFvoNq0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/fraxea/Desktop/frAxeA/term2/AP/project/project-group18&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="keepMenu" />
+      <created>1685302575628</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685302575628</updated>
+      <workItem from="1685302578417" duration="8012000" />
+      <workItem from="1685343278880" duration="12000" />
+      <workItem from="1685367005928" duration="4887000" />
+      <workItem from="1685437111415" duration="10349000" />
+      <workItem from="1685519946688" duration="3165000" />
+      <workItem from="1685526506935" duration="11000" />
+      <workItem from="1685526998168" duration="7716000" />
+      <workItem from="1685648124111" duration="1277000" />
+      <workItem from="1685706691121" duration="1018000" />
+      <workItem from="1685708022769" duration="6239000" />
+      <workItem from="1685716083539" duration="2436000" />
+      <workItem from="1685731115291" duration="11751000" />
+      <workItem from="1685809345327" duration="4576000" />
+      <workItem from="1685893029808" duration="7172000" />
+      <workItem from="1688115104849" duration="7840000" />
+    </task>
+    <task id="LOCAL-00001" summary="tag">
+      <created>1685305307071</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685305307071</updated>
+    </task>
+    <task id="LOCAL-00002" summary="testing prompt text for unmasked password">
+      <created>1685310099246</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685310099246</updated>
+    </task>
+    <task id="LOCAL-00003" summary="textField passwordField style for password show try">
+      <created>1685311845919</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685311845919</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed show password hopefully">
+      <created>1685442820352</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685442820352</updated>
+    </task>
+    <task id="LOCAL-00005" summary="half done slogan">
+      <created>1685455932991</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685455932991</updated>
+    </task>
+    <task id="LOCAL-00006" summary="signup hopefully done">
+      <created>1685483238774</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685483238774</updated>
+    </task>
+    <task id="LOCAL-00007" summary="security question and captcha">
+      <created>1685713869397</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685713869397</updated>
+    </task>
+    <task id="LOCAL-00008" summary="a commit">
+      <created>1685731152351</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685731152351</updated>
+    </task>
+    <task id="LOCAL-00009" summary="login when answered security question">
+      <created>1685814050921</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685814050921</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Main Menu">
+      <created>1685814985857</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685814985857</updated>
+    </task>
+    <task id="LOCAL-00011" summary="start game">
+      <created>1685979967030</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685979967030</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Bottom Bar completed">
+      <created>1687941767024</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1687941767024</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Bottom Bar completed">
+      <created>1687941976394</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1687941976394</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Bottom Bar completed">
+      <created>1687942155173</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1687942155173</updated>
+    </task>
+    <task id="LOCAL-00015" summary="building selection">
+      <created>1688063366380</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1688063366380</updated>
+    </task>
+    <task id="LOCAL-00016" summary="keepMenu">
+      <created>1688073371947</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1688073371947</updated>
+    </task>
+    <task id="LOCAL-00017" summary="barracks">
+      <created>1688134712574</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1688134712574</updated>
+    </task>
+    <task id="LOCAL-00018" summary="barracks2">
+      <created>1688135814942</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1688135814942</updated>
+    </task>
+    <task id="LOCAL-00019" summary="commit before debugs">
+      <created>1688142688062</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1688142688062</updated>
+    </task>
+    <task id="LOCAL-00020" summary="popular slogan">
+      <created>1688146961687</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1688146961687</updated>
+    </task>
+    <task id="LOCAL-00021" summary="popular slogan2">
+      <created>1688147935208</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1688147935208</updated>
+    </task>
+    <task id="LOCAL-00022" summary="update scriber">
+      <created>1688153751103</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1688153751103</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="tag" />
+    <MESSAGE value="testing prompt text for unmasked password" />
+    <MESSAGE value="textField passwordField style for password show try" />
+    <MESSAGE value="fixed show password hopefully" />
+    <MESSAGE value="half done slogan" />
+    <MESSAGE value="signup hopefully done" />
+    <MESSAGE value="security question and captcha" />
+    <MESSAGE value="a commit" />
+    <MESSAGE value="login when answered security question" />
+    <MESSAGE value="Main Menu" />
+    <MESSAGE value="start game" />
+    <MESSAGE value="Bottom Bar completed" />
+    <MESSAGE value="add remainders" />
+    <MESSAGE value="building selection" />
+    <MESSAGE value="keepMenu" />
+    <MESSAGE value="barracks" />
+    <MESSAGE value="barracks2" />
+    <MESSAGE value="commit before debugs" />
+    <MESSAGE value="popular slogan" />
+    <MESSAGE value="popular slogan2" />
+    <MESSAGE value="update scriber" />
+    <option name="LAST_COMMIT_MESSAGE" value="update scriber" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

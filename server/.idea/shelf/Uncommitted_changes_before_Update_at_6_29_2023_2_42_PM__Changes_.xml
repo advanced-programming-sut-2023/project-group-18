@@ -1,0 +1,49 @@
+<changelist name="Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]" date="1688037280911" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 6/29/2023 2:42 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="src/main/resources/images/Weapon/0_0img98.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]/0_0img98.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/maps/defaultMap.bin" />
+    <option name="AFTER_PATH" value="target/classes/maps/defaultMap.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]/defaultMap.bin" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="src/main/resources/images/assets/Metal Armour.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]/Metal Armour.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="src/main/resources/images/Weapon/0_0img97.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]/0_0img97.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/view/controllers/GameMenuController.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/view/controllers/GameMenuController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]/GameMenuController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/model/assets/AssetType.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/model/assets/AssetType.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]/AssetType.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="src/main/resources/images/assets/Resource.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]/Resource.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="src/main/resources/images/assets/Food.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]/Food.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="src/main/resources/images/assets/Weapon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM_[Changes]/Weapon.png" />
+  </binary>
+</changelist>

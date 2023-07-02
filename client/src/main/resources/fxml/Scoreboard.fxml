@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.view.controllers.ScoreboardController"
+            prefHeight="400.0" prefWidth="600.0"
+            fx:id="scrollPane">
+        <Label text="Profile Menu" textAlignment="CENTER" prefWidth="1500" prefHeight="50" alignment="CENTER" styleClass="title" fx:id="label"/>
+    <Button text="back" onMouseClicked="#back" fx:id="backButton"/>
+    <VBox spacing="38" fx:id="playerLabels" alignment="CENTER">
+    </VBox>
+
+    <stylesheets>
+        <URL value="@../css/MenuStyle.css"/>
+    </stylesheets>
+</ScrollPane>

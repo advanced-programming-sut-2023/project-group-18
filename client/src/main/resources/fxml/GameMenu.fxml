@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<BorderPane fx:id="borderPane" prefHeight="750" prefWidth="1500" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.view.controllers.GameMenuController">
+    <top>
+        <VBox prefWidth="1500" prefHeight="50" alignment="CENTER">
+            <Label text="FUCK YOU" textAlignment="CENTER" onMouseClicked="#initMap"/>
+        </VBox>
+    </top>
+
+    <bottom>
+        <Pane fx:id="pane">
+            <VBox fx:id="bottom" alignment="CENTER" prefHeight="200.0" prefWidth="1500.0">
+                <Label prefHeight="88.0" prefWidth="72.0" text="."/>
+                <HBox fx:id="imagesHBox" minWidth="-Infinity" prefHeight="86.0" prefWidth="1500.0" spacing="10">
+                    <opaqueInsets>
+                        <Insets top="79.0"/>
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="350.0" right="200.0"/>
+                    </padding>
+
+                </HBox>
+                <HBox fx:id="typesHBox" prefHeight="22.0" prefWidth="1500.0" spacing="20">
+                    <padding>
+                        <Insets left="350.0" right="200.0"/>
+                    </padding>
+                </HBox>
+            </VBox>
+        </Pane>
+    </bottom>
+
+    <!--    <stylesheets>-->
+    <!--        <URL value="@../css/GameStyle.css"/>-->
+    <!--    </stylesheets>-->
+</BorderPane>
