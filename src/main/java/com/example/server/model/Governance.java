@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 import com.example.server.model.assets.Asset;
 import com.example.server.model.assets.AssetType;
-import com.example.model.buildings.*;
-import com.example.model.people.*;
+import com.example.server.model.buildings.*;
+import com.example.server.model.people.*;
 import com.example.server.model.buildings.Building;
 import com.example.server.model.buildings.Storage;
 import com.example.server.model.people.Unit;

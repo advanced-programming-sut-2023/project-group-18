@@ -56,11 +56,11 @@ public class Building implements Successor {
             case INDUSTRIAL_BUILDING -> new IndustrialBuilding(buildingType, governance, tile).setTooltip();
             case PROCESSING -> new Processing(buildingType, governance, tile).setTooltip();
             case STABLE -> new Stable(buildingType, governance, tile).setTooltip();
-            case STAIR -> new Stair(buildingType, governance, tile).setTooltip();
+//            case STAIR -> new Stair(buildingType, governance, tile).setTooltip();
             case STORAGE -> new Storage(buildingType, governance, tile).setTooltip();
             case TOWER -> new Tower(buildingType, governance, tile).setTooltip();
             case TRAP -> new Trap(buildingType, governance, tile).setTooltip();
-            case WALL -> new Wall(buildingType, governance, tile).setTooltip();
+//            case WALL -> new Wall(buildingType, governance, tile).setTooltip();
             default -> new Building(buildingType, governance, tile).setTooltip();
         }
     }

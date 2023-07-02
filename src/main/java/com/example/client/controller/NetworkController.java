@@ -1,11 +1,9 @@
 package com.example.client.controller;
 
 import com.example.client.model.Request;
-import jakarta.xml.bind.JAXB;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
-import javafx.scene.chart.PieChart;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -57,7 +55,7 @@ public class NetworkController {
 
     public Object transferData(Request request) {
         System.out.println(request.getMethodName());
-        byte[] data = request.toJson().getBytes();
+        byte[] data = request.toXml().getBytes();
         try {
             dataOutputStream.writeInt(data.length);
             dataOutputStream.write(data);
@@ -94,7 +92,7 @@ public class NetworkController {
 
     public <T> ArrayList<T> transferData(Request request, Class<T[]> clazz) {
         System.out.println(request.getMethodName());
-        byte[] data = request.toJson().getBytes();
+        byte[] data = request.toXml().getBytes();
         try {
             dataOutputStream.writeInt(data.length);
             dataOutputStream.write(data);

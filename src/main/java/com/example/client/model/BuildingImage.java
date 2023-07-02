@@ -20,8 +20,7 @@ public class BuildingImage {
     private GameMenuController gameMenuController;
     private String where;
 
-    public BuildingImage(HBox imageHBox, String name, int size, GameMenuController gameMenuController, boolean type
-            , String where) {
+    public BuildingImage(HBox imageHBox, String name, int size, GameMenuController gameMenuController, boolean type, String where) {
         this.imageHBox = imageHBox;
         this.name = name;
         this.size = size;
@@ -33,34 +32,16 @@ public class BuildingImage {
         imageView.setFitWidth(size);
         if (type && where.equals("buildings")) {
             imageHBox.getChildren().add(imageView);
-            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    gameMenuController.changeMenu(BarCategory.getBarCategoryByName(name));
-                }
-            });
+            imageView.setOnMouseClicked(mouseEvent -> gameMenuController.changeMenu(BarCategory.getBarCategoryByName(name)));
         } else if (!type && where.equals("buildings")) {
-            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    gameMenuController.setSelectedBuilding(BuildingType.getBuildingTypeByName(name));
-                }
-            });
+            imageView.setOnMouseClicked(mouseEvent -> gameMenuController.setSelectedBuilding(BuildingType.getBuildingTypeByName(name)));
         } else if (type && where.equals("assets")) {
-            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    gameMenuController.cleanTypesHBox();
-                    gameMenuController.changeShopAssetType(AssetType.getAssetTypeByName(name));
-                }
+            imageView.setOnMouseClicked(mouseEvent -> {
+                gameMenuController.cleanTypesHBox();
+                gameMenuController.changeShopAssetType(AssetType.getAssetTypeByName(name));
             });
         } else {
-            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    gameMenuController.clickOnAsset(Asset.getAssetByName(name));
-                }
-            });
+            imageView.setOnMouseClicked(mouseEvent -> gameMenuController.clickOnAsset(Asset.getAssetByName(name)));
         }
         //imageHBox.getChildren().add(imageView);
     }

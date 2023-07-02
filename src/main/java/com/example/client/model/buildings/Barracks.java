@@ -44,7 +44,7 @@ public class Barracks extends Building {
         Random random = new Random();
         int ratio = random.nextBoolean() ? 1 : -1;
         index += random.nextInt(2, 5) * ratio;
-        return index < 0 ? 0 : index;
+        return Math.max(index, 0);
     }
 
     @Override

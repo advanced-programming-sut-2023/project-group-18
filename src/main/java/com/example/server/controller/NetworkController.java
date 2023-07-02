@@ -2,22 +2,18 @@ package com.example.server.controller;
 
 import com.example.client.controller.GameController;
 import com.example.client.model.Request;
-import jakarta.xml.bind.JAXB;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
-import javafx.scene.chart.PieChart;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.StringReader;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
 public class NetworkController {
     private final static int PORT_NUMBER = 6000;
@@ -67,14 +63,30 @@ public class NetworkController {
     }
 
     private String process(String json) {
-        Request request = Request.fromJson(json);
+        Request request = Request.fromXml(json);
+        Object controller = GameController.getInstance();
         Method method = null;
         Method[] methods = GameController.class.getDeclaredMethods();
         for (Method method1 : methods) {
-            if (method1.getName().equals(method.getName())) {
+            if (method1.getName().equals(request.getMethodName())) {
                 method = method1;
                 break;
             }
+        }
+        ArrayList<String> argumentArrayList = request.getArguments();
+        Object[] arguments = new Object[argumentArrayList.size()];
+        for (String argument : argumentArrayList) {
+            try {
+                JAXBContext jaxbContext = JAXBContext.newInstance();
+                Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            } catch (JAXBException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        try {
+            Object result = method.invoke(controller, arguments);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
         }
         GameController gameController = GameController.getInstance();
 //        Object object = method.invoke();
