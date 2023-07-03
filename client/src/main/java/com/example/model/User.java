@@ -1,5 +1,6 @@
 package com.example.model;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
@@ -7,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+@XmlRootElement
 public class User implements PasswordRecoveryQuestions {
     private String username;
     private String password;
@@ -15,9 +17,11 @@ public class User implements PasswordRecoveryQuestions {
     private String slogan;
     private int highscore;
     private String avatarPath;
-    private final int recoveryQuestionNumber;
-    private final String recoveryAnswer;
+    private int recoveryQuestionNumber;
+    private String recoveryAnswer;
     private int score;
+    public User() {
+    }
     protected User(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         this.username = username;
         setPassword(password);
@@ -112,16 +116,17 @@ public class User implements PasswordRecoveryQuestions {
 
 
     private String SHA256Cryptographic(String input) {
-        MessageDigest digest;
-        final String algorithmName = "SHA-256";
-        try {
-            digest = MessageDigest.getInstance(algorithmName);
-            byte[] encodedhash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
-            return new String(encodedhash, StandardCharsets.UTF_8);
-        } catch (NoSuchAlgorithmException e) {
-            System.err.println("There is no algorithm with name: " + algorithmName);
-        }
-        return null;
+        return input;
+//        MessageDigest digest;
+//        final String algorithmName = "SHA-256";
+//        try {
+//            digest = MessageDigest.getInstance(algorithmName);
+//            byte[] encodedhash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+//            return new String(encodedhash, StandardCharsets.UTF_8);
+//        } catch (NoSuchAlgorithmException e) {
+//            System.err.println("There is no algorithm with name: " + algorithmName);
+//        }
+//        return null;
     }
 
     public void setAvatar(File avatar) {

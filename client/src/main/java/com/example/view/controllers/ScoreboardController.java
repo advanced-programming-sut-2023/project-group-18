@@ -1,5 +1,7 @@
 package com.example.view.controllers;
 
+import com.example.controller.NetworkController;
+import com.example.model.Request;
 import com.example.model.User;
 import com.example.model.UsersData;
 import com.example.view.Main;
@@ -31,7 +33,8 @@ public class ScoreboardController {
     public void initialize() {
         // TODO: need to use server
         // getScoreboard(pageNumber)
-        users = (ArrayList<User>) usersData.getUsers().clone();
+        users = (ArrayList<User>) NetworkController.getInstance().transferData(new Request(UsersData.class, "getUsers"));
+//        users = (ArrayList<User>) usersData.getUsers().clone();
         users.sort((user1, user2) -> -Integer.compare(user1.getHighscore(), user2.getHighscore()));
         updatePlayerLabels(0);
         VBox vBox = new VBox();

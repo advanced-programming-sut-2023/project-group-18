@@ -52,7 +52,8 @@ public class NetworkController {
                             dataOutputStream.flush();
                         }
                     } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        System.out.println("connection failed");
+//                        throw new RuntimeException(e);
                     }
                 }).start();
             }

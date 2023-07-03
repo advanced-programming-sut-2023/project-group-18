@@ -1,5 +1,6 @@
 package com.example.model;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
@@ -8,6 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
+@XmlRootElement
 public class User implements PasswordRecoveryQuestions {
     private String username;
     private String password;
@@ -16,10 +18,14 @@ public class User implements PasswordRecoveryQuestions {
     private String slogan;
     private int highscore;
     private String avatarPath;
-    private final int recoveryQuestionNumber;
-    private final String recoveryAnswer;
+    private int recoveryQuestionNumber;
+    private String recoveryAnswer;
     private int score;
     private final static ArrayList<User> users = new ArrayList<>();
+    private ArrayList<User> friends;
+    private ArrayList<User> requests;
+    public User() {
+    }
     protected User(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         this.username = username;
         setPassword(password);
@@ -32,6 +38,8 @@ public class User implements PasswordRecoveryQuestions {
         this.score = 0;
         avatarPath = User.class.getResource("/avatars/1.png").toExternalForm();
         users.add(this);
+        friends = new ArrayList<>();
+        requests = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -115,16 +123,17 @@ public class User implements PasswordRecoveryQuestions {
 
 
     private String SHA256Cryptographic(String input) {
-        MessageDigest digest;
-        final String algorithmName = "SHA-256";
-        try {
-            digest = MessageDigest.getInstance(algorithmName);
-            byte[] encodedhash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
-            return new String(encodedhash, StandardCharsets.UTF_8);
-        } catch (NoSuchAlgorithmException e) {
-            System.err.println("There is no algorithm with name: " + algorithmName);
-        }
-        return null;
+        return input;
+//        MessageDigest digest;
+//        final String algorithmName = "SHA-256";
+//        try {
+//            digest = MessageDigest.getInstance(algorithmName);
+//            byte[] encodedhash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+//            return new String(encodedhash, StandardCharsets.UTF_8);
+//        } catch (NoSuchAlgorithmException e) {
+//            System.err.println("There is no algorithm with name: " + algorithmName);
+//        }
+//        return null;
     }
 
     public void setAvatar(File avatar) {
@@ -140,5 +149,30 @@ public class User implements PasswordRecoveryQuestions {
 
     public static ArrayList<User> getUsers(){
         return users;
+    }
+
+    public ArrayList<User> getFriends() {
+        return friends;
+    }
+
+    public ArrayList<User> getRequests() {
+        return requests;
+    }
+
+    public void addFriend(User user){
+        friends.add(user);
+    }
+
+    public void addRequest(User user){
+        requests.add(user);
+    }
+
+    public void acceptRequest(User user){
+        requests.remove(user);
+        friends.add(user);
+    }
+
+    public void declineRequest(User user){
+        requests.remove(user);
     }
 }

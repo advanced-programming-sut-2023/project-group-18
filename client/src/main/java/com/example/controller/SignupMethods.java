@@ -23,9 +23,9 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
         return username.matches("\\w+");
     }
 
-    public void register(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
-        usersData.addUser(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer);
-    }
+//    public void register(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
+//        usersData.addUser(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer);
+//    }
 
     public String generateRandomPassword() {
         java.util.Random random = new java.util.Random();
@@ -96,32 +96,33 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
 
     // TODO: need to use server
     public String getPopularSlogan() {
-        boolean flag = false;
-        ArrayList<User> users = UsersData.getInstance().getUsers();
-        ArrayList<String> slogans = new ArrayList<>();
-        ArrayList<Integer> occurrences = new ArrayList<>();
-        for (User user : users) {
-            for (int i = 0; i < slogans.size(); i++) {
-                if (slogans.get(i).equals(user.getSlogan())) {
-                    occurrences.set(i, occurrences.get(i) + 1);
-                    flag = true;
-                    break;
-                }
-            }
-            if (!flag) {
-                slogans.add(user.getSlogan());
-                occurrences.add(1);
-            }
-            flag = false;
-        }
-        int max = 0;
-        int maxIndex = 0;
-        for (int i = 0; i < occurrences.size(); i++) {
-            if (occurrences.get(i) > max) {
-                max = occurrences.get(i);
-                maxIndex = i;
-            }
-        }
-        return slogans.get(maxIndex);
+        return (String) networkController.transferData(new Request(SignupMethods.class, "getPopularSlogan"));
+//        boolean flag = false;
+//        ArrayList<User> users = UsersData.getInstance().getUsers();
+//        ArrayList<String> slogans = new ArrayList<>();
+//        ArrayList<Integer> occurrences = new ArrayList<>();
+//        for (User user : users) {
+//            for (int i = 0; i < slogans.size(); i++) {
+//                if (slogans.get(i).equals(user.getSlogan())) {
+//                    occurrences.set(i, occurrences.get(i) + 1);
+//                    flag = true;
+//                    break;
+//                }
+//            }
+//            if (!flag) {
+//                slogans.add(user.getSlogan());
+//                occurrences.add(1);
+//            }
+//            flag = false;
+//        }
+//        int max = 0;
+//        int maxIndex = 0;
+//        for (int i = 0; i < occurrences.size(); i++) {
+//            if (occurrences.get(i) > max) {
+//                max = occurrences.get(i);
+//                maxIndex = i;
+//            }
+//        }
+//        return slogans.get(maxIndex);
     }
 }
