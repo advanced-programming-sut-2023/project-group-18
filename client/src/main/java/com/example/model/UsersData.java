@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.example.controller.NetworkController;
 import com.google.gson.Gson;
 
 public class UsersData implements WriteInFile {
     private static UsersData usersData;
-    private ArrayList<User> users;
+//    private ArrayList<User> users;
     private User loggedInUser;
 
     private UsersData() {
@@ -20,7 +21,7 @@ public class UsersData implements WriteInFile {
     }
 
     public void readFromFile() {
-        users = new ArrayList<>(initializeUsers());
+//        users = new ArrayList<>(initializeUsers());
     }
 
     public static UsersData getInstance() {
@@ -40,20 +41,23 @@ public class UsersData implements WriteInFile {
     }
 
     public void addUser(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
-        users.add(new User(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer));
+        NetworkController.getInstance().transferData(new Request(UsersData.class, "addUser", username, password, nickname,
+                email, slogan, recoveryQuestionNumber, recoveryAnswer));
+//        users.add(new User(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer));
     }
 
     public User getUserByUsername(String username) {
-        for (User user : users)
-            if (user.getUsername().equals(username)) return user;
-        return null;
+        return (User) NetworkController.getInstance().transferData(new Request(UsersData.class, "getUserByUsername", username));
+//        for (User user : users)
+//            if (user.getUsername().equals(username)) return user;
+//        return null;
     }
 
-    public boolean doesEmailExist(String email) {
-        for (User user : users)
-            if (user.getEmail().equalsIgnoreCase(email)) return true;
-        return false;
-    }
+//    public boolean doesEmailExist(String email) {
+//        for (User user : users)
+//            if (user.getEmail().equalsIgnoreCase(email)) return true;
+//        return false;
+//    }
 
     public boolean isPasswordCorrect(String username, String password) {
         User user = getUserByUsername(username);
@@ -82,9 +86,9 @@ public class UsersData implements WriteInFile {
         return null;
     }
 
-    public ArrayList<User> getUsers() {
-        return users;
-    }
+//    public ArrayList<User> getUsers() {
+//        return users;
+//    }
 
     @Override
     public void writeInFile() {

@@ -55,7 +55,7 @@ public class SecurityMethods {
         networkController.transferData(new Request(UsersData.class, "addUser",
                 tempUsername, tempPassword, tempNickname, tempEmail,
                 tempSlogan, securityQuestionNumber, securityAnswer));
-        UsersData.getInstance().readFromFile();
+//        UsersData.getInstance().readFromFile();
     }
 
     // TODO: need to use server

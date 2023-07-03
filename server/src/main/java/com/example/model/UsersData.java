@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 public class UsersData implements WriteInFile {
     private static UsersData usersData;
