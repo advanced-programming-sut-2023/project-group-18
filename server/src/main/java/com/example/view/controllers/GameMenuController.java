@@ -21,7 +21,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Popup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,9 +51,9 @@ public class GameMenuController {
         Game.getInstance().setGameMenuController(this);
         controller.getGame().setGameMap(100);
         ArrayList<User> arrayList = new ArrayList<>();
-        arrayList.add(UsersData.getUsersData().getUserByUsername("user1"));
-        arrayList.add(UsersData.getUsersData().getUserByUsername("user2"));
-        arrayList.add(UsersData.getUsersData().getUserByUsername("user3"));
+        arrayList.add(UsersData.getInstance().getUserByUsername("user1"));
+        arrayList.add(UsersData.getInstance().getUserByUsername("user2"));
+        arrayList.add(UsersData.getInstance().getUserByUsername("user3"));
         controller.getGame().makeNewGovernances(arrayList);
         for (BarCategory barCategory : BarCategory.values()) {
             if (!barCategory.equals(BarCategory.NONE)) {

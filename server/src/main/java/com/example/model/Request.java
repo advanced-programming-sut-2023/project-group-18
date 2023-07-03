@@ -12,7 +12,7 @@ import java.util.Arrays;
 @XmlRootElement
 public class Request {
     @XmlElement
-    private Object controller;
+    private Class controller;
     @XmlElement
     private String methodName;
     @XmlElement
@@ -20,21 +20,9 @@ public class Request {
     public Request() {
     }
 
-    public Request(Object controller, String methodName, Object... arguments) {
+    public Request(Class controller, String methodName, Object... arguments) {
         this.controller = controller;
         this.methodName = methodName;
-//        String[] objects = new String[arguments.length];
-//        for (int i = 0; i < arguments.length; i++) {
-//            StringWriter stringWriter = new StringWriter();
-//            try {
-//                JAXBContext jaxbContext = JAXBContext.newInstance(this.getClass());
-//                Marshaller marshaller = jaxbContext.createMarshaller();
-//                marshaller.marshal(this, stringWriter);
-//            } catch (JAXBException e) {
-//                throw new RuntimeException(e);
-//            }
-//            objects[i] = stringWriter.toString();
-//        }
         this.arguments = new ArrayList<>(Arrays.asList(arguments));
     }
 
@@ -69,7 +57,7 @@ public class Request {
         return this.arguments;
     }
 
-    public Object getController() {
+    public Class getController() {
         return controller;
     }
 }

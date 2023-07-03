@@ -3,9 +3,7 @@ package com.example.view;
 import java.io.IOException;
 import java.net.URL;
 
-import com.example.controller.LoginController;
 import com.example.controller.NetworkController;
-import com.example.controller.SignupMethods;
 import com.example.model.Game;
 import com.example.model.UsersData;
 import com.example.view.images.Images;
@@ -35,10 +33,8 @@ public class Main extends Application {
     public static void main(String[] args) {
         NetworkController networkController = NetworkController.getInstance();
         networkController.initializeNetwork();
-//        System.out.println(SignupMethods.getInstance().doesUsernameExist("user"));
-        System.out.println(LoginController.getInstance().doesUsernameExist("user").isValue());
-//        launch();
-//        networkController.terminateNetwork();
+        launch();
+        networkController.terminateNetwork();
     }
 
     public static Stage getStage() {
@@ -59,7 +55,7 @@ public class Main extends Application {
 
     private void closeApp() {
         stage.setOnCloseRequest(event -> {
-            UsersData.getUsersData().writeInFile();
+            UsersData.getInstance().writeInFile();
             if (Game.getInstance().getGameMap() != null)
                 Game.getInstance().getGameMap().writeInFile();
         });

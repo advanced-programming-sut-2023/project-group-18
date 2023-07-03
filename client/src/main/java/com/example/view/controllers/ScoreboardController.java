@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class ScoreboardController {
     private static final int PLAYERS_PER_PAGE = 100;
-    private final UsersData usersData = UsersData.getUsersData();
+    private final UsersData usersData = UsersData.getInstance();
     @FXML
     private Button backButton;
     @FXML

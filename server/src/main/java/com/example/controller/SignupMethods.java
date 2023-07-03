@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.controller.responses.SignupResponses;
+import com.example.model.BooleanWrapper;
 import com.example.model.RandomSlogan;
 import com.example.model.User;
 import com.example.model.UsersData;
@@ -13,7 +14,7 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
     private final UsersData usersData;
 
     private SignupMethods() {
-        usersData = UsersData.getUsersData();
+        usersData = UsersData.getInstance();
     }
 
     public static SignupMethods getInstance() {
@@ -63,10 +64,9 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
         return usersData.getUserByUsername(username) != null;
     }
 
-    private boolean doesEmailExist(String email) {
-        return usersData.doesEmailExist(email);
+    private BooleanWrapper doesEmailExist(String email) {
+        return new BooleanWrapper(usersData.doesEmailExist(email));
     }
-
     private boolean isEmailValid(String email) {
         return email.matches("[\\w.]+@[\\w.]+\\.[\\w.]+");
     }
@@ -99,13 +99,13 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
 
     public String getEmailError(String email) {
         if (!isEmailValid(email)) return EMAIL_VALID;
-        if (doesEmailExist(email)) return EMAIL_EXIST;
+        if (doesEmailExist(email).isValue()) return EMAIL_EXIST;
         return null;
     }
 
     public String getPopularSlogan() {
         boolean flag = false;
-        ArrayList<User> users = UsersData.getUsersData().getUsers();
+        ArrayList<User> users = UsersData.getInstance().getUsers();
         ArrayList<String> slogans = new ArrayList<>();
         ArrayList<Integer> occurrences = new ArrayList<>();
         for (User user : users) {

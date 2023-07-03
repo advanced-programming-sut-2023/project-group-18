@@ -19,6 +19,6 @@ public class MainMenuController {
     public void logout(MouseEvent mouseEvent) throws IOException {
         Main.goToMenu("SignupMenu");
         // TODO: need to use server
-        UsersData.getUsersData().setLoggedInUser(null);
+        UsersData.getInstance().setLoggedInUser(null);
     }
 }

@@ -10,7 +10,7 @@ public class StartGameMethods {
     public static StartGameMethods getInstance() {
         return startGameMethods == null ? startGameMethods = new StartGameMethods() : startGameMethods;
     }
-    private final UsersData usersData = UsersData.getUsersData();
+    private final UsersData usersData = UsersData.getInstance();
 
     // TODO: need to use server
     public boolean checkStartPlayers(ArrayList<TextField> usernames) {

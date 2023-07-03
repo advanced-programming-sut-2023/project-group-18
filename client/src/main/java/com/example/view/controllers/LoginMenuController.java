@@ -43,7 +43,7 @@ public class LoginMenuController {
 //        if (!popup.isShowing())
         if (username.getText().equals("") || password.getText().equals("")) {
             loginError.setText(EMPTY_FIELD);
-        } else if (!loginMethods.validLogin(username.getText(), password.getText())) {
+        } else if (!loginMethods.validLogin(username.getText(), password.getText()).isValue()) {
 //            popup.show(Main.getStage());
             loginError.setText("username or password is incorrect");
         } else {
