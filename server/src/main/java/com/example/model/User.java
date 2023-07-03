@@ -20,6 +20,8 @@ public class User implements PasswordRecoveryQuestions {
     private final String recoveryAnswer;
     private int score;
     private final static ArrayList<User> users = new ArrayList<>();
+    private final ArrayList<User> friends;
+    private final ArrayList<User> requests;
     protected User(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         this.username = username;
         setPassword(password);
@@ -32,6 +34,8 @@ public class User implements PasswordRecoveryQuestions {
         this.score = 0;
         avatarPath = User.class.getResource("/avatars/1.png").toExternalForm();
         users.add(this);
+        friends = new ArrayList<>();
+        requests = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -140,5 +144,30 @@ public class User implements PasswordRecoveryQuestions {
 
     public static ArrayList<User> getUsers(){
         return users;
+    }
+
+    public ArrayList<User> getFriends() {
+        return friends;
+    }
+
+    public ArrayList<User> getRequests() {
+        return requests;
+    }
+
+    public void addFriend(User user){
+        friends.add(user);
+    }
+
+    public void addRequest(User user){
+        requests.add(user);
+    }
+
+    public void acceptRequest(User user){
+        requests.remove(user);
+        friends.add(user);
+    }
+
+    public void declineRequest(User user){
+        requests.remove(user);
     }
 }

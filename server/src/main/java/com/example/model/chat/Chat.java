@@ -23,5 +23,10 @@ public class Chat {
         return messages;
     }
 
+    public void addMember(User user){
+        members.add(user);
+    }
+
+
 
 }
