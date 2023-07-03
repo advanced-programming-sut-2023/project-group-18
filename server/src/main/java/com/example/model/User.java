@@ -6,6 +6,7 @@ import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 public class User implements PasswordRecoveryQuestions {
     private String username;
@@ -18,6 +19,7 @@ public class User implements PasswordRecoveryQuestions {
     private final int recoveryQuestionNumber;
     private final String recoveryAnswer;
     private int score;
+    private final static ArrayList<User> users = new ArrayList<>();
     protected User(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         this.username = username;
         setPassword(password);
@@ -29,6 +31,7 @@ public class User implements PasswordRecoveryQuestions {
         this.highscore = 0;
         this.score = 0;
         avatarPath = User.class.getResource("/avatars/1.png").toExternalForm();
+        users.add(this);
     }
 
     public String getUsername() {
@@ -133,5 +136,9 @@ public class User implements PasswordRecoveryQuestions {
 
     public File getAvatar() {
         return new File(avatarPath);
+    }
+
+    public static ArrayList<User> getUsers(){
+        return users;
     }
 }

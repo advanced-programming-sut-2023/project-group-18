@@ -1,19 +1,17 @@
 package com.example.controller;
 
 import com.example.controller.responses.SignupResponses;
-import com.example.model.RandomSlogan;
-import com.example.model.User;
-import com.example.model.UsersData;
+import com.example.model.*;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class SignupMethods implements SignupResponses, RandomSlogan {
+    private final NetworkController networkController = NetworkController.getInstance();
     private static SignupMethods controller;
     private final UsersData usersData;
 
     private SignupMethods() {
-        usersData = UsersData.getUsersData();
+        usersData = UsersData.getInstance();
     }
 
     public static SignupMethods getInstance() {
@@ -48,25 +46,16 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
         return password.toString();
     }
 
-    public boolean checkRandomPassword(String password, Scanner scanner) {
-        System.out.println("Your random password is: " + password + "\nPlease re-enter your password here:");
-        String confirmPass = scanner.nextLine();
-        while (!password.equals(confirmPass)) {
-            if (confirmPass.equals("back")) return false;
-            System.out.println("your entered password is incorrect. please try again");
-            confirmPass = scanner.nextLine();
-        }
-        return true;
+    // TODO: need to use server
+    public BooleanWrapper doesUsernameExist(String username) {
+        return (BooleanWrapper) networkController.transferData(new Request(LoginController.class, "doesUsernameExist", username));
+//        return usersData.getUserByUsername(username) != null;
     }
 
     // TODO: need to use server
-    private boolean doesUsernameExist(String username) {
-        return usersData.getUserByUsername(username) != null;
-    }
-
-    // TODO: need to use server
-    private boolean doesEmailExist(String email) {
-        return usersData.doesEmailExist(email);
+    public BooleanWrapper doesEmailExist(String email) {
+        return (BooleanWrapper) networkController.transferData(new Request(SignupMethods.class, "doesEmailExist", email));
+//        return usersData.doesEmailExist(email);
     }
 
     private boolean isEmailValid(String email) {
@@ -81,7 +70,7 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
 
     public String getUsernameError(String username) {
         if (!isUsernameValid(username)) return USERNAME_INVALID;
-        if (doesUsernameExist(username)) return USERNAME_EXIST;
+        if (doesUsernameExist(username).isValue()) return USERNAME_EXIST;
         return null;
     }
 
@@ -101,14 +90,14 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
 
     public String getEmailError(String email) {
         if (!isEmailValid(email)) return EMAIL_VALID;
-        if (doesEmailExist(email)) return EMAIL_EXIST;
+        if (doesEmailExist(email).isValue()) return EMAIL_EXIST;
         return null;
     }
 
     // TODO: need to use server
     public String getPopularSlogan() {
         boolean flag = false;
-        ArrayList<User> users = UsersData.getUsersData().getUsers();
+        ArrayList<User> users = UsersData.getInstance().getUsers();
         ArrayList<String> slogans = new ArrayList<>();
         ArrayList<Integer> occurrences = new ArrayList<>();
         for (User user : users) {

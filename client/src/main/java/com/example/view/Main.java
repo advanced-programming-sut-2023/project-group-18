@@ -55,7 +55,7 @@ public class Main extends Application {
 
     private void closeApp() {
         stage.setOnCloseRequest(event -> {
-            UsersData.getUsersData().writeInFile();
+            UsersData.getInstance().writeInFile();
             if (Game.getInstance().getGameMap() != null)
                 Game.getInstance().getGameMap().writeInFile();
         });

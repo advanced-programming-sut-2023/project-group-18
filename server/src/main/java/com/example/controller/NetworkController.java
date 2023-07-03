@@ -1,14 +1,10 @@
 package com.example.controller;
 
-import com.example.controller.GameController;
 import com.example.model.Request;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Unmarshaller;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
@@ -47,6 +43,9 @@ public class NetworkController {
                             dataInputStream.readFully(data);
                             String xmlString = new String(data);
                             String response = process(xmlString);
+                            if (response == null) {
+                                response = "null";
+                            }
                             data = response.getBytes();
                             dataOutputStream.writeInt(data.length);
                             dataOutputStream.write(data);
@@ -58,39 +57,45 @@ public class NetworkController {
                 }).start();
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("connection failed");
+//            throw new RuntimeException(e);
         }
     }
 
-    private String process(String json) {
-        Request request = Request.fromXml(json);
-        Object controller = GameController.getInstance();
+    private String process(String xml) {
+        Request request = Request.fromXml(xml);
+        System.out.println("controller name: " + request.getController());
+        System.out.println("request method name: " + request.getMethodName());
+        Class controller = request.getController();
         Method method = null;
-        Method[] methods = GameController.class.getDeclaredMethods();
+        Method[] methods = controller.getDeclaredMethods();
+        System.out.println("the controller class is:" + controller);
+        Method instance = null;
         for (Method method1 : methods) {
+            System.out.println("method in method array: " + method1.getName());
             if (method1.getName().equals(request.getMethodName())) {
                 method = method1;
-                break;
-            }
+            } if (method1.getName().equals("getInstance"))
+                instance = method1;
         }
-        ArrayList<String> argumentArrayList = request.getArguments();
-        Object[] arguments = new Object[argumentArrayList.size()];
-        for (String argument : argumentArrayList) {
-            try {
-                JAXBContext jaxbContext = JAXBContext.newInstance();
-                Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            } catch (JAXBException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        ArrayList<Object> argumentArrayList = request.getArguments();
+//        System.out.println("argument in networkController " + argumentArrayList.get(0));
+        Object[] arguments = argumentArrayList.toArray();
+        System.out.println("argumentArrayList size: " + argumentArrayList.size());
         try {
-            Object result = method.invoke(controller, arguments);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+            boolean access = method.canAccess(instance.invoke(null));
+            method.setAccessible(true);
+            System.out.println(arguments[0]);
+            Object result = method.invoke(instance.invoke(null), arguments);
+            if (result == null)
+                return null;
+            method.setAccessible(access);
+            StringWriter stringWriter = new StringWriter();
+            JAXBContext.newInstance(method.getReturnType()).createMarshaller().marshal(result, stringWriter);
+            return stringWriter.toString();
+        } catch (IllegalAccessException | InvocationTargetException | JAXBException e) {
             throw new RuntimeException(e);
         }
-        GameController gameController = GameController.getInstance();
-//        Object object = method.invoke();
-        return "good night";
     }
 
     public synchronized int getId() {

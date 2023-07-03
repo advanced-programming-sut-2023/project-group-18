@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.model.User;
 import com.example.model.UsersData;
 
 public class SecurityMethods {
@@ -9,7 +8,7 @@ public class SecurityMethods {
     private String tempEmail;
     private String tempNickname;
     private String tempSlogan;
-    private final UsersData usersData = UsersData.getUsersData();
+    private final UsersData usersData = UsersData.getInstance();
     private static SecurityMethods securityMethods;
     public static SecurityMethods getInstance() {
         return securityMethods == null ? securityMethods = new SecurityMethods() : securityMethods;
@@ -46,9 +45,10 @@ public class SecurityMethods {
     public void addUser(int securityQuestionNumber, String securityAnswer) {
         usersData.addUser(tempUsername, tempPassword, tempNickname, tempEmail,
                 tempSlogan, securityQuestionNumber, securityAnswer);
+        UsersData.getInstance().writeInFile();
     }
 
-    public void login() {
-        usersData.setLoggedInUser(usersData.getUserByUsername(tempUsername));
+    public void login(String username) {
+        usersData.addLoggedInUsers(usersData.getUserByUsername(username));
     }
 }

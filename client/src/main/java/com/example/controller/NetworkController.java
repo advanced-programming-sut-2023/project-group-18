@@ -54,31 +54,35 @@ public class NetworkController {
     }
 
     public Object transferData(Request request) {
-        System.out.println(request.getMethodName());
+        System.out.println("request method name: " + request.getMethodName());
         byte[] data = request.toXml().getBytes();
         try {
             dataOutputStream.writeInt(data.length);
             dataOutputStream.write(data);
             dataOutputStream.flush();
             Method method = null;
-            Method[] methods;
-            if (request.getControllerName().equals("GameController")) {
-                methods = GameController.class.getDeclaredMethods();
-            } else {
-                methods = SignupMethods.class.getDeclaredMethods();
-            }
+            Method[] methods = request.getController().getDeclaredMethods();
+//            if (request.getController().getClass().equals(GameController.class)) {
+//                methods = GameController.class.getDeclaredMethods();
+//            } else {
+//                methods = LoginController.class.getDeclaredMethods();
+//            }
             for (Method method1 : methods) {
+                System.out.println("method name: " + method1.getName());
                 if (method1.getName().equals(request.getMethodName())) {
                     method = method1;
                     break;
                 }
             }
+            System.out.println();
             data = new byte[dataInputStream.readInt()];
             dataInputStream.readFully(data);
             if (method.getReturnType() == void.class) {
                 return null;
             }
             String xmlString = new String(data);
+            if (xmlString.equals("null"))
+                return null;
 
             JAXBContext jaxbContext = JAXBContext.newInstance(method.getReturnType());
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
@@ -98,12 +102,7 @@ public class NetworkController {
             dataOutputStream.write(data);
             dataOutputStream.flush();
             Method method = null;
-            Method[] methods;
-            if (request.getControllerName().equals("GameController")) {
-                methods = GameController.class.getDeclaredMethods();
-            } else {
-                methods = SignupMethods.class.getDeclaredMethods();
-            }
+            Method[] methods = request.getController().getDeclaredMethods();
             for (Method method1 : methods) {
                 if (method1.getName().equals(request.getMethodName())) {
                     method = method1;

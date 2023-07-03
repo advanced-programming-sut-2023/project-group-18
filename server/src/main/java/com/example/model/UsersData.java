@@ -13,22 +13,22 @@ import com.google.gson.Gson;
 public class UsersData implements WriteInFile {
     private static UsersData usersData;
     private final ArrayList<User> users;
-    private User loggedInUser;
+    private final ArrayList<User> loggedInUsers = new ArrayList<>();
 
     private UsersData() {
         users = new ArrayList<>(initializeUsers());
     }
 
-    public static UsersData getUsersData() {
+    public static UsersData getInstance() {
         return usersData == null ? usersData = new UsersData() : usersData;
     }
 
-    public void setLoggedInUser(User loggedInUser) {
-        this.loggedInUser = loggedInUser;
+    public void addLoggedInUsers(User user) {
+        loggedInUsers.add(user);
     }
 
-    public User getLoggedInUser() {
-        return loggedInUser;
+    public ArrayList<User> getLoggedInUsers() {
+        return loggedInUsers;
     }
 
     public User getStayLoggedInUser() {
@@ -49,9 +49,9 @@ public class UsersData implements WriteInFile {
         writeStayLoggedInUserIdInFile(stayLoggedInUser);
     }
 
-    public void logout() {
-        loggedInUser = null;
-        writeStayLoggedInUserIdInFile(loggedInUser);
+    public void logout(String username) {
+        loggedInUsers.remove(getUserByUsername(username));
+//        writeStayLoggedInUserIdInFile(loggedInUsers);
     }
 
     private void writeStayLoggedInUserIdInFile(User user) {

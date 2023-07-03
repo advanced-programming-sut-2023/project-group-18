@@ -2,7 +2,6 @@ package com.example.controller;
 
 import com.example.model.UsersData;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.util.Random;
@@ -10,7 +9,7 @@ import java.util.Random;
 public class CaptchaMethods {
     private int captchaAnswer;
     private static CaptchaMethods captchaMethods;
-    private final UsersData usersData = UsersData.getUsersData();
+    private final UsersData usersData = UsersData.getInstance();
     public static CaptchaMethods getInstance() {
         return captchaMethods == null ? captchaMethods = new CaptchaMethods() : captchaMethods;
     }

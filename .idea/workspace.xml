@@ -4,13 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e77cd482-f9c6-415a-bb36-a86ad2e05dca" name="Changes" comment="two projects? again" />
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="completing NetworkController">
+      <change afterPath="$PROJECT_DIR$/server/project-group18 (1).iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="phase3" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -23,57 +42,271 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="2S1FEizXYk9IdH13WLZFwov9vin" />
+  <component name="ProjectId" id="2QR3T8bkS02uWAvlog7BzFvoNq0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Omidreza/IdeaProjects/project-group-18/client",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Omidreza/IdeaProjects/project-group-18&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Omidreza\IdeaProjects\project-group-18\src\main\java\com\example\client" />
+      <recent name="C:\Users\Omidreza\IdeaProjects\project-group-18\src\main\java\com\example" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.client.view.Client" />
+      <module name="project-group18" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.client.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="server" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.example.server.Server" />
+      <module name="project-group18" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.server" />
+      <item itemvalue="Application.Client" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Client" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e77cd482-f9c6-415a-bb36-a86ad2e05dca" name="Changes" comment="" />
-      <created>1688306071147</created>
+      <changelist id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="keepMenu" />
+      <created>1685302575628</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1688306071147</updated>
-      <workItem from="1688306077659" duration="304000" />
+      <updated>1685302575628</updated>
+      <workItem from="1685302578417" duration="8012000" />
+      <workItem from="1685343278880" duration="12000" />
+      <workItem from="1685367005928" duration="4887000" />
+      <workItem from="1685437111415" duration="10349000" />
+      <workItem from="1685519946688" duration="3165000" />
+      <workItem from="1685526506935" duration="11000" />
+      <workItem from="1685526998168" duration="7716000" />
+      <workItem from="1685648124111" duration="1277000" />
+      <workItem from="1685706691121" duration="1018000" />
+      <workItem from="1685708022769" duration="6239000" />
+      <workItem from="1685716083539" duration="2436000" />
+      <workItem from="1685731115291" duration="11751000" />
+      <workItem from="1685809345327" duration="4576000" />
+      <workItem from="1685893029808" duration="7172000" />
+      <workItem from="1688115104849" duration="7840000" />
+      <workItem from="1688214049642" duration="4337000" />
+      <workItem from="1688241910313" duration="6685000" />
+      <workItem from="1688294712408" duration="7855000" />
     </task>
-    <task id="LOCAL-00001" summary="two projects?">
-      <created>1688306280168</created>
+    <task id="LOCAL-00001" summary="tag">
+      <created>1685305307071</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1688306280168</updated>
+      <updated>1685305307071</updated>
     </task>
-    <task id="LOCAL-00002" summary="two projects? again">
-      <created>1688306355470</created>
+    <task id="LOCAL-00002" summary="testing prompt text for unmasked password">
+      <created>1685310099246</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1688306355470</updated>
+      <updated>1685310099246</updated>
     </task>
-    <task id="LOCAL-00003" summary="two projects? again">
-      <created>1688306363150</created>
+    <task id="LOCAL-00003" summary="textField passwordField style for password show try">
+      <created>1685311845919</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1688306363150</updated>
+      <updated>1685311845919</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed show password hopefully">
+      <created>1685442820352</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685442820352</updated>
+    </task>
+    <task id="LOCAL-00005" summary="half done slogan">
+      <created>1685455932991</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685455932991</updated>
+    </task>
+    <task id="LOCAL-00006" summary="signup hopefully done">
+      <created>1685483238774</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685483238774</updated>
+    </task>
+    <task id="LOCAL-00007" summary="security question and captcha">
+      <created>1685713869397</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685713869397</updated>
+    </task>
+    <task id="LOCAL-00008" summary="a commit">
+      <created>1685731152351</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685731152351</updated>
+    </task>
+    <task id="LOCAL-00009" summary="login when answered security question">
+      <created>1685814050921</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685814050921</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Main Menu">
+      <created>1685814985857</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685814985857</updated>
+    </task>
+    <task id="LOCAL-00011" summary="start game">
+      <created>1685979967030</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685979967030</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Bottom Bar completed">
+      <created>1687941767024</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1687941767024</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Bottom Bar completed">
+      <created>1687941976394</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1687941976394</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Bottom Bar completed">
+      <created>1687942155173</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1687942155173</updated>
+    </task>
+    <task id="LOCAL-00015" summary="building selection">
+      <created>1688063366380</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1688063366380</updated>
+    </task>
+    <task id="LOCAL-00016" summary="keepMenu">
+      <created>1688073371947</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1688073371947</updated>
+    </task>
+    <task id="LOCAL-00017" summary="barracks">
+      <created>1688134712574</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1688134712574</updated>
+    </task>
+    <task id="LOCAL-00018" summary="barracks2">
+      <created>1688135814942</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1688135814942</updated>
+    </task>
+    <task id="LOCAL-00019" summary="commit before debugs">
+      <created>1688142688062</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1688142688062</updated>
+    </task>
+    <task id="LOCAL-00020" summary="popular slogan">
+      <created>1688146961687</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1688146961687</updated>
+    </task>
+    <task id="LOCAL-00021" summary="popular slogan2">
+      <created>1688147935208</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1688147935208</updated>
+    </task>
+    <task id="LOCAL-00022" summary="update scriber">
+      <created>1688153751103</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1688153751103</updated>
+    </task>
+    <task id="LOCAL-00023" summary="popularity rates panel">
+      <created>1688162152637</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1688162152637</updated>
+    </task>
+    <task id="LOCAL-00024" summary="basic packaging for phase 3">
+      <created>1688217732525</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1688217732525</updated>
+    </task>
+    <task id="LOCAL-00025" summary="transfer data">
+      <created>1688248613798</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1688248613798</updated>
+    </task>
+    <task id="LOCAL-00026" summary="completing NetworkController">
+      <created>1688302085968</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1688302085968</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -84,15 +317,53 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="phase3" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="two projects?" />
-    <MESSAGE value="two projects? again" />
-    <option name="LAST_COMMIT_MESSAGE" value="two projects? again" />
+    <MESSAGE value="tag" />
+    <MESSAGE value="testing prompt text for unmasked password" />
+    <MESSAGE value="textField passwordField style for password show try" />
+    <MESSAGE value="fixed show password hopefully" />
+    <MESSAGE value="half done slogan" />
+    <MESSAGE value="signup hopefully done" />
+    <MESSAGE value="security question and captcha" />
+    <MESSAGE value="a commit" />
+    <MESSAGE value="login when answered security question" />
+    <MESSAGE value="Main Menu" />
+    <MESSAGE value="start game" />
+    <MESSAGE value="Bottom Bar completed" />
+    <MESSAGE value="add remainders" />
+    <MESSAGE value="building selection" />
+    <MESSAGE value="keepMenu" />
+    <MESSAGE value="barracks" />
+    <MESSAGE value="barracks2" />
+    <MESSAGE value="commit before debugs" />
+    <MESSAGE value="popular slogan" />
+    <MESSAGE value="popular slogan2" />
+    <MESSAGE value="update scriber" />
+    <MESSAGE value="popularity rates panel" />
+    <MESSAGE value="basic packaging for phase 3" />
+    <MESSAGE value="transfer data" />
+    <MESSAGE value="completing NetworkController" />
+    <option name="LAST_COMMIT_MESSAGE" value="completing NetworkController" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
