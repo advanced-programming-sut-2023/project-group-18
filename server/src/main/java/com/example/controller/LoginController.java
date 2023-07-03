@@ -2,11 +2,9 @@ package com.example.controller;
 
 import com.example.model.BooleanWrapper;
 import com.example.model.UsersData;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
 
 public class LoginController {
-    private final UsersData usersData = UsersData.getUsersData();
+    private final UsersData usersData = UsersData.getInstance();
     private static LoginController loginController;
 
     public static LoginController getInstance() {
@@ -18,11 +16,11 @@ public class LoginController {
         return new BooleanWrapper(usersData.getUserByUsername(username) != null);
     }
 
-    public boolean validLogin(String username, String password) {
-        return doesUsernameExist(username).isValue() && usersData.isPasswordCorrect(username, password);
+    public BooleanWrapper validLogin(String username, String password) {
+        return new BooleanWrapper(doesUsernameExist(username).isValue() && usersData.isPasswordCorrect(username, password));
     }
 
     public void login(String username) {
-        usersData.setLoggedInUser(usersData.getUserByUsername(username));
+        usersData.addLoggedInUsers(usersData.getUserByUsername(username));
     }
 }

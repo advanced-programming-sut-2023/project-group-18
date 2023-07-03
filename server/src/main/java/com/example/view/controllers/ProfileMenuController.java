@@ -19,7 +19,7 @@ import java.io.IOException;
 import static com.example.controller.responses.FieldResponses.EMPTY_FIELD;
 
 public class ProfileMenuController {
-    private final UsersData usersData = UsersData.getUsersData();
+    private final UsersData usersData = UsersData.getInstance();
     @FXML
     private Label sloganText;
     @FXML
@@ -50,7 +50,7 @@ public class ProfileMenuController {
     private ImageView avatar;
     @FXML
     private Label username;
-    private final User currentUser = usersData.getLoggedInUser();
+    private User currentUser;
 
     @FXML
     public void initialize() {
@@ -108,7 +108,7 @@ public class ProfileMenuController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Jpg Files", "*.jpg"));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png"));
         File selectedFile = fileChooser.showOpenDialog(Main.getStage());
-        usersData.getLoggedInUser().setAvatar(selectedFile);
+//        usersData.getLoggedInUsers().setAvatar(selectedFile);
         avatar.setImage(new Image(selectedFile.toURI().toString()));
     }
 

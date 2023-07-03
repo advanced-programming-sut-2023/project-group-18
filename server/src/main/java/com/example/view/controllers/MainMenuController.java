@@ -18,6 +18,6 @@ public class MainMenuController {
 
     public void logout(MouseEvent mouseEvent) throws IOException {
         Main.goToMenu("SignupMenu");
-        UsersData.getUsersData().setLoggedInUser(null);
+        UsersData.getInstance().addLoggedInUsers(null);
     }
 }

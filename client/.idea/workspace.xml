@@ -5,22 +5,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="update scriber">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/BooleanWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/BooleanWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_25_2023_11_22_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_25_2023_11_22_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/SecurityMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/SecurityMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/SignupMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/SignupMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/StartGameMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/StartGameMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/GameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/LoginMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/LoginMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ScoreboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ScoreboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/Users.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/StartGameMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/StartGameMethods.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/LoginMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/LoginMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/MainMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/ProfileMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/ProfileMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/ScoreboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/ScoreboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/json/Users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/CaptchaMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/CaptchaMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/SecurityMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/SecurityMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/SignupMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/SignupMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/StartGameMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/StartGameMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/UsersData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/GameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/LoginMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/LoginMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/ScoreboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/ScoreboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/SecurityMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/view/controllers/SecurityMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/CaptchaMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/CaptchaMethods.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/SecurityMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/SecurityMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/SignupMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/SignupMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/StartGameMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/StartGameMethods.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/model/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/model/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/model/UsersData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/GameMenuController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/GameMenuController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/GameMenuController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/GameMenuController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/GameMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/GameMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/LoginMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/LoginMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/MainMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/ProfileMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/ProfileMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/ScoreboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/ScoreboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/SecurityMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/view/controllers/SecurityMenuController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +120,22 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Omidreza/IdeaProjects/AP/test",
+    "last_opened_file_path": "C:/Users/Omidreza/IdeaProjects/project-group-18/client",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="client" type="Application" factoryName="Application" singleton="false">
+      <option name="MAIN_CLASS_NAME" value="com.example.view.Main" />
+      <module name="project-group18" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -96,7 +159,8 @@
       <workItem from="1685809345327" duration="4576000" />
       <workItem from="1685893029808" duration="7172000" />
       <workItem from="1688115104849" duration="7840000" />
-      <workItem from="1688313179160" duration="11195000" />
+      <workItem from="1688313179160" duration="11284000" />
+      <workItem from="1688385292654" duration="9630000" />
     </task>
     <task id="LOCAL-00001" summary="tag">
       <created>1685305307071</created>

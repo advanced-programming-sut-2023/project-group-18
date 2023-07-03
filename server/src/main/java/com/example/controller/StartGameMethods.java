@@ -10,12 +10,12 @@ public class StartGameMethods {
     public static StartGameMethods getInstance() {
         return startGameMethods == null ? startGameMethods = new StartGameMethods() : startGameMethods;
     }
-    private final UsersData usersData = UsersData.getUsersData();
+    private final UsersData usersData = UsersData.getInstance();
 
     public boolean checkStartPlayers(ArrayList<TextField> usernames) {
         for (TextField textField : usernames)
             if (usersData.getUserByUsername(textField.getText()) == null ||
-                    usersData.getUserByUsername(textField.getText()).equals(usersData.getLoggedInUser()))
+                    usersData.getUserByUsername(textField.getText()).equals(usersData.getLoggedInUsers()))
                 return false;
         return true;
     }

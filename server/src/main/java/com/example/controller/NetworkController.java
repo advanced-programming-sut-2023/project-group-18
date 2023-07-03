@@ -43,6 +43,9 @@ public class NetworkController {
                             dataInputStream.readFully(data);
                             String xmlString = new String(data);
                             String response = process(xmlString);
+                            if (response == null) {
+                                response = "null";
+                            }
                             data = response.getBytes();
                             dataOutputStream.writeInt(data.length);
                             dataOutputStream.write(data);
@@ -54,7 +57,8 @@ public class NetworkController {
                 }).start();
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("connection failed");
+//            throw new RuntimeException(e);
         }
     }
 
@@ -62,48 +66,30 @@ public class NetworkController {
         Request request = Request.fromXml(xml);
         System.out.println("controller name: " + request.getController());
         System.out.println("request method name: " + request.getMethodName());
-        Object controller = request.getController();
+        Class controller = request.getController();
         Method method = null;
-        Method[] methods = controller.getClass().getDeclaredMethods();
+        Method[] methods = controller.getDeclaredMethods();
+        System.out.println("the controller class is:" + controller);
+        Method instance = null;
         for (Method method1 : methods) {
             System.out.println("method in method array: " + method1.getName());
             if (method1.getName().equals(request.getMethodName())) {
                 method = method1;
-                break;
-            }
+            } if (method1.getName().equals("getInstance"))
+                instance = method1;
         }
         ArrayList<Object> argumentArrayList = request.getArguments();
-        System.out.println("argument in networkController " + argumentArrayList.get(0));
-        Object[] arguments = new Object[argumentArrayList.size()];
-        arguments = argumentArrayList.toArray();
+//        System.out.println("argument in networkController " + argumentArrayList.get(0));
+        Object[] arguments = argumentArrayList.toArray();
         System.out.println("argumentArrayList size: " + argumentArrayList.size());
-//        try {
-//            JAXBContext jaxbContext = JAXBContext.newInstance(request.getClasses().get(0));
-//            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-//            StringReader stringReader = new StringReader(argumentArrayList.get(0));
-//            String test = (String) unmarshaller.unmarshal(stringReader);
-//            System.out.println("test is: " + test);
-//        } catch (JAXBException e) {
-//            throw new RuntimeException(e);
-//        }
-//        for (int i = 0; i < argumentArrayList.size(); i++) {
-//            System.out.println("xml argument: " + argumentArrayList.get(i));
-//            System.out.println("class: " + request.getClasses().get(i));
-//            try {
-//                JAXBContext jaxbContext = JAXBContext.newInstance(request.getClasses().get(i));
-//                Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-//                StringReader stringReader = new StringReader(argumentArrayList.get(i));
-//                arguments[i] = unmarshaller.unmarshal(stringReader);
-//            } catch (JAXBException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
         try {
-//            boolean access = method.canAccess();
+            boolean access = method.canAccess(instance.invoke(null));
             method.setAccessible(true);
             System.out.println(arguments[0]);
-            Object result = method.invoke(controller, arguments);
-            method.setAccessible(false);
+            Object result = method.invoke(instance.invoke(null), arguments);
+            if (result == null)
+                return null;
+            method.setAccessible(access);
             StringWriter stringWriter = new StringWriter();
             JAXBContext.newInstance(method.getReturnType()).createMarshaller().marshal(result, stringWriter);
             return stringWriter.toString();
