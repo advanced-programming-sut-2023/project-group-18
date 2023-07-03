@@ -1,6 +1,9 @@
 package com.example.controller;
 
+import com.example.model.BooleanWrapper;
 import com.example.model.UsersData;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 public class LoginController {
     private final UsersData usersData = UsersData.getUsersData();
@@ -10,12 +13,13 @@ public class LoginController {
         return loginController == null ? loginController = new LoginController() : loginController;
     }
 
-    private boolean doesUsernameExist(String username) {
-        return usersData.getUserByUsername(username) != null;
+    private BooleanWrapper doesUsernameExist(String username) {
+        System.out.println("username in loginController " + username);
+        return new BooleanWrapper(usersData.getUserByUsername(username) != null);
     }
 
     public boolean validLogin(String username, String password) {
-        return doesUsernameExist(username) && usersData.isPasswordCorrect(username, password);
+        return doesUsernameExist(username).isValue() && usersData.isPasswordCorrect(username, password);
     }
 
     public void login(String username) {

@@ -8,6 +8,6 @@ module com.example {
     
     // opens com.example.view to javafx.fxml;
     opens com.example.view.controllers to javafx.fxml;
-    opens com.example.model to com.google.gson;
+    opens com.example.model to com.google.gson, jakarta.xml.bind;
     // exports com.example.view;
 }

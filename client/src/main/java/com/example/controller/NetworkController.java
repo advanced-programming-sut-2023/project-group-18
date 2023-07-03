@@ -54,7 +54,7 @@ public class NetworkController {
     }
 
     public Object transferData(Request request) {
-        System.out.println(request.getMethodName());
+        System.out.println("request method name: " + request.getMethodName());
         byte[] data = request.toXml().getBytes();
         try {
             dataOutputStream.writeInt(data.length);
@@ -65,9 +65,10 @@ public class NetworkController {
             if (request.getControllerName().equals("GameController")) {
                 methods = GameController.class.getDeclaredMethods();
             } else {
-                methods = SignupMethods.class.getDeclaredMethods();
+                methods = LoginController.class.getDeclaredMethods();
             }
             for (Method method1 : methods) {
+                System.out.println("method name: " + method1.getName());
                 if (method1.getName().equals(request.getMethodName())) {
                     method = method1;
                     break;
