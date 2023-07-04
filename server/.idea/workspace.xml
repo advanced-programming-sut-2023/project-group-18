@@ -4,26 +4,58 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="multiple instances not working">
-      <change afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/src/main/resources/fxml/ChatMenu.fxml" afterDir="false" />
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="Some friendship methods">
+      <change afterPath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Update_at_7_4_2023_1_28_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/PrivateChat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/PublicChat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Reaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/ReactionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/project_group18_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/project_group18_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_31_2023_7_05_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_31_2023_7_05_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_02_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_26_2023_12_03_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_29_2023_12_10_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_29_2023_12_10_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_30_2023_5_11_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_30_2023_5_11_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_30_2023_5_33_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_30_2023_5_33_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_5_6_2023_3_28_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_5_6_2023_3_28_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_5_6_2023_3_28_AM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_5_6_2023_3_28_AM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_28_2023_1_31_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_28_2023_1_31_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_28_2023_4_06_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_28_2023_4_06_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_10_19_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_10_19_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_12_02_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_12_02_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_12_35_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_12_35_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_2_42_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_5_12_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_5_12_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_7_59_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_7_59_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_9_32_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_29_2023_9_32_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_12_53_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_12_53_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_4_59_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_4_59_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_5_04_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_5_04_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_5_08_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_5_08_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_6_22_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2023_6_22_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_5_2023_4_32_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_6_5_2023_4_32_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_7_1_2023_10_33_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_7_1_2023_10_33_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_7_2_2023_2_16_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_7_2_2023_2_16_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_7_3_2023_7_42_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_7_3_2023_7_42_PM__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ScoreboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ScoreboardMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/resources/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/resources/fxml/MainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/resources/fxml/Scoreboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/resources/fxml/ScoreboardMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/view/controllers/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/view/controllers/MainMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/view/controllers/ScoreboardController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/fxml/MainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/view/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/SecurityMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/SecurityMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/Users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/json/Users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +115,7 @@
   <component name="RunManager">
     <configuration name="server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.example.view.Main" />
-      <module name="project-group18" />
+      <module name="server" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -288,14 +320,7 @@
       <option name="project" value="LOCAL" />
       <updated>1688333536585</updated>
     </task>
-    <task id="LOCAL-00024" summary="multiple instances not working">
-      <created>1688404268176</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1688404268176</updated>
-    </task>
-    <option name="localTasksCounter" value="25" />
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
