@@ -36,11 +36,22 @@ public class DataChat {
         networkController.transferData(new Request(DataChat.class, "addChat", chat));
     }
 
+    public void replaceChat(Chat chat) {
+        networkController.transferData(new Request(DataChat.class, "replaceChat", chat));
+    }
+
     public Chat privateChat(User user1, User user2) {
         return (Chat) networkController.transferData(new Request(DataChat.class, "privateChat", user1, user2));
     }
 
     public Room getRoom(String name) {
         return (Room) networkController.transferData(new Request(DataChat.class, "getRoom", name));
+    }
+
+    public Chat addMessage(String username, String text, int id) {
+        Chat chat = (Chat) networkController.transferData(new Request(DataChat.class, "addMessage", username, text, id));
+        System.out.println("chat size is: " + chat.getMessages().size());
+        System.out.println("chat id is: " + chat.getId());
+        return chat;
     }
 }

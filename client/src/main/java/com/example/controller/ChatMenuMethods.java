@@ -16,7 +16,7 @@ public class ChatMenuMethods {
     }
 
     public Chat getChat() {
-        chat = DataChat.getInstance().findChatById(chat.getId());
+//        chat = DataChat.getInstance().findChatById(chat.getId());
         return chat;
     }
 }

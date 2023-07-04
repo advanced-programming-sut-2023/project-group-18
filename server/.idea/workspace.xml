@@ -6,16 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="multiple instances not working">
       <change beforePath="$PROJECT_DIR$/../client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/ChatMenuMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/ChatMenuMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/PrivateChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/PrivateChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Reaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Reaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/ReactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/ReactionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/model/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/model/Request.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/PrivateChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/PrivateChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/PublicChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/PublicChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +76,13 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="server" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.example.view.Main" />
+      <module name="project-group18" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="server" />
       <method v="2">
@@ -82,13 +92,6 @@
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <module name="server" />
       <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="server" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.example.view.Main" />
-      <module name="server" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

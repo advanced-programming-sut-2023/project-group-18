@@ -29,6 +29,7 @@ public class Request {
     public String toXml() {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(this.getClass());
+            System.out.println("testing request.java");
             Marshaller marshaller = jaxbContext.createMarshaller();
 
             StringWriter stringWriter = new StringWriter();

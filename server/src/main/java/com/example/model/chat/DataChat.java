@@ -1,7 +1,10 @@
 package com.example.model.chat;
 
+import com.example.controller.ChatMenuMethods;
 import com.example.model.IntegerWrapper;
+import com.example.model.Request;
 import com.example.model.User;
+import com.example.model.UsersData;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
@@ -49,5 +52,16 @@ public class DataChat {
                 if (room.getName().equals(name))
                     return room;
         return null;
+    }
+
+    public void replaceChat(Chat chat) {
+        chats.set(chat.getId(), chat);
+    }
+
+    public Chat addMessage(String username, String text, int id) {
+        Chat chat = findChatById(id);
+        chat.addMessage(new Message(UsersData.getInstance().getUserByUsername(username), text));
+        System.out.println("chat size is: " + chat.getMessages().size());
+        return chat;
     }
 }

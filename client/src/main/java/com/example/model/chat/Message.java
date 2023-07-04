@@ -1,17 +1,29 @@
 package com.example.model.chat;
 
 import com.example.model.User;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.io.File;
 import java.util.ArrayList;
 
+@XmlRootElement
 public class Message {
-    private final User sender;
-    private final String time;
+    @XmlElement
+    private User sender;
+    @XmlElement
+    private String time;
+    @XmlElement
     private String text;
+    @XmlElement
     private boolean hasSent;
+    @XmlElement
     private boolean hasSeen;
-    private final ArrayList<Reaction> reactions;
+    @XmlElement
+    private ArrayList<Reaction> reactions;
+    public Message() {
+
+    }
 
     public Message(User sender, String text) {
         this.sender = sender;

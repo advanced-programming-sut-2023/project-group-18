@@ -10,7 +10,7 @@ import jakarta.xml.bind.annotation.XmlSeeAlso;
 import java.util.ArrayList;
 
 @XmlRootElement
-@XmlSeeAlso({ PublicChat.class, PrivateChat.class, Room.class})
+@XmlSeeAlso({PublicChat.class, PrivateChat.class, Room.class})
 public class Chat {
     private final int id;
     private final ArrayList<User> members;
@@ -32,22 +32,23 @@ public class Chat {
         return messages;
     }
 
-    public void addMember(User user){
+    public void addMember(User user) {
         members.add(user);
     }
 
-    public void deleteMessageForMe(Message message){
+    public void deleteMessageForMe(Message message) {
 
     }
 
-    public void deleteMessageForAll(Message message){
+    public void deleteMessageForAll(Message message) {
         messages.remove(message);
     }
 
     public void addMessage(Message message) {
-        NetworkController.getInstance().transferData(new Request(Chat.class, "addMessage", message));
+//        NetworkController.getInstance().transferData(new Request(Chat.class, "addMessage", message));
         messages.add(message);
     }
+
     public Integer getId() {
         return 0;
     }
