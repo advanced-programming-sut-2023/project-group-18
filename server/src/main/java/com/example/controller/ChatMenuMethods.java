@@ -1,8 +1,6 @@
 package com.example.controller;
 
-import com.example.model.Request;
 import com.example.model.chat.Chat;
-import com.example.model.chat.DataChat;
 
 public class ChatMenuMethods {
     private static ChatMenuMethods chatMenuMethods;
@@ -16,7 +14,6 @@ public class ChatMenuMethods {
     }
 
     public Chat getChat() {
-        chat = DataChat.getInstance().findChatById(chat.getId());
         return chat;
     }
 }

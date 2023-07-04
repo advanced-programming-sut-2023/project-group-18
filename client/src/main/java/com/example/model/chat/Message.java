@@ -9,7 +9,6 @@ public class Message {
     private final User sender;
     private final String time;
     private String text;
-    private final File avatar;
     private boolean hasSent;
     private boolean hasSeen;
     private final ArrayList<Reaction> reactions;
@@ -18,7 +17,6 @@ public class Message {
         this.sender = sender;
         this.text = text;
         this.reactions = new ArrayList<>();
-        this.avatar = sender.getAvatar();
         this.time = "";
         hasSent = false;
         hasSeen = false;
@@ -34,10 +32,6 @@ public class Message {
 
     public String getText() {
         return text;
-    }
-
-    public File getAvatar() {
-        return avatar;
     }
 
     public boolean isHasSent() {

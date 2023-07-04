@@ -1,11 +1,11 @@
 package com.example.view.controllers;
 
+import com.example.controller.ChatMenuMethods;
 import com.example.model.UsersData;
 import com.example.model.chat.Message;
 import com.example.model.chat.PublicChat;
 import com.example.view.Main;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -24,25 +24,26 @@ public class ChatMenuController {
     @FXML
     public void initialize() {
         vBox = new VBox();
-//        vBox.getChildren().addAll(new Label("loooooooool"), new Label("testing something"), new Label("testing something"),
-//                new Label("testing something"), new Label("testing something"), new Label("testing something"),
-//                new Label("testing something"), new Label("testing something"), new Label("testing something"),
-//                new Label("testing something"), new Label("testing something"), new Label("testing something"));
-        for (Message message : PublicChat.getInstance().getMessages())  {
-            vBox.getChildren().add(new Label(message.getText()));
-        }
+        refresh();
         borderPane.setCenter(vBox);
     }
 
-    public void back(MouseEvent mouseEvent) throws IOException {
+    public void back() throws IOException {
         Main.goToMenu("MainMenu");
     }
 
-    public void sendMessage(MouseEvent mouseEvent) {
+    public void sendMessage() {
         String text = chatTextField.getText();
         chatTextField.setText("");
-        Label label = new Label(text);
+        Label label = new Label(usersData.getLoggedInUser().getNickname() + ":" + text);
         vBox.getChildren().add(label);
         PublicChat.getInstance().addMessage(new Message(usersData.getLoggedInUser(), text));
+    }
+
+    public void refresh() {
+        vBox.getChildren().removeAll(vBox.getChildren());
+        for (Message message : ChatMenuMethods.getInstance().getChat().getMessages()) {
+            vBox.getChildren().add(new Label(message.getText()));
+        }
     }
 }

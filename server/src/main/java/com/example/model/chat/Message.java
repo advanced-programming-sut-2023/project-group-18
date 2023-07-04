@@ -1,7 +1,6 @@
 package com.example.model.chat;
 
 import com.example.model.User;
-import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -16,15 +16,15 @@
     <!--      minWidth="1300" maxWidth="1300"-->
     <top>
         <VBox>
-            <Label text="Chat Menu" textAlignment="CENTER" prefWidth="1400" prefHeight="50" alignment="CENTER"
-                   styleClass="title"/>
+            <Label text="Chat Menu" textAlignment="CENTER" prefWidth="1500" prefHeight="50" alignment="CENTER" styleClass="title"/>
             <Button text="back" onMouseClicked="#back"/>
+            <Button text="refresh" onMouseClicked="#refresh"/>
         </VBox>
     </top>
 
     <bottom>
         <HBox>
-            <TextField promptText="type..." fx:id="chatTextField" prefWidth="1420" prefHeight="60"/>
+            <TextField promptText="type..." fx:id="chatTextField" prefWidth="1320" prefHeight="60"/>
             <Button text="send" onMouseClicked="#sendMessage"/>
         </HBox>
     </bottom>

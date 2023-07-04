@@ -27,10 +27,12 @@
             <HBox spacing="15" alignment="CENTER">
                 <TextField promptText="user" fx:id="userTextField"/>
                 <Button text="search User" onMouseClicked="#searchUser"/>
+                <Label styleClass="errorLabel" prefWidth="400" fx:id="userError" visible="false"/>
             </HBox>
             <HBox spacing="15" alignment="CENTER">
                 <TextField promptText="create room" fx:id="createRoomTextField"/>
                 <Button text="create room" onMouseClicked="#createRoom"/>
+                <Label styleClass="errorLabel" prefWidth="400" fx:id="roomError" visible="false"/>
             </HBox>
         </VBox>
     </center>
