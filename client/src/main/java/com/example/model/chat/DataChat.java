@@ -18,7 +18,14 @@ public class DataChat {
     }
 
     public Chat findChatById(int id) {
-        return (Chat) networkController.transferData(new Request(DataChat.class, "findChatById", id));
+        Object object = networkController.transferData(new Request(DataChat.class, "findChatById", id));
+        if (object instanceof PublicChat)
+            return (PublicChat) object;
+        if (object instanceof PrivateChat)
+            return (PrivateChat) object;
+        if (object instanceof Room)
+            return (Room) object;
+        return null;
     }
 
     public IntegerWrapper getNextId() {

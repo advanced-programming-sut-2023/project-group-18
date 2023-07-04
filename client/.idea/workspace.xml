@@ -6,14 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="chat basics done">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/IntegerWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/ChatMenuMethods.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/IntegerWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ChatMenuMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ChatMenuMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/PrivateChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/PrivateChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/PublicChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/PublicChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ChatMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
@@ -25,7 +25,9 @@
       <change beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/PrivateChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/PrivateChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/PublicChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/PublicChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/module-info.java" afterDir="false" />

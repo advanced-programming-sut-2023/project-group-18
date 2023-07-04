@@ -2,10 +2,12 @@ package com.example.model.chat;
 
 import com.example.model.User;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
 
 import java.util.ArrayList;
 
 @XmlRootElement
+@XmlSeeAlso({ PublicChat.class, PrivateChat.class, Room.class})
 public class Chat {
     private final DataChat dataChat = DataChat.getInstance();
     private final int id;

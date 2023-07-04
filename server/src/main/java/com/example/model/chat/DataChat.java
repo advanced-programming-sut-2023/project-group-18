@@ -22,8 +22,9 @@ public class DataChat {
 
     public Chat findChatById(int id) {
         for (Chat chat : chats)
-            if (chat.getId() == id)
+            if (chat.getId() == id) {
                 return chat;
+            }
         return null;
     }
 
