@@ -5,8 +5,10 @@ module com.example {
     requires javafx.media;
     requires jakarta.xml.bind;
 
+    opens com.example.model.chat to jakarta.xml.bind;
     opens com.example.model to jakarta.xml.bind, com.google.gson;
     opens com.example.view to javafx.fxml;
     opens com.example.view.controllers to javafx.fxml;
     exports com.example.view;
+    exports com.example.view.controllers;
 }

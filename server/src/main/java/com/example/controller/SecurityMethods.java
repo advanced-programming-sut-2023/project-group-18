@@ -45,7 +45,7 @@ public class SecurityMethods {
     public void addUser(int securityQuestionNumber, String securityAnswer) {
         usersData.addUser(tempUsername, tempPassword, tempNickname, tempEmail,
                 tempSlogan, securityQuestionNumber, securityAnswer);
-        UsersData.getInstance().writeInFile();
+//        usersData.writeInFile();
     }
 
     public void login(String username) {

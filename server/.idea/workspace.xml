@@ -4,27 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="multiple instances not working">
-      <change afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_7_3_2023_7_42_PM__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/.idea/shelf/Uncommitted_changes_before_Update_at_7_3_2023_7_42_PM__Changes_1.xml" afterDir="false" />
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="Some friendship methods">
+      <change afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/IntegerWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ChatMenuMethods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/IntegerWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/SecurityMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/SecurityMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/SignupMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/SignupMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/UsersData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ScoreboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ScoreboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/controller/SecurityMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/controller/SecurityMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/controller/SignupMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/controller/SignupMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/model/UsersData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/view/controllers/ScoreboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/view/controllers/ScoreboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/ChatMenuMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/ChatMenuMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/PublicChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/PublicChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatSelectMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatSelectMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/resources/fxml/ChatMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/resources/fxml/ChatMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/resources/fxml/ChatSelectMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/resources/fxml/ChatSelectMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/PublicChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/PublicChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

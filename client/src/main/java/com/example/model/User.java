@@ -1,12 +1,14 @@
 package com.example.model;
 
+import com.example.model.chat.Chat;
+import com.example.model.chat.PrivateChat;
+import com.example.model.chat.PublicChat;
+import com.example.model.chat.Room;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 @XmlRootElement
 public class User implements PasswordRecoveryQuestions {
@@ -20,6 +22,10 @@ public class User implements PasswordRecoveryQuestions {
     private int recoveryQuestionNumber;
     private String recoveryAnswer;
     private int score;
+    private final static ArrayList<User> users = new ArrayList<>();
+    private ArrayList<User> friends;
+    private ArrayList<User> requests;
+    private ArrayList<Chat> chats;
     public User() {
     }
     protected User(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
@@ -33,6 +39,11 @@ public class User implements PasswordRecoveryQuestions {
         this.highscore = 0;
         this.score = 0;
         avatarPath = User.class.getResource("/avatars/1.png").toExternalForm();
+        users.add(this);
+        friends = new ArrayList<>();
+        requests = new ArrayList<>();
+        chats = new ArrayList<>();
+        chats.add(PublicChat.getInstance());
     }
 
     public String getUsername() {
@@ -138,5 +149,74 @@ public class User implements PasswordRecoveryQuestions {
 
     public File getAvatar() {
         return new File(avatarPath);
+    }
+
+    public static ArrayList<User> getUsers(){
+        return users;
+    }
+
+    public ArrayList<User> getFriends() {
+        return friends;
+    }
+
+    public ArrayList<User> getRequests() {
+        return requests;
+    }
+
+    public void addFriend(User user){
+        friends.add(user);
+    }
+
+    public void addRequest(User user){
+        requests.add(user);
+    }
+
+    public void acceptRequest(User user){
+        requests.remove(user);
+        friends.add(user);
+    }
+
+    public void declineRequest(User user){
+        requests.remove(user);
+    }
+
+    public ArrayList<Chat> searchChats(String name){
+        ArrayList<Chat> properChats = new ArrayList<>();
+        for (Chat chat : chats){
+            if (chat instanceof PublicChat && "public chat".startsWith(name)){
+                properChats.add(chat);
+            }
+            if (chat instanceof PrivateChat){
+                for (User user : chat.getMembers()){
+                    if (user.getUsername().startsWith(name))
+                        properChats.add(chat);
+                }
+            }
+            if (chat instanceof Room room){
+                if (room.getName().startsWith(name))
+                    properChats.add(chat);
+            }
+        }
+        return properChats;
+    }
+
+    public ArrayList<User> searchUsers(String name){
+        ArrayList<User> userArrayList = new ArrayList<>();
+        for (User user : getUsers()){
+            if (user.getUsername().startsWith(name)){
+                userArrayList.add(user);
+            }
+        }
+        return userArrayList;
+    }
+
+    public ArrayList<Room> getRooms(){
+        ArrayList<Room> rooms = new ArrayList<>();
+        for (Chat chat : chats){
+            if (chat instanceof Room){
+                rooms.add((Room) chat);
+            }
+        }
+        return rooms;
     }
 }

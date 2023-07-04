@@ -21,4 +21,8 @@ public class MainMenuController {
         // TODO: need to use server
         UsersData.getInstance().setLoggedInUser(null);
     }
+
+    public void chatSelectMenu(MouseEvent mouseEvent) throws IOException {
+        Main.goToMenu("ChatSelectMenu");
+    }
 }

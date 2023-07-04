@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.view.controllers.ChatMenuController"
+            prefHeight="400.0" prefWidth="600.0"
+            fx:id="borderPane">
+    <!--      minHeight="700" maxHeight="700"-->
+    <!--      minWidth="1300" maxWidth="1300"-->
+    <top>
+        <VBox>
+            <Label text="Chat Menu" textAlignment="CENTER" prefWidth="1500" prefHeight="50" alignment="CENTER" styleClass="title"/>
+            <Button text="back" onMouseClicked="#back"/>
+            <Button text="refresh" onMouseClicked="#refresh"/>
+        </VBox>
+    </top>
+
+    <bottom>
+        <HBox>
+            <TextField promptText="type..." fx:id="chatTextField" prefWidth="1320" prefHeight="60"/>
+            <Button text="send" onMouseClicked="#sendMessage"/>
+        </HBox>
+    </bottom>
+
+    <stylesheets>
+        <URL value="@../css/MenuStyle.css"/>
+    </stylesheets>
+</BorderPane>

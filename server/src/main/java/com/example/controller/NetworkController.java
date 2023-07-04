@@ -76,17 +76,22 @@ public class NetworkController {
             System.out.println("method in method array: " + method1.getName());
             if (method1.getName().equals(request.getMethodName())) {
                 method = method1;
-            } if (method1.getName().equals("getInstance"))
+            }
+            if (method1.getName().equals("getInstance"))
                 instance = method1;
         }
         ArrayList<Object> argumentArrayList = request.getArguments();
 //        System.out.println("argument in networkController " + argumentArrayList.get(0));
-        Object[] arguments = argumentArrayList.toArray();
-        System.out.println("argumentArrayList size: " + argumentArrayList.size());
+        Object[] arguments;
+        if (argumentArrayList == null) {
+            arguments = null;
+        } else
+            arguments = argumentArrayList.toArray();
+//        System.out.println("argumentArrayList size: " + argumentArrayList.size());
         try {
             boolean access = method.canAccess(instance.invoke(null));
             method.setAccessible(true);
-            System.out.println(arguments[0]);
+//            System.out.println(arguments[0]);
             Object result = method.invoke(instance.invoke(null), arguments);
             if (result == null)
                 return null;
