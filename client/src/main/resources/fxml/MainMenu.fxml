@@ -22,7 +22,7 @@
         <VBox spacing="15">
             <Button text="Profile Menu" onMouseClicked="#profileMenu"/>
             <Button text="logout" onMouseClicked="#logout"/>
-            <Button text="chat" onMouseClicked="#chatMenu"/>
+            <Button text="chat" onMouseClicked="#chatSelectMenu"/>
         </VBox>
     </left>
     <center>

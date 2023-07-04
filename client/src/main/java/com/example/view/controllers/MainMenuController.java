@@ -22,7 +22,7 @@ public class MainMenuController {
         UsersData.getInstance().setLoggedInUser(null);
     }
 
-    public void chatMenu(MouseEvent mouseEvent) throws IOException {
-        Main.goToMenu("ChatMenu");
+    public void chatSelectMenu(MouseEvent mouseEvent) throws IOException {
+        Main.goToMenu("ChatSelectMenu");
     }
 }
