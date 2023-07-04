@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ScoreboardController {
+public class ScoreboardMenuController {
     private static final int PLAYERS_PER_PAGE = 100;
     private final UsersData usersData = UsersData.getInstance();
     @FXML

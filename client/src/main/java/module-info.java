@@ -9,4 +9,5 @@ module com.example {
     opens com.example.view to javafx.fxml;
     opens com.example.view.controllers to javafx.fxml;
     exports com.example.view;
+    exports com.example.view.controllers;
 }

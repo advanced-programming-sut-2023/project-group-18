@@ -74,6 +74,7 @@ public class UsersData implements WriteInFile {
 
     public void addUser(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         users.add(new User(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer));
+        writeInFile();
     }
 
     public User getUserByUsername(String username) {
