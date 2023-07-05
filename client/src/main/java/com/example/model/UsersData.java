@@ -92,6 +92,14 @@ public class UsersData implements WriteInFile {
 //        return users;
 //    }
 
+    public UsersWrapper getWrappedUsers() {
+        return null;
+    }
+
+    public UsersWrapper getWrappedOnlineUsers() {
+        return null;
+    }
+
     @Override
     public void writeInFile() {
 //        Gson gson = new Gson();

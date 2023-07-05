@@ -16,7 +16,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 public class UsersData implements WriteInFile {
     private static UsersData usersData;
     private final ArrayList<User> users;
-    private final CopyOnWriteArrayList<User> loggedInUsers = new CopyOnWriteArrayList<>();
+    private final ArrayList<User> loggedInUsers = new ArrayList<>();
 
     private UsersData() {
         users = new ArrayList<>(initializeUsers());
@@ -31,7 +31,7 @@ public class UsersData implements WriteInFile {
         loggedInUsers.add(user);
     }
 
-    public CopyOnWriteArrayList<User> getLoggedInUsers() {
+    public ArrayList<User> getLoggedInUsers() {
         return loggedInUsers;
     }
 
@@ -121,6 +121,14 @@ public class UsersData implements WriteInFile {
 
     public ArrayList<User> getUsers() {
         return users;
+    }
+
+    public UsersWrapper getWrappedUsers() {
+        return new UsersWrapper(users);
+    }
+
+    public UsersWrapper getWrappedOnlineUsers() {
+        return new UsersWrapper(loggedInUsers);
     }
 
     @Override
