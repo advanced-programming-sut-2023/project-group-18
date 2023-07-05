@@ -60,15 +60,15 @@ public class DataChat {
             User user1 = usersData.getUserByUsername(username1);
             User user2 = usersData.getUserByUsername(username2);
             for (PrivateChat privateChat : privateChats) {
-                System.out.println("input user 1 is: " + username1);
-                System.out.println("input user 2 is: " + username2);
-                System.out.println("private chat's first user is: " + privateChat.getMembers().get(0).getUsername());
-                System.out.println("private chat's second user is: " + privateChat.getMembers().get(1).getUsername());
+//                System.out.println("input user 1 is: " + username1);
+//                System.out.println("input user 2 is: " + username2);
+//                System.out.println("private chat's first user is: " + privateChat.getMembers().get(0).getUsername());
+//                System.out.println("private chat's second user is: " + privateChat.getMembers().get(1).getUsername());
                 if ((privateChat.getMembers().get(0).getUsername().equals(username1) && privateChat.getMembers().get(1).getUsername().equals(username2)) ||
                         (privateChat.getMembers().get(1).getUsername().equals(username1) && privateChat.getMembers().get(0).getUsername().equals(username2)))
                     return privateChat;
             }
-            System.out.println("we didn't find a private chat");
+//            System.out.println("we didn't find a private chat");
             PrivateChat privateChat = new PrivateChat(user1, user2);
             privateChats.add(privateChat);
             return privateChat;
@@ -80,6 +80,8 @@ public class DataChat {
         User admin = usersData.getUserByUsername(username);
         ArrayList<User> arrayList = new ArrayList<>();
         arrayList.add(admin);
-        return new Room(roomName, arrayList, admin);
+        Room room = new Room(roomName, arrayList, admin);
+        rooms.add(room);
+        return room;
     }
 }
