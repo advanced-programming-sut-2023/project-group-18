@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
-        goToMenu("SignupMenu");
+        goToMenu("FriendMenu");
 //        Music.LOGIN_MENU.getMediaPlayer().play();
         stage.setScene(scene);
         stage.setTitle("Stronghold Crusader");
