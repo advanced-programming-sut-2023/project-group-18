@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="friend without profile">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/UsersWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/UsersWrapper.java" afterDir="false" />
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="scoreboard final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ScoreboardMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ScoreboardMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/controllers/ProfileMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/controllers/ProfileMenuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/UsersData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/StartGameMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/StartGameMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/model/UsersData.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,7 +316,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688583256607</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="scoreboard final">
+      <created>1688588316482</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1688588316482</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +353,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="textField passwordField style for password show try" />
     <MESSAGE value="fixed show password hopefully" />
     <MESSAGE value="half done slogan" />
     <MESSAGE value="signup hopefully done" />
@@ -379,7 +377,8 @@
     <MESSAGE value="room basics done, works for now :D" />
     <MESSAGE value="findRoom added" />
     <MESSAGE value="friend without profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="friend without profile" />
+    <MESSAGE value="scoreboard final" />
+    <option name="LAST_COMMIT_MESSAGE" value="scoreboard final" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

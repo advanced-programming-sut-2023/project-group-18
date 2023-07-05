@@ -6,12 +6,16 @@ import com.example.model.User;
 import com.example.model.UsersData;
 import com.example.model.UsersWrapper;
 import com.example.view.Main;
+import com.example.view.images.Images;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -70,7 +74,10 @@ public class ScoreboardMenuController {
             if (isOnline(user.getUsername()))
                 label.setText(user.getUsername() + ": " + user.getHighscore() + "  online");
             else label.setText(user.getUsername() + ": " + user.getHighscore() + "  offline");
-            playerLabels.getChildren().add(label);
+            ImageView avatar = new ImageView(new Image(user.getAvatarPath()));
+            avatar.setFitHeight(25);
+            avatar.setFitWidth(25);
+            playerLabels.getChildren().add(new HBox(avatar, label));
         }
     }
 

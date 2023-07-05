@@ -4,6 +4,7 @@ import com.example.controller.ChatMenuMethods;
 import com.example.model.UsersData;
 import com.example.model.chat.*;
 import com.example.view.Main;
+import com.example.view.images.Images;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -95,7 +96,10 @@ public class ChatMenuController {
             time.setFont(new Font(4));
             System.out.println("message time is: " + message.getTime());
             Label label = new Label(message.getSender().getUsername() + ":" + message.getText());
-            HBox hBox = new HBox(avatar, label, time);
+            ImageView seen = new ImageView(Images.DAMAGE.getImage());
+            seen.setFitWidth(25);
+            seen.setFitHeight(25);
+            HBox hBox = new HBox(avatar, label, time, seen);
             hBox.setSpacing(8);
             label.setOnMouseClicked(mouseEvent -> {
                 if (message.getSender().getUsername().equals(usersData.getLoggedInUser().getUsername())) {
