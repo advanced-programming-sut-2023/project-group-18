@@ -7,17 +7,18 @@ import com.example.view.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
 
 public class ChatMenuController {
     @FXML
+    private VBox buttonVBox;
+    @FXML
     private TextField chatTextField;
     @FXML
     private BorderPane borderPane;
-    private VBox vBox;
+    private VBox messagesVBox;
     private final UsersData usersData = UsersData.getInstance();
     private final ChatMenuMethods chatMenuMethods = ChatMenuMethods.getInstance();
     private final DataChat dataChat = DataChat.getInstance();
@@ -31,9 +32,9 @@ public class ChatMenuController {
         } else if (chatMenuMethods.getRoom() != null) {
             System.out.println("room chat");
         }
-        vBox = new VBox();
+        messagesVBox = new VBox();
         refresh();
-        borderPane.setCenter(vBox);
+        borderPane.setCenter(messagesVBox);
     }
 
     public void back() throws IOException {
@@ -47,7 +48,7 @@ public class ChatMenuController {
         String text = chatTextField.getText();
         chatTextField.setText("");
         Label label = new Label(usersData.getLoggedInUser().getUsername() + ":" + text);
-        vBox.getChildren().add(label);
+        messagesVBox.getChildren().add(label);
         if (chatMenuMethods.getPublicChat() != null) {
             chatMenuMethods.setPublicChat(dataChat.addPublicMessage(usersData.getLoggedInUser().getUsername(), text));
         } else if (chatMenuMethods.getPrivateChat() != null) {
@@ -60,9 +61,9 @@ public class ChatMenuController {
     }
 
     public void refresh() {
-        vBox.getChildren().removeAll(vBox.getChildren());
+        messagesVBox.getChildren().removeAll(messagesVBox.getChildren());
         if (chatMenuMethods.getRoom() != null) {
-            vBox.getChildren().add(new Label("Room name: " + chatMenuMethods.getRoom().getName()));
+            messagesVBox.getChildren().add(new Label("Room name: " + chatMenuMethods.getRoom().getName()));
         }
         Chat chat = null;
         if (chatMenuMethods.getPublicChat() != null) {
@@ -73,7 +74,7 @@ public class ChatMenuController {
             chat = chatMenuMethods.getRoom();
         }
         for (Message message : chat.getMessages()) {
-            vBox.getChildren().add(new Label(message.getSender().getUsername() + ":" + message.getText()));
+            messagesVBox.getChildren().add(new Label(message.getSender().getUsername() + ":" + message.getText()));
         }
     }
 }

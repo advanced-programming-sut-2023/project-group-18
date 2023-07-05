@@ -1,6 +1,7 @@
 package com.example.view.controllers;
 
 import com.example.controller.ChatMenuMethods;
+import com.example.model.User;
 import com.example.model.UsersData;
 import com.example.model.chat.*;
 import com.example.view.Main;
@@ -15,6 +16,10 @@ public class ChatSelectMenuController {
     private final UsersData usersData = UsersData.getInstance();
     private final DataChat dataChat = DataChat.getInstance();
     private final ChatMenuMethods chatMenuMethods = ChatMenuMethods.getInstance();
+    @FXML
+    private Label roomFindError;
+    @FXML
+    private TextField findRoomTextField;
     @FXML
     private Label roomError;
     @FXML
@@ -47,15 +52,26 @@ public class ChatSelectMenuController {
             roomError.setText("room already exists");
             return;
         } else roomError.setVisible(false);
-//        Chat chat = dataChat.newRoom(roomName, usersData.getLoggedInUser().getUsername());
-//        if (chat instanceof Room) {
-//            System.out.println("chat is instance of room in chatselectmenucontroller.java");
-//        } else if (chat instanceof PublicChat) {
-//            System.out.println("chat instance of public chat");
-//        } else if (chat instanceof PrivateChat) {
-//            System.out.println("chat instance of private chat");
-//        } else System.out.println("chat is not instance of anything");
         chatMenuMethods.setRoom(dataChat.newRoom(roomName, usersData.getLoggedInUser().getUsername()));
         Main.goToMenu("ChatMenu");
+    }
+
+    public void findRoom() throws IOException {
+        String roomName = findRoomTextField.getText();
+        Room room = dataChat.getRoom(roomName);
+        if (room == null || !isInRoom(usersData.getLoggedInUser().getUsername(), room)) {
+            roomFindError.setVisible(true);
+            roomFindError.setText("room doesn't exist or you aren't in it");
+            return;
+        } else roomFindError.setVisible(false);
+        chatMenuMethods.setRoom(room);
+        Main.goToMenu("ChatMenu");
+    }
+
+    private boolean isInRoom(String username, Room room) {
+        for (User user : room.getMembers())
+            if (user.getUsername().equals(username))
+                return true;
+        return false;
     }
 }
