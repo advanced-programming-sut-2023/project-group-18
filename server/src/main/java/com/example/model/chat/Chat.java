@@ -13,24 +13,19 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @XmlSeeAlso({ PublicChat.class, PrivateChat.class, Room.class})
 public class Chat {
     @XmlElement
-    private final IntegerWrapper id;
-    @XmlElement
     private final CopyOnWriteArrayList<User> members;
     @XmlElement
     private final CopyOnWriteArrayList<Message> messages;
 
     public Chat() {
         DataChat dataChat = DataChat.getInstance();
-        id = dataChat.getNextId();
         System.out.println();
         System.out.println();
-        System.out.println("chat id is : " + id.getValue());
         System.out.println();
         System.out.println();
         System.out.println();
         this.members = new CopyOnWriteArrayList<>();
         this.messages = new CopyOnWriteArrayList<>();
-        dataChat.addChat(this);
     }
 
 
@@ -57,9 +52,4 @@ public class Chat {
     public void addMessage(Message message) {
         messages.add(message);
     }
-
-    public int getId() {
-        return id.getValue();
-    }
-
 }

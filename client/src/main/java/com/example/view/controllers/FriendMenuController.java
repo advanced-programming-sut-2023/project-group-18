@@ -99,8 +99,17 @@ public class FriendMenuController {
         }
     }
     public void refresh() {
+        ChatMenuMethods chatMenuMethods = ChatMenuMethods.getInstance();
         vBox.getChildren().removeAll(vBox.getChildren());
-        for (Message message : ChatMenuMethods.getInstance().getChat().getMessages()) {
+        Chat chat = null;
+        if (chatMenuMethods.getPublicChat() != null) {
+            chat = chatMenuMethods.getPublicChat();
+        } else if (chatMenuMethods.getPrivateChat() != null) {
+            chat = chatMenuMethods.getPrivateChat();
+        } else if (chatMenuMethods.getRoom() != null) {
+            chat = chatMenuMethods.getRoom();
+        }
+        for (Message message : chat.getMessages()) {
             vBox.getChildren().add(new Label(message.getSender().getUsername() + ":" + message.getText()));
         }
     }

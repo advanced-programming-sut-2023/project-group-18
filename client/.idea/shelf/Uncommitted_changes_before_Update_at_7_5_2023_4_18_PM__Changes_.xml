@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_7_5_2023_4_18_PM_[Changes]" date="1688561296712" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_5_2023_4_18_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 7/5/2023 4:18 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="../server/target/classes/com/example/controller/StartGameMethods.class" />
+    <option name="AFTER_PATH" value="../server/target/classes/com/example/controller/StartGameMethods.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_5_2023_4_18_PM_[Changes]/StartGameMethods.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../server/target/classes/com/example/view/controllers/ScoreboardController.class" />
+    <option name="AFTER_PATH" value="../server/target/classes/com/example/view/controllers/ScoreboardController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_5_2023_4_18_PM_[Changes]/ScoreboardController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../server/target/classes/com/example/controller/NetworkController.class" />
+    <option name="AFTER_PATH" value="../server/target/classes/com/example/controller/NetworkController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_5_2023_4_18_PM_[Changes]/NetworkController.class" />
+  </binary>
+</changelist>

@@ -20,6 +20,7 @@ public class ChatMenuController {
     private VBox vBox;
     private final UsersData usersData = UsersData.getInstance();
     private final ChatMenuMethods chatMenuMethods = ChatMenuMethods.getInstance();
+    private final DataChat dataChat = DataChat.getInstance();
 
     @FXML
     public void initialize() {
@@ -29,6 +30,9 @@ public class ChatMenuController {
     }
 
     public void back() throws IOException {
+        chatMenuMethods.setPublicChat(null);
+        chatMenuMethods.setPrivateChat(null);
+        chatMenuMethods.setRoom(null);
         Main.goToMenu("MainMenu");
     }
 
@@ -37,28 +41,31 @@ public class ChatMenuController {
         chatTextField.setText("");
         Label label = new Label(usersData.getLoggedInUser().getUsername() + ":" + text);
         vBox.getChildren().add(label);
-        if (chatMenuMethods.getChat() instanceof PublicChat) {
-            System.out.println("chatMenuController publicChat instance");
-            chatMenuMethods.setChat(DataChat.getInstance().addPublicMessage(usersData.getLoggedInUser().getUsername(), text));
+        if (chatMenuMethods.getPublicChat() != null) {
+            chatMenuMethods.setPublicChat(dataChat.addPublicMessage(usersData.getLoggedInUser().getUsername(), text));
+        } else if (chatMenuMethods.getPrivateChat() != null) {
+            chatMenuMethods.setPrivateChat(dataChat.addPrivateMessage(usersData.getLoggedInUser().getUsername(), text,
+                    chatMenuMethods.getPrivateChat().getMembers().get(0).getUsername(), chatMenuMethods.getPrivateChat().getMembers().get(1).getUsername()));
+        } else if (chatMenuMethods.getRoom() != null) {
+            chatMenuMethods.setRoom(dataChat.addRoomMessage(usersData.getLoggedInUser().getUsername(), text, chatMenuMethods.getRoom().getName()));
         }
-        chatMenuMethods.setChat(DataChat.getInstance().addMessage(usersData.getLoggedInUser().getUsername(), text, chatMenuMethods.getChat().getId()));
+
     }
 
     public void refresh() {
         vBox.getChildren().removeAll(vBox.getChildren());
-        Chat chat = chatMenuMethods.getChat();
-        if (chat instanceof Room) {
-            System.out.println("chat is instance of room in chatselectmenucontroller.java");
-        } else if (chat instanceof PublicChat) {
-            System.out.println("chat instance of public chat");
-        } else if (chat instanceof PrivateChat) {
-            System.out.println("chat instance of private chat");
-        } else System.out.println("chat is not instance of anything");
-        if (chatMenuMethods.getChat() instanceof Room room) {
-            System.out.println("testing room room");
-            vBox.getChildren().add(new Label("Room name: " + room.getName()));
+        if (chatMenuMethods.getRoom() != null) {
+            vBox.getChildren().add(new Label("Room name: " + chatMenuMethods.getRoom().getName()));
         }
-        for (Message message : chatMenuMethods.getChat().getMessages()) {
+        Chat chat = null;
+        if (chatMenuMethods.getPublicChat() != null) {
+            chat = chatMenuMethods.getPublicChat();
+        } else if (chatMenuMethods.getPrivateChat() != null) {
+            chat = chatMenuMethods.getPrivateChat();
+        } else if (chatMenuMethods.getRoom() != null) {
+            chat = chatMenuMethods.getRoom();
+        }
+        for (Message message : chat.getMessages()) {
             vBox.getChildren().add(new Label(message.getSender().getUsername() + ":" + message.getText()));
         }
     }

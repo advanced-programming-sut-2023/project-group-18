@@ -93,9 +93,6 @@ public class NetworkController {
             boolean access = method.canAccess(instance.invoke(null));
             method.setAccessible(true);
             Object result = method.invoke(instance.invoke(null), arguments);
-            if (result instanceof Chat) {
-                System.out.println("it is instance of chat--------------------------- chat id: " + ((Chat) result).getId());
-            }
             if (result == null)
                 return null;
             method.setAccessible(access);

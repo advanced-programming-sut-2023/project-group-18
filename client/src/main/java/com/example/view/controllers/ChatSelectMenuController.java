@@ -25,9 +25,7 @@ public class ChatSelectMenuController {
     private TextField userTextField;
 
     public void publicChat() throws IOException {
-        PublicChat publicChat = PublicChat.getInstance();
-        System.out.println(publicChat.getId() + "lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
-        chatMenuMethods.setChat(publicChat);
+        chatMenuMethods.setPublicChat(dataChat.getPublicChat());
         Main.goToMenu("ChatMenu");
     }
 
@@ -38,7 +36,7 @@ public class ChatSelectMenuController {
             userError.setText("user doesn't exist");
             return;
         } else userError.setVisible(false);
-        chatMenuMethods.setChat(dataChat.privateChat(usersData.getLoggedInUser().getUsername(), usersData.getUserByUsername(username).getUsername()));
+        chatMenuMethods.setPrivateChat(dataChat.privateChat(usersData.getLoggedInUser().getUsername(), username));
         Main.goToMenu("ChatMenu");
     }
 
@@ -57,8 +55,7 @@ public class ChatSelectMenuController {
 //        } else if (chat instanceof PrivateChat) {
 //            System.out.println("chat instance of private chat");
 //        } else System.out.println("chat is not instance of anything");
-        chatMenuMethods.setChat(dataChat.newRoom(roomName, usersData.getLoggedInUser().getUsername()));
+        chatMenuMethods.setRoom(dataChat.newRoom(roomName, usersData.getLoggedInUser().getUsername()));
         Main.goToMenu("ChatMenu");
-//        chatMenuMethods.setChat(new Room());
     }
 }

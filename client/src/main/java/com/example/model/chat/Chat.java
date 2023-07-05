@@ -14,8 +14,6 @@ import java.util.ArrayList;
 @XmlSeeAlso({PublicChat.class, PrivateChat.class, Room.class})
 public class Chat {
     @XmlElement
-    private final IntegerWrapper id;
-    @XmlElement
     private final ArrayList<User> members;
     @XmlElement
     private final ArrayList<Message> messages;
@@ -23,8 +21,6 @@ public class Chat {
     private final static ArrayList<Chat> chats = new ArrayList<>();
 
     public Chat() {
-        System.out.println("we are creating a new chat");
-        id = ((IntegerWrapper) NetworkController.getInstance().transferData(new Request(DataChat.class, "getNextId")));
         this.members = new ArrayList<>();
         this.messages = new ArrayList<>();
         chats.add(this);
@@ -53,9 +49,5 @@ public class Chat {
     public void addMessage(Message message) {
 //        NetworkController.getInstance().transferData(new Request(Chat.class, "addMessage", message));
         messages.add(message);
-    }
-
-    public Integer getId() {
-        return 0;
     }
 }
