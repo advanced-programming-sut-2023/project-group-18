@@ -31,6 +31,7 @@ public class ScoreboardMenuController {
 
     @FXML
     public void initialize() {
+        System.out.println("trying to initialize scoreboard");
         // TODO: need to use server
         // getScoreboard(pageNumber)
         users = (ArrayList<User>) NetworkController.getInstance().transferData(new Request(UsersData.class, "getUsers"));

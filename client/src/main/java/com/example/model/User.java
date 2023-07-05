@@ -171,6 +171,7 @@ public class User implements PasswordRecoveryQuestions {
     public void acceptRequest(User user){
         requests.remove(user);
         friends.add(user);
+        user.getFriends().add(this);
     }
 
     public void declineRequest(User user){

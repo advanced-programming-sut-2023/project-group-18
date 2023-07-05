@@ -15,11 +15,11 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 
 public class UsersData implements WriteInFile {
     private static UsersData usersData;
-    private final CopyOnWriteArrayList<User> users;
+    private final ArrayList<User> users;
     private final CopyOnWriteArrayList<User> loggedInUsers = new CopyOnWriteArrayList<>();
 
     private UsersData() {
-        users = new CopyOnWriteArrayList<>(initializeUsers());
+        users = new ArrayList<>(initializeUsers());
     }
 
     public static UsersData getInstance() {
@@ -119,7 +119,7 @@ public class UsersData implements WriteInFile {
         return null;
     }
 
-    public CopyOnWriteArrayList<User> getUsers() {
+    public ArrayList<User> getUsers() {
         return users;
     }
 

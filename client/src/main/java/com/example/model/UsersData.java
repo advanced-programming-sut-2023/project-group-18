@@ -12,6 +12,7 @@ import com.example.controller.NetworkController;
 import com.google.gson.Gson;
 
 public class UsersData implements WriteInFile {
+    private User seeProfileUser;
     private static UsersData usersData;
 //    private ArrayList<User> users;
     private User loggedInUser;
@@ -107,4 +108,11 @@ public class UsersData implements WriteInFile {
 //        }
     }
 
+    public User getSeeProfileUser() {
+        return seeProfileUser;
+    }
+
+    public void setSeeProfileUser(User seeProfileUser) {
+        this.seeProfileUser = seeProfileUser;
+    }
 }

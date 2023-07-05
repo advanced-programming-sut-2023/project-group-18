@@ -51,6 +51,14 @@ public class FriendMenuController {
             Label label = new Label(user.getUsername());
             Button requestButton = new Button("Request");
             HBox hBox = new HBox(label, requestButton);
+            label.setOnMouseClicked(mouseEvent -> {
+                usersData.setSeeProfileUser(user);
+                try {
+                    Main.goToMenu("ProfileFriendMenu");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
             requestButton.setOnMouseClicked(mouseEvent -> {
                 requestButton.setText("Requested");
                 usersData.request(usersData.getLoggedInUser().getUsername(), name);

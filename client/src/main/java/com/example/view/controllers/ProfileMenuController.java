@@ -115,7 +115,7 @@ public class ProfileMenuController {
     }
 
     public void scoreboard(MouseEvent mouseEvent) throws IOException {
-        Main.goToMenu("Scoreboard");
+        Main.goToMenu("ScoreboardMenu");
     }
 
     public void set1(MouseEvent mouseEvent) {

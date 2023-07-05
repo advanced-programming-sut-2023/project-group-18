@@ -106,7 +106,7 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
 
     public String getPopularSlogan() {
         boolean flag = false;
-        CopyOnWriteArrayList<User> users = UsersData.getInstance().getUsers();
+        ArrayList<User> users = UsersData.getInstance().getUsers();
         ArrayList<String> slogans = new ArrayList<>();
         ArrayList<Integer> occurrences = new ArrayList<>();
         for (User user : users) {
