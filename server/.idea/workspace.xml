@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="edit and delete working for at least one person(edit buggy)">
       <change beforePath="$PROJECT_DIR$/../client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/resources/fxml/ChatMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/resources/fxml/ChatMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/view/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688333536585</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="edit and delete working for at least one person(edit buggy)">
+      <created>1688578270665</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1688578270665</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

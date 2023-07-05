@@ -8,8 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 
 import java.io.IOException;
 
@@ -74,14 +77,26 @@ public class ChatMenuController {
         }
         Chat chat = null;
         if (chatMenuMethods.getPublicChat() != null) {
+            chatMenuMethods.setPublicChat(dataChat.getPublicChat());
             chat = chatMenuMethods.getPublicChat();
         } else if (chatMenuMethods.getPrivateChat() != null) {
+            chatMenuMethods.setPrivateChat(dataChat.privateChat(chatMenuMethods.getPrivateChat().getMembers().get(0).getUsername(),
+                    chatMenuMethods.getPrivateChat().getMembers().get(1).getUsername()));
             chat = chatMenuMethods.getPrivateChat();
         } else if (chatMenuMethods.getRoom() != null) {
+            chatMenuMethods.setRoom(dataChat.getRoom(chatMenuMethods.getRoom().getName()));
             chat = chatMenuMethods.getRoom();
         }
         for (Message message : chat.getMessages()) {
+            ImageView avatar = new ImageView(new Image(message.getSender().getAvatarPath()));
+            avatar.setFitWidth(25);
+            avatar.setFitHeight(25);
+            Label time = new Label(message.getTime());
+            time.setFont(new Font(4));
+            System.out.println("message time is: " + message.getTime());
             Label label = new Label(message.getSender().getUsername() + ":" + message.getText());
+            HBox hBox = new HBox(avatar, label, time);
+            hBox.setSpacing(8);
             label.setOnMouseClicked(mouseEvent -> {
                 if (message.getSender().getUsername().equals(usersData.getLoggedInUser().getUsername())) {
                     if (sendButton.getText().equals("send")) {
@@ -120,7 +135,7 @@ public class ChatMenuController {
                     }
                 }
             });
-            messagesVBox.getChildren().add(label);
+            messagesVBox.getChildren().add(hBox);
         }
     }
 

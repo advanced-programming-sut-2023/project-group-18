@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="room basics done, works for now :D">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ChatMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ChatMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ChatMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/view/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

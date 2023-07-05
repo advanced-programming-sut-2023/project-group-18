@@ -2,6 +2,7 @@ package com.example.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalTime;
 
 import com.example.controller.NetworkController;
 import com.example.model.Game;
@@ -31,6 +32,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+//        System.out.println(LocalTime.now().toString());
         NetworkController networkController = NetworkController.getInstance();
         networkController.initializeNetwork();
         launch();
