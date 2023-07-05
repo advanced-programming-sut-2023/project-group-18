@@ -5,13 +5,19 @@ import com.example.model.UsersData;
 import com.example.model.chat.*;
 import com.example.view.Main;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
 
 public class ChatMenuController {
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private Button sendButton;
     @FXML
     private VBox buttonVBox;
     @FXML
@@ -33,6 +39,7 @@ public class ChatMenuController {
             System.out.println("room chat");
         }
         messagesVBox = new VBox();
+        messagesVBox.setSpacing(20);
         refresh();
         borderPane.setCenter(messagesVBox);
     }
@@ -57,7 +64,7 @@ public class ChatMenuController {
         } else if (chatMenuMethods.getRoom() != null) {
             chatMenuMethods.setRoom(dataChat.addRoomMessage(usersData.getLoggedInUser().getUsername(), text, chatMenuMethods.getRoom().getName()));
         }
-
+        refresh();
     }
 
     public void refresh() {
@@ -74,7 +81,58 @@ public class ChatMenuController {
             chat = chatMenuMethods.getRoom();
         }
         for (Message message : chat.getMessages()) {
-            messagesVBox.getChildren().add(new Label(message.getSender().getUsername() + ":" + message.getText()));
+            Label label = new Label(message.getSender().getUsername() + ":" + message.getText());
+            label.setOnMouseClicked(mouseEvent -> {
+                if (message.getSender().getUsername().equals(usersData.getLoggedInUser().getUsername())) {
+                    if (sendButton.getText().equals("send")) {
+                        deleteButton.setVisible(true);
+                        deleteButton.setOnMouseClicked(mouseEvent1 -> {
+                            if (chatMenuMethods.getPublicChat() != null) {
+                                chatMenuMethods.setPublicChat(dataChat.deletePublicMessage(message.getTime()));
+                            } else if (chatMenuMethods.getPrivateChat() != null) {
+                                chatMenuMethods.setPrivateChat(dataChat.deletePrivateMessage(message.getTime(), chatMenuMethods
+                                        .getPrivateChat().getMembers().get(0).getUsername(), chatMenuMethods.getPrivateChat().getMembers().get(1).getUsername()));
+                            } else if (chatMenuMethods.getRoom() != null) {
+                                chatMenuMethods.setRoom(dataChat.deleteRoomMessage(message.getTime(), chatMenuMethods.getRoom().getName()));
+                            }
+                            deleteButton.setVisible(false);
+                            setSendButton();
+                            refresh();
+                        });
+                        sendButton.setText("edit");
+                        sendButton.setOnMouseClicked(mouseEvent1 -> {
+                            String text = chatTextField.getText();
+                            if (chatMenuMethods.getPublicChat() != null) {
+                                chatMenuMethods.setPublicChat(dataChat.editPublicMessage(message.getTime(), text));
+                            } else if (chatMenuMethods.getPrivateChat() != null) {
+                                chatMenuMethods.setPrivateChat(dataChat.editPrivateMessage(message.getTime(), text, chatMenuMethods
+                                        .getPrivateChat().getMembers().get(0).getUsername(), chatMenuMethods.getPrivateChat().getMembers().get(1).getUsername()));
+                            } else if (chatMenuMethods.getRoom() != null) {
+                                chatMenuMethods.setRoom(dataChat.editRoomMessage(message.getTime(), text, chatMenuMethods.getRoom().getName()));
+                            }
+                            chatTextField.setText("");
+                            label.setText(message.getSender().getUsername() + ":" + text);
+                            setSendButton();
+                        });
+                    } else {
+                        deleteButton.setVisible(false);
+                        setSendButton();
+                    }
+                }
+            });
+            messagesVBox.getChildren().add(label);
         }
+    }
+
+    private void setSendButton() {
+        sendButton.setText("send");
+        sendButton.setOnMouseClicked(mouseEvent12 -> {
+            sendMessage();
+            refresh();
+        });
+    }
+
+    public void delete(MouseEvent mouseEvent) {
+
     }
 }

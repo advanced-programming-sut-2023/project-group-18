@@ -1,12 +1,8 @@
 package com.example.model.chat;
 
 import com.example.controller.NetworkController;
-import com.example.model.IntegerWrapper;
 import com.example.model.Request;
-import com.example.model.User;
 import jakarta.xml.bind.annotation.XmlRootElement;
-
-import java.util.ArrayList;
 
 @XmlRootElement
 public class DataChat {
@@ -44,5 +40,29 @@ public class DataChat {
 
     public Room newRoom(String roomName, String username) {
         return (Room) networkController.transferData(new Request(DataChat.class, "newRoom", roomName, username));
+    }
+
+    public PublicChat editPublicMessage(String time, String text) {
+        return (PublicChat) networkController.transferData(new Request(DataChat.class, "editPublicMessage", time, text));
+    }
+
+    public PrivateChat editPrivateMessage(String time, String text, String username1, String username2) {
+        return (PrivateChat) networkController.transferData(new Request(DataChat.class, "editPrivateMessage", time, text, username1, username2));
+    }
+
+    public Room editRoomMessage(String time, String text, String roomName) {
+        return (Room) networkController.transferData(new Request(DataChat.class, "editRoomMessage", time, text, roomName));
+    }
+
+    public PublicChat deletePublicMessage(String time) {
+        return (PublicChat) networkController.transferData(new Request(DataChat.class, "deletePublicMessage", time));
+    }
+
+    public PrivateChat deletePrivateMessage(String time, String username1, String username2) {
+        return (PrivateChat) networkController.transferData(new Request(DataChat.class, "deletePrivateMessage", time, username1, username2));
+    }
+
+    public Room deleteRoomMessage(String time, String roomName) {
+        return (Room) networkController.transferData(new Request(DataChat.class, "deleteRoomMessage", time, roomName));
     }
 }

@@ -60,15 +60,10 @@ public class DataChat {
             User user1 = usersData.getUserByUsername(username1);
             User user2 = usersData.getUserByUsername(username2);
             for (PrivateChat privateChat : privateChats) {
-//                System.out.println("input user 1 is: " + username1);
-//                System.out.println("input user 2 is: " + username2);
-//                System.out.println("private chat's first user is: " + privateChat.getMembers().get(0).getUsername());
-//                System.out.println("private chat's second user is: " + privateChat.getMembers().get(1).getUsername());
                 if ((privateChat.getMembers().get(0).getUsername().equals(username1) && privateChat.getMembers().get(1).getUsername().equals(username2)) ||
                         (privateChat.getMembers().get(1).getUsername().equals(username1) && privateChat.getMembers().get(0).getUsername().equals(username2)))
                     return privateChat;
             }
-//            System.out.println("we didn't find a private chat");
             PrivateChat privateChat = new PrivateChat(user1, user2);
             privateChats.add(privateChat);
             return privateChat;
@@ -82,6 +77,68 @@ public class DataChat {
         arrayList.add(admin);
         Room room = new Room(roomName, arrayList, admin);
         rooms.add(room);
+        return room;
+    }
+
+    public PublicChat editPublicMessage(String time, String text) {
+        for (Message message : publicChat.getMessages())
+            if (message.getTime().equals(time)) {
+                message.editText(text);
+                break;
+            }
+        return publicChat;
+    }
+
+    public PrivateChat editPrivateMessage(String time, String text, String username1, String username2) {
+        PrivateChat privateChat = privateChat(username1, username2);
+        for (Message message : privateChat.getMessages()) {
+            if (message.getTime().equals(time)) {
+                message.editText(text);
+                break;
+            }
+        }
+        return privateChat;
+    }
+
+    public Room editRoomMessage(String time, String text, String roomName) {
+        Room room = getRoom(roomName);
+        for (Message message : room.getMessages()) {
+            if (message.getTime().equals(time)) {
+                message.editText(text);
+                break;
+            }
+        }
+        return room;
+    }
+
+    public PublicChat deletePublicMessage(String time) {
+        for (Message message : publicChat.getMessages())
+            if (message.getTime().equals(time)) {
+                publicChat.getMessages().remove(message);
+                break;
+            }
+        return publicChat;
+    }
+
+    public PrivateChat deletePrivateMessage(String time, String username1, String username2) {
+        PrivateChat privateChat = privateChat(username1, username2);
+        for (Message message : privateChat.getMessages()) {
+            if (message.getTime().equals(time)) {
+                privateChat.getMessages().remove(message);
+                break;
+            }
+        }
+        return privateChat;
+    }
+
+    public Room deleteRoomMessage(String time, String roomName) {
+        Room room = getRoom(roomName);
+        for (Message message : room.getMessages()) {
+            if (message.getTime().equals(time)) {
+                room.getMessages().remove(message);
+                break;
+            }
+        }
         return room;
     }
 }

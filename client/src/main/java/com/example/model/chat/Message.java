@@ -5,6 +5,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.io.File;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 @XmlRootElement
@@ -29,7 +30,8 @@ public class Message {
         this.sender = sender;
         this.text = text;
 //        this.reactions = new ArrayList<>();
-        this.time = "";
+        LocalTime localTime = LocalTime.now();
+        this.time = localTime.toString();
 //        hasSent = false;
 //        hasSeen = false;
     }

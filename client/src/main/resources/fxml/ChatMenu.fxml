@@ -15,13 +15,14 @@
             <Label text="Chat Menu" textAlignment="CENTER" prefWidth="1500" prefHeight="50" alignment="CENTER" styleClass="title"/>
             <Button text="back" onMouseClicked="#back"/>
             <Button text="refresh" onMouseClicked="#refresh"/>
+            <Button text="delete" fx:id="deleteButton" onMouseClicked="#delete" visible="false"/>
         </VBox>
     </top>
 
     <bottom>
         <HBox>
             <TextField promptText="type..." fx:id="chatTextField" prefWidth="1320" prefHeight="60"/>
-            <Button text="send" onMouseClicked="#sendMessage"/>
+            <Button text="send" onMouseClicked="#sendMessage" fx:id="sendButton"/>
         </HBox>
     </bottom>
 

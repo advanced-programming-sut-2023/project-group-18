@@ -6,13 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="room basics done, works for now :D">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ChatMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ChatSelectMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ChatSelectMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ChatMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ChatMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ChatSelectMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ChatSelectMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +59,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
     "last_opened_file_path": "C:/Users/user/IdeaProjects/project-group-18/client/src/main/java/com/example/model/chat",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,7 +78,14 @@
       <recent name="com.example.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.client2">
+  <component name="RunManager" selected="Application.client">
+    <configuration name="client" type="Application" factoryName="Application" singleton="false">
+      <option name="MAIN_CLASS_NAME" value="com.example.view.Main" />
+      <module name="project-group18" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="client1" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="com.example.view.Main" />
       <module name="client" />
@@ -85,16 +93,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="client2" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.example.view.Main" />
-      <module name="client" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="Application.client" />
       <item itemvalue="Application.client1" />
-      <item itemvalue="Application.client2" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -306,7 +307,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688565891668</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="findRoom added">
+      <created>1688569485075</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1688569485076</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +344,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tag" />
     <MESSAGE value="testing prompt text for unmasked password" />
     <MESSAGE value="textField passwordField style for password show try" />
     <MESSAGE value="fixed show password hopefully" />
@@ -361,7 +368,8 @@
     <MESSAGE value="changed the chat structure, public chat works for now" />
     <MESSAGE value="private chat also works for now" />
     <MESSAGE value="room basics done, works for now :D" />
-    <option name="LAST_COMMIT_MESSAGE" value="room basics done, works for now :D" />
+    <MESSAGE value="findRoom added" />
+    <option name="LAST_COMMIT_MESSAGE" value="findRoom added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
