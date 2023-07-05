@@ -7,17 +7,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.google.gson.Gson;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 public class UsersData implements WriteInFile {
     private static UsersData usersData;
-    private final ArrayList<User> users;
-    private final ArrayList<User> loggedInUsers = new ArrayList<>();
+    private final CopyOnWriteArrayList<User> users;
+    private final CopyOnWriteArrayList<User> loggedInUsers = new CopyOnWriteArrayList<>();
 
     private UsersData() {
-        users = new ArrayList<>(initializeUsers());
+        users = new CopyOnWriteArrayList<>(initializeUsers());
     }
 
     public static UsersData getInstance() {
@@ -25,10 +26,11 @@ public class UsersData implements WriteInFile {
     }
 
     public void addLoggedInUsers(User user) {
+        System.out.println("user logged in: " + user.getUsername());
         loggedInUsers.add(user);
     }
 
-    public ArrayList<User> getLoggedInUsers() {
+    public CopyOnWriteArrayList<User> getLoggedInUsers() {
         return loggedInUsers;
     }
 
@@ -72,12 +74,12 @@ public class UsersData implements WriteInFile {
         }
     }
 
-    public void addUser(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
+    public synchronized void addUser(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         users.add(new User(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer));
         writeInFile();
     }
 
-    public User getUserByUsername(String username) {
+    public synchronized User getUserByUsername(String username) {
         for (User user : users)
             if (user.getUsername().equals(username)) return user;
         return null;
@@ -116,7 +118,7 @@ public class UsersData implements WriteInFile {
         return null;
     }
 
-    public ArrayList<User> getUsers() {
+    public CopyOnWriteArrayList<User> getUsers() {
         return users;
     }
 

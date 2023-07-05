@@ -1,13 +1,16 @@
 package com.example.model.chat;
 
 import com.example.model.User;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
 
 @XmlRootElement
 public class Room extends Chat{
+    @XmlElement
     private String name;
+    @XmlElement
     private User admin;
     
     public Room() {

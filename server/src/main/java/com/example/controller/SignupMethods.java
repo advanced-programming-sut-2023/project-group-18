@@ -8,6 +8,7 @@ import com.example.model.UsersData;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class SignupMethods implements SignupResponses, RandomSlogan {
     private static SignupMethods controller;
@@ -60,11 +61,11 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
         return true;
     }
 
-    private boolean doesUsernameExist(String username) {
+    private synchronized boolean doesUsernameExist(String username) {
         return usersData.getUserByUsername(username) != null;
     }
 
-    private BooleanWrapper doesEmailExist(String email) {
+    private synchronized BooleanWrapper doesEmailExist(String email) {
         return new BooleanWrapper(usersData.doesEmailExist(email));
     }
     private boolean isEmailValid(String email) {
@@ -105,7 +106,7 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
 
     public String getPopularSlogan() {
         boolean flag = false;
-        ArrayList<User> users = UsersData.getInstance().getUsers();
+        CopyOnWriteArrayList<User> users = UsersData.getInstance().getUsers();
         ArrayList<String> slogans = new ArrayList<>();
         ArrayList<Integer> occurrences = new ArrayList<>();
         for (User user : users) {

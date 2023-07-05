@@ -34,6 +34,11 @@
                 <Button text="create room" onMouseClicked="#createRoom"/>
                 <Label styleClass="errorLabel" prefWidth="400" fx:id="roomError" visible="false"/>
             </HBox>
+            <HBox spacing="15" alignment="CENTER">
+                <TextField promptText="go to room" fx:id="findRoomTextField"/>
+                <Button text="find room" onMouseClicked="#findRoom"/>
+                <Label styleClass="errorLabel" prefWidth="400" fx:id="roomFindError" visible="false"/>
+            </HBox>
         </VBox>
     </center>
     <stylesheets>

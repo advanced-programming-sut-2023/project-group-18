@@ -1,10 +1,17 @@
 package com.example.model.chat;
 
 import com.example.model.User;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Reaction {
+    @XmlElement
     private ReactionType reactionType;
-    private final User sender;
+    @XmlElement
+    private User sender;
+    public Reaction() {
+    }
 
     public Reaction(ReactionType reactionType, User sender) {
         this.reactionType = reactionType;

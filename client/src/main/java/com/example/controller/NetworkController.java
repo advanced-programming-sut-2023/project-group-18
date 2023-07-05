@@ -55,6 +55,7 @@ public class NetworkController {
 
     public Object transferData(Request request) {
         System.out.println("request method name: " + request.getMethodName());
+        System.out.println("request class name: " + request.getController());
         byte[] data = request.toXml().getBytes();
         try {
             dataOutputStream.writeInt(data.length);

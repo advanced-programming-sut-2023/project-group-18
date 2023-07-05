@@ -1,32 +1,39 @@
 package com.example.model.chat;
 
+import com.example.model.IntegerWrapper;
 import com.example.model.User;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @XmlRootElement
 @XmlSeeAlso({ PublicChat.class, PrivateChat.class, Room.class})
 public class Chat {
-    private final DataChat dataChat = DataChat.getInstance();
-    private final int id;
-    private final ArrayList<User> members;
-    private final ArrayList<Message> messages;
+    @XmlElement
+    private final CopyOnWriteArrayList<User> members;
+    @XmlElement
+    private final CopyOnWriteArrayList<Message> messages;
 
     public Chat() {
-        id = dataChat.getNextId().getValue();
-        this.members = new ArrayList<>();
-        this.messages = new ArrayList<>();
-        dataChat.addChat(this);
+        DataChat dataChat = DataChat.getInstance();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        this.members = new CopyOnWriteArrayList<>();
+        this.messages = new CopyOnWriteArrayList<>();
     }
 
 
-    public ArrayList<User> getMembers() {
+    public CopyOnWriteArrayList<User> getMembers() {
         return members;
     }
 
-    public ArrayList<Message> getMessages() {
+    public CopyOnWriteArrayList<Message> getMessages() {
         return messages;
     }
 
@@ -45,9 +52,4 @@ public class Chat {
     public void addMessage(Message message) {
         messages.add(message);
     }
-
-    public int getId() {
-        return id;
-    }
-
 }

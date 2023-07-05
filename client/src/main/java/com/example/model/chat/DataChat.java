@@ -17,30 +17,32 @@ public class DataChat {
         return dataChat == null ? dataChat = new DataChat() : dataChat;
     }
 
-    public Chat findChatById(int id) {
-        Object object = networkController.transferData(new Request(DataChat.class, "findChatById", id));
-        if (object instanceof PublicChat)
-            return (PublicChat) object;
-        if (object instanceof PrivateChat)
-            return (PrivateChat) object;
-        if (object instanceof Room)
-            return (Room) object;
-        return null;
-    }
-
-    public IntegerWrapper getNextId() {
-        return (IntegerWrapper) networkController.transferData(new Request(DataChat.class, "getNextId"));
-    }
-
-    public void addChat(Chat chat) {
-        networkController.transferData(new Request(DataChat.class, "addChat", chat));
-    }
-
-    public Chat privateChat(User user1, User user2) {
-        return (Chat) networkController.transferData(new Request(DataChat.class, "privateChat", user1, user2));
-    }
 
     public Room getRoom(String name) {
         return (Room) networkController.transferData(new Request(DataChat.class, "getRoom", name));
+    }
+
+    public PublicChat addPublicMessage(String username, String text) {
+        return (PublicChat) networkController.transferData(new Request(DataChat.class, "addPublicMessage", username, text));
+    }
+
+    public PrivateChat addPrivateMessage(String sender, String text, String username1, String username2) {
+        return (PrivateChat) networkController.transferData(new Request(DataChat.class, "addPrivateMessage", sender, text, username1, username2));
+    }
+
+    public Room addRoomMessage(String username, String text, String roomName) {
+        return (Room) networkController.transferData(new Request(DataChat.class, "addRoomMessage", username, text, roomName));
+    }
+
+    public PublicChat getPublicChat() {
+        return (PublicChat) networkController.transferData(new Request(DataChat.class, "getPublicChat"));
+    }
+
+    public PrivateChat privateChat(String username1, String username2) {
+        return (PrivateChat) networkController.transferData(new Request(DataChat.class, "privateChat", username1, username2));
+    }
+
+    public Room newRoom(String roomName, String username) {
+        return (Room) networkController.transferData(new Request(DataChat.class, "newRoom", roomName, username));
     }
 }

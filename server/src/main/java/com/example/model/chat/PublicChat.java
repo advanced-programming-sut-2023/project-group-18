@@ -5,14 +5,13 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class PublicChat extends Chat{
-    private static PublicChat single_instance = null;
+    private static final PublicChat single_instance = new PublicChat();
     public PublicChat() {
+        System.out.println("we are creating a publicChat");
         this.getMembers().addAll(User.getUsers());
     }
     //
     public static synchronized PublicChat getInstance() {
-        if (single_instance == null)
-            single_instance = new PublicChat();
         return single_instance;
     }
 }

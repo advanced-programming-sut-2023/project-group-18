@@ -48,7 +48,7 @@ public class SecurityMethods {
 //        usersData.writeInFile();
     }
 
-    public void login(String username) {
+    public synchronized void login(String username) {
         usersData.addLoggedInUsers(usersData.getUserByUsername(username));
     }
 }
