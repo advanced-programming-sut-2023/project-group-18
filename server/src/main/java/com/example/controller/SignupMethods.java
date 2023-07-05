@@ -60,11 +60,11 @@ public class SignupMethods implements SignupResponses, RandomSlogan {
         return true;
     }
 
-    private boolean doesUsernameExist(String username) {
+    private synchronized boolean doesUsernameExist(String username) {
         return usersData.getUserByUsername(username) != null;
     }
 
-    private BooleanWrapper doesEmailExist(String email) {
+    private synchronized BooleanWrapper doesEmailExist(String email) {
         return new BooleanWrapper(usersData.doesEmailExist(email));
     }
     private boolean isEmailValid(String email) {

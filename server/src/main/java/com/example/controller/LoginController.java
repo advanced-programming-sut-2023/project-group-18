@@ -16,7 +16,7 @@ public class LoginController {
         return new BooleanWrapper(usersData.getUserByUsername(username) != null);
     }
 
-    public BooleanWrapper validLogin(String username, String password) {
+    public synchronized BooleanWrapper validLogin(String username, String password) {
         return new BooleanWrapper(doesUsernameExist(username).isValue() && usersData.isPasswordCorrect(username, password));
     }
 

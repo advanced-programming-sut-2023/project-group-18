@@ -9,7 +9,9 @@ public class Reaction {
     @XmlElement
     private ReactionType reactionType;
     @XmlElement
-    private final User sender;
+    private User sender;
+    public Reaction() {
+    }
 
     public Reaction(ReactionType reactionType, User sender) {
         this.reactionType = reactionType;

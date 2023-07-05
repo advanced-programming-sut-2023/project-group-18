@@ -7,18 +7,21 @@
     <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="multiple instances not working">
       <change beforePath="$PROJECT_DIR$/../client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/ChatMenuMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/ChatMenuMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Reaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/Reaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/ReactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/ReactionType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/model/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/model/Request.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/SecurityMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/SecurityMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/SignupMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/SignupMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/Users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SignupMethods.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +124,7 @@
       <workItem from="1685893029808" duration="7172000" />
       <workItem from="1688115104849" duration="7840000" />
       <workItem from="1688377709888" duration="2134000" />
+      <workItem from="1688536379034" duration="2815000" />
     </task>
     <task id="LOCAL-00001" summary="tag">
       <created>1685305307071</created>

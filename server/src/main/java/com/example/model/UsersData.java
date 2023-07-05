@@ -72,12 +72,12 @@ public class UsersData implements WriteInFile {
         }
     }
 
-    public void addUser(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
+    public synchronized void addUser(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         users.add(new User(username, password, nickname, email, slogan, recoveryQuestionNumber, recoveryAnswer));
         writeInFile();
     }
 
-    public User getUserByUsername(String username) {
+    public synchronized User getUserByUsername(String username) {
         for (User user : users)
             if (user.getUsername().equals(username)) return user;
         return null;

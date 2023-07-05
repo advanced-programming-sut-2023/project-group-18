@@ -4,21 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="chat basics done">
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="i lost my sanity">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ChatMenuMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ChatMenuMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Reaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Reaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/ReactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/ReactionType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ChatMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/Request.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/SecurityMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/SecurityMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/SignupMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/controller/SignupMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/UsersData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Chat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/DataChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/DataChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/json/Users.json" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/json/Users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/SecurityMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/SecurityMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/target/classes/com/example/controller/SignupMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server/target/classes/com/example/controller/SignupMethods.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,18 +62,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/IdeaProjects/project-group-18/client/src/main/java/com/example/model/chat&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Omidreza/IdeaProjects/AP/three/_3/broker",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\IdeaProjects\project-group-18\client\src\main\java\com\example\model\chat" />
@@ -114,6 +117,7 @@
       <workItem from="1688313179160" duration="11284000" />
       <workItem from="1688385292654" duration="12588000" />
       <workItem from="1688464795609" duration="7332000" />
+      <workItem from="1688536437447" duration="3969000" />
     </task>
     <task id="LOCAL-00001" summary="tag">
       <created>1685305307071</created>
@@ -297,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688498534589</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="i lost my sanity">
+      <created>1688507974931</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1688507974931</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +338,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tag" />
     <MESSAGE value="testing prompt text for unmasked password" />
     <MESSAGE value="textField passwordField style for password show try" />
     <MESSAGE value="fixed show password hopefully" />
@@ -352,7 +362,8 @@
     <MESSAGE value="trying to do chat using anchorPane and scrollPane" />
     <MESSAGE value="chat basics done" />
     <MESSAGE value="chat from client to server" />
-    <option name="LAST_COMMIT_MESSAGE" value="chat from client to server" />
+    <MESSAGE value="i lost my sanity" />
+    <option name="LAST_COMMIT_MESSAGE" value="i lost my sanity" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

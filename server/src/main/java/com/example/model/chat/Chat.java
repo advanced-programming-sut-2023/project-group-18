@@ -1,6 +1,7 @@
 package com.example.model.chat;
 
 import com.example.model.User;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 
@@ -10,8 +11,11 @@ import java.util.ArrayList;
 @XmlSeeAlso({ PublicChat.class, PrivateChat.class, Room.class})
 public class Chat {
     private final DataChat dataChat = DataChat.getInstance();
+    @XmlElement
     private final int id;
+    @XmlElement
     private final ArrayList<User> members;
+    @XmlElement
     private final ArrayList<Message> messages;
 
     public Chat() {

@@ -38,7 +38,7 @@ public class ChatMenuController {
         ChatMenuMethods chatMenuMethods = ChatMenuMethods.getInstance();
         String text = chatTextField.getText();
         chatTextField.setText("");
-        Label label = new Label(usersData.getLoggedInUser().getNickname() + ":" + text);
+        Label label = new Label(usersData.getLoggedInUser().getUsername() + ":" + text);
         vBox.getChildren().add(label);
 //        System.out.println(chatMenuMethods.getChat().getId());
         chatMenuMethods.setChat(DataChat.getInstance().addMessage(usersData.getLoggedInUser().getUsername(), text, chatMenuMethods.getChat().getId()));
@@ -52,7 +52,7 @@ public class ChatMenuController {
     public void refresh() {
         vBox.getChildren().removeAll(vBox.getChildren());
         for (Message message : ChatMenuMethods.getInstance().getChat().getMessages()) {
-            vBox.getChildren().add(new Label(message.getText()));
+            vBox.getChildren().add(new Label(message.getSender().getUsername() + ":" + message.getText()));
         }
     }
 }
