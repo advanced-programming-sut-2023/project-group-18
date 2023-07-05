@@ -7,17 +7,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.google.gson.Gson;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 public class UsersData implements WriteInFile {
     private static UsersData usersData;
-    private final ArrayList<User> users;
-    private final ArrayList<User> loggedInUsers = new ArrayList<>();
+    private final CopyOnWriteArrayList<User> users;
+    private final CopyOnWriteArrayList<User> loggedInUsers = new CopyOnWriteArrayList<>();
 
     private UsersData() {
-        users = new ArrayList<>(initializeUsers());
+        users = new CopyOnWriteArrayList<>(initializeUsers());
     }
 
     public static UsersData getInstance() {
@@ -25,10 +26,11 @@ public class UsersData implements WriteInFile {
     }
 
     public void addLoggedInUsers(User user) {
+        System.out.println("user logged in: " + user.getUsername());
         loggedInUsers.add(user);
     }
 
-    public ArrayList<User> getLoggedInUsers() {
+    public CopyOnWriteArrayList<User> getLoggedInUsers() {
         return loggedInUsers;
     }
 
@@ -116,7 +118,7 @@ public class UsersData implements WriteInFile {
         return null;
     }
 
-    public ArrayList<User> getUsers() {
+    public CopyOnWriteArrayList<User> getUsers() {
         return users;
     }
 

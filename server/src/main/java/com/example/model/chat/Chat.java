@@ -6,6 +6,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @XmlRootElement
 @XmlSeeAlso({ PublicChat.class, PrivateChat.class, Room.class})
@@ -14,23 +15,23 @@ public class Chat {
     @XmlElement
     private final int id;
     @XmlElement
-    private final ArrayList<User> members;
+    private final CopyOnWriteArrayList<User> members;
     @XmlElement
-    private final ArrayList<Message> messages;
+    private final CopyOnWriteArrayList<Message> messages;
 
     public Chat() {
         id = dataChat.getNextId().getValue();
-        this.members = new ArrayList<>();
-        this.messages = new ArrayList<>();
+        this.members = new CopyOnWriteArrayList<>();
+        this.messages = new CopyOnWriteArrayList<>();
         dataChat.addChat(this);
     }
 
 
-    public ArrayList<User> getMembers() {
+    public CopyOnWriteArrayList<User> getMembers() {
         return members;
     }
 
-    public ArrayList<Message> getMessages() {
+    public CopyOnWriteArrayList<Message> getMessages() {
         return messages;
     }
 
