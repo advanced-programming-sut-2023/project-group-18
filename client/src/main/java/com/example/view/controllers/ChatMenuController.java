@@ -2,10 +2,7 @@ package com.example.view.controllers;
 
 import com.example.controller.ChatMenuMethods;
 import com.example.model.UsersData;
-import com.example.model.chat.Chat;
-import com.example.model.chat.DataChat;
-import com.example.model.chat.Message;
-import com.example.model.chat.PublicChat;
+import com.example.model.chat.*;
 import com.example.view.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -22,6 +19,7 @@ public class ChatMenuController {
     private BorderPane borderPane;
     private VBox vBox;
     private final UsersData usersData = UsersData.getInstance();
+    private final ChatMenuMethods chatMenuMethods = ChatMenuMethods.getInstance();
 
     @FXML
     public void initialize() {
@@ -35,23 +33,32 @@ public class ChatMenuController {
     }
 
     public void sendMessage() {
-        ChatMenuMethods chatMenuMethods = ChatMenuMethods.getInstance();
         String text = chatTextField.getText();
         chatTextField.setText("");
         Label label = new Label(usersData.getLoggedInUser().getUsername() + ":" + text);
         vBox.getChildren().add(label);
-//        System.out.println(chatMenuMethods.getChat().getId());
+        if (chatMenuMethods.getChat() instanceof PublicChat) {
+            System.out.println("chatMenuController publicChat instance");
+            chatMenuMethods.setChat(DataChat.getInstance().addPublicMessage(usersData.getLoggedInUser().getUsername(), text));
+        }
         chatMenuMethods.setChat(DataChat.getInstance().addMessage(usersData.getLoggedInUser().getUsername(), text, chatMenuMethods.getChat().getId()));
-//        System.out.println("chat size is: " + chatMenuMethods.getChat().getMessages().size());
-//        Chat chat = ChatMenuMethods.getInstance().getChat();
-//        chat.addMessage(new Message(usersData.getLoggedInUser(), text));
-//        DataChat.getInstance().replaceChat(chat);
-//        PublicChat.getInstance().addMessage(new Message(usersData.getLoggedInUser(), text));
     }
 
     public void refresh() {
         vBox.getChildren().removeAll(vBox.getChildren());
-        for (Message message : ChatMenuMethods.getInstance().getChat().getMessages()) {
+        Chat chat = chatMenuMethods.getChat();
+        if (chat instanceof Room) {
+            System.out.println("chat is instance of room in chatselectmenucontroller.java");
+        } else if (chat instanceof PublicChat) {
+            System.out.println("chat instance of public chat");
+        } else if (chat instanceof PrivateChat) {
+            System.out.println("chat instance of private chat");
+        } else System.out.println("chat is not instance of anything");
+        if (chatMenuMethods.getChat() instanceof Room room) {
+            System.out.println("testing room room");
+            vBox.getChildren().add(new Label("Room name: " + room.getName()));
+        }
+        for (Message message : chatMenuMethods.getChat().getMessages()) {
             vBox.getChildren().add(new Label(message.getSender().getUsername() + ":" + message.getText()));
         }
     }

@@ -1,5 +1,6 @@
 package com.example.model.chat;
 
+import com.example.model.IntegerWrapper;
 import com.example.model.User;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -11,16 +12,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @XmlRootElement
 @XmlSeeAlso({ PublicChat.class, PrivateChat.class, Room.class})
 public class Chat {
-    private final DataChat dataChat = DataChat.getInstance();
     @XmlElement
-    private final int id;
+    private final IntegerWrapper id;
     @XmlElement
     private final CopyOnWriteArrayList<User> members;
     @XmlElement
     private final CopyOnWriteArrayList<Message> messages;
 
     public Chat() {
-        id = dataChat.getNextId().getValue();
+        DataChat dataChat = DataChat.getInstance();
+        id = dataChat.getNextId();
+        System.out.println();
+        System.out.println();
+        System.out.println("chat id is : " + id.getValue());
+        System.out.println();
+        System.out.println();
+        System.out.println();
         this.members = new CopyOnWriteArrayList<>();
         this.messages = new CopyOnWriteArrayList<>();
         dataChat.addChat(this);
@@ -52,7 +59,7 @@ public class Chat {
     }
 
     public int getId() {
-        return id;
+        return id.getValue();
     }
 
 }

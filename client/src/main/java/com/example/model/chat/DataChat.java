@@ -19,13 +19,20 @@ public class DataChat {
 
     public Chat findChatById(int id) {
         Object object = networkController.transferData(new Request(DataChat.class, "findChatById", id));
-        if (object instanceof PublicChat)
-            return (PublicChat) object;
-        if (object instanceof PrivateChat)
-            return (PrivateChat) object;
-        if (object instanceof Room)
-            return (Room) object;
-        return null;
+        return (Chat) object;
+//        if (object instanceof PublicChat) {
+//            System.out.println("findChatById publicChat");
+//            return (PublicChat) object;
+//        }
+//        if (object instanceof PrivateChat) {
+//            System.out.println("findChatById privateChat");
+//            return (PrivateChat) object;
+//        }
+//        if (object instanceof Room) {
+//            System.out.println("findChatById room");
+//            return (Room) object;
+//        }
+//        return null;
     }
 
     public IntegerWrapper getNextId() {
@@ -40,8 +47,8 @@ public class DataChat {
         networkController.transferData(new Request(DataChat.class, "replaceChat", chat));
     }
 
-    public Chat privateChat(User user1, User user2) {
-        return (Chat) networkController.transferData(new Request(DataChat.class, "privateChat", user1, user2));
+    public Chat privateChat(String username1, String username2) {
+        return (Chat) networkController.transferData(new Request(DataChat.class, "privateChat", username1, username2));
     }
 
     public Room getRoom(String name) {
@@ -53,5 +60,19 @@ public class DataChat {
         System.out.println("chat size is: " + chat.getMessages().size());
         System.out.println("chat id is: " + chat.getId());
         return chat;
+    }
+
+    public Room newRoom(String roomName, String username) {
+        return (Room) networkController.transferData(new Request(DataChat.class, "newRoom", roomName, username));
+    }
+
+    public PublicChat getPublicChat() {
+        PublicChat publicChat = (PublicChat) networkController.transferData(new Request(DataChat.class, "getPublicChat"));
+        System.out.println(publicChat.getId() + "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+        return publicChat;
+    }
+
+    public PublicChat addPublicMessage(String username, String text) {
+        return (PublicChat) networkController.transferData(new Request(DataChat.class, "addPublicMessage", username, text));
     }
 }

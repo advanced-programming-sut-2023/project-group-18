@@ -4,10 +4,11 @@ import com.example.model.User;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class PrivateChat extends Chat{
+public class PrivateChat extends Chat {
     public PrivateChat() {
-    
+        System.out.println("----------------------------------------------------------------------------------");
     }
+
     public PrivateChat(User user1, User user2) {
         super();
         this.getMembers().add(user1);

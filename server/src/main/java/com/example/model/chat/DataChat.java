@@ -8,10 +8,13 @@ import com.example.model.UsersData;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @XmlRootElement
 public class DataChat {
+    private final PublicChat publicChat = PublicChat.getInstance();
     private final CopyOnWriteArrayList<Chat> chats = new CopyOnWriteArrayList<>();
 
     private static DataChat dataChat;
@@ -19,9 +22,8 @@ public class DataChat {
     public static DataChat getInstance() {
         if (dataChat == null) {
             dataChat = new DataChat();
-            PublicChat.getInstance();
         }
-        return dataChat == null ? dataChat = new DataChat() : dataChat;
+        return dataChat;
     }
 
     public synchronized Chat findChatById(int id) {
@@ -46,8 +48,10 @@ public class DataChat {
         }
     }
 
-    public synchronized Chat privateChat(User user1, User user2) {
+    public synchronized Chat privateChat(String username1, String username2) {
         synchronized (chats) {
+            User user1 = UsersData.getInstance().getUserByUsername(username1);
+            User user2 = UsersData.getInstance().getUserByUsername(username2);
             for (Chat chat : chats)
                 if (chat instanceof PrivateChat && chat.getMembers().contains(user1) && chat.getMembers().contains(user2))
                     return chat;
@@ -76,5 +80,22 @@ public class DataChat {
         chat.addMessage(new Message(UsersData.getInstance().getUserByUsername(username), text));
         System.out.println("chat size is: " + chat.getMessages().size());
         return chat;
+    }
+
+    public Room newRoom(String roomName, String username) {
+        User admin = UsersData.getInstance().getUserByUsername(username);
+        ArrayList<User> arrayList = new ArrayList<>();
+        arrayList.add(admin);
+        return new Room(roomName, arrayList, admin);
+    }
+
+    public PublicChat getPublicChat() {
+        System.out.println(publicChat.getId()+"kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+        return publicChat;
+    }
+
+    public PublicChat addPublicMessage(String username, String text) {
+        publicChat.addMessage(new Message(UsersData.getInstance().getUserByUsername(username), text));
+        return publicChat;
     }
 }

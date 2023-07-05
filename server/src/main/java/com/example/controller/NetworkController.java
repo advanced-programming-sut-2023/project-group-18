@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.Request;
+import com.example.model.chat.Chat;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 
@@ -65,6 +66,7 @@ public class NetworkController {
 
     private String process(String xml) {
         Request request = Request.fromXml(xml);
+        System.out.println();
         System.out.println("controller name: " + request.getController());
         System.out.println("request method name: " + request.getMethodName());
         Class controller = request.getController();
@@ -80,19 +82,20 @@ public class NetworkController {
             if (method1.getName().equals("getInstance"))
                 instance = method1;
         }
+        System.out.println();
         ArrayList<Object> argumentArrayList = request.getArguments();
-//        System.out.println("argument in networkController " + argumentArrayList.get(0));
         Object[] arguments;
         if (argumentArrayList == null) {
             arguments = null;
         } else
             arguments = argumentArrayList.toArray();
-//        System.out.println("argumentArrayList size: " + argumentArrayList.size());
         try {
             boolean access = method.canAccess(instance.invoke(null));
             method.setAccessible(true);
-//            System.out.println(arguments[0]);
             Object result = method.invoke(instance.invoke(null), arguments);
+            if (result instanceof Chat) {
+                System.out.println("it is instance of chat--------------------------- chat id: " + ((Chat) result).getId());
+            }
             if (result == null)
                 return null;
             method.setAccessible(access);
