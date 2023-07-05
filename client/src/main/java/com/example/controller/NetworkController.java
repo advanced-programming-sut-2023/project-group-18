@@ -14,6 +14,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Scanner;
 
 public class NetworkController {
     private final static int PORT_NUMBER = 6000;
@@ -33,7 +34,10 @@ public class NetworkController {
 
     public void initializeNetwork() {
         try {
-            socket = new Socket("localhost", PORT_NUMBER);
+            System.out.println("Enter your id:");
+            Scanner scanner = new Scanner(System.in);
+            socket = new Socket("localhost", PORT_NUMBER + scanner.nextInt());
+            scanner.close();
             dataInputStream = new DataInputStream(socket.getInputStream());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
             id = dataInputStream.readInt();

@@ -15,10 +15,7 @@ import java.util.ArrayList;
 public class NetworkController {
     private final static int PORT_NUMBER = 6000;
     private Socket socket;
-    private ServerSocket serverSocket;
     private int id;
-    private DataInputStream dataInputStream;
-    private DataOutputStream dataOutputStream;
     private static NetworkController networkController;
 
     private NetworkController() {
@@ -31,13 +28,13 @@ public class NetworkController {
 
     public void run() {
         try {
-            serverSocket = new ServerSocket(PORT_NUMBER);
-            while (true) {
+            for (int i = 0; i < 10; i++) {
+                ServerSocket serverSocket = new ServerSocket(PORT_NUMBER + i);
                 socket = serverSocket.accept();
                 new Thread(() -> {
                     try {
-                        dataInputStream = new DataInputStream(socket.getInputStream());
-                        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+                        DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
+                        DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
                         dataOutputStream.writeInt(getId());
                         while (true) {
                             byte[] data = new byte[dataInputStream.readInt()];
