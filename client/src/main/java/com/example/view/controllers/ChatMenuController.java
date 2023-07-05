@@ -24,6 +24,13 @@ public class ChatMenuController {
 
     @FXML
     public void initialize() {
+        if (chatMenuMethods.getPublicChat() != null) {
+            System.out.println("public chat");
+        } else if (chatMenuMethods.getPrivateChat() != null) {
+            System.out.println("private chat");
+        } else if (chatMenuMethods.getRoom() != null) {
+            System.out.println("room chat");
+        }
         vBox = new VBox();
         refresh();
         borderPane.setCenter(vBox);

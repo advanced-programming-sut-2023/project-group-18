@@ -1,8 +1,5 @@
 package com.example.model.chat;
 
-import com.example.controller.NetworkController;
-import com.example.model.IntegerWrapper;
-import com.example.model.Request;
 import com.example.model.User;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;

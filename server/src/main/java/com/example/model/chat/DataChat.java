@@ -59,10 +59,19 @@ public class DataChat {
         synchronized (privateChats) {
             User user1 = usersData.getUserByUsername(username1);
             User user2 = usersData.getUserByUsername(username2);
-            for (PrivateChat privateChat : privateChats)
-                if (privateChat.getMembers().contains(user1) && privateChat.getMembers().contains(user2))
+            for (PrivateChat privateChat : privateChats) {
+                System.out.println("input user 1 is: " + username1);
+                System.out.println("input user 2 is: " + username2);
+                System.out.println("private chat's first user is: " + privateChat.getMembers().get(0).getUsername());
+                System.out.println("private chat's second user is: " + privateChat.getMembers().get(1).getUsername());
+                if ((privateChat.getMembers().get(0).getUsername().equals(username1) && privateChat.getMembers().get(1).getUsername().equals(username2)) ||
+                        (privateChat.getMembers().get(1).getUsername().equals(username1) && privateChat.getMembers().get(0).getUsername().equals(username2)))
                     return privateChat;
-            return new PrivateChat(user1, user2);
+            }
+            System.out.println("we didn't find a private chat");
+            PrivateChat privateChat = new PrivateChat(user1, user2);
+            privateChats.add(privateChat);
+            return privateChat;
         }
     }
 
