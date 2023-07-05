@@ -4,14 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="edit and delete working for at least one person(edit buggy)">
+    <list default="true" id="9741b086-0fb0-49df-848f-903a17d9d4fb" name="Changes" comment="fixed edit and delete, added avatar and time">
       <change beforePath="$PROJECT_DIR$/../client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/ChatMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/UsersData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/PublicChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/model/chat/PublicChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/FriendMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/FriendMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/com/example/view/controllers/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/resources/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/resources/fxml/MainMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/target/classes/com/example/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/com/example/view/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/chat/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/NetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/NetworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/UsersData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/NetworkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/model/UsersData.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688578270665</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fixed edit and delete, added avatar and time">
+      <created>1688580103543</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1688580103544</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +340,8 @@
     <MESSAGE value="fixing transfer data xml" />
     <MESSAGE value="multiple instances not working" />
     <MESSAGE value="edit and delete working for at least one person(edit buggy)" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit and delete working for at least one person(edit buggy)" />
+    <MESSAGE value="fixed edit and delete, added avatar and time" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed edit and delete, added avatar and time" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_group_18$LoginMenuTest.ic" NAME="LoginMenuTest Coverage Results" MODIFIED="1683974377815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

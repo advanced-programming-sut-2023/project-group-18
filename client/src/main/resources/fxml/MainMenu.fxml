@@ -23,6 +23,7 @@
             <Button text="Profile Menu" onMouseClicked="#profileMenu"/>
             <Button text="logout" onMouseClicked="#logout"/>
             <Button text="chat" onMouseClicked="#chatSelectMenu"/>
+            <Button text="friend" onMouseClicked="#friendMenu"/>
         </VBox>
     </left>
     <center>

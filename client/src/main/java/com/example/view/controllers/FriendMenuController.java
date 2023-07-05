@@ -28,8 +28,6 @@ public class FriendMenuController {
     @FXML
     private TextField userName;
     @FXML
-    private VBox vBox;
-    @FXML
     private VBox friendRequests;
 
     @FXML
@@ -38,79 +36,52 @@ public class FriendMenuController {
 
     @FXML
     public void initialize() {
-        vBox = new VBox();
-        borderPane.setCenter(vBox);
     }
 
     public void back() throws IOException {
         Main.goToMenu("MainMenu");
     }
 
-    public void searchUser(){
+    public void searchUser() {
+        if (searchVBox.getChildren().size() != 3)
+            searchVBox.getChildren().remove(searchVBox.getChildren().get(searchVBox.getChildren().size() - 1));
         String name = userName.getText();
-        for (User user : User.getUsers()){
-            if (user.getUsername().startsWith(name)){
-                Label label = new Label(user.getUsername());
-                Button requestButton = new Button("Request");
-                HBox hBox = new HBox(label, requestButton);
-                requestButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        requestButton.setText("Requested");
-                        user.addRequest(UsersData.getInstance().getLoggedInUser());
-                        requestButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent mouseEvent) {
-                                return;
-                            }
-                        });
-                    }
+        User user = usersData.getUserByUsername(name);
+        if (user != null) {
+            Label label = new Label(user.getUsername());
+            Button requestButton = new Button("Request");
+            HBox hBox = new HBox(label, requestButton);
+            requestButton.setOnMouseClicked(mouseEvent -> {
+                requestButton.setText("Requested");
+                usersData.request(usersData.getLoggedInUser().getUsername(), name);
+                userName.setText("");
+                requestButton.setOnMouseClicked(mouseEvent1 -> {
                 });
-                hBox.setAlignment(Pos.CENTER);
-                hBox.setSpacing(10);
-                searchVBox.getChildren().add(hBox);
-            }
+            });
+            hBox.setAlignment(Pos.CENTER);
+            hBox.setSpacing(10);
+            searchVBox.getChildren().add(hBox);
         }
     }
 
-    public void showRequests(){
-        for (User user : UsersData.getInstance().getLoggedInUser().getRequests()){
+    public void showRequests() {
+        for (User user : UsersData.getInstance().getLoggedInUser().getRequests()) {
+            System.out.println("we have a request from someone");
             Label label = new Label(user.getUsername());
             Button acceptButton = new Button("Accept");
             Button declineButton = new Button("Decline");
             HBox hBox = new HBox(label, acceptButton, declineButton);
             friendRequests.getChildren().add(hBox);
-            acceptButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    friendRequests.getChildren().removeAll(hBox);
-                    UsersData.getInstance().getLoggedInUser().acceptRequest(user);
-                }
+            acceptButton.setOnMouseClicked(mouseEvent -> {
+                friendRequests.getChildren().removeAll(hBox);
+                UsersData.getInstance().getLoggedInUser().acceptRequest(user);
             });
-            declineButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    friendRequests.getChildren().removeAll(hBox);
-                    UsersData.getInstance().getLoggedInUser().declineRequest(user);
-                }
+            declineButton.setOnMouseClicked(mouseEvent -> {
+                friendRequests.getChildren().removeAll(hBox);
+                UsersData.getInstance().getLoggedInUser().declineRequest(user);
             });
             hBox.setAlignment(Pos.CENTER);
             hBox.setSpacing(10);
-        }
-    }
-    public void refresh() {
-        ChatMenuMethods chatMenuMethods = ChatMenuMethods.getInstance();
-        vBox.getChildren().removeAll(vBox.getChildren());
-        Chat chat = null;
-        if (chatMenuMethods.getPublicChat() != null) {
-            chat = chatMenuMethods.getPublicChat();
-        } else if (chatMenuMethods.getPrivateChat() != null) {
-            chat = chatMenuMethods.getPrivateChat();
-        } else if (chatMenuMethods.getRoom() != null) {
-            chat = chatMenuMethods.getRoom();
-        }
-        for (Message message : chat.getMessages()) {
-            vBox.getChildren().add(new Label(message.getSender().getUsername() + ":" + message.getText()));
         }
     }
 }

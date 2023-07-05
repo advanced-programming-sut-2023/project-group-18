@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.Request;
+import com.example.model.User;
 import com.example.model.chat.Chat;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -92,6 +93,9 @@ public class NetworkController {
             Object result = method.invoke(instance.invoke(null), arguments);
             if (result == null)
                 return null;
+            if (result instanceof User user) {
+                System.out.println(user.getRequests().size() + "======================================================================");
+            }
             method.setAccessible(access);
             StringWriter stringWriter = new StringWriter();
             JAXBContext.newInstance(method.getReturnType()).createMarshaller().marshal(result, stringWriter);

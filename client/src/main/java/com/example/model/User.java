@@ -4,6 +4,7 @@ import com.example.model.chat.Chat;
 import com.example.model.chat.PrivateChat;
 import com.example.model.chat.PublicChat;
 import com.example.model.chat.Room;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.scene.image.ImageView;
 
@@ -22,10 +23,10 @@ public class User implements PasswordRecoveryQuestions {
     private int recoveryQuestionNumber;
     private String recoveryAnswer;
     private int score;
-    private final static ArrayList<User> users = new ArrayList<>();
-    private ArrayList<User> friends;
-    private ArrayList<User> requests;
-    private ArrayList<Chat> chats;
+    private ArrayList<User> friends = new ArrayList<>();
+    @XmlElement
+    private ArrayList<User> requests = new ArrayList<>();
+    private ArrayList<Chat> chats = new ArrayList<>();
     public User() {
     }
     protected User(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
@@ -39,7 +40,6 @@ public class User implements PasswordRecoveryQuestions {
         this.highscore = 0;
         this.score = 0;
         avatarPath = User.class.getResource("/avatars/1.png").toExternalForm();
-        users.add(this);
         friends = new ArrayList<>();
         requests = new ArrayList<>();
         chats = new ArrayList<>();
@@ -151,9 +151,6 @@ public class User implements PasswordRecoveryQuestions {
         return new File(avatarPath);
     }
 
-    public static ArrayList<User> getUsers(){
-        return users;
-    }
 
     public ArrayList<User> getFriends() {
         return friends;
@@ -198,16 +195,6 @@ public class User implements PasswordRecoveryQuestions {
             }
         }
         return properChats;
-    }
-
-    public ArrayList<User> searchUsers(String name){
-        ArrayList<User> userArrayList = new ArrayList<>();
-        for (User user : getUsers()){
-            if (user.getUsername().startsWith(name)){
-                userArrayList.add(user);
-            }
-        }
-        return userArrayList;
     }
 
     public ArrayList<Room> getRooms(){

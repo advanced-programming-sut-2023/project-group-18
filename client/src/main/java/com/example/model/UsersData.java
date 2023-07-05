@@ -48,9 +48,10 @@ public class UsersData implements WriteInFile {
 
     public User getUserByUsername(String username) {
         return (User) NetworkController.getInstance().transferData(new Request(UsersData.class, "getUserByUsername", username));
-//        for (User user : users)
-//            if (user.getUsername().equals(username)) return user;
-//        return null;
+    }
+
+    public void request(String requestUser, String acceptUser) {
+        NetworkController.getInstance().transferData(new Request(UsersData.class, "request", requestUser, acceptUser));
     }
 
 //    public boolean doesEmailExist(String email) {

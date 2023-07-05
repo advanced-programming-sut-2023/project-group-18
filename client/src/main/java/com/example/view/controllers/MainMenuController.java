@@ -25,4 +25,8 @@ public class MainMenuController {
     public void chatSelectMenu(MouseEvent mouseEvent) throws IOException {
         Main.goToMenu("ChatSelectMenu");
     }
+
+    public void friendMenu(MouseEvent mouseEvent) throws IOException {
+        Main.goToMenu("FriendMenu");
+    }
 }

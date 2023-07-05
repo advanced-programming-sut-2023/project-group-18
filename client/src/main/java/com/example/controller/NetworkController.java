@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.Request;
+import com.example.model.User;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
@@ -93,7 +94,11 @@ public class NetworkController {
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
             StringReader reader = new StringReader(xmlString);
-            return unmarshaller.unmarshal(reader);
+            Object object = unmarshaller.unmarshal(reader);
+            if (object instanceof User user) {
+                System.out.println(user.getRequests().size() + "======================================================================");
+            }
+            return object;
         } catch (IOException | JAXBException e) {
             throw new RuntimeException(e);
         }

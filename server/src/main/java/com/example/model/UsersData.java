@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import com.example.controller.NetworkController;
 import com.google.gson.Gson;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
@@ -138,4 +139,8 @@ public class UsersData implements WriteInFile {
         }
     }
 
+    public void request(String requestUser, String acceptUser) {
+        System.out.println("request has happened by" + requestUser + "to " + acceptUser);
+        usersData.getUserByUsername(acceptUser).addRequest(usersData.getUserByUsername(requestUser));
+    }
 }

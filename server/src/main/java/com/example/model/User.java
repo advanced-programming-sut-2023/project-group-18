@@ -1,5 +1,6 @@
 package com.example.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.scene.image.ImageView;
 
@@ -23,9 +24,12 @@ public class User implements PasswordRecoveryQuestions {
     private int score;
     private final static ArrayList<User> users = new ArrayList<>();
     private ArrayList<User> friends;
+    @XmlElement
     private ArrayList<User> requests;
+
     public User() {
     }
+
     protected User(String username, String password, String nickname, String email, String slogan, int recoveryQuestionNumber, String recoveryAnswer) {
         this.username = username;
         setPassword(password);
@@ -61,6 +65,7 @@ public class User implements PasswordRecoveryQuestions {
     public int getHighscore() {
         return highscore;
     }
+
     public String getPassword() {
         return password;
     }
@@ -89,7 +94,7 @@ public class User implements PasswordRecoveryQuestions {
         this.slogan = slogan;
     }
 
-    public void addScore(int score){
+    public void addScore(int score) {
         this.score += score;
     }
 
@@ -147,7 +152,7 @@ public class User implements PasswordRecoveryQuestions {
         return new File(avatarPath);
     }
 
-    public static ArrayList<User> getUsers(){
+    public static ArrayList<User> getUsers() {
         return users;
     }
 
@@ -159,20 +164,20 @@ public class User implements PasswordRecoveryQuestions {
         return requests;
     }
 
-    public void addFriend(User user){
+    public void addFriend(User user) {
         friends.add(user);
     }
 
-    public void addRequest(User user){
+    public void addRequest(User user) {
         requests.add(user);
     }
 
-    public void acceptRequest(User user){
+    public void acceptRequest(User user) {
         requests.remove(user);
         friends.add(user);
     }
 
-    public void declineRequest(User user){
+    public void declineRequest(User user) {
         requests.remove(user);
     }
 }

@@ -9,7 +9,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 public class PublicChat extends Chat{
     public PublicChat() {
         System.out.println("we are creating a publicChat");
-        this.getMembers().addAll(User.getUsers());
+//        this.getMembers().addAll(User.getUsers());
     }
     //
     public static PublicChat getInstance() {
